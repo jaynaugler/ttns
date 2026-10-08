@@ -13,26 +13,30 @@ From this folder (`ttns/`):
 pnpm install
 ```
 
-## Build And Run
+## Run Paths
 
-Production build and run:
+Development path (hot reload):
+
+```bash
+node dev
+# equivalent:
+node scripts/dev.cjs
+```
+
+Production path (built app):
 
 ```bash
 pnpm run build
-node .\\node_modules\\next\\dist\\bin\\next start
-```
-
-Local development (recommended simple start/stop on Windows):
-
-```bash
 node start
+# equivalent:
+node scripts/start.cjs
 ```
 
-Stop the app with `Ctrl + C`.
+Stop either mode with `Ctrl + C`.
 
 ## Team Starting Points
 
-Use the top-of-file ownership comments as the source of truth.
+Use the top-of-file ownership comments as a starting point.
 
 - Team 1 and Team 2 (profile + skills data/types)
 	- `src/types/user.ts`
