@@ -19,13 +19,17 @@ Production build and run:
 
 ```bash
 pnpm run build
-node .\\node_modules\\next\\dist\\bin\\next start
+node start
+# equivalent:
+node scripts/start.cjs
 ```
 
 Local development (recommended simple start/stop on Windows):
 
 ```bash
-node start
+node dev
+# equivalent:
+node scripts/dev.cjs
 ```
 
 Stop the app with `Ctrl + C`.
