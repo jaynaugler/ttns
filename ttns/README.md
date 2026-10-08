@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TTNS App (Next.js)
 
-## Getting Started
+## Prerequisites
 
-First, run the development server:
+- Node.js 20+
+- pnpm 12+
+
+## Install Dependencies
+
+From this folder (`ttns/`):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build And Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Production build and run:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm run build
+node .\\node_modules\\next\\dist\\bin\\next start
+```
 
-## Learn More
+Local development (recommended simple start/stop on Windows):
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Stop the app with `Ctrl + C`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Team Starting Points
 
-## Deploy on Vercel
+Use the top-of-file ownership comments as the source of truth.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Team 1 and Team 2 (profile + skills data/types)
+	- `src/types/user.ts`
+	- `src/components/profile/`
+	- `src/components/skills/`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Team 4 (career matching)
+	- `src/lib/matching-algo.ts`
+	- `src/app/api/match/route.ts`
+	- `src/types/outcomes.ts`
+
+- Team 5 (projection/outcome shifts)
+	- `src/lib/projection-logic.ts`
+	- `src/types/outcomes.ts`
+	- `src/components/look-forward/`
+
+- Team 6 (next step generation)
+	- `src/app/api/steps/route.ts`
+	- `src/components/next-steps/`
+	- `src/data/education-steps.json`
+
+## Entry UI Shell
+
+- App entry page: `src/app/page.tsx`
+- Shared app styles: `src/app/globals.css`
