@@ -7,7 +7,7 @@
 
 ## Install Dependencies
 
-From this folder (`ttns/`):
+From the repository root:
 
 ```bash
 pnpm install
