@@ -34,6 +34,25 @@ node scripts/start.cjs
 
 Stop either mode with `Ctrl + C`.
 
+## Testing
+
+Run the standard test command:
+
+```bash
+pnpm run test
+```
+
+Current scope:
+
+- Runs Team 6 next-step backend tests.
+- Compiles test-target TypeScript to a temporary folder, then runs Node's built-in test runner.
+
+Optional cleanup of temporary compiled test output:
+
+```bash
+pnpm run test:next-steps:clean
+```
+
 ## Team Starting Points
 
 Use the top-of-file ownership comments as a starting point.

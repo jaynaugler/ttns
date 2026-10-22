@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "test": "pnpm run test:next-steps",
+    "lint": "eslint",
+    "test:next-steps": "pnpm exec tsc -p tsconfig.next-steps-test.json && node --test .tmp/next-steps-test/lib/next-steps/next-steps.test.js",
+    "test:next-steps:clean": "node -e \"require('node:fs').rmSync('.tmp/next-steps-test', { recursive: true, force: true })\""
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
