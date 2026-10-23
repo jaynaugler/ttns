@@ -1,0 +1,6584 @@
+[
+  {
+    "CH Code": "0011.0",
+    "LABEL": "Legislators",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0012.0",
+    "LABEL": "Senior government managers and officials",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0013.0",
+    "LABEL": "Senior managers - financial",
+    "DATA": "communications and other business services",
+    "PEOPLE": "Synthesizing - 0",
+    "THING": "Negotiating - 1"
+  },
+  {
+    "CH Code": "0014.0",
+    "LABEL": "Senior managers - health",
+    "DATA": "education",
+    "PEOPLE": "social and community services and membership organizations",
+    "THING": "Synthesizing - 0"
+  },
+  {
+    "CH Code": "0015.0",
+    "LABEL": "Senior managers - trade",
+    "DATA": "broadcasting and other services",
+    "PEOPLE": "n.e.c.",
+    "THING": "Synthesizing - 0"
+  },
+  {
+    "CH Code": "0016.0",
+    "LABEL": "Senior managers - construction",
+    "DATA": "transportation",
+    "PEOPLE": "production and utilities",
+    "THING": "Synthesizing - 0"
+  },
+  {
+    "CH Code": "0111.0",
+    "LABEL": "Financial managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0112.0",
+    "LABEL": "Human resources managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0113.0",
+    "LABEL": "Purchasing managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0114.0",
+    "LABEL": "Other administrative services managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0121.1",
+    "LABEL": "Insurance managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0121.2",
+    "LABEL": "Real estate service managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0121.3",
+    "LABEL": "Mortgage broker managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0121.4",
+    "LABEL": "Securities managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0122.1",
+    "LABEL": "Banking and other investment managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0122.2",
+    "LABEL": "Credit managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0124.1",
+    "LABEL": "Advertising managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0124.2",
+    "LABEL": "Marketing managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0124.3",
+    "LABEL": "Public relations managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0124.4",
+    "LABEL": "E-business managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0125.0",
+    "LABEL": "Other business services managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0131.0",
+    "LABEL": "Telecommunication carriers managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0132.0",
+    "LABEL": "Postal and courier services managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0211.0",
+    "LABEL": "Engineering managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0212.0",
+    "LABEL": "Architecture and science managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0213.0",
+    "LABEL": "Computer and information systems managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0311.0",
+    "LABEL": "Managers in health care",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0411.0",
+    "LABEL": "Government managers - health and social policy development and program administration",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0412.0",
+    "LABEL": "Government managers - economic analysis",
+    "DATA": "policy development and program administration",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Negotiating - 1"
+  },
+  {
+    "CH Code": "0413.0",
+    "LABEL": "Government managers - education policy development and program administration",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0414.0",
+    "LABEL": "Other managers in public administration",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0421.1",
+    "LABEL": "Faculty administrators",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0421.2",
+    "LABEL": "Registrars",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0421.3",
+    "LABEL": "Administrators of vocational training schools",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0422.1",
+    "LABEL": "School principals",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0422.2",
+    "LABEL": "Administrators of elementary and secondary education",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0423.0",
+    "LABEL": "Managers in social",
+    "DATA": "community and correctional services",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Negotiating - 1"
+  },
+  {
+    "CH Code": "0431.0",
+    "LABEL": "Commissioned police officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0432.0",
+    "LABEL": "Fire chiefs and senior firefighting officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0433.0",
+    "LABEL": "Commissioned officers of the Canadian Armed Forces",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0511.0",
+    "LABEL": "Library",
+    "DATA": "archive",
+    "PEOPLE": "museum and art gallery managers",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "0512.0",
+    "LABEL": "Managers - publishing",
+    "DATA": "motion pictures",
+    "PEOPLE": "broadcasting and performing arts",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "0513.0",
+    "LABEL": "Recreation",
+    "DATA": "sports and fitness program and service directors",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Negotiating - 1"
+  },
+  {
+    "CH Code": "0601.0",
+    "LABEL": "Corporate sales managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0621.0",
+    "LABEL": "Retail and wholesale trade managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0631.0",
+    "LABEL": "Restaurant and food service managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0632.0",
+    "LABEL": "Accommodation service managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0651.0",
+    "LABEL": "Managers in customer and personal services",
+    "DATA": "n.e.c.",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "0711.0",
+    "LABEL": "Construction managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0712.0",
+    "LABEL": "Home building and renovation managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0714.1",
+    "LABEL": "Facility operation managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0714.2",
+    "LABEL": "Maintenance managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0731.1",
+    "LABEL": "Transportation managers",
+    "DATA": "operations",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Negotiating - 1"
+  },
+  {
+    "CH Code": "0731.2",
+    "LABEL": "Transportation managers",
+    "DATA": "freight traffic",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Negotiating - 1"
+  },
+  {
+    "CH Code": "0811.0",
+    "LABEL": "Managers in natural resources production and fishing",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0821.0",
+    "LABEL": "Managers in agriculture",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "0822.0",
+    "LABEL": "Managers in horticulture",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0823.0",
+    "LABEL": "Managers in aquaculture",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "0911.0",
+    "LABEL": "Manufacturing managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0912.1",
+    "LABEL": "Water supply managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0912.2",
+    "LABEL": "Electrical power distribution managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0912.3",
+    "LABEL": "Natural gas supply managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0912.4",
+    "LABEL": "Petroleum product distribution managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "0912.5",
+    "LABEL": "Water pollution control managers"
+  },
+  {
+    "CH Code": ""
+  },
+  {
+    "CH Code": "",
+    "LABEL": "Co-ordinating - 1",
+    "DATA": "Negotiating - 1",
+    "PEOPLE": "Not significant - 8"
+  },
+  {
+    "CH Code": "0912.6",
+    "LABEL": "Waste systems managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1111.1",
+    "LABEL": "Financial auditors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1111.2",
+    "LABEL": "Accountants",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1112.1",
+    "LABEL": "Financial analysts",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1112.2",
+    "LABEL": "Investment analysts",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1113.1",
+    "LABEL": "Securities agents and investment dealers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1113.2",
+    "LABEL": "Brokers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1114.1",
+    "LABEL": "Financial planners",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1114.2",
+    "LABEL": "Financial examiners and inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1114.3",
+    "LABEL": "Financial investigators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1114.4",
+    "LABEL": "Underwriters",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1114.5",
+    "LABEL": "Trust officers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1114.6",
+    "LABEL": "Mortgage brokers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1121.0",
+    "LABEL": "Human resources professionals",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1122.0",
+    "LABEL": "Management Consultants",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1123.1",
+    "LABEL": "Professional occupations in marketing and public relations",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1123.2",
+    "LABEL": "Professional occupations in advertising",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1211.0",
+    "LABEL": "Supervisors",
+    "DATA": "general office and administrative support workers",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "1212.0",
+    "LABEL": "Supervisors",
+    "DATA": "finance and insurance office workers",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "1213.0",
+    "LABEL": "Supervisors",
+    "DATA": "library",
+    "PEOPLE": "correspondence and related information workers",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "1214.0",
+    "LABEL": "Supervisors",
+    "DATA": "mail and message distribution occupations",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "1215.0",
+    "LABEL": "Supervisors",
+    "DATA": "supply chain",
+    "PEOPLE": "tracking and scheduling co-ordination occupations",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "1221.0",
+    "LABEL": "Administrative officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1222.0",
+    "LABEL": "Executive assistants",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1223.0",
+    "LABEL": "Human resources and recruitment officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1224.0",
+    "LABEL": "Property administrators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1225.0",
+    "LABEL": "Purchasing agents and officers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1226.0",
+    "LABEL": "Conference and event planners",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1227.1",
+    "LABEL": "Court officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1227.2",
+    "LABEL": "Justices of the peace",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1228.1",
+    "LABEL": "Immigration officers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1228.2",
+    "LABEL": "Border services officers and customs inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1228.3",
+    "LABEL": "Excise tax revenue officers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1228.4",
+    "LABEL": "Government benefits services officers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1241.0",
+    "LABEL": "Administrative assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1242.0",
+    "LABEL": "Legal administrative assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1243.0",
+    "LABEL": "Medical administrative assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1251.1",
+    "LABEL": "Court reporters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1251.2",
+    "LABEL": "Medical transcriptionists",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1252.0",
+    "LABEL": "Health information management occupations",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1253.0",
+    "LABEL": "Records management technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1254.0",
+    "LABEL": "Statistical officers and related research support occupations",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "1311.0",
+    "LABEL": "Accounting technicians and bookkeepers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1312.1",
+    "LABEL": "Insurance adjusters",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1312.2",
+    "LABEL": "Insurance claims examiners",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1313.0",
+    "LABEL": "Insurance underwriters",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1314.1",
+    "LABEL": "Assessors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1314.2",
+    "LABEL": "Valuators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1314.3",
+    "LABEL": "Appraisers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1315.1",
+    "LABEL": "Customs brokers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1315.2",
+    "LABEL": "Ship brokers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1411.1",
+    "LABEL": "General office support workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1411.2",
+    "LABEL": "Administrative clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1411.3",
+    "LABEL": "File clerks",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1414.1",
+    "LABEL": "Receptionists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1414.2",
+    "LABEL": "Hospital admitting clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1414.3",
+    "LABEL": "Medical and dental receptionists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1414.4",
+    "LABEL": "Switchboard operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1414.5",
+    "LABEL": "Answering service operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1414.6",
+    "LABEL": "Front desk clerks (except hotel)",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1414.7",
+    "LABEL": "Telephone operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1415.0",
+    "LABEL": "Personnel clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1416.0",
+    "LABEL": "Court clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1422.0",
+    "LABEL": "Data entry clerks",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1423.1",
+    "LABEL": "Desktop publishing operators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1423.2",
+    "LABEL": "Markup persons",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1423.3",
+    "LABEL": "Typesetting input operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1423.4",
+    "LABEL": "Typesetting output operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1431.0",
+    "LABEL": "Accounting and related clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1432.0",
+    "LABEL": "Payroll administrators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1434.1",
+    "LABEL": "Bank clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1434.2",
+    "LABEL": "Insurance clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1434.3",
+    "LABEL": "Other financial clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1435.0",
+    "LABEL": "Collectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1451.0",
+    "LABEL": "Library assistants and clerks",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1452.1",
+    "LABEL": "Classified advertising clerks",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1452.2",
+    "LABEL": "Correspondence clerks",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1452.3",
+    "LABEL": "Editorial assistants and publication clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1452.4",
+    "LABEL": "Proofreaders",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1452.5",
+    "LABEL": "Readers and press clippers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1452.6",
+    "LABEL": "Regulatory clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1454.1",
+    "LABEL": "Survey interviewers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1454.2",
+    "LABEL": "Statistical clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1511.1",
+    "LABEL": "Postal clerks",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1511.2",
+    "LABEL": "Mail sorters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1511.3",
+    "LABEL": "Mail room clerks",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1512.0",
+    "LABEL": "Letter carriers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1513.0",
+    "LABEL": "Couriers",
+    "DATA": "messengers and door-to-door distributors",
+    "PEOPLE": "Copying - 5",
+    "THING": "Assisting - 7"
+  },
+  {
+    "CH Code": "1521.0",
+    "LABEL": "Shippers and receivers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1522.0",
+    "LABEL": "Storekeepers and partspersons",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1523.0",
+    "LABEL": "Production logistics co-ordinators",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1524.1",
+    "LABEL": "Purchasing Control Workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "1524.2",
+    "LABEL": "Inventory Control Workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "1525.1",
+    "LABEL": "Dispatchers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1525.2",
+    "LABEL": "Radio operators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "1526.0",
+    "LABEL": "Transportation route and crew schedulers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2111.1",
+    "LABEL": "Physicists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2111.2",
+    "LABEL": "Astronomers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2112.0",
+    "LABEL": "Chemists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2113.1",
+    "LABEL": "Geoscientists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2113.2",
+    "LABEL": "Oceanographers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2114.0",
+    "LABEL": "Meteorologists and climatologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2115.1",
+    "LABEL": "Metallurgists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2115.2",
+    "LABEL": "Soil scientists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2115.3",
+    "LABEL": "Materials scientists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2115.4",
+    "LABEL": "Astronauts",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "2121.1",
+    "LABEL": "Biologists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2121.2",
+    "LABEL": "Microbiologists and cell and molecular biologists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2122.0",
+    "LABEL": "Forestry professionals",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2123.0",
+    "LABEL": "Agricultural representatives",
+    "DATA": "consultants and specialists",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Consulting - 2"
+  },
+  {
+    "CH Code": "2131.0",
+    "LABEL": "Civil engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2132.0",
+    "LABEL": "Mechanical engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2133.0",
+    "LABEL": "Electrical and electronics engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2134.0",
+    "LABEL": "Chemical engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2141.0",
+    "LABEL": "Industrial and manufacturing engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2142.0",
+    "LABEL": "Metallurgical and materials engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2143.0",
+    "LABEL": "Mining engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2144.0",
+    "LABEL": "Geological engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2145.0",
+    "LABEL": "Petroleum engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2146.0",
+    "LABEL": "Aerospace engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2147.1",
+    "LABEL": "Computer and telecommunications hardware engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2147.2",
+    "LABEL": "Network system and data communication engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2148.1",
+    "LABEL": "Agricultural and bio-resource engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2148.2",
+    "LABEL": "Biomedical engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2148.3",
+    "LABEL": "Engineering physicists and engineering scientists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2148.4",
+    "LABEL": "Marine and naval engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2148.5",
+    "LABEL": "Textile engineers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2151.0",
+    "LABEL": "Architects",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2152.0",
+    "LABEL": "Landscape architects",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2153.0",
+    "LABEL": "Urban and land use planners",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2154.0",
+    "LABEL": "Land surveyors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2161.1",
+    "LABEL": "Mathematicians",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "2161.2",
+    "LABEL": "Statisticians",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "2161.3",
+    "LABEL": "Actuaries",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "2171.1",
+    "LABEL": "Information systems business analysts and consultants",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2171.2",
+    "LABEL": "Systems security analysts",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2171.3",
+    "LABEL": "Information systems quality assurance analysts",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2171.4",
+    "LABEL": "Systems auditors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2172.1",
+    "LABEL": "Database analysts",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2172.2",
+    "LABEL": "Data administrators",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2173.0",
+    "LABEL": "Software engineers and designers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2174.1",
+    "LABEL": "Computer programmers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2174.2",
+    "LABEL": "Interactive media developers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2175.0",
+    "LABEL": "Web designers and developers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2211.1",
+    "LABEL": "Chemical technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2211.2",
+    "LABEL": "Chemical technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2212.1",
+    "LABEL": "Geological and mineral technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2212.2",
+    "LABEL": "Geological and mineral technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2221.1",
+    "LABEL": "Biological technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2221.2",
+    "LABEL": "Biological technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2222.1",
+    "LABEL": "Fish and fish products inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2222.2",
+    "LABEL": "Fruit and vegetables inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2222.3",
+    "LABEL": "Grain inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2222.4",
+    "LABEL": "Meat inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2222.5",
+    "LABEL": "Plant protection inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2223.0",
+    "LABEL": "Forestry technologists and technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2224.0",
+    "LABEL": "Conservation and fishery officers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "2225.1",
+    "LABEL": "Arborists and tree service technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2225.2",
+    "LABEL": "Golf course superintendents",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2225.3",
+    "LABEL": "Horticulturists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2225.4",
+    "LABEL": "Landscape designers and landscape architectural technicians and technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2225.5",
+    "LABEL": "Landscape gardeners",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2225.6",
+    "LABEL": "Landscapers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2225.7",
+    "LABEL": "Lawn care specialists",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2231.1",
+    "LABEL": "Civil engineering technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2231.2",
+    "LABEL": "Civil engineering technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2232.1",
+    "LABEL": "Mechanical engineering technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2232.2",
+    "LABEL": "Mechanical engineering technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2233.1",
+    "LABEL": "Industrial engineering and manufacturing technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2233.2",
+    "LABEL": "Industrial engineering and manufacturing technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2234.0",
+    "LABEL": "Construction estimators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "2241.1",
+    "LABEL": "Electrical and electronics engineering technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2241.2",
+    "LABEL": "Electrical and electronics engineering technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2242.0",
+    "LABEL": "Electronic service technicians (household and business equipment)",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2243.0",
+    "LABEL": "Industrial instrument technicians and mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2244.1",
+    "LABEL": "Aircraft instrument mechanics and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2244.2",
+    "LABEL": "Aircraft electrical mechanics and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2244.3",
+    "LABEL": "Avionics mechanics and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2244.4",
+    "LABEL": "Avionics inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2251.0",
+    "LABEL": "Architectural technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2252.0",
+    "LABEL": "Industrial designers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2253.1",
+    "LABEL": "Drafting technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2253.2",
+    "LABEL": "Drafting technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2254.1",
+    "LABEL": "Land survey technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2254.2",
+    "LABEL": "Land survey technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2255.1",
+    "LABEL": "Cartographic technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2255.2",
+    "LABEL": "Photogrammetric technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2255.3",
+    "LABEL": "Aerial survey technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2255.4",
+    "LABEL": "Remote sensing technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2255.5",
+    "LABEL": "Geographic information systems (GIS) technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2255.6",
+    "LABEL": "Meteorological technologists and technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2261.0",
+    "LABEL": "Non-destructive testers and inspection technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2262.1",
+    "LABEL": "Motor vehicle defects investigators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "2262.2",
+    "LABEL": "Railway accident investigation officers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2262.3",
+    "LABEL": "Airworthiness inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2262.4",
+    "LABEL": "Inspectors",
+    "DATA": "weights and measures",
+    "PEOPLE": "Analyzing - 2",
+    "THING": "speaking - 6"
+  },
+  {
+    "CH Code": "2262.5",
+    "LABEL": "Oil and gas drilling rig inspectors",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "2263.0",
+    "LABEL": "Inspectors in public and environmental health and occupational health and safety",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2264.0",
+    "LABEL": "Construction inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "2271.1",
+    "LABEL": "Pilots",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "2271.2",
+    "LABEL": "Flight engineers (second officers)",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "2271.3",
+    "LABEL": "Flying instructors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "2272.1",
+    "LABEL": "Air traffic controllers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "2272.2",
+    "LABEL": "Flight dispatchers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "2272.3",
+    "LABEL": "Flight service specialists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "2273.0",
+    "LABEL": "Deck officers",
+    "DATA": "water transport",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "2274.0",
+    "LABEL": "Engineer officers",
+    "DATA": "water transport",
+    "PEOPLE": "Analyzing - 2",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "2275.1",
+    "LABEL": "Railway traffic controllers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "2275.2",
+    "LABEL": "Marine traffic regulators",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "2281.1",
+    "LABEL": "Computer and network operators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2281.2",
+    "LABEL": "Web technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2282.0",
+    "LABEL": "User support technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "2283.0",
+    "LABEL": "Information systems testing technicians",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3011.0",
+    "LABEL": "Nursing co-ordinators and supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3012.1",
+    "LABEL": "General duty registered nurses",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3012.2",
+    "LABEL": "Occupational health nurses",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3012.3",
+    "LABEL": "Community health nurses",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3012.4",
+    "LABEL": "Registered psychiatric nurses",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3012.5",
+    "LABEL": "Nursing consultants",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "3012.6",
+    "LABEL": "Nursing researchers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "3012.7",
+    "LABEL": "Clinical nurses",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "3111.1",
+    "LABEL": "Specialists in clinical medicine",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3111.2",
+    "LABEL": "Specialists in laboratory medicine",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3111.3",
+    "LABEL": "Specialists in surgery",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3112.0",
+    "LABEL": "General practitioners and family physicians",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3113.0",
+    "LABEL": "Dentists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3114.0",
+    "LABEL": "Veterinarians",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3121.0",
+    "LABEL": "Optometrists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3122.0",
+    "LABEL": "Chiropractors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "3124.1",
+    "LABEL": "Nurse practitioners",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "3124.2",
+    "LABEL": "Physician assistants",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "3124.3",
+    "LABEL": "Midwives",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3125.1",
+    "LABEL": "Doctors of podiatric medicine",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3125.2",
+    "LABEL": "Chiropodists and podiatrists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3125.3",
+    "LABEL": "Naturopaths",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3125.4",
+    "LABEL": "Orthoptists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3125.5",
+    "LABEL": "Doctors of osteopathic medicine"
+  },
+  {
+    "CH Code": "",
+    "LABEL": "Co-ordinating - 1",
+    "DATA": "Mentoring - 0",
+    "PEOPLE": "Operating - 4"
+  },
+  {
+    "CH Code": "3131.1",
+    "LABEL": "Community pharmacists and hospital pharmacists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3131.2",
+    "LABEL": "Industrial pharmacists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3132.0",
+    "LABEL": "Dietitians and nutritionists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "3141.1",
+    "LABEL": "Audiologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3141.2",
+    "LABEL": "Speech-language pathologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "3142.0",
+    "LABEL": "Physiotherapists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3143.0",
+    "LABEL": "Occupational therapists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "3144.1",
+    "LABEL": "Other professional occupations in therapy and assessment",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "3144.2",
+    "LABEL": "Kinesiologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3144.3",
+    "LABEL": "Exercise therapists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3211.0",
+    "LABEL": "Medical laboratory technologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3212.1",
+    "LABEL": "Medical laboratory technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "3212.2",
+    "LABEL": "Pathologists' assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3213.0",
+    "LABEL": "Animal health technologists and veterinary technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3214.1",
+    "LABEL": "Respiratory therapists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3214.2",
+    "LABEL": "Clinical perfusionists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3214.3",
+    "LABEL": "Cardiopulmonary technologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3215.1",
+    "LABEL": "Radiological technologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3215.2",
+    "LABEL": "Nuclear medicine technologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3215.3",
+    "LABEL": "Radiation therapists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3216.0",
+    "LABEL": "Medical sonographers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3217.1",
+    "LABEL": "Cardiology technologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3217.2",
+    "LABEL": "Electroencephalographic (EEG) technologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3217.3",
+    "LABEL": "Electromyography (EMG) technologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3219.1",
+    "LABEL": "Dietary technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "3219.2",
+    "LABEL": "Ocularists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3219.3",
+    "LABEL": "Prosthetists and orthotists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3219.4",
+    "LABEL": "Prosthetic and orthotic technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3219.5",
+    "LABEL": "Pharmacy technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3221.0",
+    "LABEL": "Denturists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3222.1",
+    "LABEL": "Dental hygienists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3222.2",
+    "LABEL": "Dental therapists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3223.1",
+    "LABEL": "Dental technologists and technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3223.2",
+    "LABEL": "Dental Laboratory Assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3231.0",
+    "LABEL": "Opticians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3232.1",
+    "LABEL": "Acupuncturists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3232.2",
+    "LABEL": "Traditional Chinese medical practitioners",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3232.3",
+    "LABEL": "Herbalists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3232.4",
+    "LABEL": "Homeopaths",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3232.5",
+    "LABEL": "Reflexologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "3232.6",
+    "LABEL": "Rolfers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "3233.1",
+    "LABEL": "Licensed practical nurses",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3233.2",
+    "LABEL": "Operating room technicians",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3234.0",
+    "LABEL": "Paramedical occupations",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3236.0",
+    "LABEL": "Massage therapists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3237.1",
+    "LABEL": "Hearing instrument practitioners",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3237.2",
+    "LABEL": "Audiometric technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3237.3",
+    "LABEL": "Communicative disorders assistants and speech-language pathology assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3237.4",
+    "LABEL": "Ophthalmic medical assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3237.5",
+    "LABEL": "Physiotherapy assistants and occupational therapy assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3411.0",
+    "LABEL": "Dental assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3413.0",
+    "LABEL": "Nurse aides",
+    "DATA": "orderlies and patient service associates",
+    "PEOPLE": "Copying - 5",
+    "THING": "Assisting - 7"
+  },
+  {
+    "CH Code": "3414.1",
+    "LABEL": "Orthopedic technologists",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3414.2",
+    "LABEL": "Therapy assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3414.3",
+    "LABEL": "Optical/ophthalmic laboratory technicians and assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "3414.4",
+    "LABEL": "Pharmacy aides",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3414.5",
+    "LABEL": "Central supply aides",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "3414.6",
+    "LABEL": "Blood donor clinic assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "3414.7",
+    "LABEL": "Morgue attendants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "4011.0",
+    "LABEL": "University professors and lecturers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4012.1",
+    "LABEL": "Post-secondary teaching assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4012.2",
+    "LABEL": "Post-secondary research assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "4021.0",
+    "LABEL": "College and other vocational instructors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4031.0",
+    "LABEL": "Secondary school teachers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4032.0",
+    "LABEL": "Elementary school and kindergarten teachers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4033.0",
+    "LABEL": "Educational counsellors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4111.0",
+    "LABEL": "Judges",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4112.0",
+    "LABEL": "Lawyers and Quebec notaries",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4151.0",
+    "LABEL": "Psychologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4152.0",
+    "LABEL": "Social workers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4153.0",
+    "LABEL": "Family",
+    "DATA": "marriage and other related counsellors",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Mentoring - 0"
+  },
+  {
+    "CH Code": "4154.0",
+    "LABEL": "Professional occupations in religion",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4155.1",
+    "LABEL": "Probation and parole officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Mentoring - 0",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4155.2",
+    "LABEL": "Classification officers",
+    "DATA": "correctional institutions",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Mentoring - 0"
+  },
+  {
+    "CH Code": "4156.0",
+    "LABEL": "Employment counsellors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4161.1",
+    "LABEL": "Ergonomists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4161.2",
+    "LABEL": "Occupational/industrial hygienists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4161.3",
+    "LABEL": "Patent agents",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4161.4",
+    "LABEL": "Science policy and program officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4161.5",
+    "LABEL": "Technology transfer officers",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "4162.0",
+    "LABEL": "Economists and economic policy researchers and analysts",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4163.0",
+    "LABEL": "Business development officers and marketing researchers and consultants",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4164.1",
+    "LABEL": "Social policy researchers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4164.2",
+    "LABEL": "Home economists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4164.3",
+    "LABEL": "Housing policy analysts",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4164.4",
+    "LABEL": "International aid and development project officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4164.5",
+    "LABEL": "Social survey researchers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4164.6",
+    "LABEL": "Social services planners",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4165.0",
+    "LABEL": "Health policy researchers",
+    "DATA": "consultants and program officers",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Consulting - 2"
+  },
+  {
+    "CH Code": "4166.0",
+    "LABEL": "Education policy researchers",
+    "DATA": "consultants and program officers",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Consulting - 2"
+  },
+  {
+    "CH Code": "4167.1",
+    "LABEL": "Fitness consultant",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4167.2",
+    "LABEL": "Recreation consultants",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4167.3",
+    "LABEL": "Recreation",
+    "DATA": "sports and fitness policy analysts",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Consulting - 2"
+  },
+  {
+    "CH Code": "4167.4",
+    "LABEL": "Recreation and sports program supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4167.5",
+    "LABEL": "Sports consultants",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4168.0",
+    "LABEL": "Program officers unique to government",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4169.1",
+    "LABEL": "Anthropologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4169.2",
+    "LABEL": "Archaeologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4169.3",
+    "LABEL": "Geographers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4169.4",
+    "LABEL": "Historians",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4169.5",
+    "LABEL": "Linguists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4169.6",
+    "LABEL": "Political scientists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4169.7",
+    "LABEL": "Psychometricians and psychometrists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4169.8",
+    "LABEL": "Sociologists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4169.9",
+    "LABEL": "Other social science professionals",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4211.1",
+    "LABEL": "Paralegals",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4211.2",
+    "LABEL": "Notaries public",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4211.3",
+    "LABEL": "Trademark agents",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4211.4",
+    "LABEL": "Independent paralegals",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4212.0",
+    "LABEL": "Social and community service workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4214.1",
+    "LABEL": "Early childhood educators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4214.2",
+    "LABEL": "Early childhood educator assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4215.0",
+    "LABEL": "Instructors of persons with disabilities",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "4216.1",
+    "LABEL": "Driving instructors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "4216.2",
+    "LABEL": "Driver's licence examiners",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4216.3",
+    "LABEL": "Sewing instructors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "4216.4",
+    "LABEL": "Modelling and finishing school instructors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4217.0",
+    "LABEL": "Other religious occupations",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4311.0",
+    "LABEL": "Police officers (except commissioned)",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "4312.0",
+    "LABEL": "Firefighters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4313.0",
+    "LABEL": "Non-commissioned ranks of the Canadian Armed Forces",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "4411.1",
+    "LABEL": "Babysitters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4411.2",
+    "LABEL": "Foster parents",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4411.3",
+    "LABEL": "Nannies and Live-In Caregivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4411.4",
+    "LABEL": "Parents' helpers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4412.1",
+    "LABEL": "Visiting homemakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4412.2",
+    "LABEL": "Housekeepers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4412.3",
+    "LABEL": "Companions",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4413.0",
+    "LABEL": "Elementary and secondary school teacher assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4421.0",
+    "LABEL": "Sheriffs and bailiffs",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "4422.0",
+    "LABEL": "Correctional service officers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4423.1",
+    "LABEL": "Animal control officers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "4423.2",
+    "LABEL": "By-law enforcement officers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4423.3",
+    "LABEL": "Commercial transport inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "4423.4",
+    "LABEL": "Garbage collection inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4423.5",
+    "LABEL": "Liquor licence inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "4423.6",
+    "LABEL": "Parking control officers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "4423.7",
+    "LABEL": "Taxi inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "4423.8",
+    "LABEL": "Zoning inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5111.0",
+    "LABEL": "Librarians",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5112.1",
+    "LABEL": "Conservators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5112.2",
+    "LABEL": "Curators",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5113.0",
+    "LABEL": "Archivists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5121.1",
+    "LABEL": "Authors and Other Creative Writers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5121.2",
+    "LABEL": "Technical writers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5121.3",
+    "LABEL": "Copywriters",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5122.0",
+    "LABEL": "Editors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5123.0",
+    "LABEL": "Journalists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5125.1",
+    "LABEL": "Translators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5125.2",
+    "LABEL": "Terminologists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5125.3",
+    "LABEL": "Interpreters",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5125.4",
+    "LABEL": "Sign language interpreters",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5131.1",
+    "LABEL": "Film",
+    "DATA": "radio",
+    "PEOPLE": "television and video game producers",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "5131.2",
+    "LABEL": "Directors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5131.3",
+    "LABEL": "Choreographers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5131.4",
+    "LABEL": "Art directors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5131.5",
+    "LABEL": "Film editors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5131.6",
+    "LABEL": "Record producers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5131.7",
+    "LABEL": "Directors of photography",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5132.1",
+    "LABEL": "Conductors",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5132.2",
+    "LABEL": "Composers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5132.3",
+    "LABEL": "Arrangers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5133.1",
+    "LABEL": "Musicians",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5133.2",
+    "LABEL": "Singers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5133.3",
+    "LABEL": "Teachers of music or voice",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5134.1",
+    "LABEL": "Dancers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5134.2",
+    "LABEL": "Dance teachers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5135.1",
+    "LABEL": "Actors and comedians",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5135.2",
+    "LABEL": "Acting teachers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5136.1",
+    "LABEL": "Painters",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5136.2",
+    "LABEL": "Sculptors",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5136.3",
+    "LABEL": "Art instructors and teachers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5211.1",
+    "LABEL": "Library  technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5211.2",
+    "LABEL": "Public archive technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5212.1",
+    "LABEL": "Conservation and restoration technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5212.2",
+    "LABEL": "Curatorial assistants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5212.3",
+    "LABEL": "Museum and other related interpreters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5212.4",
+    "LABEL": "Museum extension officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5212.5",
+    "LABEL": "Museum registrars and cataloguers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5212.6",
+    "LABEL": "Preparators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5212.7",
+    "LABEL": "Picture framers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5212.8",
+    "LABEL": "Taxidermists",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5212.9",
+    "LABEL": "Museology technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5221.0",
+    "LABEL": "Photographers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "5222.0",
+    "LABEL": "Film and video camera operators",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5223.0",
+    "LABEL": "Graphic arts technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5224.0",
+    "LABEL": "Broadcast technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "5225.0",
+    "LABEL": "Audio and video recording technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "5226.1",
+    "LABEL": "Floor managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5226.2",
+    "LABEL": "Key grips",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5226.3",
+    "LABEL": "Gaffers and lighting technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5226.4",
+    "LABEL": "Stunt co-ordinators and special effects technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5226.5",
+    "LABEL": "Make-up artists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5226.6",
+    "LABEL": "Costumiers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5226.7",
+    "LABEL": "Settings shop foremen/women",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5226.8",
+    "LABEL": "Property masters",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5227.1",
+    "LABEL": "Camera crane operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "5227.2",
+    "LABEL": "Projectionists",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5227.3",
+    "LABEL": "Props persons and set builders",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5227.4",
+    "LABEL": "Script assistants",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5227.5",
+    "LABEL": "Grips and riggers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5227.6",
+    "LABEL": "Dressers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5227.7",
+    "LABEL": "Production assistants",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "5231.0",
+    "LABEL": "Announcers and other broadcasters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5232.1",
+    "LABEL": "Buskers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "5232.2",
+    "LABEL": "Circus performers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5232.3",
+    "LABEL": "Magicians and illusionists",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "5232.4",
+    "LABEL": "Fashion models",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5232.5",
+    "LABEL": "Puppeteers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Diverting - 4",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5241.1",
+    "LABEL": "Graphic designers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5241.2",
+    "LABEL": "Illustrators",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5242.0",
+    "LABEL": "Interior designers and interior decorators",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5243.1",
+    "LABEL": "Theatre designers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5243.2",
+    "LABEL": "Fashion designers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5243.3",
+    "LABEL": "Exhibit designers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.1",
+    "LABEL": "Carvers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.2",
+    "LABEL": "Glass blowers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.3",
+    "LABEL": "Metal arts workers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.4",
+    "LABEL": "Potters",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.5",
+    "LABEL": "Stained glass artists",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.6",
+    "LABEL": "Stringed instrument makers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5244.7",
+    "LABEL": "Weavers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5244.8",
+    "LABEL": "Craft instructors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "5244.9",
+    "LABEL": "Artistic floral arrangers",
+    "DATA": "Synthesizing - 0",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5245.0",
+    "LABEL": "Patternmakers - textile",
+    "DATA": "leather and fur products",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5251.0",
+    "LABEL": "Athletes",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "5252.1",
+    "LABEL": "Coaches",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5252.2",
+    "LABEL": "Sports scouts",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5253.0",
+    "LABEL": "Sports officials and referees",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "5254.1",
+    "LABEL": "Program leaders and instructors in recreation and sport",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Instructing - 2",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "5254.2",
+    "LABEL": "Fitness appraisers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6211.0",
+    "LABEL": "Retail sales supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6221.1",
+    "LABEL": "Technical sales specialists - wholesale trade",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6221.2",
+    "LABEL": "Grain elevator operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "6222.0",
+    "LABEL": "Retail and wholesale buyers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6231.0",
+    "LABEL": "Insurance agents and brokers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6232.0",
+    "LABEL": "Real estate agents and salespersons",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6235.0",
+    "LABEL": "Financial sales representatives",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6311.0",
+    "LABEL": "Food service supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6312.0",
+    "LABEL": "Executive housekeepers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6313.1",
+    "LABEL": "Accommodation",
+    "DATA": "travel",
+    "PEOPLE": "tourism and related services supervisors",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "6313.2",
+    "LABEL": "Casino supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6314.1",
+    "LABEL": "Customer service representatives supervisors - financial services",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6314.2",
+    "LABEL": "Customer service representatives supervisors (except financial services)",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6315.0",
+    "LABEL": "Cleaning supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6316.1",
+    "LABEL": "Other services supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6316.2",
+    "LABEL": "Dry cleaning and laundry supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6321.1",
+    "LABEL": "Chefs",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6321.2",
+    "LABEL": "Sous-chefs",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6321.3",
+    "LABEL": "Chefs and specialist chefs",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6322.0",
+    "LABEL": "Cooks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6331.0",
+    "LABEL": "Butchers",
+    "DATA": "meat cutters and fishmongers - retail and wholesale",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6332.0",
+    "LABEL": "Bakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "6341.1",
+    "LABEL": "Hairstylists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6341.2",
+    "LABEL": "Barbers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6342.1",
+    "LABEL": "Tailors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6342.2",
+    "LABEL": "Dressmakers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6342.3",
+    "LABEL": "Furriers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6342.4",
+    "LABEL": "Milliners",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6342.5",
+    "LABEL": "Alterationists",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6343.1",
+    "LABEL": "Shoemakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6343.2",
+    "LABEL": "Shoe repairers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6344.1",
+    "LABEL": "Jewellers and related workers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6344.2",
+    "LABEL": "Watch repairers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6345.0",
+    "LABEL": "Upholsterers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6346.1",
+    "LABEL": "Funeral directors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Consulting - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6346.2",
+    "LABEL": "Embalmers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6411.0",
+    "LABEL": "Sales and account representatives - wholesale trade (non-technical)",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6421.0",
+    "LABEL": "Retail salespersons",
+    "DATA": "Computing - 4",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6511.0",
+    "LABEL": "Maîtres d'hôtel and hosts/hostesses",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6512.0",
+    "LABEL": "Bartenders",
+    "DATA": "Computing - 4",
+    "PEOPLE": "Serving - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6513.0",
+    "LABEL": "Food and beverage servers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Serving - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6521.0",
+    "LABEL": "Travel counsellors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6522.1",
+    "LABEL": "Flight attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6522.2",
+    "LABEL": "Flight pursers",
+    "DATA": "customer service directors and passenger service directors",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "6522.3",
+    "LABEL": "Ship pursers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6523.1",
+    "LABEL": "Airline passenger and ticket agents",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6523.2",
+    "LABEL": "Airline baggage agents",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6523.3",
+    "LABEL": "Airline cargo agents",
+    "DATA": "Computing - 4",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6523.4",
+    "LABEL": "Airline reservation agents",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6523.5",
+    "LABEL": "Airline station agents",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6523.6",
+    "LABEL": "Airline load planners",
+    "DATA": "Computing - 4",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6524.1",
+    "LABEL": "Ticket agents and related clerks (except airline)",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6524.2",
+    "LABEL": "Cargo service representatives (except airline)",
+    "DATA": "Computing - 4",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6525.0",
+    "LABEL": "Hotel front desk clerks",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6531.1",
+    "LABEL": "Tour guides",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6531.2",
+    "LABEL": "Travel guides",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6532.0",
+    "LABEL": "Outdoor sport and recreational guides",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6533.0",
+    "LABEL": "Casino workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6541.1",
+    "LABEL": "Corporate security officers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6541.2",
+    "LABEL": "Private investigators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6541.3",
+    "LABEL": "Retail loss prevention officers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6541.4",
+    "LABEL": "Security guards",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "6541.5",
+    "LABEL": "Armoured car guards",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "6551.0",
+    "LABEL": "Customer services representatives - financial institutions",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6552.1",
+    "LABEL": "Customer service clerks in retail establishments",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6552.2",
+    "LABEL": "Call centre agents",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6552.3",
+    "LABEL": "Customer service clerks in insurance",
+    "DATA": "telephone",
+    "PEOPLE": "utility and similar companies",
+    "THING": "Copying - 5"
+  },
+  {
+    "CH Code": "6552.4",
+    "LABEL": "Information clerks",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6561.1",
+    "LABEL": "Image consultants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6561.2",
+    "LABEL": "Make-up consultants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6561.3",
+    "LABEL": "Colour consultants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6561.4",
+    "LABEL": "Wedding consultants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6561.5",
+    "LABEL": "Weight loss consultants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6562.1",
+    "LABEL": "Estheticians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6562.2",
+    "LABEL": "Cosmeticians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6562.3",
+    "LABEL": "Electrologists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6562.4",
+    "LABEL": "Manicurists and pedicurists",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6562.5",
+    "LABEL": "Scalp treatment specialists",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "6562.6",
+    "LABEL": "Tattoo artists",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "6562.7",
+    "LABEL": "Hair replacement technicians (non-medical)",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Manipulating - 4"
+  },
+  {
+    "CH Code": "6563.0",
+    "LABEL": "Pet groomers and animal care workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6564.1",
+    "LABEL": "Astrologers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6564.2",
+    "LABEL": "Psychic consultants",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6564.3",
+    "LABEL": "Other service providers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Serving - Assisting - 7",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6611.0",
+    "LABEL": "Cashiers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "6621.1",
+    "LABEL": "Automotive service station attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Serving - 7",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "6621.2",
+    "LABEL": "Marina service station attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Serving - 7",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "6622.0",
+    "LABEL": "Store shelf stockers",
+    "DATA": "clerks and order fillers",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Serving - Assisting - 7"
+  },
+  {
+    "CH Code": "6623.1",
+    "LABEL": "Direct distributors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6623.2",
+    "LABEL": "Door-to-door salespersons",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6623.3",
+    "LABEL": "Street vendors",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6623.4",
+    "LABEL": "Telephone solicitors and telemarketers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6623.5",
+    "LABEL": "Demonstrators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Persuading - 5",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6711.1",
+    "LABEL": "Food service counter attendants and food preparers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Serving - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6711.2",
+    "LABEL": "Kitchen helpers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6711.3",
+    "LABEL": "Food service helpers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6711.4",
+    "LABEL": "Dishwashers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6721.1",
+    "LABEL": "Guest service attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6721.2",
+    "LABEL": "Baggage porters",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6721.3",
+    "LABEL": "Ship attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Serving - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6721.4",
+    "LABEL": "Train service attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6721.5",
+    "LABEL": "Facilities workers",
+    "DATA": "-",
+    "PEOPLE": "-",
+    "THING": "-"
+  },
+  {
+    "CH Code": "6722.1",
+    "LABEL": "Amusement attraction operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "6722.2",
+    "LABEL": "Attendants in amusement",
+    "DATA": "recreation and sport",
+    "PEOPLE": "Comparing - 6",
+    "THING": "speaking - Signaling - 6"
+  },
+  {
+    "CH Code": "6731.0",
+    "LABEL": "Light duty cleaners",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6732.1",
+    "LABEL": "Carpet and upholstery cleaners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6732.2",
+    "LABEL": "Chimney cleaners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6732.3",
+    "LABEL": "Furnace and ventilation system cleaners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6732.4",
+    "LABEL": "Sandblasters",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6732.5",
+    "LABEL": "Vehicle cleaners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6732.6",
+    "LABEL": "Window cleaners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6733.0",
+    "LABEL": "Janitors",
+    "DATA": "caretakers and building superintendents",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6741.1",
+    "LABEL": "Dry cleaning and laundry machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "6741.2",
+    "LABEL": "Dry cleaning and laundry inspectors and assemblers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6741.3",
+    "LABEL": "Ironing",
+    "DATA": "pressing and finishing workers",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6742.1",
+    "LABEL": "Beauty salon attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6742.2",
+    "LABEL": "Door attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6742.3",
+    "LABEL": "Funeral home attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "6742.4",
+    "LABEL": "Laundromat attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "6742.5",
+    "LABEL": "Parking lot attendants and car jockeys",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "6742.6",
+    "LABEL": "Ticket takers and ushers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "6742.7",
+    "LABEL": "Other elemental service workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "7201.1",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "metal forming",
+    "PEOPLE": "shaping and erecting trades",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "7201.2",
+    "LABEL": "Supervisors",
+    "DATA": "machinists and related occupations",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7202.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "electrical trades and telecommunications occupations",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7203.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "pipefitting trades",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7204.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "carpentry trades",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7205.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "other construction trades",
+    "PEOPLE": "installers",
+    "THING": "repairers and servicers"
+  },
+  {
+    "CH Code": "7231.1",
+    "LABEL": "Machinists",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7231.2",
+    "LABEL": "Machining and tooling inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7232.1",
+    "LABEL": "Tool and die makers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7232.2",
+    "LABEL": "Metal patternmakers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7232.3",
+    "LABEL": "Metal mould makers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7233.0",
+    "LABEL": "Sheet metal workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7234.0",
+    "LABEL": "Boilermakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7235.0",
+    "LABEL": "Structural metal and platework fabricators and fitters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7236.0",
+    "LABEL": "Ironworkers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7237.1",
+    "LABEL": "Welders",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7237.2",
+    "LABEL": "Welding",
+    "DATA": "brazing and soldering machine operators",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "7241.0",
+    "LABEL": "Electricians (except industrial and power system)",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7242.0",
+    "LABEL": "Industrial electricians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7243.0",
+    "LABEL": "Power system electricians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7244.0",
+    "LABEL": "Electrical power line and cable workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7245.0",
+    "LABEL": "Telecommunications line and cable workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7246.1",
+    "LABEL": "Telephone installers and repairers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7246.2",
+    "LABEL": "Switch network installers and repairers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7246.3",
+    "LABEL": "Telecommunications service testers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7246.4",
+    "LABEL": "Telecommunications equipment technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7247.1",
+    "LABEL": "Cable television service technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7247.2",
+    "LABEL": "Cable television maintenance technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7251.0",
+    "LABEL": "Plumbers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7252.1",
+    "LABEL": "Steamfitters and pipefitters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7252.2",
+    "LABEL": "Sprinkler system installers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7253.0",
+    "LABEL": "Gas fitters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7271.0",
+    "LABEL": "Carpenters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7272.0",
+    "LABEL": "Cabinetmakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7281.0",
+    "LABEL": "Bricklayers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7282.0",
+    "LABEL": "Concrete finishers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7283.0",
+    "LABEL": "Tilesetters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7284.1",
+    "LABEL": "Plasterers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7284.2",
+    "LABEL": "Drywall installers and finishers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7284.3",
+    "LABEL": "Lathers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7291.1",
+    "LABEL": "Roofers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7291.2",
+    "LABEL": "Shinglers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7292.0",
+    "LABEL": "Glaziers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7293.0",
+    "LABEL": "Insulators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7294.0",
+    "LABEL": "Painters and decorators (except interior decorators)",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7295.0",
+    "LABEL": "Floor covering installers",
+    "DATA": "Computing - 4",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7301.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "mechanic trades",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7302.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "heavy equipment operator crews",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7303.0",
+    "LABEL": "Supervisors",
+    "DATA": "printing and related occupations",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7304.0",
+    "LABEL": "Supervisors",
+    "DATA": "railway transport operations",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7305.0",
+    "LABEL": "Supervisors",
+    "DATA": "motor transport and other ground transit operators",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "7311.1",
+    "LABEL": "Construction millwrights and industrial mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7311.2",
+    "LABEL": "Textile machinery mechanics and repairers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7312.0",
+    "LABEL": "Heavy-duty equipment mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7313.0",
+    "LABEL": "Heating",
+    "DATA": "refrigeration and air conditioning mechanics",
+    "PEOPLE": "Analyzing - 2",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "7314.0",
+    "LABEL": "Railway carmen/women",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7315.1",
+    "LABEL": "Aircraft mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7315.2",
+    "LABEL": "Aircraft inspectors",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7316.0",
+    "LABEL": "Machine fitters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7318.0",
+    "LABEL": "Elevator constructors and mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7321.1",
+    "LABEL": "Automotive service technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7321.2",
+    "LABEL": "Mechanical repairers",
+    "DATA": "motor vehicle manufacturing",
+    "PEOPLE": "Compiling - 3",
+    "THING": "speaking - 6"
+  },
+  {
+    "CH Code": "7321.3",
+    "LABEL": "Transport truck and trailer mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7322.0",
+    "LABEL": "Motor vehicle body repairers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7331.0",
+    "LABEL": "Oil and solid fuel heating mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7332.1",
+    "LABEL": "Small appliance servicers and repairers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7332.2",
+    "LABEL": "Major appliance repairers/technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7333.0",
+    "LABEL": "Electrical mechanics",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7334.0",
+    "LABEL": "Motorcycle",
+    "DATA": "all-terrain vehicle and other related mechanics",
+    "PEOPLE": "Analyzing - 2",
+    "THING": "speaking - 6"
+  },
+  {
+    "CH Code": "7335.0",
+    "LABEL": "Other small engine and small equipment repairers",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7361.1",
+    "LABEL": "Railway locomotive engineers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "7361.2",
+    "LABEL": "Yard locomotive engineers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "7362.1",
+    "LABEL": "Railway conductors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "7362.2",
+    "LABEL": "Brakemen/women",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7371.0",
+    "LABEL": "Crane operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "7372.1",
+    "LABEL": "Drillers - surface mining",
+    "DATA": "quarrying and construction",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "7372.2",
+    "LABEL": "Blasters - surface mining",
+    "DATA": "quarrying and construction",
+    "PEOPLE": "Analyzing - 2",
+    "THING": "speaking - Signaling - 6"
+  },
+  {
+    "CH Code": "7373.0",
+    "LABEL": "Water well drillers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "7381.0",
+    "LABEL": "Printing press operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7384.1",
+    "LABEL": "Gunsmiths",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7384.2",
+    "LABEL": "Locksmiths",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7384.3",
+    "LABEL": "Recreation  vehicle technicians",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7384.4",
+    "LABEL": "Safe and vault servicers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7384.5",
+    "LABEL": "Saw fitters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "7384.6",
+    "LABEL": "Die setters",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "7384.7",
+    "LABEL": "Commercial divers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7384.8",
+    "LABEL": "Blacksmiths",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7441.0",
+    "LABEL": "Residential and commercial installers and servicers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7442.1",
+    "LABEL": "Waterworks maintenance workers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7442.2",
+    "LABEL": "Gas maintenance workers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "7444.0",
+    "LABEL": "Pest controllers and fumigators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7445.0",
+    "LABEL": "Other repairers and servicers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7451.0",
+    "LABEL": "Longshore workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7452.1",
+    "LABEL": "Material handlers (manual)",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Feeding - Offbearing - 6"
+  },
+  {
+    "CH Code": "7452.2",
+    "LABEL": "Material handlers (equipment operators)",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7511.1",
+    "LABEL": "Long-haul truck drivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7511.2",
+    "LABEL": "Line-haul and local truck drivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7512.1",
+    "LABEL": "Bus and streetcar drivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7512.2",
+    "LABEL": "School bus drivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7512.3",
+    "LABEL": "Subway train and light rail transit operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "7513.1",
+    "LABEL": "Taxi and limousine drivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7513.2",
+    "LABEL": "Chauffeurs",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7514.0",
+    "LABEL": "Delivery and courier service drivers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7521.0",
+    "LABEL": "Heavy equipment operators (except crane)",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "7522.0",
+    "LABEL": "Public works maintenance equipment operators and related workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7531.1",
+    "LABEL": "Railway yard workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7531.2",
+    "LABEL": "Railway track maintenance workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7532.1",
+    "LABEL": "Water transport engine room crew",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7532.2",
+    "LABEL": "Water transport deck crew",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "7533.1",
+    "LABEL": "Lock equipment operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7533.2",
+    "LABEL": "Cable ferry operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "7533.3",
+    "LABEL": "Ferry terminal workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7533.4",
+    "LABEL": "Boat operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - Signaling - 6",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7534.0",
+    "LABEL": "Air transport ramp attendants",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "7535.0",
+    "LABEL": "Other automotive mechanical installers and servicers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7611.0",
+    "LABEL": "Construction trades helpers and labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7612.0",
+    "LABEL": "Other trades helpers and labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7621.0",
+    "LABEL": "Public works and maintenance labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "7622.1",
+    "LABEL": "Railway labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "7622.2",
+    "LABEL": "Motor transport labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8211.0",
+    "LABEL": "Supervisors",
+    "DATA": "logging and forestry",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "8221.0",
+    "LABEL": "Supervisors",
+    "DATA": "mining and quarrying",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "8222.0",
+    "LABEL": "Contractors and supervisors",
+    "DATA": "oil and gas drilling and services",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "8231.0",
+    "LABEL": "Underground production and development miners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "8232.1",
+    "LABEL": "Oil and gas well drillers and well servicers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "8232.2",
+    "LABEL": "Oil and gas well loggers",
+    "DATA": "testers and related workers",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "8241.1",
+    "LABEL": "Cable yarding system operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "8241.2",
+    "LABEL": "Mechanical harvester and forwarder operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "8241.3",
+    "LABEL": "Mechanical tree processor and loader operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8252.1",
+    "LABEL": "Agricultural service contractors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Negotiating - 1",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8252.2",
+    "LABEL": "Farm supervisors",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8252.3",
+    "LABEL": "Specialized livestock workers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8255.1",
+    "LABEL": "Supervisors",
+    "DATA": "landscape and horticulture",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "8255.2",
+    "LABEL": "Landscaping and grounds maintenance contractors and managers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "8261.0",
+    "LABEL": "Fishing masters and officers",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "8262.0",
+    "LABEL": "Fishermen/women",
+    "DATA": "Co-ordinating - 1",
+    "PEOPLE": "Supervising - 3",
+    "THING": "Operating - 3"
+  },
+  {
+    "CH Code": "8411.0",
+    "LABEL": "Underground mine service and support workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Assisting - 7",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "8412.1",
+    "LABEL": "Oil and gas well drilling workers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "8412.2",
+    "LABEL": "Oil and gas well services operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "8421.0",
+    "LABEL": "Chain saw and skidder operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "8422.0",
+    "LABEL": "Silviculture and forestry workers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "8431.0",
+    "LABEL": "General farm workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - Operating - 3"
+  },
+  {
+    "CH Code": "8432.0",
+    "LABEL": "Nursery and greenhouse workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8441.0",
+    "LABEL": "Fishing vessel deckhands",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - Manipulating - 4"
+  },
+  {
+    "CH Code": "8442.1",
+    "LABEL": "Trappers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8442.2",
+    "LABEL": "Hunters",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8611.0",
+    "LABEL": "Harvesting labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8612.0",
+    "LABEL": "Landscaping and grounds maintenance labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8613.1",
+    "LABEL": "Aquaculture support workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8613.2",
+    "LABEL": "Marine plant gatherers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8613.3",
+    "LABEL": "Mollusk harvesters",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "8614.0",
+    "LABEL": "Mine labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "8615.0",
+    "LABEL": "Oil and gas drilling",
+    "DATA": "servicing and related labourers",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "8616.0",
+    "LABEL": "Logging and forestry labourers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9211.0",
+    "LABEL": "Supervisors",
+    "DATA": "mineral and metal processing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9212.0",
+    "LABEL": "Supervisors",
+    "DATA": "petroleum",
+    "PEOPLE": "gas and chemical processing and utilities",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "9213.0",
+    "LABEL": "Supervisors",
+    "DATA": "food",
+    "PEOPLE": "beverage and associated products processing",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "9214.0",
+    "LABEL": "Supervisors",
+    "DATA": "plastic and rubber products manufacturing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9215.0",
+    "LABEL": "Supervisors",
+    "DATA": "forest products processing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9217.1",
+    "LABEL": "Supervisors",
+    "DATA": "textile processing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9217.2",
+    "LABEL": "Supervisors",
+    "DATA": "fabric",
+    "PEOPLE": "fur and leather products manufacturing",
+    "THING": "Co-ordinating - 1"
+  },
+  {
+    "CH Code": "9221.0",
+    "LABEL": "Supervisors",
+    "DATA": "motor vehicle assembling",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9222.0",
+    "LABEL": "Supervisors",
+    "DATA": "electronics manufacturing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9223.0",
+    "LABEL": "Supervisors",
+    "DATA": "electrical products manufacturing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9224.0",
+    "LABEL": "Supervisors",
+    "DATA": "furniture and fixtures manufacturing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9226.0",
+    "LABEL": "Supervisors",
+    "DATA": "other mechanical and metal products manufacturing",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9227.0",
+    "LABEL": "Supervisors",
+    "DATA": "other products manufacturing and assembly",
+    "PEOPLE": "Co-ordinating - 1",
+    "THING": "Supervising - 3"
+  },
+  {
+    "CH Code": "9231.0",
+    "LABEL": "Central control and process operators",
+    "DATA": "mineral and metal processing",
+    "PEOPLE": "Analyzing - 2",
+    "THING": "speaking - 6"
+  },
+  {
+    "CH Code": "9232.0",
+    "LABEL": "Central control and process operators",
+    "DATA": "petroleum",
+    "PEOPLE": "gas and chemical processing",
+    "THING": "Analyzing - 2"
+  },
+  {
+    "CH Code": "9235.1",
+    "LABEL": "Pulping control operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9235.2",
+    "LABEL": "Papermaking and coating control operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Signalling - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9241.1",
+    "LABEL": "Power systems operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9241.2",
+    "LABEL": "Power station operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9241.3",
+    "LABEL": "Stationary engineers and auxiliary equipment operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "speaking - 6",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9243.1",
+    "LABEL": "Water treatment plant operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9243.2",
+    "LABEL": "Liquid waste plant operators",
+    "DATA": "Analyzing - 2",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9411.0",
+    "LABEL": "Machine operators",
+    "DATA": "mineral and metal processing",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9412.1",
+    "LABEL": "Manual mouldmakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9412.2",
+    "LABEL": "Manual coremakers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9412.3",
+    "LABEL": "Machine mouldmakers and coremakers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9412.4",
+    "LABEL": "Metal casters",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9412.5",
+    "LABEL": "Foundry furnace operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9413.1",
+    "LABEL": "Glass process control operators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9413.2",
+    "LABEL": "Glass forming machine operators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9413.3",
+    "LABEL": "Glass finishing machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9413.4",
+    "LABEL": "Glass cutters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9414.1",
+    "LABEL": "Concrete products forming and finishing workers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9414.2",
+    "LABEL": "Concrete products machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9414.3",
+    "LABEL": "Clay products forming and finishing machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9414.4",
+    "LABEL": "Stone forming and finishing workers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9415.0",
+    "LABEL": "Inspectors and testers",
+    "DATA": "mineral and metal processing",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9416.1",
+    "LABEL": "Metalworking machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "9416.2",
+    "LABEL": "Forging machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9417.0",
+    "LABEL": "Machining tool operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9418.0",
+    "LABEL": "Other metal products machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9421.0",
+    "LABEL": "Chemical plant machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9422.1",
+    "LABEL": "Mixing machine operators - plastics processing",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9422.2",
+    "LABEL": "Calendering process operators - plastics processing",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9422.3",
+    "LABEL": "Extruding process operators - plastics processing",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9422.4",
+    "LABEL": "Moulding process operators - plastics processing",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9423.1",
+    "LABEL": "Rubber processing machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Tending - 5"
+  },
+  {
+    "CH Code": "9423.2",
+    "LABEL": "Assemblers",
+    "DATA": "rubber products",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9423.3",
+    "LABEL": "Rubber products inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9431.0",
+    "LABEL": "Sawmill machine operators",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9432.0",
+    "LABEL": "Pulp mill machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9433.0",
+    "LABEL": "Papermaking and finishing machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9434.0",
+    "LABEL": "Other wood processing machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9435.0",
+    "LABEL": "Paper converting machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9436.1",
+    "LABEL": "Lumber graders",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9436.2",
+    "LABEL": "Other wood processing inspectors and graders",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9437.0",
+    "LABEL": "Woodworking machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "speaking - 6",
+    "THING": "Setting up - 0"
+  },
+  {
+    "CH Code": "9441.1",
+    "LABEL": "Textile fibre and yarn processing machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9441.2",
+    "LABEL": "Textile dyeing and finishing machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "speaking - 6",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9441.3",
+    "LABEL": "Hide and pelt processing workers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9442.0",
+    "LABEL": "Weavers",
+    "DATA": "knitters and other fabric making occupations",
+    "PEOPLE": "Comparing - 6",
+    "THING": "speaking - 6"
+  },
+  {
+    "CH Code": "9445.1",
+    "LABEL": "Fabric cutters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9445.2",
+    "LABEL": "Fur cutters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9445.3",
+    "LABEL": "Leather cutters",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9446.0",
+    "LABEL": "Industrial sewing machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9447.1",
+    "LABEL": "Inspectors and graders",
+    "DATA": "textile",
+    "PEOPLE": "fabric",
+    "THING": "fur and leather products manufacturing"
+  },
+  {
+    "CH Code": "9447.2",
+    "LABEL": "Textile inspectors",
+    "DATA": "graders and samplers",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9461.1",
+    "LABEL": "Process control operators",
+    "DATA": "food and beverage processing",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9461.2",
+    "LABEL": "Machine operators",
+    "DATA": "food and beverage processing",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9461.3",
+    "LABEL": "Tobacco processing machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9462.1",
+    "LABEL": "Industrial butchers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9462.2",
+    "LABEL": "Industrial meat cutters",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9462.3",
+    "LABEL": "Poultry preparers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9462.4",
+    "LABEL": "Trimmers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9463.1",
+    "LABEL": "Fish and seafood plant machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9463.2",
+    "LABEL": "Fish plant cutters and cleaners",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9465.0",
+    "LABEL": "Testers and graders",
+    "DATA": "food and beverage processing",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9471.0",
+    "LABEL": "Plateless printing equipment operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9472.1",
+    "LABEL": "Graphic arts camera operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9472.2",
+    "LABEL": "Cylinder preparers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9472.3",
+    "LABEL": "Film strippers/assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9472.4",
+    "LABEL": "Platemakers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9472.5",
+    "LABEL": "Pre-press technicians",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9472.6",
+    "LABEL": "Scanner operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9472.7",
+    "LABEL": "Proofmakers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9472.8",
+    "LABEL": "Pre-flight operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9472.9",
+    "LABEL": "File preparation operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9473.1",
+    "LABEL": "Binding and finishing machine operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9473.2",
+    "LABEL": "Specialty finishing equipment operators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Controlling - 2"
+  },
+  {
+    "CH Code": "9474.0",
+    "LABEL": "Photographic and film processors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9521.1",
+    "LABEL": "Aircraft assemblers",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9521.2",
+    "LABEL": "Aircraft assembly inspectors",
+    "DATA": "Compiling - 3",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9522.1",
+    "LABEL": "Motor vehicle assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9522.2",
+    "LABEL": "Motor vehicle inspectors and testers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Driving - 3"
+  },
+  {
+    "CH Code": "9523.1",
+    "LABEL": "Electronics assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Precision working - 1"
+  },
+  {
+    "CH Code": "9523.2",
+    "LABEL": "Electronics fabricators",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9523.3",
+    "LABEL": "Electronics inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9523.4",
+    "LABEL": "Electronics testers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9524.1",
+    "LABEL": "Assemblers",
+    "DATA": "electrical appliance",
+    "PEOPLE": "apparatus and equipment manufacturing",
+    "THING": "Copying - 5"
+  },
+  {
+    "CH Code": "9524.2",
+    "LABEL": "Inspectors and testers",
+    "DATA": "electrical appliance",
+    "PEOPLE": "apparatus and equipment manufacturing",
+    "THING": "Copying - 5"
+  },
+  {
+    "CH Code": "9525.1",
+    "LABEL": "Assemblers",
+    "DATA": "industrial electrical motors and transformers",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9525.2",
+    "LABEL": "Electrical fitters and wirers",
+    "DATA": "industrial electrical motors and transformers",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9525.3",
+    "LABEL": "Inspectors",
+    "DATA": "industrial electrical motors and transformers",
+    "PEOPLE": "Compiling - 3",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9526.1",
+    "LABEL": "Mechanical assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9526.2",
+    "LABEL": "Mechanical inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9527.1",
+    "LABEL": "Machine operators",
+    "DATA": "electrical apparatus manufacturing",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9527.2",
+    "LABEL": "Inspectors and testers",
+    "DATA": "electrical apparatus manufacturing",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9531.1",
+    "LABEL": "Boat assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9531.2",
+    "LABEL": "Boat inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9532.1",
+    "LABEL": "Furniture and fixture assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9532.2",
+    "LABEL": "Furniture and fixture inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9533.1",
+    "LABEL": "Other wood products assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9533.2",
+    "LABEL": "Other wood products inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9534.1",
+    "LABEL": "Furniture finishers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9534.2",
+    "LABEL": "Furniture refinishers",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9535.1",
+    "LABEL": "Plastic products assemblers and finishers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9535.2",
+    "LABEL": "Plastics products inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9536.1",
+    "LABEL": "Painters and coaters – industrial",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9536.2",
+    "LABEL": "Plating",
+    "DATA": "metal spraying and related operators",
+    "PEOPLE": "Copying - 5",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9537.1",
+    "LABEL": "Other assemblers",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9537.2",
+    "LABEL": "Other inspectors",
+    "DATA": "Copying - 5",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9537.3",
+    "LABEL": "Other products machine operators",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9611.0",
+    "LABEL": "Labourers in mineral and metal processing",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9612.0",
+    "LABEL": "Labourers in metal fabrication",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9613.0",
+    "LABEL": "Labourers in chemical products processing and utilities",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Operating - 4"
+  },
+  {
+    "CH Code": "9614.0",
+    "LABEL": "Labourers in wood",
+    "DATA": "pulp and paper processing",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  },
+  {
+    "CH Code": "9615.0",
+    "LABEL": "Labourers in rubber and plastic products manufacturing",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Handling - 7"
+  },
+  {
+    "CH Code": "9616.0",
+    "LABEL": "Labourers in textile processing",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Feeding - Offbearing - 6"
+  },
+  {
+    "CH Code": "9617.0",
+    "LABEL": "Labourers in food and beverage processing",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Feeding - Offbearing - 6"
+  },
+  {
+    "CH Code": "9618.0",
+    "LABEL": "Labourers in fish and seafood processing",
+    "DATA": "Comparing - 6",
+    "PEOPLE": "Not significant - 8",
+    "THING": "Feeding - Offbearing - 6"
+  },
+  {
+    "CH Code": "9619.0",
+    "LABEL": "Other labourers in processing",
+    "DATA": "manufacturing and utilities",
+    "PEOPLE": "Comparing - 6",
+    "THING": "Not significant - 8"
+  }
+]
