@@ -1,3 +1,2582 @@
-{
-  "_comment": "Occupation data"
-}
+[
+  {
+    "id": "00010",
+    "title": "Legislators",
+    "medianWage": 84000
+  },
+  {
+    "id": "00011",
+    "title": "Senior government managers and officials",
+    "medianWage": 127491
+  },
+  {
+    "id": "00012",
+    "title": "Senior managers - financial, communications and other business services",
+    "medianWage": 187493
+  },
+  {
+    "id": "00013",
+    "title": "Senior managers - health, education, social and community services and membership organizations"
+  },
+  {
+    "id": "00014",
+    "title": "Senior managers - trade, broadcasting and other services",
+    "medianWage": 82641
+  },
+  {
+    "id": "00015",
+    "title": "Senior managers - construction, transportation, production and utilities",
+    "medianWage": 89778
+  },
+  {
+    "id": "10010",
+    "title": "Financial managers",
+    "medianWage": 115986
+  },
+  {
+    "id": "10011",
+    "title": "Human resources managers",
+    "medianWage": 112496
+  },
+  {
+    "id": "10012",
+    "title": "Purchasing managers",
+    "medianWage": 109415
+  },
+  {
+    "id": "10019",
+    "title": "Other administrative services managers",
+    "medianWage": 97500
+  },
+  {
+    "id": "10020",
+    "title": "Insurance, real estate and financial brokerage managers",
+    "medianWage": 115499
+  },
+  {
+    "id": "10021",
+    "title": "Banking, credit and other investment managers",
+    "medianWage": 111423
+  },
+  {
+    "id": "10022",
+    "title": "Advertising, marketing and public relations managers",
+    "medianWage": 107816
+  },
+  {
+    "id": "10029",
+    "title": "Other business services managers",
+    "medianWage": 95999
+  },
+  {
+    "id": "10030",
+    "title": "Telecommunication carriers managers",
+    "medianWage": 96993
+  },
+  {
+    "id": "11100",
+    "title": "Financial auditors and accountants",
+    "medianWage": 78702
+  },
+  {
+    "id": "11101",
+    "title": "Financial and investment analysts",
+    "medianWage": 84377
+  },
+  {
+    "id": "11102",
+    "title": "Financial advisors",
+    "medianWage": 70317
+  },
+  {
+    "id": "11103",
+    "title": "Securities agents, investment dealers and brokers",
+    "medianWage": 82992
+  },
+  {
+    "id": "11109",
+    "title": "Other financial officers",
+    "medianWage": 74997
+  },
+  {
+    "id": "11200",
+    "title": "Human resources professionals",
+    "medianWage": 79697
+  },
+  {
+    "id": "11201",
+    "title": "Professional occupations in business management consulting",
+    "medianWage": 85995
+  },
+  {
+    "id": "11202",
+    "title": "Professional occupations in advertising, marketing and public relations",
+    "medianWage": 69381
+  },
+  {
+    "id": "12010",
+    "title": "Supervisors, general office and administrative support workers",
+    "medianWage": 62400
+  },
+  {
+    "id": "12011",
+    "title": "Supervisors, finance and insurance office workers",
+    "medianWage": 67724
+  },
+  {
+    "id": "12012",
+    "title": "Supervisors, library, correspondence and related information workers",
+    "medianWage": 70005
+  },
+  {
+    "id": "12013",
+    "title": "Supervisors, supply chain, tracking and scheduling coordination occupations",
+    "medianWage": 56258
+  },
+  {
+    "id": "12100",
+    "title": "Executive assistants",
+    "medianWage": 67509
+  },
+  {
+    "id": "12101",
+    "title": "Human resources and recruitment officers",
+    "medianWage": 64994
+  },
+  {
+    "id": "12102",
+    "title": "Procurement and purchasing agents and officers",
+    "medianWage": 70317
+  },
+  {
+    "id": "12103",
+    "title": "Conference and event planners",
+    "medianWage": 55322
+  },
+  {
+    "id": "12104",
+    "title": "Employment insurance and revenue officers",
+    "medianWage": 67997
+  },
+  {
+    "id": "12110",
+    "title": "Court reporters, medical transcriptionists and related occupations",
+    "medianWage": 50700
+  },
+  {
+    "id": "12111",
+    "title": "Health information management occupations",
+    "medianWage": 59495
+  },
+  {
+    "id": "12112",
+    "title": "Records management technicians",
+    "medianWage": 61074
+  },
+  {
+    "id": "12113",
+    "title": "Statistical officers and related research support occupations",
+    "medianWage": 55010
+  },
+  {
+    "id": "12200",
+    "title": "Accounting technicians and bookkeepers",
+    "medianWage": 54639
+  },
+  {
+    "id": "12201",
+    "title": "Insurance adjusters and claims examiners",
+    "medianWage": 68250
+  },
+  {
+    "id": "12202",
+    "title": "Insurance underwriters",
+    "medianWage": 67509
+  },
+  {
+    "id": "12203",
+    "title": "Assessors, business valuators and appraisers",
+    "medianWage": 68250
+  },
+  {
+    "id": "13100",
+    "title": "Administrative officers",
+    "medianWage": 56550
+  },
+  {
+    "id": "13101",
+    "title": "Property administrators",
+    "medianWage": 60938
+  },
+  {
+    "id": "13102",
+    "title": "Payroll administrators",
+    "medianWage": 58500
+  },
+  {
+    "id": "13110",
+    "title": "Administrative assistants",
+    "medianWage": 51558
+  },
+  {
+    "id": "13111",
+    "title": "Legal administrative assistants",
+    "medianWage": 53567
+  },
+  {
+    "id": "13112",
+    "title": "Medical administrative assistants",
+    "medianWage": 48750
+  },
+  {
+    "id": "13200",
+    "title": "Customs, ship and other brokers",
+    "medianWage": 52884
+  },
+  {
+    "id": "13201",
+    "title": "Production and transportation logistics coordinators",
+    "medianWage": 57506
+  },
+  {
+    "id": "14100",
+    "title": "General office support workers",
+    "medianWage": 46781
+  },
+  {
+    "id": "14101",
+    "title": "Receptionists",
+    "medianWage": 40950
+  },
+  {
+    "id": "14102",
+    "title": "Personnel clerks",
+    "medianWage": 54366
+  },
+  {
+    "id": "14103",
+    "title": "Court clerks and related court services occupations",
+    "medianWage": 58130
+  },
+  {
+    "id": "14110",
+    "title": "Survey interviewers and statistical clerks",
+    "medianWage": 42900
+  },
+  {
+    "id": "14111",
+    "title": "Data entry clerks",
+    "medianWage": 45825
+  },
+  {
+    "id": "14112",
+    "title": "Desktop publishing operators and related occupations",
+    "medianWage": 46352
+  },
+  {
+    "id": "14200",
+    "title": "Accounting and related clerks",
+    "medianWage": 48750
+  },
+  {
+    "id": "14201",
+    "title": "Banking, insurance and other financial clerks",
+    "medianWage": 49394
+  },
+  {
+    "id": "14202",
+    "title": "Collection clerks",
+    "medianWage": 54990
+  },
+  {
+    "id": "14300",
+    "title": "Library assistants and clerks",
+    "medianWage": 45182
+  },
+  {
+    "id": "14301",
+    "title": "Correspondence, publication and regulatory clerks",
+    "medianWage": 55712
+  },
+  {
+    "id": "14400",
+    "title": "Shippers and receivers",
+    "medianWage": 43875
+  },
+  {
+    "id": "14401",
+    "title": "Storekeepers and partspersons",
+    "medianWage": 50700
+  },
+  {
+    "id": "14402",
+    "title": "Production logistics workers",
+    "medianWage": 60002
+  },
+  {
+    "id": "14403",
+    "title": "Purchasing and inventory control workers",
+    "medianWage": 46800
+  },
+  {
+    "id": "14404",
+    "title": "Dispatchers",
+    "medianWage": 54600
+  },
+  {
+    "id": "14405",
+    "title": "Transportation route and crew schedulers",
+    "medianWage": 63745
+  },
+  {
+    "id": "20010",
+    "title": "Engineering managers",
+    "medianWage": 139991
+  },
+  {
+    "id": "20011",
+    "title": "Architecture and science managers",
+    "medianWage": 121992
+  },
+  {
+    "id": "20012",
+    "title": "Computer and information systems managers",
+    "medianWage": 130007
+  },
+  {
+    "id": "21100",
+    "title": "Physicists and astronomers",
+    "medianWage": 110156
+  },
+  {
+    "id": "21101",
+    "title": "Chemists",
+    "medianWage": 74997
+  },
+  {
+    "id": "21102",
+    "title": "Geoscientists and oceanographers",
+    "medianWage": 97500
+  },
+  {
+    "id": "21103",
+    "title": "Meteorologists and climatologists",
+    "medianWage": 105183
+  },
+  {
+    "id": "21109",
+    "title": "Other professional occupations in physical sciences",
+    "medianWage": 83850
+  },
+  {
+    "id": "21110",
+    "title": "Biologists and related scientists",
+    "medianWage": 78000
+  },
+  {
+    "id": "21111",
+    "title": "Forestry professionals",
+    "medianWage": 91650
+  },
+  {
+    "id": "21112",
+    "title": "Agricultural representatives, consultants and specialists",
+    "medianWage": 78000
+  },
+  {
+    "id": "21120",
+    "title": "Public and environmental health and safety professionals",
+    "medianWage": 87750
+  },
+  {
+    "id": "21200",
+    "title": "Architects",
+    "medianWage": 75933
+  },
+  {
+    "id": "21201",
+    "title": "Landscape architects",
+    "medianWage": 79697
+  },
+  {
+    "id": "21202",
+    "title": "Urban and land use planners",
+    "medianWage": 89993
+  },
+  {
+    "id": "21203",
+    "title": "Land surveyors",
+    "medianWage": 82290
+  },
+  {
+    "id": "21210",
+    "title": "Mathematicians, statisticians and actuaries",
+    "medianWage": 99450
+  },
+  {
+    "id": "21211",
+    "title": "Data scientists",
+    "medianWage": 89993
+  },
+  {
+    "id": "21220",
+    "title": "Cybersecurity specialists",
+    "medianWage": 96564
+  },
+  {
+    "id": "21221",
+    "title": "Business systems specialists",
+    "medianWage": 88004
+  },
+  {
+    "id": "21222",
+    "title": "Information systems specialists",
+    "medianWage": 89993
+  },
+  {
+    "id": "21223",
+    "title": "Database analysts and data administrators",
+    "medianWage": 79697
+  },
+  {
+    "id": "21230",
+    "title": "Computer systems developers and programmers",
+    "medianWage": 84377
+  },
+  {
+    "id": "21231",
+    "title": "Software engineers and designers",
+    "medianWage": 110156
+  },
+  {
+    "id": "21232",
+    "title": "Software developers and programmers",
+    "medianWage": 93756
+  },
+  {
+    "id": "21233",
+    "title": "Web designers",
+    "medianWage": 65618
+  },
+  {
+    "id": "21234",
+    "title": "Web developers and programmers",
+    "medianWage": 74997
+  },
+  {
+    "id": "21300",
+    "title": "Civil engineers",
+    "medianWage": 94692
+  },
+  {
+    "id": "21301",
+    "title": "Mechanical engineers",
+    "medianWage": 89057
+  },
+  {
+    "id": "21310",
+    "title": "Electrical and electronics engineers",
+    "medianWage": 98807
+  },
+  {
+    "id": "21311",
+    "title": "Computer engineers (except software engineers and designers)",
+    "medianWage": 102375
+  },
+  {
+    "id": "21320",
+    "title": "Chemical engineers",
+    "medianWage": 101244
+  },
+  {
+    "id": "21321",
+    "title": "Industrial and manufacturing engineers",
+    "medianWage": 86249
+  },
+  {
+    "id": "21322",
+    "title": "Metallurgical and materials engineers",
+    "medianWage": 93756
+  },
+  {
+    "id": "21330",
+    "title": "Mining engineers",
+    "medianWage": 117000
+  },
+  {
+    "id": "21331",
+    "title": "Geological engineers",
+    "medianWage": 97130
+  },
+  {
+    "id": "21332",
+    "title": "Petroleum engineers",
+    "medianWage": 126555
+  },
+  {
+    "id": "21390",
+    "title": "Aerospace engineers",
+    "medianWage": 97500
+  },
+  {
+    "id": "21399",
+    "title": "Other professional engineers",
+    "medianWage": 97500
+  },
+  {
+    "id": "22100",
+    "title": "Chemical technologists and technicians",
+    "medianWage": 58110
+  },
+  {
+    "id": "22101",
+    "title": "Geological and mineral technologists and technicians",
+    "medianWage": 59534
+  },
+  {
+    "id": "22110",
+    "title": "Biological technologists and technicians",
+    "medianWage": 56784
+  },
+  {
+    "id": "22111",
+    "title": "Agricultural and fish products inspectors",
+    "medianWage": 68250
+  },
+  {
+    "id": "22112",
+    "title": "Forestry technologists and technicians",
+    "medianWage": 64292
+  },
+  {
+    "id": "22113",
+    "title": "Conservation and fishery officers",
+    "medianWage": 70005
+  },
+  {
+    "id": "22114",
+    "title": "Landscape and horticulture technicians and specialists",
+    "medianWage": 58500
+  },
+  {
+    "id": "22210",
+    "title": "Architectural technologists and technicians",
+    "medianWage": 58695
+  },
+  {
+    "id": "22211",
+    "title": "Industrial designers",
+    "medianWage": 70317
+  },
+  {
+    "id": "22212",
+    "title": "Drafting technologists and technicians",
+    "medianWage": 61991
+  },
+  {
+    "id": "22213",
+    "title": "Land survey technologists and technicians",
+    "medianWage": 58013
+  },
+  {
+    "id": "22214",
+    "title": "Technical occupations in geomatics and meteorology",
+    "medianWage": 74295
+  },
+  {
+    "id": "22220",
+    "title": "Computer network and web technicians",
+    "medianWage": 70200
+  },
+  {
+    "id": "22221",
+    "title": "User support technicians",
+    "medianWage": 61367
+  },
+  {
+    "id": "22222",
+    "title": "Information systems testing technicians",
+    "medianWage": 68250
+  },
+  {
+    "id": "22230",
+    "title": "Non-destructive testers and inspectors",
+    "medianWage": 70200
+  },
+  {
+    "id": "22231",
+    "title": "Engineering inspectors and regulatory officers",
+    "medianWage": 70395
+  },
+  {
+    "id": "22232",
+    "title": "Occupational health and safety specialists",
+    "medianWage": 79911
+  },
+  {
+    "id": "22233",
+    "title": "Construction inspectors",
+    "medianWage": 74997
+  },
+  {
+    "id": "22300",
+    "title": "Civil engineering technologists and technicians",
+    "medianWage": 66086
+  },
+  {
+    "id": "22301",
+    "title": "Mechanical engineering technologists and technicians",
+    "medianWage": 68250
+  },
+  {
+    "id": "22302",
+    "title": "Industrial engineering and manufacturing technologists and technicians",
+    "medianWage": 60938
+  },
+  {
+    "id": "22303",
+    "title": "Construction estimators",
+    "medianWage": 73788
+  },
+  {
+    "id": "22310",
+    "title": "Electrical and electronics engineering technologists and technicians",
+    "medianWage": 69381
+  },
+  {
+    "id": "22311",
+    "title": "Electronic service technicians (household and business equipment)",
+    "medianWage": 51675
+  },
+  {
+    "id": "22312",
+    "title": "Industrial instrument technicians and mechanics",
+    "medianWage": 89700
+  },
+  {
+    "id": "22313",
+    "title": "Aircraft instrument, electrical and avionics mechanics, technicians and inspectors",
+    "medianWage": 78917
+  },
+  {
+    "id": "30010",
+    "title": "Managers in health care",
+    "medianWage": 107816
+  },
+  {
+    "id": "31100",
+    "title": "Specialists in clinical and laboratory medicine",
+    "medianWage": 311297
+  },
+  {
+    "id": "31101",
+    "title": "Specialists in surgery",
+    "medianWage": 419180
+  },
+  {
+    "id": "31102",
+    "title": "General practitioners and family physicians",
+    "medianWage": 232227
+  },
+  {
+    "id": "31103",
+    "title": "Veterinarians",
+    "medianWage": 117000
+  },
+  {
+    "id": "31110",
+    "title": "Dentists",
+    "medianWage": 110000
+  },
+  {
+    "id": "31111",
+    "title": "Optometrists",
+    "medianWage": 81000
+  },
+  {
+    "id": "31112",
+    "title": "Audiologists and speech-language pathologists",
+    "medianWage": 89993
+  },
+  {
+    "id": "31120",
+    "title": "Pharmacists",
+    "medianWage": 108206
+  },
+  {
+    "id": "31121",
+    "title": "Dietitians and nutritionists",
+    "medianWage": 81179
+  },
+  {
+    "id": "31200",
+    "title": "Psychologists",
+    "medianWage": 103116
+  },
+  {
+    "id": "31201",
+    "title": "Chiropractors",
+    "medianWage": 62000
+  },
+  {
+    "id": "31202",
+    "title": "Physiotherapists",
+    "medianWage": 89993
+  },
+  {
+    "id": "31203",
+    "title": "Occupational therapists",
+    "medianWage": 89700
+  },
+  {
+    "id": "31204",
+    "title": "Kinesiologists and other professional occupations in therapy and assessment",
+    "medianWage": 62400
+  },
+  {
+    "id": "31209",
+    "title": "Other professional occupations in health diagnosing and treating",
+    "medianWage": 56800
+  },
+  {
+    "id": "31300",
+    "title": "Nursing coordinators and supervisors",
+    "medianWage": 90539
+  },
+  {
+    "id": "31301",
+    "title": "Registered nurses and registered psychiatric nurses",
+    "medianWage": 84377
+  },
+  {
+    "id": "31302",
+    "title": "Nurse practitioners",
+    "medianWage": 120003
+  },
+  {
+    "id": "31303",
+    "title": "Physician assistants, midwives and allied health professionals",
+    "medianWage": 91280
+  },
+  {
+    "id": "32100",
+    "title": "Opticians",
+    "medianWage": 55575
+  },
+  {
+    "id": "32101",
+    "title": "Licensed practical nurses",
+    "medianWage": 61074
+  },
+  {
+    "id": "32102",
+    "title": "Paramedical occupations",
+    "medianWage": 74100
+  },
+  {
+    "id": "32103",
+    "title": "Respiratory therapists, clinical perfusionists and cardiopulmonary technologists",
+    "medianWage": 79950
+  },
+  {
+    "id": "32104",
+    "title": "Animal health technologists and veterinary technicians",
+    "medianWage": 44850
+  },
+  {
+    "id": "32109",
+    "title": "Other technical occupations in therapy and assessment",
+    "medianWage": 52358
+  },
+  {
+    "id": "32110",
+    "title": "Denturists",
+    "medianWage": 54000
+  },
+  {
+    "id": "32111",
+    "title": "Dental hygienists and dental therapists",
+    "medianWage": 87750
+  },
+  {
+    "id": "32112",
+    "title": "Dental technologists and technicians",
+    "medianWage": 56550
+  },
+  {
+    "id": "32120",
+    "title": "Medical laboratory technologists",
+    "medianWage": 76050
+  },
+  {
+    "id": "32121",
+    "title": "Medical radiation technologists",
+    "medianWage": 78000
+  },
+  {
+    "id": "32122",
+    "title": "Medical sonographers",
+    "medianWage": 81900
+  },
+  {
+    "id": "32123",
+    "title": "Cardiology technologists and electrophysiological diagnostic technologists",
+    "medianWage": 66300
+  },
+  {
+    "id": "32124",
+    "title": "Pharmacy technicians",
+    "medianWage": 48419
+  },
+  {
+    "id": "32129",
+    "title": "Other medical technologists and technicians",
+    "medianWage": 54600
+  },
+  {
+    "id": "32200",
+    "title": "Traditional Chinese medicine practitioners and acupuncturists",
+    "medianWage": 32867
+  },
+  {
+    "id": "32201",
+    "title": "Massage therapists",
+    "medianWage": 32867
+  },
+  {
+    "id": "32209",
+    "title": "Other practitioners of natural healing",
+    "medianWage": 32867
+  },
+  {
+    "id": "33100",
+    "title": "Dental assistants and dental laboratory assistants",
+    "medianWage": 52650
+  },
+  {
+    "id": "33101",
+    "title": "Medical laboratory assistants and related technical occupations",
+    "medianWage": 52650
+  },
+  {
+    "id": "33102",
+    "title": "Nurse aides, orderlies and patient service associates",
+    "medianWage": 46800
+  },
+  {
+    "id": "33103",
+    "title": "Pharmacy technical assistants and pharmacy assistants",
+    "medianWage": 39000
+  },
+  {
+    "id": "33109",
+    "title": "Other assisting occupations in support of health services",
+    "medianWage": 44850
+  },
+  {
+    "id": "40010",
+    "title": "Government managers - health and social policy development and program administration",
+    "medianWage": 120003
+  },
+  {
+    "id": "40011",
+    "title": "Government managers - economic analysis, policy development and program administration",
+    "medianWage": 123630
+  },
+  {
+    "id": "40012",
+    "title": "Government managers - education policy development and program administration",
+    "medianWage": 124293
+  },
+  {
+    "id": "40019",
+    "title": "Other managers in public administration",
+    "medianWage": 117995
+  },
+  {
+    "id": "40020",
+    "title": "Administrators - post-secondary education and vocational training",
+    "medianWage": 110000
+  },
+  {
+    "id": "40021",
+    "title": "School principals and administrators of elementary and secondary education",
+    "medianWage": 107816
+  },
+  {
+    "id": "40030",
+    "title": "Managers in social, community and correctional services",
+    "medianWage": 85722
+  },
+  {
+    "id": "40040",
+    "title": "Commissioned police officers and related occupations in public protection services",
+    "medianWage": 134063
+  },
+  {
+    "id": "40041",
+    "title": "Fire chiefs and senior firefighting officers",
+    "medianWage": 122148
+  },
+  {
+    "id": "40042",
+    "title": "Commissioned officers of the Canadian Armed Forces",
+    "medianWage": 107309
+  },
+  {
+    "id": "41100",
+    "title": "Judges",
+    "medianWage": 387006
+  },
+  {
+    "id": "41101",
+    "title": "Lawyers and Quebec notaries",
+    "medianWage": 116532
+  },
+  {
+    "id": "41200",
+    "title": "University professors and lecturers",
+    "medianWage": 114836
+  },
+  {
+    "id": "41201",
+    "title": "Post-secondary teaching and research assistants",
+    "medianWage": 52650
+  },
+  {
+    "id": "41210",
+    "title": "College and other vocational instructors",
+    "medianWage": 87750
+  },
+  {
+    "id": "41220",
+    "title": "Secondary school teachers",
+    "medianWage": 89057
+  },
+  {
+    "id": "41221",
+    "title": "Elementary school and kindergarten teachers",
+    "medianWage": 84377
+  },
+  {
+    "id": "41300",
+    "title": "Social workers",
+    "medianWage": 74997
+  },
+  {
+    "id": "41301",
+    "title": "Therapists in counselling and related specialized therapies",
+    "medianWage": 66300
+  },
+  {
+    "id": "41302",
+    "title": "Religious leaders",
+    "medianWage": 53684
+  },
+  {
+    "id": "41310",
+    "title": "Police investigators and other investigative occupations",
+    "medianWage": 108752
+  },
+  {
+    "id": "41311",
+    "title": "Probation and parole officers",
+    "medianWage": 78683
+  },
+  {
+    "id": "41320",
+    "title": "Educational counsellors",
+    "medianWage": 79638
+  },
+  {
+    "id": "41321",
+    "title": "Career development practitioners and career counsellors (except education)",
+    "medianWage": 58403
+  },
+  {
+    "id": "41400",
+    "title": "Natural and applied science policy researchers, consultants and program officers",
+    "medianWage": 84377
+  },
+  {
+    "id": "41401",
+    "title": "Economists and economic policy researchers and analysts",
+    "medianWage": 93756
+  },
+  {
+    "id": "41402",
+    "title": "Business development officers and market researchers and analysts",
+    "medianWage": 85800
+  },
+  {
+    "id": "41403",
+    "title": "Social policy researchers, consultants and program officers",
+    "medianWage": 82992
+  },
+  {
+    "id": "41404",
+    "title": "Health policy researchers, consultants and program officers",
+    "medianWage": 84006
+  },
+  {
+    "id": "41405",
+    "title": "Education policy researchers, consultants and program officers",
+    "medianWage": 80964
+  },
+  {
+    "id": "41406",
+    "title": "Recreation, sports and fitness policy researchers, consultants and program officers",
+    "medianWage": 60450
+  },
+  {
+    "id": "41407",
+    "title": "Program officers unique to government",
+    "medianWage": 85235
+  },
+  {
+    "id": "41409",
+    "title": "Other professional occupations in social science",
+    "medianWage": 78000
+  },
+  {
+    "id": "42100",
+    "title": "Police officers (except commissioned)",
+    "medianWage": 97500
+  },
+  {
+    "id": "42101",
+    "title": "Firefighters",
+    "medianWage": 89291
+  },
+  {
+    "id": "42102",
+    "title": "Specialized members of the Canadian Armed Forces",
+    "medianWage": 69089
+  },
+  {
+    "id": "42200",
+    "title": "Paralegals and related occupations",
+    "medianWage": 64447
+  },
+  {
+    "id": "42201",
+    "title": "Social and community service workers",
+    "medianWage": 50700
+  },
+  {
+    "id": "42202",
+    "title": "Early childhood educators and assistants",
+    "medianWage": 43485
+  },
+  {
+    "id": "42203",
+    "title": "Instructors of persons with disabilities",
+    "medianWage": 58500
+  },
+  {
+    "id": "42204",
+    "title": "Religion workers",
+    "medianWage": 39371
+  },
+  {
+    "id": "43100",
+    "title": "Elementary and secondary school teacher assistants",
+    "medianWage": 48770
+  },
+  {
+    "id": "43109",
+    "title": "Other instructors",
+    "medianWage": 39000
+  },
+  {
+    "id": "43200",
+    "title": "Sheriffs and bailiffs",
+    "medianWage": 65618
+  },
+  {
+    "id": "43201",
+    "title": "Correctional service officers",
+    "medianWage": 70493
+  },
+  {
+    "id": "43202",
+    "title": "By-law enforcement and other regulatory officers",
+    "medianWage": 71994
+  },
+  {
+    "id": "43203",
+    "title": "Border services, customs, and immigration officers",
+    "medianWage": 78195
+  },
+  {
+    "id": "43204",
+    "title": "Operations Members of the Canadian Armed Forces",
+    "medianWage": 66983
+  },
+  {
+    "id": "44100",
+    "title": "Home child care providers",
+    "medianWage": 37050
+  },
+  {
+    "id": "44101",
+    "title": "Home support workers, caregivers and related occupations",
+    "medianWage": 39975
+  },
+  {
+    "id": "44200",
+    "title": "Primary combat members of the Canadian Armed Forces",
+    "medianWage": 71546
+  },
+  {
+    "id": "45100",
+    "title": "Student monitors, crossing guards and related occupations",
+    "medianWage": 39000
+  },
+  {
+    "id": "50010",
+    "title": "Library, archive, museum and art gallery managers",
+    "medianWage": 87750
+  },
+  {
+    "id": "50011",
+    "title": "Managers - publishing, motion pictures, broadcasting and performing arts",
+    "medianWage": 98436
+  },
+  {
+    "id": "50012",
+    "title": "Recreation, sports and fitness program and service directors",
+    "medianWage": 71429
+  },
+  {
+    "id": "51100",
+    "title": "Librarians",
+    "medianWage": 80360
+  },
+  {
+    "id": "51101",
+    "title": "Conservators and curators",
+    "medianWage": 70902
+  },
+  {
+    "id": "51102",
+    "title": "Archivists",
+    "medianWage": 76518
+  },
+  {
+    "id": "51110",
+    "title": "Editors",
+    "medianWage": 67509
+  },
+  {
+    "id": "51111",
+    "title": "Authors and writers (except technical)",
+    "medianWage": 71780
+  },
+  {
+    "id": "51112",
+    "title": "Technical writers",
+    "medianWage": 70317
+  },
+  {
+    "id": "51113",
+    "title": "Journalists",
+    "medianWage": 71994
+  },
+  {
+    "id": "51114",
+    "title": "Translators, terminologists and interpreters",
+    "medianWage": 66203
+  },
+  {
+    "id": "51120",
+    "title": "Producers, directors, choreographers and related occupations",
+    "medianWage": 80009
+  },
+  {
+    "id": "51121",
+    "title": "Conductors, composers and arrangers",
+    "medianWage": 36000
+  },
+  {
+    "id": "51122",
+    "title": "Musicians and singers",
+    "medianWage": 32867
+  },
+  {
+    "id": "52100",
+    "title": "Library and public archive technicians",
+    "medianWage": 54600
+  },
+  {
+    "id": "52110",
+    "title": "Film and video camera operators",
+    "medianWage": 70883
+  },
+  {
+    "id": "52111",
+    "title": "Graphic arts technicians",
+    "medianWage": 68172
+  },
+  {
+    "id": "52112",
+    "title": "Broadcast technicians",
+    "medianWage": 72326
+  },
+  {
+    "id": "52113",
+    "title": "Audio and video recording technicians",
+    "medianWage": 64077
+  },
+  {
+    "id": "52114",
+    "title": "Announcers and other broadcasters",
+    "medianWage": 54542
+  },
+  {
+    "id": "52119",
+    "title": "Other technical and coordinating occupations in motion pictures, broadcasting and the performing arts",
+    "medianWage": 64350
+  },
+  {
+    "id": "52120",
+    "title": "Graphic designers and illustrators",
+    "medianWage": 60938
+  },
+  {
+    "id": "52121",
+    "title": "Interior designers and interior decorators",
+    "medianWage": 56258
+  },
+  {
+    "id": "53100",
+    "title": "Registrars, restorers, interpreters and other occupations related to museum and art galleries",
+    "medianWage": 40034
+  },
+  {
+    "id": "53110",
+    "title": "Photographers",
+    "medianWage": 46878
+  },
+  {
+    "id": "53111",
+    "title": "Motion pictures, broadcasting, photography and performing arts assistants and operators",
+    "medianWage": 52260
+  },
+  {
+    "id": "53120",
+    "title": "Dancers",
+    "medianWage": 64233
+  },
+  {
+    "id": "53121",
+    "title": "Actors, comedians and circus performers",
+    "medianWage": 47054
+  },
+  {
+    "id": "53122",
+    "title": "Painters, sculptors and other visual artists",
+    "medianWage": 57662
+  },
+  {
+    "id": "53123",
+    "title": "Theatre, fashion, exhibit and other creative designers",
+    "medianWage": 60938
+  },
+  {
+    "id": "53124",
+    "title": "Artisans and craftspersons",
+    "medianWage": 39000
+  },
+  {
+    "id": "53125",
+    "title": "Patternmakers - textile, leather and fur products",
+    "medianWage": 53586
+  },
+  {
+    "id": "53200",
+    "title": "Athletes",
+    "medianWage": 53625
+  },
+  {
+    "id": "53201",
+    "title": "Coaches",
+    "medianWage": 48750
+  },
+  {
+    "id": "53202",
+    "title": "Sports officials and referees",
+    "medianWage": 37050
+  },
+  {
+    "id": "54100",
+    "title": "Program leaders and instructors in recreation, sport and fitness",
+    "medianWage": 37050
+  },
+  {
+    "id": "55109",
+    "title": "Other performers",
+    "medianWage": 55536
+  },
+  {
+    "id": "60010",
+    "title": "Corporate sales managers",
+    "medianWage": 117195
+  },
+  {
+    "id": "60020",
+    "title": "Retail and wholesale trade managers",
+    "medianWage": 83343
+  },
+  {
+    "id": "60030",
+    "title": "Restaurant and food service managers",
+    "medianWage": 50700
+  },
+  {
+    "id": "60031",
+    "title": "Accommodation service managers",
+    "medianWage": 74100
+  },
+  {
+    "id": "60040",
+    "title": "Managers in customer and personal services",
+    "medianWage": 66300
+  },
+  {
+    "id": "62010",
+    "title": "Retail sales supervisors",
+    "medianWage": 42900
+  },
+  {
+    "id": "62020",
+    "title": "Food service supervisors",
+    "medianWage": 37050
+  },
+  {
+    "id": "62021",
+    "title": "Executive housekeepers",
+    "medianWage": 42179
+  },
+  {
+    "id": "62022",
+    "title": "Accommodation, travel, tourism and related services supervisors",
+    "medianWage": 48750
+  },
+  {
+    "id": "62023",
+    "title": "Customer and information services supervisors",
+    "medianWage": 60197
+  },
+  {
+    "id": "62024",
+    "title": "Cleaning supervisors",
+    "medianWage": 48750
+  },
+  {
+    "id": "62029",
+    "title": "Other services supervisors",
+    "medianWage": 45045
+  },
+  {
+    "id": "62100",
+    "title": "Technical sales specialists - wholesale trade",
+    "medianWage": 72287
+  },
+  {
+    "id": "62101",
+    "title": "Retail and wholesale buyers",
+    "medianWage": 58500
+  },
+  {
+    "id": "62200",
+    "title": "Chefs",
+    "medianWage": 44850
+  },
+  {
+    "id": "62201",
+    "title": "Funeral directors and embalmers",
+    "medianWage": 60938
+  },
+  {
+    "id": "62202",
+    "title": "Jewellers, jewellery and watch repairers and related occupations",
+    "medianWage": 43778
+  },
+  {
+    "id": "63100",
+    "title": "Insurance agents and brokers",
+    "medianWage": 58500
+  },
+  {
+    "id": "63101",
+    "title": "Real estate agents and salespersons",
+    "medianWage": 58400
+  },
+  {
+    "id": "63102",
+    "title": "Financial sales representatives",
+    "medianWage": 62166
+  },
+  {
+    "id": "63200",
+    "title": "Cooks",
+    "medianWage": 35100
+  },
+  {
+    "id": "63201",
+    "title": "Butchers - retail and wholesale",
+    "medianWage": 39000
+  },
+  {
+    "id": "63202",
+    "title": "Bakers",
+    "medianWage": 34125
+  },
+  {
+    "id": "63210",
+    "title": "Hairstylists and barbers",
+    "medianWage": 38766
+  },
+  {
+    "id": "63211",
+    "title": "Estheticians, electrologists and related occupations",
+    "medianWage": 39000
+  },
+  {
+    "id": "63220",
+    "title": "Shoe repairers and shoemakers",
+    "medianWage": 45533
+  },
+  {
+    "id": "63221",
+    "title": "Upholsterers",
+    "medianWage": 43797
+  },
+  {
+    "id": "64100",
+    "title": "Retail salespersons and visual merchandisers",
+    "medianWage": 33755
+  },
+  {
+    "id": "64101",
+    "title": "Sales and account representatives - wholesale trade (non-technical)",
+    "medianWage": 61425
+  },
+  {
+    "id": "64200",
+    "title": "Tailors, dressmakers, furriers and milliners",
+    "medianWage": 37050
+  },
+  {
+    "id": "64201",
+    "title": "Image, social and other personal consultants",
+    "medianWage": 52319
+  },
+  {
+    "id": "64300",
+    "title": "Maîtres d'hôtel and hosts/hostesses",
+    "medianWage": 34281
+  },
+  {
+    "id": "64301",
+    "title": "Bartenders",
+    "medianWage": 39000
+  },
+  {
+    "id": "64310",
+    "title": "Travel counsellors",
+    "medianWage": 46800
+  },
+  {
+    "id": "64311",
+    "title": "Pursers and flight attendants",
+    "medianWage": 60938
+  },
+  {
+    "id": "64312",
+    "title": "Airline ticket and service agents",
+    "medianWage": 40950
+  },
+  {
+    "id": "64313",
+    "title": "Ground and water transport ticket agents, cargo service representatives and related clerks",
+    "medianWage": 41340
+  },
+  {
+    "id": "64314",
+    "title": "Hotel front desk clerks",
+    "medianWage": 37050
+  },
+  {
+    "id": "64320",
+    "title": "Tour and travel guides",
+    "medianWage": 39000
+  },
+  {
+    "id": "64321",
+    "title": "Casino workers",
+    "medianWage": 44850
+  },
+  {
+    "id": "64322",
+    "title": "Outdoor sport and recreational guides",
+    "medianWage": 40736
+  },
+  {
+    "id": "64400",
+    "title": "Customer services representatives - financial institutions",
+    "medianWage": 43875
+  },
+  {
+    "id": "64401",
+    "title": "Postal services representatives",
+    "medianWage": 39293
+  },
+  {
+    "id": "64409",
+    "title": "Other customer and information services representatives",
+    "medianWage": 42900
+  },
+  {
+    "id": "64410",
+    "title": "Security guards and related security service occupations",
+    "medianWage": 40950
+  },
+  {
+    "id": "65100",
+    "title": "Cashiers",
+    "medianWage": 31200
+  },
+  {
+    "id": "65101",
+    "title": "Service station attendants",
+    "medianWage": 31200
+  },
+  {
+    "id": "65102",
+    "title": "Store shelf stockers, clerks and order fillers",
+    "medianWage": 32273
+  },
+  {
+    "id": "65109",
+    "title": "Other sales related occupations",
+    "medianWage": 37050
+  },
+  {
+    "id": "65200",
+    "title": "Food and beverage servers",
+    "medianWage": 36075
+  },
+  {
+    "id": "65201",
+    "title": "Food counter attendants, kitchen helpers and related support occupations",
+    "medianWage": 32273
+  },
+  {
+    "id": "65202",
+    "title": "Meat cutters and fishmongers – retail and wholesale",
+    "medianWage": 38025
+  },
+  {
+    "id": "65210",
+    "title": "Support occupations in accommodation, travel and facilities set-up services",
+    "medianWage": 40560
+  },
+  {
+    "id": "65211",
+    "title": "Operators and attendants in amusement, recreation and sport",
+    "medianWage": 34125
+  },
+  {
+    "id": "65220",
+    "title": "Pet groomers and animal care workers",
+    "medianWage": 35100
+  },
+  {
+    "id": "65229",
+    "title": "Other support occupations in personal services",
+    "medianWage": 32867
+  },
+  {
+    "id": "65310",
+    "title": "Light duty cleaners",
+    "medianWage": 38493
+  },
+  {
+    "id": "65311",
+    "title": "Specialized cleaners",
+    "medianWage": 37499
+  },
+  {
+    "id": "65312",
+    "title": "Janitors, caretakers and heavy-duty cleaners",
+    "medianWage": 41477
+  },
+  {
+    "id": "65320",
+    "title": "Dry cleaning, laundry and related occupations",
+    "medianWage": 38025
+  },
+  {
+    "id": "65329",
+    "title": "Other service support occupations",
+    "medianWage": 34125
+  },
+  {
+    "id": "70010",
+    "title": "Construction managers",
+    "medianWage": 95004
+  },
+  {
+    "id": "70011",
+    "title": "Home building and renovation managers",
+    "medianWage": 46800
+  },
+  {
+    "id": "70012",
+    "title": "Facility operation and maintenance managers",
+    "medianWage": 88140
+  },
+  {
+    "id": "70020",
+    "title": "Managers in transportation",
+    "medianWage": 103116
+  },
+  {
+    "id": "70021",
+    "title": "Postal and courier services managers",
+    "medianWage": 86249
+  },
+  {
+    "id": "72010",
+    "title": "Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations",
+    "medianWage": 78000
+  },
+  {
+    "id": "72011",
+    "title": "Contractors and supervisors, electrical trades and telecommunications occupations",
+    "medianWage": 87341
+  },
+  {
+    "id": "72012",
+    "title": "Contractors and supervisors, pipefitting trades",
+    "medianWage": 93795
+  },
+  {
+    "id": "72013",
+    "title": "Contractors and supervisors, carpentry trades",
+    "medianWage": 74100
+  },
+  {
+    "id": "72014",
+    "title": "Contractors and supervisors, other construction trades, installers, repairers and servicers",
+    "medianWage": 73125
+  },
+  {
+    "id": "72020",
+    "title": "Contractors and supervisors, mechanic trades",
+    "medianWage": 78000
+  },
+  {
+    "id": "72021",
+    "title": "Contractors and supervisors, heavy equipment operator crews",
+    "medianWage": 74997
+  },
+  {
+    "id": "72022",
+    "title": "Supervisors, printing and related occupations",
+    "medianWage": 58500
+  },
+  {
+    "id": "72023",
+    "title": "Supervisors, railway transport operations",
+    "medianWage": 78000
+  },
+  {
+    "id": "72024",
+    "title": "Supervisors, motor transport and other ground transit operators",
+    "medianWage": 64350
+  },
+  {
+    "id": "72025",
+    "title": "Supervisors, mail and message distribution occupations",
+    "medianWage": 62127
+  },
+  {
+    "id": "72100",
+    "title": "Machinists and machining and tooling inspectors",
+    "medianWage": 58500
+  },
+  {
+    "id": "72101",
+    "title": "Tool and die makers",
+    "medianWage": 66300
+  },
+  {
+    "id": "72102",
+    "title": "Sheet metal workers",
+    "medianWage": 66437
+  },
+  {
+    "id": "72103",
+    "title": "Boilermakers",
+    "medianWage": 95550
+  },
+  {
+    "id": "72104",
+    "title": "Structural metal and platework fabricators and fitters",
+    "medianWage": 56550
+  },
+  {
+    "id": "72105",
+    "title": "Ironworkers",
+    "medianWage": 83850
+  },
+  {
+    "id": "72106",
+    "title": "Welders and related machine operators",
+    "medianWage": 58500
+  },
+  {
+    "id": "72200",
+    "title": "Electricians (except industrial and power system)",
+    "medianWage": 68250
+  },
+  {
+    "id": "72201",
+    "title": "Industrial electricians",
+    "medianWage": 81900
+  },
+  {
+    "id": "72202",
+    "title": "Power system electricians",
+    "medianWage": 90773
+  },
+  {
+    "id": "72203",
+    "title": "Electrical power line and cable workers",
+    "medianWage": 89700
+  },
+  {
+    "id": "72204",
+    "title": "Telecommunications line and cable installers and repairers",
+    "medianWage": 70200
+  },
+  {
+    "id": "72205",
+    "title": "Telecommunications equipment installation and cable television service technicians",
+    "medianWage": 65910
+  },
+  {
+    "id": "72300",
+    "title": "Plumbers",
+    "medianWage": 66300
+  },
+  {
+    "id": "72301",
+    "title": "Steamfitters, pipefitters and sprinkler system installers",
+    "medianWage": 85586
+  },
+  {
+    "id": "72302",
+    "title": "Gas fitters",
+    "medianWage": 78000
+  },
+  {
+    "id": "72310",
+    "title": "Carpenters",
+    "medianWage": 62634
+  },
+  {
+    "id": "72311",
+    "title": "Cabinetmakers",
+    "medianWage": 46800
+  },
+  {
+    "id": "72320",
+    "title": "Bricklayers",
+    "medianWage": 78000
+  },
+  {
+    "id": "72321",
+    "title": "Insulators",
+    "medianWage": 73340
+  },
+  {
+    "id": "72400",
+    "title": "Construction millwrights and industrial mechanics",
+    "medianWage": 72150
+  },
+  {
+    "id": "72401",
+    "title": "Heavy-duty equipment mechanics",
+    "medianWage": 72384
+  },
+  {
+    "id": "72402",
+    "title": "Heating, refrigeration and air conditioning mechanics",
+    "medianWage": 73125
+  },
+  {
+    "id": "72403",
+    "title": "Railway carmen/women",
+    "medianWage": 81900
+  },
+  {
+    "id": "72404",
+    "title": "Aircraft mechanics and aircraft inspectors",
+    "medianWage": 76050
+  },
+  {
+    "id": "72405",
+    "title": "Machine fitters",
+    "medianWage": 69011
+  },
+  {
+    "id": "72406",
+    "title": "Elevator constructors and mechanics",
+    "medianWage": 87750
+  },
+  {
+    "id": "72410",
+    "title": "Automotive service technicians, truck and bus mechanics and mechanical repairers",
+    "medianWage": 58286
+  },
+  {
+    "id": "72411",
+    "title": "Auto body collision, refinishing and glass technicians and damage repair estimators",
+    "medianWage": 52650
+  },
+  {
+    "id": "72420",
+    "title": "Oil and solid fuel heating mechanics",
+    "medianWage": 52650
+  },
+  {
+    "id": "72421",
+    "title": "Appliance servicers and repairers",
+    "medianWage": 54854
+  },
+  {
+    "id": "72422",
+    "title": "Electrical mechanics",
+    "medianWage": 60450
+  },
+  {
+    "id": "72423",
+    "title": "Motorcycle, all-terrain vehicle and other related mechanics",
+    "medianWage": 58500
+  },
+  {
+    "id": "72429",
+    "title": "Other small engine and small equipment repairers",
+    "medianWage": 46800
+  },
+  {
+    "id": "72500",
+    "title": "Crane operators",
+    "medianWage": 83402
+  },
+  {
+    "id": "72501",
+    "title": "Water well drillers",
+    "medianWage": 58500
+  },
+  {
+    "id": "72600",
+    "title": "Air pilots, flight engineers and flying instructors",
+    "medianWage": 101400
+  },
+  {
+    "id": "72601",
+    "title": "Air traffic controllers and related occupations",
+    "medianWage": 107016
+  },
+  {
+    "id": "72602",
+    "title": "Deck officers, water transport",
+    "medianWage": 80652
+  },
+  {
+    "id": "72603",
+    "title": "Engineer officers, water transport",
+    "medianWage": 72150
+  },
+  {
+    "id": "72604",
+    "title": "Railway traffic controllers and marine traffic regulators",
+    "medianWage": 79950
+  },
+  {
+    "id": "72999",
+    "title": "Other technical trades and related occupations",
+    "medianWage": 67704
+  },
+  {
+    "id": "73100",
+    "title": "Concrete finishers",
+    "medianWage": 66300
+  },
+  {
+    "id": "73101",
+    "title": "Tilesetters",
+    "medianWage": 67782
+  },
+  {
+    "id": "73102",
+    "title": "Plasterers, drywall installers and finishers and lathers",
+    "medianWage": 64350
+  },
+  {
+    "id": "73110",
+    "title": "Roofers and shinglers",
+    "medianWage": 60392
+  },
+  {
+    "id": "73111",
+    "title": "Glaziers",
+    "medianWage": 58812
+  },
+  {
+    "id": "73112",
+    "title": "Painters and decorators (except interior decorators)",
+    "medianWage": 54600
+  },
+  {
+    "id": "73113",
+    "title": "Floor covering installers",
+    "medianWage": 50700
+  },
+  {
+    "id": "73200",
+    "title": "Residential and commercial installers and servicers",
+    "medianWage": 50700
+  },
+  {
+    "id": "73201",
+    "title": "General building maintenance workers and building superintendents",
+    "medianWage": 48750
+  },
+  {
+    "id": "73202",
+    "title": "Pest controllers and fumigators",
+    "medianWage": 50622
+  },
+  {
+    "id": "73209",
+    "title": "Other repairers and servicers",
+    "medianWage": 48750
+  },
+  {
+    "id": "73300",
+    "title": "Transport truck drivers",
+    "medianWage": 51519
+  },
+  {
+    "id": "73301",
+    "title": "Bus drivers, subway operators and other transit operators",
+    "medianWage": 48750
+  },
+  {
+    "id": "73310",
+    "title": "Railway and yard locomotive engineers",
+    "medianWage": 97500
+  },
+  {
+    "id": "73311",
+    "title": "Railway conductors and brakemen/women",
+    "medianWage": 84377
+  },
+  {
+    "id": "73400",
+    "title": "Heavy equipment operators",
+    "medianWage": 63375
+  },
+  {
+    "id": "73401",
+    "title": "Printing press operators",
+    "medianWage": 48750
+  },
+  {
+    "id": "73402",
+    "title": "Drillers and blasters - surface mining, quarrying and construction",
+    "medianWage": 73125
+  },
+  {
+    "id": "74100",
+    "title": "Mail and parcel sorters and related occupations",
+    "medianWage": 50700
+  },
+  {
+    "id": "74101",
+    "title": "Letter carriers",
+    "medianWage": 56258
+  },
+  {
+    "id": "74102",
+    "title": "Couriers and messengers",
+    "medianWage": 44850
+  },
+  {
+    "id": "74200",
+    "title": "Railway yard and track maintenance workers",
+    "medianWage": 70200
+  },
+  {
+    "id": "74201",
+    "title": "Water transport deck and engine room crew",
+    "medianWage": 54600
+  },
+  {
+    "id": "74202",
+    "title": "Air transport ramp attendants",
+    "medianWage": 45552
+  },
+  {
+    "id": "74203",
+    "title": "Automotive and heavy truck and equipment parts installers and servicers",
+    "medianWage": 39000
+  },
+  {
+    "id": "74204",
+    "title": "Utility maintenance workers",
+    "medianWage": 66300
+  },
+  {
+    "id": "74205",
+    "title": "Public works maintenance equipment operators and related workers",
+    "medianWage": 55575
+  },
+  {
+    "id": "75100",
+    "title": "Longshore workers",
+    "medianWage": 63980
+  },
+  {
+    "id": "75101",
+    "title": "Material handlers",
+    "medianWage": 42900
+  },
+  {
+    "id": "75110",
+    "title": "Construction trades helpers and labourers",
+    "medianWage": 48750
+  },
+  {
+    "id": "75119",
+    "title": "Other trades helpers and labourers",
+    "medianWage": 46800
+  },
+  {
+    "id": "75200",
+    "title": "Taxi and limousine drivers and chauffeurs",
+    "medianWage": 37050
+  },
+  {
+    "id": "75201",
+    "title": "Delivery service drivers and door-to-door distributors",
+    "medianWage": 39000
+  },
+  {
+    "id": "75210",
+    "title": "Boat and cable ferry operators and related occupations",
+    "medianWage": 53898
+  },
+  {
+    "id": "75211",
+    "title": "Railway and motor transport labourers",
+    "medianWage": 42900
+  },
+  {
+    "id": "75212",
+    "title": "Public works and maintenance labourers",
+    "medianWage": 52553
+  },
+  {
+    "id": "80010",
+    "title": "Managers in natural resources production and fishing",
+    "medianWage": 140634
+  },
+  {
+    "id": "80020",
+    "title": "Managers in agriculture",
+    "medianWage": 58500
+  },
+  {
+    "id": "80021",
+    "title": "Managers in horticulture",
+    "medianWage": 42510
+  },
+  {
+    "id": "80022",
+    "title": "Managers in aquaculture",
+    "medianWage": 62400
+  },
+  {
+    "id": "82010",
+    "title": "Supervisors, logging and forestry",
+    "medianWage": 67958
+  },
+  {
+    "id": "82020",
+    "title": "Supervisors, mining and quarrying",
+    "medianWage": 98709
+  },
+  {
+    "id": "82021",
+    "title": "Contractors and supervisors, oil and gas drilling and services",
+    "medianWage": 97500
+  },
+  {
+    "id": "82030",
+    "title": "Agricultural service contractors and farm supervisors",
+    "medianWage": 46878
+  },
+  {
+    "id": "82031",
+    "title": "Contractors and supervisors, landscaping, grounds maintenance and horticulture services",
+    "medianWage": 58130
+  },
+  {
+    "id": "83100",
+    "title": "Underground production and development miners",
+    "medianWage": 81900
+  },
+  {
+    "id": "83101",
+    "title": "Oil and gas well drillers, servicers, testers and related workers",
+    "medianWage": 91884
+  },
+  {
+    "id": "83110",
+    "title": "Logging machinery operators",
+    "medianWage": 62400
+  },
+  {
+    "id": "83120",
+    "title": "Fishing masters and officers",
+    "medianWage": 78507
+  },
+  {
+    "id": "83121",
+    "title": "Fishermen/women",
+    "medianWage": 54152
+  },
+  {
+    "id": "84100",
+    "title": "Underground mine service and support workers",
+    "medianWage": 74100
+  },
+  {
+    "id": "84101",
+    "title": "Oil and gas well drilling and related workers and services operators",
+    "medianWage": 78000
+  },
+  {
+    "id": "84110",
+    "title": "Chain saw and skidder operators",
+    "medianWage": 58500
+  },
+  {
+    "id": "84111",
+    "title": "Silviculture and forestry workers",
+    "medianWage": 48750
+  },
+  {
+    "id": "84120",
+    "title": "Specialized livestock workers and farm machinery operators",
+    "medianWage": 42900
+  },
+  {
+    "id": "84121",
+    "title": "Fishing vessel deckhands",
+    "medianWage": 48750
+  },
+  {
+    "id": "85100",
+    "title": "Livestock labourers",
+    "medianWage": 39000
+  },
+  {
+    "id": "85101",
+    "title": "Harvesting labourers",
+    "medianWage": 35100
+  },
+  {
+    "id": "85102",
+    "title": "Aquaculture and marine harvest labourers",
+    "medianWage": 42900
+  },
+  {
+    "id": "85103",
+    "title": "Nursery and greenhouse labourers",
+    "medianWage": 38025
+  },
+  {
+    "id": "85104",
+    "title": "Trappers and hunters",
+    "medianWage": 45299
+  },
+  {
+    "id": "85110",
+    "title": "Mine labourers",
+    "medianWage": 63375
+  },
+  {
+    "id": "85111",
+    "title": "Oil and gas drilling, servicing and related labourers",
+    "medianWage": 60450
+  },
+  {
+    "id": "85120",
+    "title": "Logging and forestry labourers",
+    "medianWage": 55985
+  },
+  {
+    "id": "85121",
+    "title": "Landscaping and grounds maintenance labourers",
+    "medianWage": 40463
+  },
+  {
+    "id": "90010",
+    "title": "Manufacturing managers",
+    "medianWage": 102999
+  },
+  {
+    "id": "90011",
+    "title": "Utilities managers",
+    "medianWage": 118950
+  },
+  {
+    "id": "92010",
+    "title": "Supervisors, mineral and metal processing",
+    "medianWage": 70200
+  },
+  {
+    "id": "92011",
+    "title": "Supervisors, petroleum, gas and chemical processing and utilities",
+    "medianWage": 83850
+  },
+  {
+    "id": "92012",
+    "title": "Supervisors, food and beverage processing",
+    "medianWage": 53625
+  },
+  {
+    "id": "92013",
+    "title": "Supervisors, plastic and rubber products manufacturing",
+    "medianWage": 60938
+  },
+  {
+    "id": "92014",
+    "title": "Supervisors, forest products processing",
+    "medianWage": 70317
+  },
+  {
+    "id": "92015",
+    "title": "Supervisors, textile, fabric, fur and leather products processing and manufacturing",
+    "medianWage": 52650
+  },
+  {
+    "id": "92020",
+    "title": "Supervisors, motor vehicle assembling",
+    "medianWage": 67509
+  },
+  {
+    "id": "92021",
+    "title": "Supervisors, electronics and electrical products manufacturing",
+    "medianWage": 65618
+  },
+  {
+    "id": "92022",
+    "title": "Supervisors, furniture and fixtures manufacturing",
+    "medianWage": 55575
+  },
+  {
+    "id": "92023",
+    "title": "Supervisors, other mechanical and metal products manufacturing",
+    "medianWage": 70200
+  },
+  {
+    "id": "92024",
+    "title": "Supervisors, other products manufacturing and assembly",
+    "medianWage": 60002
+  },
+  {
+    "id": "92100",
+    "title": "Power engineers and power systems operators",
+    "medianWage": 95999
+  },
+  {
+    "id": "92101",
+    "title": "Water and waste treatment plant operators",
+    "medianWage": 70317
+  },
+  {
+    "id": "93100",
+    "title": "Central control and process operators, mineral and metal processing",
+    "medianWage": 86775
+  },
+  {
+    "id": "93101",
+    "title": "Central control and process operators, petroleum, gas and chemical processing",
+    "medianWage": 97500
+  },
+  {
+    "id": "93102",
+    "title": "Pulping, papermaking and coating control operators",
+    "medianWage": 78000
+  },
+  {
+    "id": "93200",
+    "title": "Aircraft assemblers and aircraft assembly inspectors",
+    "medianWage": 66300
+  },
+  {
+    "id": "94100",
+    "title": "Machine operators, mineral and metal processing",
+    "medianWage": 68250
+  },
+  {
+    "id": "94101",
+    "title": "Foundry workers",
+    "medianWage": 48750
+  },
+  {
+    "id": "94102",
+    "title": "Glass forming and finishing machine operators and glass cutters",
+    "medianWage": 44343
+  },
+  {
+    "id": "94103",
+    "title": "Concrete, clay and stone forming operators",
+    "medianWage": 50700
+  },
+  {
+    "id": "94104",
+    "title": "Inspectors and testers, mineral and metal processing",
+    "medianWage": 51168
+  },
+  {
+    "id": "94105",
+    "title": "Metalworking and forging machine operators",
+    "medianWage": 48750
+  },
+  {
+    "id": "94106",
+    "title": "Machining tool operators",
+    "medianWage": 48750
+  },
+  {
+    "id": "94107",
+    "title": "Machine operators of other metal products",
+    "medianWage": 44168
+  },
+  {
+    "id": "94110",
+    "title": "Chemical plant machine operators",
+    "medianWage": 49686
+  },
+  {
+    "id": "94111",
+    "title": "Plastics processing machine operators",
+    "medianWage": 44850
+  },
+  {
+    "id": "94112",
+    "title": "Rubber processing machine operators and related workers",
+    "medianWage": 57252
+  },
+  {
+    "id": "94120",
+    "title": "Sawmill machine operators",
+    "medianWage": 53333
+  },
+  {
+    "id": "94121",
+    "title": "Pulp mill, papermaking and finishing machine operators",
+    "medianWage": 62419
+  },
+  {
+    "id": "94122",
+    "title": "Paper converting machine operators",
+    "medianWage": 54600
+  },
+  {
+    "id": "94123",
+    "title": "Lumber graders and other wood processing inspectors and graders",
+    "medianWage": 53625
+  },
+  {
+    "id": "94124",
+    "title": "Woodworking machine operators",
+    "medianWage": 42900
+  },
+  {
+    "id": "94129",
+    "title": "Other wood processing machine operators",
+    "medianWage": 50154
+  },
+  {
+    "id": "94130",
+    "title": "Textile fibre and yarn, hide and pelt processing machine operators and workers",
+    "medianWage": 44070
+  },
+  {
+    "id": "94131",
+    "title": "Weavers, knitters and other fabric making occupations",
+    "medianWage": 37557
+  },
+  {
+    "id": "94132",
+    "title": "Industrial sewing machine operators",
+    "medianWage": 35100
+  },
+  {
+    "id": "94133",
+    "title": "Inspectors and graders, textile, fabric, fur and leather products manufacturing",
+    "medianWage": 34125
+  },
+  {
+    "id": "94140",
+    "title": "Process control and machine operators, food and beverage processing",
+    "medianWage": 43875
+  },
+  {
+    "id": "94141",
+    "title": "Industrial butchers and meat cutters, poultry preparers and related workers",
+    "medianWage": 44850
+  },
+  {
+    "id": "94142",
+    "title": "Fish and seafood plant workers",
+    "medianWage": 33638
+  },
+  {
+    "id": "94143",
+    "title": "Testers and graders, food and beverage processing",
+    "medianWage": 48750
+  },
+  {
+    "id": "94150",
+    "title": "Plateless printing equipment operators",
+    "medianWage": 40950
+  },
+  {
+    "id": "94151",
+    "title": "Camera, platemaking and other prepress occupations",
+    "medianWage": 50408
+  },
+  {
+    "id": "94152",
+    "title": "Binding and finishing machine operators",
+    "medianWage": 42900
+  },
+  {
+    "id": "94153",
+    "title": "Photographic and film processors",
+    "medianWage": 39000
+  },
+  {
+    "id": "94200",
+    "title": "Motor vehicle assemblers, inspectors and testers",
+    "medianWage": 63356
+  },
+  {
+    "id": "94201",
+    "title": "Electronics assemblers, fabricators, inspectors and testers",
+    "medianWage": 40853
+  },
+  {
+    "id": "94202",
+    "title": "Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing",
+    "medianWage": 43505
+  },
+  {
+    "id": "94203",
+    "title": "Assemblers, fabricators and inspectors, industrial electrical motors and transformers",
+    "medianWage": 44265
+  },
+  {
+    "id": "94204",
+    "title": "Mechanical assemblers and inspectors",
+    "medianWage": 50700
+  },
+  {
+    "id": "94205",
+    "title": "Machine operators and inspectors, electrical apparatus manufacturing",
+    "medianWage": 42900
+  },
+  {
+    "id": "94210",
+    "title": "Furniture and fixture assemblers, finishers, refinishers and inspectors",
+    "medianWage": 44441
+  },
+  {
+    "id": "94211",
+    "title": "Assemblers and inspectors of other wood products",
+    "medianWage": 43310
+  },
+  {
+    "id": "94212",
+    "title": "Plastic products assemblers, finishers and inspectors",
+    "medianWage": 42725
+  },
+  {
+    "id": "94213",
+    "title": "Industrial painters, coaters and metal finishing process operators",
+    "medianWage": 47990
+  },
+  {
+    "id": "94219",
+    "title": "Other products assemblers, finishers and inspectors",
+    "medianWage": 42959
+  },
+  {
+    "id": "95100",
+    "title": "Labourers in mineral and metal processing",
+    "medianWage": 49628
+  },
+  {
+    "id": "95101",
+    "title": "Labourers in metal fabrication",
+    "medianWage": 46800
+  },
+  {
+    "id": "95102",
+    "title": "Labourers in chemical products processing and utilities",
+    "medianWage": 48750
+  },
+  {
+    "id": "95103",
+    "title": "Labourers in wood, pulp and paper processing",
+    "medianWage": 47054
+  },
+  {
+    "id": "95104",
+    "title": "Labourers in rubber and plastic products manufacturing",
+    "medianWage": 39878
+  },
+  {
+    "id": "95105",
+    "title": "Labourers in textile processing and cutting",
+    "medianWage": 36075
+  },
+  {
+    "id": "95106",
+    "title": "Labourers in food and beverage processing",
+    "medianWage": 39000
+  },
+  {
+    "id": "95107",
+    "title": "Labourers in fish and seafood processing",
+    "medianWage": 35100
+  },
+  {
+    "id": "95109",
+    "title": "Other labourers in processing, manufacturing and utilities",
+    "medianWage": 39000
+  }
+]
+Claude finished the response
