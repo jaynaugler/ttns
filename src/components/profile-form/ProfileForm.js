@@ -36,6 +36,7 @@ export default function ProfileForm() {
   // True after clicking Edit on the review, so Next goes straight back to the
   // review instead of walking through the remaining steps again.
   const [editingFromReview, setEditingFromReview] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const isLastStep = currentStep === reviewStep;
   const step = steps[currentStep];
@@ -67,8 +68,15 @@ export default function ProfileForm() {
   }
 
   // handleSubmit validates every field first and only calls this if all pass.
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit() {
+    setSubmitted(true);
+  }
+
+  function startOver() {
+    methods.reset(profileDefaultValues);
+    setCurrentStep(0);
+    setEditingFromReview(false);
+    setSubmitted(false);
   }
 
   return (
@@ -78,18 +86,31 @@ export default function ProfileForm() {
           reach the top edge. --card-spacing sets the card's padding. */}
       <Card className="w-full max-w-md bg-white pt-0 text-foreground shadow-sm [--card-spacing:--spacing(6)]">
         <CardHeader className="bg-card py-4 text-card-foreground">
-          <CardDescription className="text-card-foreground/80">
-            Step {currentStep + 1} of {steps.length}
-          </CardDescription>
-          <CardTitle className="text-lg font-semibold">
-            {step.title}
-          </CardTitle>
-          {/* value is a percentage. The **:data-[slot=...] classes restyle the
-              track and indicator inside Progress: yellow bar on a light track. */}
-          <Progress
-            value={((currentStep + 1) / steps.length) * 100}
-            className="mt-2 **:data-[slot=progress-indicator]:bg-secondary **:data-[slot=progress-track]:h-1.5 **:data-[slot=progress-track]:bg-white/20"
-          />
+          {submitted ? (
+            <>
+              <CardTitle className="text-lg font-semibold">
+                Profile form complete
+              </CardTitle>
+              <CardDescription className="text-card-foreground/80">
+                Thanks for filling out the profile form.
+              </CardDescription>
+            </>
+          ) : (
+            <>
+              <CardDescription className="text-card-foreground/80">
+                Step {currentStep + 1} of {steps.length}
+              </CardDescription>
+              <CardTitle className="text-lg font-semibold">
+                {step.title}
+              </CardTitle>
+              {/* value is a percentage. The **:data-[slot=...] classes restyle the
+                  track and indicator inside Progress: yellow bar on a light track. */}
+              <Progress
+                value={((currentStep + 1) / steps.length) * 100}
+                className="mt-2 **:data-[slot=progress-indicator]:bg-secondary **:data-[slot=progress-track]:h-1.5 **:data-[slot=progress-track]:bg-white/20"
+              />
+            </>
+          )}
         </CardHeader>
 
         {/* FormProvider shares the form with every FormField inside the steps,
@@ -97,38 +118,55 @@ export default function ProfileForm() {
             browser's own popups. Every step submits the form (button or
             Enter key): steps 1-3 go to the next step, the last one submits. */}
         <CardContent>
-          <FormProvider {...methods}>
-            <form
-              id="profile-form"
-              onSubmit={isLastStep ? methods.handleSubmit(onSubmit) : handleNext}
-              noValidate
-            >
-              {/* Render only the current step. key makes React start fresh
-                  when the step changes. */}
-              {isLastStep ? (
-                <ReviewStep onEdit={handleEdit} />
-              ) : (
-                <FieldsStep key={step.key} step={step} />
-              )}
-            </form>
-          </FormProvider>
+          {submitted ? (
+            <p role="status">
+              The profile form was completed. This project does not persist
+              profile data yet.
+            </p>
+          ) : (
+            <FormProvider {...methods}>
+              <form
+                id="profile-form"
+                onSubmit={
+                  isLastStep ? methods.handleSubmit(onSubmit) : handleNext
+                }
+                noValidate
+              >
+                {/* Render only the current step. key makes React start fresh
+                    when the step changes. */}
+                {isLastStep ? (
+                  <ReviewStep onEdit={handleEdit} />
+                ) : (
+                  <FieldsStep key={step.key} step={step} />
+                )}
+              </form>
+            </FormProvider>
+          )}
         </CardContent>
 
         {/* The buttons are outside the <form>, so form="profile-form" connects
             the submit button to it. */}
         <CardFooter className="justify-between">
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            onClick={() => setCurrentStep(currentStep - 1)}
-            disabled={currentStep === 0}
-          >
-            Back
-          </Button>
-          <Button type="submit" form="profile-form" size="lg">
-            {nextLabel}
-          </Button>
+          {submitted ? (
+            <Button type="button" size="lg" onClick={startOver}>
+              Start another profile
+            </Button>
+          ) : (
+            <>
+              <Button
+                type="button"
+                variant="outline"
+                size="lg"
+                onClick={() => setCurrentStep(currentStep - 1)}
+                disabled={currentStep === 0}
+              >
+                Back
+              </Button>
+              <Button type="submit" form="profile-form" size="lg">
+                {nextLabel}
+              </Button>
+            </>
+          )}
         </CardFooter>
       </Card>
     </div>

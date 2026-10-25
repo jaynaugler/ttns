@@ -8,6 +8,9 @@ export default function Home() {
             <a className="text-current no-underline visited:text-current hover:underline" href="#">
               Home
             </a>
+            <a className="text-current no-underline visited:text-current hover:underline" href="/profile">
+              Profile form
+            </a>
             <a className="text-current no-underline visited:text-current hover:underline" href="#">
               About
             </a>
