@@ -14,7 +14,8 @@
   --color-brand-yellow: var(--brand-yellow);
   --color-brand-orange: var(--brand-orange);
   --color-brand-brown: var(--brand-brown);
-  --font-sans: var(--font-sans);
+  --font-entire-site: var(--entire-site-font);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -162,7 +163,7 @@
   .btn-on-bg {
     background-color: var(--brand-red);
     color: #ffffff;
-    border: 1px solid transparent;
+    border: 5px solid transparent;
   }
   .btn-on-bg:hover {
     background-color: var(--brand-pink);
@@ -171,7 +172,7 @@
   .btn-on-card {
     background-color: var(--brand-yellow);
     color: #000000;
-    border: 1px solid var(--brand-orange);
+    border: 5px solid var(--brand-orange);
   }
   .btn-on-card:hover {
     background-color: var(--brand-orange);

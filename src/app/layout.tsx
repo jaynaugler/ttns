@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
+import localFont from "next/font/local";
+
+const atkinson = localFont({
+  src: "../fonts/local/AtkinsonHyperlegibleNext-VariableFont_wght.ttf",
+  variable: "--font-atkinson",
+  weight: "100 900",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${atkinson.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         {children}
