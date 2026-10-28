@@ -1,7 +1,7 @@
 // Team 5 logic for calculating outcome shifts
 
 import careersData from "@/data/careers.json";
-import type { Career, WageProjection } from "@/types/outcomes";
+import type { Career, OutcomeShift, WageProjection } from "@/types/outcomes";
 
 const careers = careersData as Career[];
 
@@ -34,5 +34,19 @@ export function createWageProjection(
 				? career.medianWage - validCurrentWage
 				: undefined,
 		periodLabel: "per year",
+	};
+}
+
+
+export function createOutcomeShift(
+	careerId: string,
+	currentScore: number,
+	projectedScore: number,
+): OutcomeShift {
+	return {
+		careerId,
+		currentScore,
+		projectedScore,
+		delta: projectedScore - currentScore,
 	};
 }

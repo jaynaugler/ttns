@@ -32,6 +32,13 @@ export interface WageProjection {
 	periodLabel?: string;
 }
 
+export interface OutcomeShift {
+	careerId: string;
+	currentScore: number;
+	projectedScore: number;
+	delta: number;
+}
+
 export interface UserOutcomeBundle {
 	matches: CareerMatch[];
 	steps: NextStep[];
