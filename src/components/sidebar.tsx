@@ -10,7 +10,7 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-sidebar text-sidebar-foreground border-r min-h-full">
+    <aside className="hidden w-64 shrink-0 bg-sidebar text-sidebar-foreground border-r min-h-full md:block">
       <nav aria-label="Your Journey" className="p-6">
         <h2 className="text-xs font-semibold uppercase tracking-wider opacity-60 mb-4">Your Journey</h2>
         <ul className="space-y-4">
