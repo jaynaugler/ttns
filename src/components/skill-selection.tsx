@@ -1,8 +1,10 @@
+//Things to work on 
+//Buttons don't select 
 "use client";
 
 import { useState } from "react";
 import skillsData from "../../public/data/skills.json";
-
+// This component allows users to select skills from a predefined list, with search.
 export function UserSkillSelection() {
   const [skills] = useState<string[]>(skillsData as string[]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,7 +13,7 @@ export function UserSkillSelection() {
   const filteredSkills = skills.filter((skill) =>
     skill.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+// Function to toggle skill selection 
   const toggleSkill = (skill: string) => {
     if (selectedSkills.includes(skill)) {
       setSelectedSkills(selectedSkills.filter((s) => s !== skill));
