@@ -27,7 +27,7 @@ Production path (built app):
 
 ```bash
 pnpm run build
-node startwinget install --id Cloudflare.cloudflared
+node start
 # equivalent:
 node scripts/start.cjs
 ```
