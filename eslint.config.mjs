@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    ".tmp/**",
     "next-env.d.ts",
     // Local helper launchers intentionally use CommonJS.
     "scripts/dev.cjs",
