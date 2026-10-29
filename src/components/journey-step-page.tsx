@@ -19,19 +19,20 @@ import { markStepComplete, useJourneyProgress } from "@/lib/journey-progress";
 export function JourneyStepPage({
   pageId,
   nextHref,
-  title,
   description,
   isLast,
   children,
 }: {
   pageId: JourneyStepId;
   nextHref: string;
-  title: string;
   description: string;
   isLast?: boolean;
   children?: React.ReactNode;
 }) {
   const { journey, hydrated } = useJourneyProgress();
+  // The page title is the shared journey label, so a rename in journey.ts
+  // updates the sidebar, the drawer, and this heading at once.
+  const title = JOURNEY_STEPS.find((step) => step.id === pageId)!.label;
 
   // Avoid flashing the locked notice while localStorage hydrates.
   if (!hydrated) return null;
@@ -50,7 +51,7 @@ export function JourneyStepPage({
             {nextUp && (
               <Link
                 href={nextUp.href}
-                className="text-primary-foreground underline underline-offset-4"
+                className="text-card-foreground underline underline-offset-4"
               >
                 Continue with {nextUp.label}
               </Link>

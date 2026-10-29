@@ -5,6 +5,7 @@ import Link from "next/link";
 import skillsData from "../../public/data/skills.json";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { saveSkills, useJourneyProgress } from "@/lib/journey-progress";
 
 export function UserSkillSelection() {
@@ -15,7 +16,7 @@ export function UserSkillSelection() {
   // skill labels are stored; mapping to UserSkillInput is Team 2's job when
   // the pipeline consumes them.
   const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
-  const { journey } = useJourneyProgress();
+  const { journey, hydrated } = useJourneyProgress();
   const selectedSkills = userSelection ?? journey.savedSkills ?? [];
 
   const filteredSkills = skills.filter((skill) =>
@@ -30,6 +31,10 @@ export function UserSkillSelection() {
     }
   };
 
+  // Wait out localStorage hydration so a returning user's saved selection is
+  // already there on first paint instead of popping in afterwards.
+  if (!hydrated) return null;
+
   return (
     <div className="space-y-6">
       <div>
@@ -40,12 +45,11 @@ export function UserSkillSelection() {
       </div>
 
       {/* Search Bar */}
-      <input
+      <Input
         type="text"
         placeholder="Search skills (e.g., Numeracy, Digital Literacy)..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full px-4 py-2 border rounded-md bg-background text-foreground"
       />
 
       {/* Skills Selection Grid (Padding matches gap-3 for balanced spacing) */}

@@ -7,7 +7,6 @@ export default function NewSkillPage() {
     <JourneyStepPage
       pageId="new-skill"
       nextHref="/updated-pathways"
-      title="New Skill Interest"
       description="Pick the skill you want to learn next."
     >
       <p className="text-sm text-muted-foreground">

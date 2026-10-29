@@ -7,7 +7,6 @@ export default function NextStepPage() {
     <JourneyStepPage
       pageId="next-step"
       nextHref="/"
-      title="The Next Step 👣"
       description="Your personalized plan for what to do next."
       isLast
     >

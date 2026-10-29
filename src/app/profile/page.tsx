@@ -7,7 +7,6 @@ export default function ProfilePage() {
     <JourneyStepPage
       pageId="profile"
       nextHref="/skills"
-      title="Personal Info"
       description="Tell us a bit about yourself and where you are in your career."
     />
   );

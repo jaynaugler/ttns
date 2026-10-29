@@ -7,7 +7,6 @@ export default function UpdatedPathwaysPage() {
     <JourneyStepPage
       pageId="updated-pathways"
       nextHref="/next-step"
-      title="Updated Pathways"
       description="How your match changes once the new skill is in the picture."
     >
       <p className="text-sm text-muted-foreground">

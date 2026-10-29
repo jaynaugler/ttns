@@ -7,8 +7,8 @@ import { JOURNEY_STEPS, type JourneyStepId } from "./journey";
 export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 
 // Journey progress plus the payloads later wizard steps consume. Fields are
-// explicit, not a bag — a new stage's data gets its own field (savedProfile,
-// savedCareerId, ...) the same way savedSkills does.
+// explicit, not a bag — a new stage's data gets its own field added here the
+// way savedSkills does.
 export interface JourneyState {
   completed: JourneyStepId[];
   savedSkills?: string[];
@@ -89,10 +89,6 @@ function writeState(state: JourneyState) {
   cachedRaw = null;
   cachedState = state;
   notify();
-}
-
-export function getSavedJourney(): JourneyState {
-  return readState();
 }
 
 export function markStepComplete(id: JourneyStepId) {

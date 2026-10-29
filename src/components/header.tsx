@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,9 @@ import { JourneyStepList } from "./journey-step-list";
 // the sidebar's journey list for mobile.
 export function Header() {
   const [open, setOpen] = useState(false);
+  // The landing page is pre-journey: like the sidebar, the drawer hides the
+  // step list (and its "Reset journey") there.
+  const isLanding = usePathname() === "/";
 
   return (
     <header className="border-b px-4 md:px-8 py-4">
@@ -63,10 +67,14 @@ export function Header() {
                   </Link>
                 </li>
               </ul>
-              <h3 className="text-xs font-semibold uppercase tracking-wider opacity-60 mt-6 mb-4">
-                Your Journey
-              </h3>
-              <JourneyStepList onStepClick={() => setOpen(false)} />
+              {!isLanding && (
+                <>
+                  <h3 className="text-xs font-semibold uppercase tracking-wider opacity-60 mt-6 mb-4">
+                    Your Journey
+                  </h3>
+                  <JourneyStepList onStepClick={() => setOpen(false)} />
+                </>
+              )}
             </nav>
           </SheetContent>
         </Sheet>

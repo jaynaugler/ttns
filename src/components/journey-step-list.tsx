@@ -23,7 +23,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
           const pages = JOURNEY_STEPS.filter((step) => step.stepIndex === stepIndex);
           const { label, href } = pages[0];
           const status = statuses[stepIndex];
-          const stepId = `journey-step-${label}`;
+          const stepId = `journey-step-${stepIndex}`;
 
           if (status === "locked") {
             return (
@@ -44,14 +44,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
                 aria-current={status === "current" ? "step" : undefined}
                 className="flex items-start gap-3"
               >
-                <span
-                  className={cn(
-                    "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
-                    status === "done"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-primary text-primary-foreground"
-                  )}
-                >
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold bg-primary text-primary-foreground">
                   {status === "done" ? <Check className="size-3.5" /> : stepIndex + 1}
                 </span>
                 <span

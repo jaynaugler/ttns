@@ -7,7 +7,6 @@ export default function CurrentPathwaysPage() {
     <JourneyStepPage
       pageId="current-pathways"
       nextHref="/new-skill"
-      title="Current Pathways"
       description="Careers that match the skills you have today."
     >
       <p className="text-sm text-muted-foreground">
