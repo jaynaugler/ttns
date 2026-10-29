@@ -25,14 +25,14 @@ export function Header() {
   const isLanding = usePathname() === "/";
 
   return (
-    <header className="border-b px-4 md:px-8 py-4">
+    <header className="border-b bg-primary px-4 md:px-8 py-4 text-primary-foreground">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="font-bold text-xl">
-          <Link href="/" className="hover:no-underline">Take The Next Step</Link>
+          <Link href="/" className="text-primary-foreground hover:no-underline">Take The Next Step</Link>
         </div>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex gap-6 text-sm font-medium">
-            <li><Link href="/">Home</Link></li>
+            <li><Link href="/" className="text-primary-foreground">Home</Link></li>
           </ul>
         </nav>
         <Sheet open={open} onOpenChange={setOpen}>
