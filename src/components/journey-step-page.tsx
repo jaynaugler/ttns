@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   JOURNEY_STEPS,
   isPageUnlocked,
@@ -43,17 +44,19 @@ export function JourneyStepPage({
     return (
       <div className="max-w-2xl">
         <h1 className="text-2xl font-bold">{title}</h1>
-        <div className="mt-4 rounded-lg border bg-card p-6 text-sm text-card-foreground space-y-2">
-          <p>Finish the earlier journey steps to unlock this one.</p>
-          {nextUp && (
-            <Link
-              href={nextUp.href}
-              className="text-primary underline underline-offset-4"
-            >
-              Continue with {nextUp.label}
-            </Link>
-          )}
-        </div>
+        <Card className="mt-4">
+          <CardContent>
+            <p>Finish the earlier journey steps to unlock this one.</p>
+            {nextUp && (
+              <Link
+                href={nextUp.href}
+                className="text-primary-foreground underline underline-offset-4"
+              >
+                Continue with {nextUp.label}
+              </Link>
+            )}
+          </CardContent>
+        </Card>
       </div>
     );
   }
