@@ -1,12 +1,12 @@
 import { JourneyStepPage } from "@/components/journey-step-page";
 
 // Journey step 3. The picker for the skill the user wants to learn — the
-// input for the updated opportunities — lands here.
+// input for the updated pathways — lands here.
 export default function NewSkillPage() {
   return (
     <JourneyStepPage
       pageId="new-skill"
-      nextHref="/updated-opportunities"
+      nextHref="/updated-pathways"
       title="New Skill Interest"
       description="Pick the skill you want to learn next."
     >

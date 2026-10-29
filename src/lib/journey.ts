@@ -4,9 +4,9 @@
 export type JourneyStepId =
   | "profile"
   | "skills"
-  | "current-opportunities"
+  | "current-pathways"
   | "new-skill"
-  | "updated-opportunities"
+  | "updated-pathways"
   | "next-step";
 
 export interface JourneyStep {
@@ -23,9 +23,9 @@ export const JOURNEY_STEP_COUNT = 5;
 export const JOURNEY_STEPS: readonly JourneyStep[] = [
   { id: "profile", label: "Personal Info", href: "/profile", stepIndex: 0 },
   { id: "skills", label: "Personal Info", href: "/skills", stepIndex: 0 },
-  { id: "current-opportunities", label: "Current Opportunities", href: "/current-opportunities", stepIndex: 1 },
+  { id: "current-pathways", label: "Current Pathways", href: "/current-pathways", stepIndex: 1 },
   { id: "new-skill", label: "New Skill Interest", href: "/new-skill", stepIndex: 2 },
-  { id: "updated-opportunities", label: "Updated Opportunities", href: "/updated-opportunities", stepIndex: 3 },
+  { id: "updated-pathways", label: "Updated Pathways", href: "/updated-pathways", stepIndex: 3 },
   { id: "next-step", label: "The Next Step 👣", href: "/next-step", stepIndex: 4 },
 ];
 

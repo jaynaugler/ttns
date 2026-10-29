@@ -96,7 +96,7 @@ export function UserSkillSelection() {
           <Button
             size="lg"
             nativeButton={false}
-            render={<Link href="/current-opportunities" />}
+            render={<Link href="/current-pathways" />}
             // saveSkills persists the selection for the wizard's later steps
             // and marks this page complete.
             onClick={() => saveSkills(selectedSkills)}
