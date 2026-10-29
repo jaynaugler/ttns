@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -13,20 +12,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { NAV_ITEMS } from "./nav-items";
+import { JourneyStepList } from "./journey-step-list";
 
-// Mirrors the 5 steps in the desktop Sidebar, so mobile users keep the
-// journey tracker. Not links — the step pages don't exist as routes yet.
-const JOURNEY_STEPS = [
-  "Personal Info",
-  "Current Opportunities",
-  "New Skill Interest",
-  "Updated Opportunities",
-  "The Next Step 👣",
-];
-
+// Stepper-driven navigation: the wizard's steps (not the top bar) are the
+// real navigation, so the top bar stays brand + Home and the drawer mirrors
+// the sidebar's journey list for mobile.
 export function Header() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
@@ -37,13 +28,7 @@ export function Header() {
         </div>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex gap-6 text-sm font-medium">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <NavLink href={item.href} active={pathname === item.href}>
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
+            <li><Link href="/">Home</Link></li>
           </ul>
         </nav>
         <Sheet open={open} onOpenChange={setOpen}>
@@ -64,58 +49,28 @@ export function Header() {
               <SheetTitle>Menu</SheetTitle>
             </SheetHeader>
             <nav aria-label="Mobile" className="px-4 pb-6">
+              <h3 className="text-xs font-semibold uppercase tracking-wider opacity-60 mb-4">
+                Menu
+              </h3>
               <ul className="space-y-1">
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={`block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted ${
-                        pathname === item.href
-                          ? "bg-muted font-bold text-primary"
-                          : ""
-                      }`}
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/"
+                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    onClick={() => setOpen(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
               </ul>
               <h3 className="text-xs font-semibold uppercase tracking-wider opacity-60 mt-6 mb-4">
                 Your Journey
               </h3>
-              <ul className="space-y-4">
-                {JOURNEY_STEPS.map((step, index) => (
-                  <li key={step} className="flex items-start gap-3">
-                    <span className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      index === 0
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-sidebar-border text-sidebar-foreground opacity-50"
-                    }`}>
-                      {index + 1}
-                    </span>
-                    <span className={`text-sm ${index === 0 ? "font-bold" : "opacity-70"}`}>
-                      {step}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <JourneyStepList onStepClick={() => setOpen(false)} />
             </nav>
           </SheetContent>
         </Sheet>
       </div>
     </header>
-  );
-}
-
-function NavLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      aria-current={active ? "page" : undefined}
-      className={active ? "font-bold text-primary" : "opacity-70 hover:opacity-100"}
-    >
-      {children}
-    </Link>
   );
 }

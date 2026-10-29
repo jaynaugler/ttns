@@ -1,12 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import skillsData from "../../public/data/skills.json";
+
+import { Button } from "@/components/ui/button";
+import { saveSkills, useJourneyProgress } from "@/lib/journey-progress";
 
 export function UserSkillSelection() {
   const [skills] = useState<string[]>(skillsData as string[]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  // undefined until the user toggles something, so the saved selection from
+  // a previous visit can show through (and resume mid-journey works). Raw
+  // skill labels are stored; mapping to UserSkillInput is Team 2's job when
+  // the pipeline consumes them.
+  const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
+  const { journey } = useJourneyProgress();
+  const selectedSkills = userSelection ?? journey.savedSkills ?? [];
 
   const filteredSkills = skills.filter((skill) =>
     skill.toLowerCase().includes(searchQuery.toLowerCase())
@@ -14,9 +24,9 @@ export function UserSkillSelection() {
 
   const toggleSkill = (skill: string) => {
     if (selectedSkills.includes(skill)) {
-      setSelectedSkills(selectedSkills.filter((s) => s !== skill));
+      setUserSelection(selectedSkills.filter((s) => s !== skill));
     } else {
-      setSelectedSkills([...selectedSkills, skill]);
+      setUserSelection([...selectedSkills, skill]);
     }
   };
 
@@ -80,6 +90,21 @@ export function UserSkillSelection() {
           )}
         </div>
       </div>
+
+      {selectedSkills.length > 0 && (
+        <div className="flex justify-end">
+          <Button
+            size="lg"
+            nativeButton={false}
+            render={<Link href="/current-opportunities" />}
+            // saveSkills persists the selection for the wizard's later steps
+            // and marks this page complete.
+            onClick={() => saveSkills(selectedSkills)}
+          >
+            Continue
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
