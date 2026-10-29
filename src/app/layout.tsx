@@ -16,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <div className="flex flex-1">
           <Sidebar />
-          <main className="flex-1">
+          <main className="min-w-0 flex-1">
             {children}
           </main>
         </div>
