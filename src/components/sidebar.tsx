@@ -2,12 +2,12 @@ import React from 'react';
 
 export function Sidebar() {
   const steps = [
-    { name: 'Personal Info', status: 'current' },
-    { name: 'Current Opportunities', status: 'upcoming' },
-    { name: 'New Skill Interest', status: 'upcoming' },
-    { name: 'Updated Opportunities', status: 'upcoming' },
-    { name: 'The Next Step 👣', status: 'upcoming' },
-  ];
+  { name: 'Personal Info', status: 'current' },
+  { name: 'Current Pathways', status: 'upcoming' },
+  { name: 'New Skill Interest', status: 'upcoming' },
+  { name: 'Updated Pathways', status: 'upcoming' },
+  { name: 'The Next Step 👣', status: 'upcoming' },
+]
 
   return (
     <aside className="hidden w-64 shrink-0 bg-sidebar text-sidebar-foreground border-r min-h-full md:block">
