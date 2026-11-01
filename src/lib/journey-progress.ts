@@ -12,7 +12,12 @@ export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 export interface JourneyState {
   completed: JourneyStepId[];
   savedSkills?: string[];
+  // The submitted profile form values, grouped by step key, e.g.
+  // { personal: { firstName, lastName }, skills: { ... }, ... }.
+  profile?: ProfileData;
 }
+
+export type ProfileData = Record<string, Record<string, string>>;
 
 const DEFAULT_STATE: JourneyState = { completed: [] };
 
@@ -37,6 +42,9 @@ function parse(raw: string | null): JourneyState {
     };
     if (Array.isArray(parsed.savedSkills)) {
       state.savedSkills = parsed.savedSkills.map(String);
+    }
+    if (parsed.profile && typeof parsed.profile === "object") {
+      state.profile = parsed.profile;
     }
     return state;
   } catch {
@@ -111,7 +119,13 @@ export function saveSkills(skills: string[]) {
   ) {
     return;
   }
-  writeState({ completed, savedSkills: [...skills] });
+  writeState({ ...state, completed, savedSkills: [...skills] });
+}
+
+// Persists the submitted profile form values for the wizard's later steps.
+// The page's Continue button marks the step complete, so this doesn't.
+export function saveProfile(profile: ProfileData) {
+  writeState({ ...readState(), profile });
 }
 
 export function resetJourney() {

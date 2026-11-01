@@ -17,13 +17,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { saveProfile } from "@/lib/journey-progress";
 
 // All steps: the field steps from profileSteps, then the read-only review,
 // which has no fields of its own. currentStep is just an index into this array.
-const steps = [...profileSteps, { key: "review", title: "Review your profile" }];
+const steps = [
+  ...profileSteps,
+  { key: "review", title: "Review your profile" },
+];
 const reviewStep = steps.length - 1;
 
-export default function ProfileForm() {
+// onSubmittedChange tells the parent when the form is completed (true) or
+// started over (false), so the page can show its Continue button.
+export default function ProfileForm({ onSubmittedChange }) {
   // react-hook-form holds all form values. They survive step changes because
   // unmounted fields keep their values by default (shouldUnregister: false).
   const methods = useForm({
@@ -68,8 +74,14 @@ export default function ProfileForm() {
   }
 
   // handleSubmit validates every field first and only calls this if all pass.
-  function onSubmit() {
+  function onSubmit(data) {
+    // data holds every validated value, grouped by step. This is the place to
+    // store or work with it. For now saveProfile keeps it in localStorage
+    // (see lib/journey-progress.ts), where later journey steps can read it
+    // with useJourneyProgress(). Swap this call to save it somewhere else.
+    saveProfile(data);
     setSubmitted(true);
+    onSubmittedChange?.(true);
   }
 
   function startOver() {
@@ -77,98 +89,97 @@ export default function ProfileForm() {
     setCurrentStep(0);
     setEditingFromReview(false);
     setSubmitted(false);
+    onSubmittedChange?.(false);
   }
 
+  // Card uses bg-card, which is blue in our theme, so the card body is
+  // set to white and the header gets the primary brand red. pt-0 lets the
+  // header reach the top edge. --card-spacing sets the card's padding.
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4 text-foreground">
-      {/* Card uses bg-card, which is blue in our theme, so the card body is
-          set to white and only the header gets the blue. pt-0 lets the header
-          reach the top edge. --card-spacing sets the card's padding. */}
-      <Card className="w-full max-w-md bg-white pt-0 text-foreground shadow-sm [--card-spacing:--spacing(6)]">
-        <CardHeader className="bg-card py-4 text-card-foreground">
-          {submitted ? (
-            <>
-              <CardTitle className="text-lg font-semibold">
-                Profile form complete
-              </CardTitle>
-              <CardDescription className="text-card-foreground/80">
-                Thanks for filling out the profile form.
-              </CardDescription>
-            </>
-          ) : (
-            <>
-              <CardDescription className="text-card-foreground/80">
-                Step {currentStep + 1} of {steps.length}
-              </CardDescription>
-              <CardTitle className="text-lg font-semibold">
-                {step.title}
-              </CardTitle>
-              {/* value is a percentage. The **:data-[slot=...] classes restyle the
-                  track and indicator inside Progress: yellow bar on a light track. */}
-              <Progress
-                value={((currentStep + 1) / steps.length) * 100}
-                className="mt-2 **:data-[slot=progress-indicator]:bg-secondary **:data-[slot=progress-track]:h-1.5 **:data-[slot=progress-track]:bg-white/20"
-              />
-            </>
-          )}
-        </CardHeader>
+    <Card className="w-full max-w-md bg-white pt-0 text-foreground shadow-sm [--card-spacing:--spacing(6)]">
+      <CardHeader className="bg-primary py-4 text-primary-foreground">
+        {submitted ? (
+          <>
+            <CardTitle className="text-lg font-semibold">
+              Profile form complete
+            </CardTitle>
+            <CardDescription className="text-primary-foreground/80">
+              Thanks for filling out the profile form.
+            </CardDescription>
+          </>
+        ) : (
+          <>
+            <CardDescription className="text-primary-foreground/80">
+              Step {currentStep + 1} of {steps.length}
+            </CardDescription>
+            <CardTitle className="text-lg font-semibold">
+              {step.title}
+            </CardTitle>
+            {/* value is a percentage. The **:data-[slot=...] classes restyle the
+                track and indicator inside Progress: yellow bar on a light track. */}
+            <Progress
+              value={((currentStep + 1) / steps.length) * 100}
+              className="mt-2 **:data-[slot=progress-indicator]:bg-secondary **:data-[slot=progress-track]:h-1.5 **:data-[slot=progress-track]:bg-white/20"
+            />
+          </>
+        )}
+      </CardHeader>
 
-        {/* FormProvider shares the form with every FormField inside the steps,
-            which reads it with useFormContext. noValidate turns off the
-            browser's own popups. Every step submits the form (button or
-            Enter key): steps 1-3 go to the next step, the last one submits. */}
-        <CardContent>
-          {submitted ? (
-            <p role="status">
-              The profile form was completed. This project does not persist
-              profile data yet.
-            </p>
-          ) : (
-            <FormProvider {...methods}>
-              <form
-                id="profile-form"
-                onSubmit={
-                  isLastStep ? methods.handleSubmit(onSubmit) : handleNext
-                }
-                noValidate
-              >
-                {/* Render only the current step. key makes React start fresh
-                    when the step changes. */}
-                {isLastStep ? (
-                  <ReviewStep onEdit={handleEdit} />
-                ) : (
-                  <FieldsStep key={step.key} step={step} />
-                )}
-              </form>
-            </FormProvider>
-          )}
-        </CardContent>
+      {/* FormProvider shares the form with every FormField inside the steps,
+          which reads it with useFormContext. noValidate turns off the
+          browser's own popups. Every step submits the form (button or
+          Enter key): steps 1-3 go to the next step, the last one submits. */}
+      <CardContent>
+        {submitted ? (
+          <p role="status">
+            The profile form was completed. Your profile is saved in this
+            browser.
+          </p>
+        ) : (
+          <FormProvider {...methods}>
+            <form
+              id="profile-form"
+              onSubmit={
+                isLastStep ? methods.handleSubmit(onSubmit) : handleNext
+              }
+              noValidate
+            >
+              {/* Render only the current step. key makes React start fresh
+                  when the step changes. */}
+              {isLastStep ? (
+                <ReviewStep onEdit={handleEdit} />
+              ) : (
+                <FieldsStep key={step.key} step={step} />
+              )}
+            </form>
+          </FormProvider>
+        )}
+      </CardContent>
 
-        {/* The buttons are outside the <form>, so form="profile-form" connects
-            the submit button to it. */}
-        <CardFooter className="justify-between">
-          {submitted ? (
-            <Button type="button" size="lg" onClick={startOver}>
-              Start another profile
+      {/* The buttons are outside the <form>, so form="profile-form" connects
+          the submit button to it. */}
+      <CardFooter className="justify-between">
+        {submitted ? (
+          <Button type="button" size="lg" onClick={startOver}>
+            Start another profile
+          </Button>
+        ) : (
+          <>
+            <Button
+              type="button"
+              variant="ghost"
+              size="lg"
+              onClick={() => setCurrentStep(currentStep - 1)}
+              disabled={currentStep === 0}
+            >
+              Back
             </Button>
-          ) : (
-            <>
-              <Button
-                type="button"
-                variant="outline"
-                size="lg"
-                onClick={() => setCurrentStep(currentStep - 1)}
-                disabled={currentStep === 0}
-              >
-                Back
-              </Button>
-              <Button type="submit" form="profile-form" size="lg">
-                {nextLabel}
-              </Button>
-            </>
-          )}
-        </CardFooter>
-      </Card>
-    </div>
+            <Button type="submit" form="profile-form" size="lg">
+              {nextLabel}
+            </Button>
+          </>
+        )}
+      </CardFooter>
+    </Card>
   );
 }
