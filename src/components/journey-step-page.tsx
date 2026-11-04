@@ -15,18 +15,21 @@ import { markStepComplete, useJourneyProgress } from "@/lib/journey-progress";
 // earlier journey steps are complete (no redirect — a notice is unambiguous
 // and needs no localStorage-before-render work), then the page content with a
 // Continue action that marks this page done. The last step routes back to the
-// landing page instead of another step.
+// landing page instead of another step. showContinue lets a page hide the
+// Continue action until its own content is done (e.g. a form is submitted).
 export function JourneyStepPage({
   pageId,
   nextHref,
   description,
   isLast,
+  showContinue = true,
   children,
 }: {
   pageId: JourneyStepId;
   nextHref: string;
   description: string;
   isLast?: boolean;
+  showContinue?: boolean;
   children?: React.ReactNode;
 }) {
   const { journey, hydrated } = useJourneyProgress();
@@ -69,15 +72,17 @@ export function JourneyStepPage({
         <p className="text-sm text-muted-foreground mt-1">{description}</p>
       </div>
       {children}
-      <div>
-        <Button
-          nativeButton={false}
-          render={<Link href={nextHref} />}
-          onClick={() => markStepComplete(pageId)}
-        >
-          {isLast ? "Finish" : "Continue"}
-        </Button>
-      </div>
+      {showContinue && (
+        <div>
+          <Button
+            nativeButton={false}
+            render={<Link href={nextHref} />}
+            onClick={() => markStepComplete(pageId)}
+          >
+            {isLast ? "Finish" : "Continue"}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
