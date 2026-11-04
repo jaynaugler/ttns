@@ -1,15 +1,8 @@
 import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldDescription,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSet,
-} from "@/components/ui/field";
+import ProfileForm from "@/components/profile-form/ProfileForm";
 import { RadioButtonGroup } from "@/components/ui/radio-button";
 import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
 
 export default function KitchenSinkPage() {
   return (
@@ -59,25 +52,12 @@ export default function KitchenSinkPage() {
       </div>
 
       <br></br>
-      {/* Field and Input Components */}
-      {/* <div className="w-60 h-80 border-2 rounded-xl p-4">
-        <FieldSet>
-          <FieldLegend>Profile</FieldLegend>
-          <FieldDescription>Input field description</FieldDescription>
-          <FieldGroup>
-            <Field>
-              <FieldLabel htmlFor="name">Full name</FieldLabel>
-              <Input id="name" autoComplete="off" placeholder="Evil Rabbit" />
-              <FieldDescription>This appears on invoices and emails.</FieldDescription>
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="username">Username</FieldLabel>
-              <Input id="username" autoComplete="off" aria-invalid />
-              <FieldError>Choose another username.</FieldError>
-            </Field>
-          </FieldGroup>
-        </FieldSet>
-      </div> */}
+        <section aria-labelledby="profile-form-heading">
+          <h2 id="profile-form-heading" className="text-xl font-medium">
+            Profile Form
+          </h2>
+          <ProfileForm />
+        </section>
 
       <br></br>
       <div></div>
