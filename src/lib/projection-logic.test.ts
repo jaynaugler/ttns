@@ -15,6 +15,7 @@ import {
 	describeShift,
 	projectOutcomes,
 	rankProjections,
+	scenarioKey,
 	suggestSkillToGain,
 	toCareerMatches,
 	toOutcomeShift,
@@ -227,6 +228,12 @@ describe("plain-language helpers", () => {
 	it("leaves out the skill scenario when the user has no skills yet", () => {
 		const kinds = buildDefaultScenarios(MOCK_MATCHES, []).map((s) => s.kind);
 		assert.deepEqual(kinds, ["finish-education", "add-experience"]);
+	});
+
+	it("gives each scenario a distinct key", () => {
+		const keys = buildDefaultScenarios(MOCK_MATCHES, MOCK_USER_SKILLS).map(scenarioKey);
+		assert.equal(new Set(keys).size, keys.length);
+		assert.equal(scenarioKey(gainOral), `gain-skill:${ORAL}`);
 	});
 });
 

@@ -381,6 +381,18 @@ export function toCareerMatches(projected: readonly ProjectedOutcome[]): CareerM
 	}));
 }
 
+// A stable string for one scenario, e.g. for a radio value or React key.
+export function scenarioKey(scenario: Scenario): string {
+	switch (scenario.kind) {
+		case "gain-skill":
+			return `gain-skill:${scenario.skill}`;
+		case "finish-education":
+			return `finish-education:${scenario.step}`;
+		case "add-experience":
+			return `add-experience:${scenario.years}`;
+	}
+}
+
 // Bridges a projection to the OutcomeShift shape used elsewhere in Team 5.
 export function toOutcomeShift(outcome: ProjectedOutcome): OutcomeShift {
 	return createOutcomeShift(outcome.careerId, outcome.currentScore, outcome.score);
