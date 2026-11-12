@@ -47,7 +47,7 @@ export function WageProjectionCard({
 				<div className="space-y-3">
 					<div>
 						<p className="text-sm text-muted-foreground">
-							Projected median wage
+							Median wage
 						</p>
 						<p className="text-2xl font-semibold">
 							{formatCurrency(projection.projectedWage!)}
