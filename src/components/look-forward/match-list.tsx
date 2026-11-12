@@ -21,6 +21,10 @@ function careerTitle(careerId: string): string {
 	return findCareerById(careerId)?.title ?? `Career ${careerId}`;
 }
 
+function percent(score: number): number {
+	return Math.max(0, Math.min(100, score));
+}
+
 // Decorative: the score is always given in text beside it. The tick marks
 // the score before the change so the bar shows the shift at a glance.
 function ScoreBar({ score, previousScore }: { score: number; previousScore?: number }) {
@@ -28,12 +32,12 @@ function ScoreBar({ score, previousScore }: { score: number; previousScore?: num
 		<div aria-hidden="true" className="relative mt-3 h-2.5 rounded-full bg-neutral-300">
 			<div
 				className="h-full rounded-full bg-card-blue motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-out"
-				style={{ width: `${score}%` }}
+				style={{ width: `${percent(score)}%` }}
 			/>
 			{previousScore !== undefined && (
 				<div
 					className="absolute -top-1 h-4.5 w-0.5 rounded-full bg-black"
-					style={{ left: `calc(${previousScore}% - 1px)` }}
+					style={{ left: `calc(${percent(previousScore)}% - 1px)` }}
 				/>
 			)}
 		</div>
