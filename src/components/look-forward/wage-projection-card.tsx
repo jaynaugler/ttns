@@ -6,6 +6,8 @@ import {
 interface WageProjectionCardProps {
 	careerId: string;
 	currentWage?: number;
+	// "h3" when the card sits inside another section's h2.
+	headingLevel?: "h2" | "h3";
 }
 
 function formatCurrency(value: number): string {
@@ -19,7 +21,9 @@ function formatCurrency(value: number): string {
 export function WageProjectionCard({
 	careerId,
 	currentWage,
+	headingLevel = "h2",
 }: WageProjectionCardProps) {
+	const Heading = headingLevel;
 	const career = findCareerById(careerId);
 
 	if (!career) {
@@ -36,10 +40,14 @@ export function WageProjectionCard({
 
 	return (
 		<section className="space-y-4 rounded-lg border p-5">
+			{/* Named for its content, not "Look Forward", so it doesn't
+			    duplicate the LookForward section's heading on the same page. */}
 			<div>
-				<h2 className="text-2xl font-bold">Look Forward</h2>
+				<Heading className="text-2xl font-bold">
+					Wage outlook for {career.title}
+				</Heading>
 				<p className="text-sm text-muted-foreground">
-					Estimated wage outlook for {career.title}
+					Today&apos;s median wage for this occupation
 				</p>
 			</div>
 
