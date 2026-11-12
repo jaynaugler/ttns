@@ -1,6 +1,6 @@
 // Team 5 logic for calculating outcome shifts
 
-import careersData from "@/data/careers.json";
+import careersData from "../data/careers.json";
 import type { Career, OutcomeShift, WageProjection } from "@/types/outcomes";
 
 const careers = careersData as Career[];
