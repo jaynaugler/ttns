@@ -95,9 +95,13 @@ Hand-off notes, status and open items: `src/components/look-forward/README.md`.
   is re-scored with Team 4's own formula. Without those lists, it reports
   that it can't project, with no score change.
 - **Team 6 (output):** `toCareerMatches(projected)` returns plain
-  `CareerMatch` objects ready for `POST /api/steps`, with the projection's
-  reason first in `rationale`. `ProjectedOutcome` also extends `CareerMatch`
-  directly.
+  `CareerMatch` objects ready to send as `matches` to `POST /api/steps`,
+  with the projection's reason first in `rationale`. It stays within Team 6's
+  request validation (non-blank career IDs, at most 500 matches, rationale
+  lines of at most 500 characters), and Team 5's tests run its output
+  through Team 6's own `validateNextStepsRequest`. Team 6 still needs a
+  `profile` in the same request; building that is the application
+  integration layer's job (see Team 6's `BACKEND_ROADMAP.md`).
 - **Shared types:** Team 5 added `Scenario`, `ScenarioKind` and
   `ProjectedOutcome` to `src/types/outcomes.ts`; existing types are unchanged.
 
@@ -152,9 +156,11 @@ The page labels these shifts as rough guides.
   them rather than mirror them.
 - **Team 4:** if scoring gains education or experience inputs, Team 5 can
   replace the placeholder rules above with the real calculation.
-- **Team 6:** projected matches from `toCareerMatches()` could feed
-  `POST /api/steps`, so next steps can reflect the change the user is
-  considering.
+- **Team 6 and the integration layer:** Team 6's roadmap leaves open which
+  matches the application should send. Projected matches from
+  `toCareerMatches()` could feed `POST /api/steps`, so next steps reflect
+  the change the user is considering; current matches would reflect where
+  they stand today. Agreeing on one would let the Next Step page be wired.
 
 ## Entry UI Shell
 

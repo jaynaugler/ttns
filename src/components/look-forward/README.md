@@ -42,7 +42,29 @@ and `journey.savedSkills` once matching is merged.
 - `projectOutcomes` returns `ProjectedOutcome[]`, best projected score
   first. `score` is the projected score, `currentScore` the original.
 - Team 6: `toCareerMatches(projected)` gives plain `CareerMatch` objects for
-  `POST /api/steps`, with the reason first in `rationale`.
+  `POST /api/steps`, with the reason first in `rationale`. It keeps within
+  Team 6's request validation, where one bad match fails the whole request:
+  blank career IDs are dropped, the best 500 matches are kept, and rationale
+  is capped at 500 lines of 500 characters. `STEPS_API_MAX_ITEMS` and
+  `STEPS_API_MAX_TEXT` mirror Team 6's `MAX_ARRAY_ITEMS` and
+  `MAX_STRING_LENGTH`; a test fails if they drift.
+- The "compatibility with Team 6" tests run Team 5's output through Team 6's
+  own `validateNextStepsRequest`.
+
+## Open items with Team 6
+
+Team 6's `BACKEND_ROADMAP.md` and PR #25 (Phase 1 compatibility) don't ask
+anything specific of Team 5. Open points that touch Team 5:
+
+- **Which matches to send.** The roadmap asks which career matches the
+  application should provide. Team 5 can supply projected matches through
+  `toCareerMatches()`; the class needs to decide whether the Next Step page
+  uses those or the current ones.
+- **Who sends the request.** No client calls `POST /api/steps` yet. Team 5's
+  logic is pure and doesn't fetch; the caller also has to build a valid
+  `UserProfile`, which the roadmap assigns to the integration layer.
+- **The 500-match cap.** Team 6 accepts at most 500 matches and there are 516
+  careers. `toCareerMatches()` already keeps the best 500.
 
 ## Scoring
 
