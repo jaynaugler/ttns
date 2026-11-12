@@ -27,8 +27,13 @@ const steps = [
 ];
 const reviewStep = steps.length - 1;
 
-// onSubmittedChange tells the parent when the form is completed (true) or
-// started over (false), so the page can show its Continue button.
+/**
+ * @param {Object} props
+ * @param {(submitted: boolean) => void} [props.onSubmittedChange] Tells the
+ *   parent when the form is completed (true) or started over (false), so the
+ *   page can show its Continue button. Optional: callers that don't care can
+ *   render `<ProfileForm />`.
+ */
 export default function ProfileForm({ onSubmittedChange }) {
   // react-hook-form holds all form values. They survive step changes because
   // unmounted fields keep their values by default (shouldUnregister: false).
