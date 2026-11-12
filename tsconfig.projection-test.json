@@ -17,8 +17,11 @@
   "include": [
     "src/lib/projection-logic.ts",
     "src/lib/projection-logic.test.ts",
+    "src/lib/next-steps-validation.ts",
+    "src/lib/next-steps-types.ts",
     "src/components/look-forward/mock-matches.ts",
     "src/types/outcomes.ts",
+    "src/types/user.ts",
     "src/data/careers.json"
   ]
 }

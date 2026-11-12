@@ -371,14 +371,39 @@ export function buildDefaultScenarios(
 	];
 }
 
-// For Team 6: projections as plain CareerMatch objects, ready to send to
-// POST /api/steps. The reason leads the rationale.
+// Team 6's request limits for POST /api/steps (MAX_ARRAY_ITEMS and
+// MAX_STRING_LENGTH in src/lib/next-steps-validation.ts). One bad match
+// fails the whole request, so toCareerMatches keeps within them. Mirrored
+// rather than imported to keep Team 6's validator out of the client bundle;
+// projection-logic.test.ts fails if they drift.
+export const STEPS_API_MAX_ITEMS = 500;
+export const STEPS_API_MAX_TEXT = 500;
+
+function fitText(text: string): string {
+	return text.length <= STEPS_API_MAX_TEXT
+		? text
+		: `${text.slice(0, STEPS_API_MAX_TEXT - 1)}…`;
+}
+
+// For Team 6: projections as plain CareerMatch objects, ready to send as
+// `matches` to POST /api/steps. The reason leads the rationale. Stays within
+// Team 6's validation: blank or over-long career IDs are dropped (Team 6
+// would reject them), the list keeps the best 500, and rationale holds at
+// most 500 lines of at most 500 characters each.
 export function toCareerMatches(projected: readonly ProjectedOutcome[]): CareerMatch[] {
-	return projected.map((outcome) => ({
-		careerId: outcome.careerId,
-		score: outcome.score,
-		rationale: [outcome.reason, ...(outcome.rationale ?? [])],
-	}));
+	return rankMatches(projected)
+		.filter(
+			(outcome) =>
+				outcome.careerId.trim() !== "" && outcome.careerId.length <= STEPS_API_MAX_TEXT,
+		)
+		.slice(0, STEPS_API_MAX_ITEMS)
+		.map((outcome) => ({
+			careerId: outcome.careerId,
+			score: outcome.score,
+			rationale: [outcome.reason, ...(outcome.rationale ?? [])]
+				.slice(0, STEPS_API_MAX_ITEMS)
+				.map(fitText),
+		}));
 }
 
 // A stable string for one scenario, e.g. for a radio value or React key.

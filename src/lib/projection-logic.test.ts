@@ -16,11 +16,18 @@ import {
 	projectOutcomes,
 	rankProjections,
 	scenarioKey,
+	STEPS_API_MAX_ITEMS,
+	STEPS_API_MAX_TEXT,
 	suggestSkillToGain,
 	toCareerMatches,
 	toOutcomeShift,
 	type ProjectableMatch,
 } from "./projection-logic";
+import {
+	MAX_ARRAY_ITEMS,
+	MAX_STRING_LENGTH,
+	validateNextStepsRequest,
+} from "./next-steps-validation";
 
 const ORAL = "Oral Communication: Oral Comprehension";
 const gainOral = { kind: "gain-skill", skill: ORAL } as const;
@@ -252,5 +259,76 @@ describe("exports for other teams", () => {
 		assert.equal(shift.careerId, "13102");
 		assert.equal(shift.projectedScore, 85);
 		assert.equal(shift.currentScore, 65.4);
+	});
+});
+
+// Runs Team 5's output through Team 6's own request validator, so these fail
+// if either side's contract changes.
+describe("compatibility with Team 6's POST /api/steps", () => {
+	// The smallest profile Team 6 accepts; building the real one is the
+	// application integration layer's job, not Team 5's.
+	const profile = { id: "test-user", skills: [], interests: [] };
+
+	function validate(matches: CareerMatch[]) {
+		return validateNextStepsRequest(JSON.parse(JSON.stringify({ matches, profile })));
+	}
+
+	it("keeps Team 5's mirrored limits equal to Team 6's", () => {
+		assert.equal(STEPS_API_MAX_ITEMS, MAX_ARRAY_ITEMS);
+		assert.equal(STEPS_API_MAX_TEXT, MAX_STRING_LENGTH);
+	});
+
+	it("passes Team 6 validation for every default scenario, unchanged", () => {
+		for (const scenario of buildDefaultScenarios(MOCK_MATCHES, MOCK_USER_SKILLS)) {
+			const matches = toCareerMatches(
+				projectOutcomes(MOCK_MATCHES, scenario, { userSkills: MOCK_USER_SKILLS }),
+			);
+			const result = validate(matches);
+			assert.ok(result.ok, JSON.stringify(!result.ok && result.errors));
+			assert.deepEqual(result.value.matches, matches);
+		}
+	});
+
+	it("passes with no matches", () => {
+		const result = validate(toCareerMatches([]));
+		assert.ok(result.ok);
+		assert.deepEqual(result.value.matches, []);
+	});
+
+	it("keeps leading zeroes in career IDs", () => {
+		const [outcome] = projectOutcomes([plain(50, "00010")], { kind: "add-experience", years: 1 });
+		const result = validate(toCareerMatches([outcome]));
+		assert.ok(result.ok);
+		assert.equal(result.value.matches[0].careerId, "00010");
+	});
+
+	it("stays within Team 6's limits instead of failing the whole request", () => {
+		const many = Array.from({ length: 600 }, (_, i) =>
+			plain(i % 100, String(i).padStart(5, "0")),
+		);
+		const outcomes = projectOutcomes(many, { kind: "add-experience", years: 1 });
+		const longSkill = "x".repeat(600);
+		const [longReason] = projectOutcomes([MOCK_MATCHES[1]], { kind: "gain-skill", skill: longSkill }, {
+			userSkills: MOCK_USER_SKILLS,
+		});
+		const blankId: ProjectedOutcome = { ...outcomes[0], careerId: "  " };
+
+		const matches = toCareerMatches([...outcomes, longReason, blankId]);
+		const result = validate(matches);
+		assert.ok(result.ok, JSON.stringify(!result.ok && result.errors.slice(0, 3)));
+		assert.equal(matches.length, MAX_ARRAY_ITEMS);
+		assert.ok(matches.every((m) => m.careerId.trim() !== ""));
+		// Best scores are kept: the 500 kept are all at least as high as any dropped.
+		assert.ok(matches.every((m) => m.score >= matches[matches.length - 1].score));
+	});
+
+	it("shortens an over-long reason rather than sending it", () => {
+		const [outcome] = projectOutcomes([MOCK_MATCHES[1]], {
+			kind: "gain-skill",
+			skill: "x".repeat(600),
+		}, { userSkills: MOCK_USER_SKILLS });
+		const [match] = toCareerMatches([outcome]);
+		assert.equal(match.rationale?.[0].length, MAX_STRING_LENGTH);
+		assert.ok(validate([match]).ok);
 	});
 });
