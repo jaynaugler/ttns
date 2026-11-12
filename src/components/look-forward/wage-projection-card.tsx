@@ -29,7 +29,7 @@ export function WageProjectionCard({
 	if (!career) {
 		return (
 			<div className="rounded-lg border p-4">
-				<p className="text-sm text-muted-foreground">
+				<p className="text-sm text-neutral-700">
 					Career data unavailable.
 				</p>
 			</div>
@@ -47,7 +47,7 @@ export function WageProjectionCard({
 				<Heading className="text-2xl font-bold">
 					Wage outlook for {career.title}
 				</Heading>
-				<p className="text-sm text-muted-foreground">
+				<p className="text-sm text-neutral-700">
 					Today&apos;s median wage for this occupation
 				</p>
 			</div>
@@ -55,20 +55,20 @@ export function WageProjectionCard({
 			{projection && medianWage !== undefined ? (
 				<div className="space-y-3">
 					<div>
-						<p className="text-sm text-muted-foreground">
+						<p className="text-sm text-neutral-700">
 							Median wage
 						</p>
 						<p className="text-2xl font-semibold">
 							{formatCurrency(medianWage)}
 						</p>
-						<p className="text-sm text-muted-foreground">
+						<p className="text-sm text-neutral-700">
 							per year
 						</p>
 					</div>
 
 					{projection.currentWage !== undefined && (
 						<div>
-							<p className="text-sm text-muted-foreground">
+							<p className="text-sm text-neutral-700">
 								Current wage
 							</p>
 							<p className="font-medium">
@@ -79,7 +79,7 @@ export function WageProjectionCard({
 
 					{projection.delta !== undefined && (
 						<div>
-							<p className="text-sm text-muted-foreground">
+							<p className="text-sm text-neutral-700">
 								Potential wage difference
 							</p>
 							<p className="font-medium">
@@ -90,7 +90,7 @@ export function WageProjectionCard({
 					)}
 				</div>
 			) : (
-				<p className="text-sm text-muted-foreground">
+				<p className="text-sm text-neutral-700">
 					Wage data is not available for this career.
 				</p>
 			)}
