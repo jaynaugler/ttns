@@ -170,6 +170,10 @@ function projectSkill(
 	if (!matchedSkills || !missingSkills || careerSkillCount === 0) {
 		return unchanged(match, "We need this career's skill list to project a new skill.");
 	}
+	// The match already counted this skill, even though userSkills omits it.
+	if (matchedSkills.includes(skill)) {
+		return unchanged(match, `${skill} already counts toward this match.`);
+	}
 
 	const alpha = cleanAlpha(options.alpha);
 	const matchedCount = new Set(matchedSkills).size;
@@ -353,12 +357,13 @@ export function suggestSkillToGain(
 	return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0];
 }
 
-// The three scenarios Look Forward offers by default.
+// The three scenarios Look Forward offers by default. "Gain a skill" is left
+// out when it can't be projected: no current skills, or no skill lists.
 export function buildDefaultScenarios(
 	matches: readonly ProjectableMatch[],
 	userSkills: readonly string[],
 ): Scenario[] {
-	const skill = suggestSkillToGain(matches, userSkills);
+	const skill = userSkills.length > 0 ? suggestSkillToGain(matches, userSkills) : undefined;
 	return [
 		...(skill ? [{ kind: "gain-skill", skill } as const] : []),
 		{ kind: "finish-education", step: "a diploma or certificate" },

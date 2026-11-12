@@ -88,6 +88,17 @@ describe("projectOutcomes: gain a skill", () => {
 		);
 		assert.equal(blank.scoreShift, 0);
 	});
+
+	it("doesn't call a skill unused when the match already counted it", () => {
+		// Writing is in 13102's matchedSkills but left out of userSkills here.
+		const [outcome] = projectOutcomes(
+			[MOCK_MATCHES[1]],
+			{ kind: "gain-skill", skill: "Writing" },
+			{ userSkills: ["Numeracy"] },
+		);
+		assert.equal(outcome.scoreShift, 0);
+		assert.equal(outcome.reason, "Writing already counts toward this match.");
+	});
 });
 
 describe("projectOutcomes: finish an education step", () => {
@@ -211,6 +222,11 @@ describe("plain-language helpers", () => {
 			buildDefaultScenarios(matches, MOCK_USER_SKILLS).map((s) => s.kind);
 		assert.deepEqual(kinds(MOCK_MATCHES), ["gain-skill", "finish-education", "add-experience"]);
 		assert.deepEqual(kinds([plain(50)]), ["finish-education", "add-experience"]);
+	});
+
+	it("leaves out the skill scenario when the user has no skills yet", () => {
+		const kinds = buildDefaultScenarios(MOCK_MATCHES, []).map((s) => s.kind);
+		assert.deepEqual(kinds, ["finish-education", "add-experience"]);
 	});
 });
 
