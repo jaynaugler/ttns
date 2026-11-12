@@ -37,6 +37,7 @@ export function WageProjectionCard({
 	}
 
 	const projection = createWageProjection(careerId, currentWage);
+	const medianWage = projection?.projectedWage;
 
 	return (
 		<section className="space-y-4 rounded-lg border p-5">
@@ -51,14 +52,14 @@ export function WageProjectionCard({
 				</p>
 			</div>
 
-			{projection ? (
+			{projection && medianWage !== undefined ? (
 				<div className="space-y-3">
 					<div>
 						<p className="text-sm text-muted-foreground">
 							Median wage
 						</p>
 						<p className="text-2xl font-semibold">
-							{formatCurrency(projection.projectedWage!)}
+							{formatCurrency(medianWage)}
 						</p>
 						<p className="text-sm text-muted-foreground">
 							per year
