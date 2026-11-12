@@ -57,14 +57,17 @@ and `journey.savedSkills` once matching is merged.
 
 - Native radios in `FieldSet` + `FieldLegend`: arrow keys move between
   options, and the whole card is the label (well over 44×44).
-- Focus: 3px brand-red outline on the option card (about 12:1 on cream).
+- Focus: 3px brand-red outline on the option card (about 12:1 on cream),
+  shown at full strength immediately (only border and background animate).
 - Shifts and rank changes are text ("Up 19.6 points", "Moved down from #1");
   colour and arrow icons are extras, and the icons are `aria-hidden`.
 - `role="status"` announces "Projection updated: <scenario>." on each change.
 - Score bars are decorative (`aria-hidden`); the score is always in text.
 - Motion only runs under `prefers-reduced-motion: no-preference`.
 - Checked in the browser: text contrast is at least 5.59:1, option borders
-  at least 4.47:1, and no horizontal scroll at 320px.
+  at least 4.47:1, and no horizontal scroll at 375px or 320px.
+- Section heading id comes from `useId`, so two instances on one page don't
+  collide.
 
 ## Left to do
 
@@ -72,6 +75,42 @@ and `journey.savedSkills` once matching is merged.
 - Import Team 4's `DEFAULT_ALPHA` / `ScoredCareerMatch` once merged.
 - Agree on the education/experience rule.
 - Let the user pick which skill to gain.
-- Decide whether `wage-projection-card.tsx` sits beside the comparison.
-  `src/app/team5-test/page.tsx` is the earlier test page for it.
 - Manual passes: NVDA, keyboard-only, 400% zoom, OS reduced motion on.
+
+## Suggestions for the wage projection card
+
+These came out of reviewing the Look Forward page with both components on
+it. They're suggestions for whoever picks up `wage-projection-card.tsx` and
+the related logic; the card itself hasn't been changed.
+
+1. **Label.** The card shows the career's median wage from `careers.json`,
+   which is today's figure rather than a projection. "Median wage" would
+   describe it accurately.
+2. **Heading structure.** The card's `<h2>Look Forward</h2>` sits at the
+   same level as Look Forward's own `h2`, so a screen-reader heading list
+   would show two Look Forward sections. A structure that reads cleanly:
+
+   ```
+   h1  Updated Pathways                     (JourneyStepPage)
+     h2  What if you took one more step?    (LookForward; "Look Forward" eyebrow)
+       h3  Today / <chosen change>
+         h4  career titles
+     h2  Wage outlook for <career>          (wage card)
+   ```
+
+   An optional `headingLevel` prop would also let the card sit as an `h3`
+   inside another section.
+3. **Rounding.** `createOutcomeShift` returns the raw difference, so
+   85 − 65.4 comes out as 19.600000000000001. Rounding `delta` to one
+   decimal place, as Team 4 does for scores, would keep it consistent.
+4. **Test route.** `src/app/team5-test/page.tsx` would ship as a live
+   `/team5-test` page. Removing it, or moving the demo into
+   `src/app/kitchen-sink/page.tsx`, before merging to main would avoid that.
+5. **Non-null assertion.** `projection.projectedWage!` can be replaced by
+   a simple `projection.projectedWage !== undefined` check. The card's files
+   are also missing a final newline.
+6. **Grey text contrast.** `text-muted-foreground` (`#737373`) measures
+   4.47:1 on the cream page background (`#faf8f5`), just under the 4.5:1
+   minimum for 14px text. It reaches 4.74:1 on white, so either a white card
+   background (`bg-white`) or a darker grey such as `text-neutral-700`
+   would pass.
