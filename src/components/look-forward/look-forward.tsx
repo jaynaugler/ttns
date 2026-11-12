@@ -80,7 +80,9 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 						onSelect={handleSelect}
 					/>
 
-					<div className="grid gap-4 md:grid-cols-2">
+					{/* items-start: each column keeps its own height instead of
+					    stretching "Today" to match the taller projected column. */}
+					<div className="grid items-start gap-4 md:grid-cols-2">
 						<div className="rounded-xl border-2 border-neutral-500 bg-neutral-100 p-4">
 							<h3 className="mb-3 text-lg font-bold">Today</h3>
 							<CurrentMatchList matches={currentTop} />
