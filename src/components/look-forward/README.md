@@ -1,7 +1,7 @@
 # Team 5 — Look Forward
 
 Shows how a user's career matches would shift if they made one change, and
-the projected wage for a career.
+today's median wage for a career.
 
 Status as of 2026-11-12, written for the halfway team switch.
 
@@ -13,7 +13,7 @@ Status as of 2026-11-12, written for the halfway team switch.
 | `scenario-picker.tsx` | Radio group in a fieldset with a legend |
 | `match-list.tsx` | Current and projected match lists, shift and rank change in words |
 | `mock-matches.ts` | Mock Team 4 output (real NOC codes) until matching is on main |
-| `wage-projection-card.tsx` | Wage projection card (earlier Team 5 work) |
+| `wage-projection-card.tsx` | Wage outlook card (earlier Team 5 work); optional `headingLevel` |
 | `src/lib/projection-logic.ts` | Pure logic, no fetch or React |
 | `src/lib/projection-logic.test.ts` | Tests: `pnpm run test:projection` (also part of `pnpm test`) |
 | `src/types/outcomes.ts` | Team 5 added `Scenario`, `ScenarioKind`, `ProjectedOutcome`, `OutcomeShift` |
@@ -99,18 +99,19 @@ anything specific of Team 5. Open points that touch Team 5:
 - Let the user pick which skill to gain.
 - Manual passes: NVDA, keyboard-only, 400% zoom, OS reduced motion on.
 
-## Suggestions for the wage projection card
+## Wage projection card: review fixes
 
-These came out of reviewing the Look Forward page with both components on
-it. They're suggestions for whoever picks up `wage-projection-card.tsx` and
-the related logic; the card itself hasn't been changed.
+The wage card and its logic came from the earlier `team5-projection`
+commits, which are kept in history. A review with both components on one
+page turned up six issues, each fixed in its own commit:
 
 1. **Label.** The card shows the career's median wage from `careers.json`,
-   which is today's figure rather than a projection. "Median wage" would
-   describe it accurately.
-2. **Heading structure.** The card's `<h2>Look Forward</h2>` sits at the
-   same level as Look Forward's own `h2`, so a screen-reader heading list
-   would show two Look Forward sections. A structure that reads cleanly:
+   today's figure rather than a projection, so "Projected median wage" now
+   reads "Median wage".
+2. **Heading structure.** The card's `<h2>Look Forward</h2>` duplicated the
+   Look Forward section on the same page. It is now named for its content,
+   and an optional `headingLevel="h3"` prop lets it nest inside another
+   section:
 
    ```
    h1  Updated Pathways                     (JourneyStepPage)
@@ -120,19 +121,16 @@ the related logic; the card itself hasn't been changed.
      h2  Wage outlook for <career>          (wage card)
    ```
 
-   An optional `headingLevel` prop would also let the card sit as an `h3`
-   inside another section.
-3. **Rounding.** `createOutcomeShift` returns the raw difference, so
-   85 − 65.4 comes out as 19.600000000000001. Rounding `delta` to one
-   decimal place, as Team 4 does for scores, would keep it consistent.
-4. **Test route.** `src/app/team5-test/page.tsx` would ship as a live
-   `/team5-test` page. Removing it, or moving the demo into
-   `src/app/kitchen-sink/page.tsx`, before merging to main would avoid that.
-5. **Non-null assertion.** `projection.projectedWage!` can be replaced by
-   a simple `projection.projectedWage !== undefined` check. The card's files
-   are also missing a final newline.
-6. **Grey text contrast.** `text-muted-foreground` (`#737373`) measures
-   4.47:1 on the cream page background (`#faf8f5`), just under the 4.5:1
-   minimum for 14px text. It reaches 4.74:1 on white, so either a white card
-   background (`bg-white`) or a darker grey such as `text-neutral-700`
-   would pass.
+3. **Rounding.** `createOutcomeShift` returned the raw difference
+   (85 − 65.4 gave 19.599999999999994). `delta` now uses the same one-decimal
+   rounding as Team 4's scores, with tests.
+4. **Test route.** `src/app/team5-test/page.tsx` shipped as a live
+   `/team5-test` page. It has been removed (it stays in git history). Demo
+   the card in the kitchen sink or on `/updated-pathways` instead.
+5. **Non-null assertion.** `projection.projectedWage!` is now an explicit
+   check that falls back to the "not available" message. Missing final
+   newlines were added.
+6. **Grey text contrast.** `text-muted-foreground` (`#737373`) measured
+   4.47:1 on the cream page background (`#faf8f5`), under the 4.5:1 minimum.
+   The card now uses `text-neutral-700` (`#404040`), measured 9.78:1.
+   `globals.css` is unchanged.
