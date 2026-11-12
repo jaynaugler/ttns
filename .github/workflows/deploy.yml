@@ -1,0 +1,20 @@
+name: Deploy to Render on PR Merge
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  deploy:
+    # This condition ensures it ONLY runs if the PR was actually merged, 
+    # and not just closed/abandoned without merging.
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -f -sS -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"

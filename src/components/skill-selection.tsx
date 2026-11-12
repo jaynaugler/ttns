@@ -1,12 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import skillsData from "../../public/data/skills.json";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { saveSkills, useJourneyProgress } from "@/lib/journey-progress";
 
 export function UserSkillSelection() {
   const [skills] = useState<string[]>(skillsData as string[]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  // undefined until the user toggles something, so the saved selection from
+  // a previous visit can show through (and resume mid-journey works). Raw
+  // skill labels are stored; mapping to UserSkillInput is Team 2's job when
+  // the pipeline consumes them.
+  const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
+  const { journey, hydrated } = useJourneyProgress();
+  const selectedSkills = userSelection ?? journey.savedSkills ?? [];
 
   const filteredSkills = skills.filter((skill) =>
     skill.toLowerCase().includes(searchQuery.toLowerCase())
@@ -14,11 +25,15 @@ export function UserSkillSelection() {
 
   const toggleSkill = (skill: string) => {
     if (selectedSkills.includes(skill)) {
-      setSelectedSkills(selectedSkills.filter((s) => s !== skill));
+      setUserSelection(selectedSkills.filter((s) => s !== skill));
     } else {
-      setSelectedSkills([...selectedSkills, skill]);
+      setUserSelection([...selectedSkills, skill]);
     }
   };
+
+  // Wait out localStorage hydration so a returning user's saved selection is
+  // already there on first paint instead of popping in afterwards.
+  if (!hydrated) return null;
 
   return (
     <div className="space-y-6">
@@ -30,12 +45,11 @@ export function UserSkillSelection() {
       </div>
 
       {/* Search Bar */}
-      <input
+      <Input
         type="text"
         placeholder="Search skills (e.g., Numeracy, Digital Literacy)..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full px-4 py-2 border rounded-md bg-background text-foreground"
       />
 
       {/* Skills Selection Grid (Padding matches gap-3 for balanced spacing) */}
@@ -80,6 +94,21 @@ export function UserSkillSelection() {
           )}
         </div>
       </div>
+
+      {selectedSkills.length > 0 && (
+        <div className="flex justify-end">
+          <Button
+            size="lg"
+            nativeButton={false}
+            render={<Link href="/current-pathways" />}
+            // saveSkills persists the selection for the wizard's later steps
+            // and marks this page complete.
+            onClick={() => saveSkills(selectedSkills)}
+          >
+            Continue
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
