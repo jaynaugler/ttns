@@ -20,6 +20,43 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("/fonts/OpenDyslexic-Regular.otf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+/* For accessibility settings when user changes font-family */
+html[data-font="dyslexic"] body,
+html[data-font="dyslexic"] body * {
+  font-family: "OpenDyslexic", sans-serif;
+}
+html[data-font="dyslexic"] {
+  --text-xs: calc(0.75rem * 0.9);
+  --text-sm: calc(0.875rem * 0.9);
+  --text-base: calc(1rem * 0.9);
+  --text-lg: calc(1.125rem * 0.9);
+  --text-xl: calc(1.25rem * 0.9);
+  --text-2xl: calc(1.5rem * 0.9);
+  --text-3xl: calc(1.875rem * 0.9);
+  --text-4xl: calc(2.25rem * 0.9);
+  --text-5xl: calc(3rem * 0.9);
+  --text-6xl: calc(3.75rem * 0.9);
+  --text-7xl: calc(4.5rem * 0.9);
+  --text-8xl: calc(6rem * 0.9);
+  --text-9xl: calc(8rem * 0.9);
+}
+
+html[data-enhanced-focus="true"] :focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+html.dark[data-enhanced-focus="true"] :focus-visible {
+  outline-color: #93c5fd;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -73,6 +110,7 @@
 }
 
 :root {
+  /* Light mode colours */
   --surface-cream: #faf8f5;
   --card-blue: #35517e;
   --brand-red: #6c0820;
@@ -82,6 +120,18 @@
   --brand-brown: #9e5804;
   --link-default: #0000ee;
   --link-visited: #551a8b;
+
+  /* Dark mode colours */
+  --dm-surface-grey: #2d2d2d;
+  --dm-card-grey: #383838;
+  --dm-card-blue: #42649c;
+  --dm-brand-red: #910b2b;
+  --dm-brand-pink: #cd4565;
+  --dm-brand-yellow: #ffd67e;
+  --dm-brand-orange: #eb952d;
+  --dm-brand-brown: #b06204;
+  --dm-link-default: #2d2dff;
+  --dm-link-visited: #9d47ed;
 
   --background: var(--surface-cream);
   --foreground: #000000;
@@ -118,15 +168,15 @@
 }
 
 .dark {
-  --background: var(--surface-cream);
-  --foreground: #000000;
-  --card: var(--card-blue);
+  --background: var(--dm-surface-grey);
+  --foreground: #ffffff;
+  --card: var(--dm-card-blue);
   --card-foreground: #ffffff;
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --primary: var(--dm-brand-red);
+  --primary-foreground: #ffffff;
+  --secondary: var(--dm-brand-yellow);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
@@ -163,8 +213,16 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .dark a {
+    color: var(--dm-link-default);
+    text-decoration: none;
+    cursor: pointer;
+  }
   a:visited {
     color: var(--link-visited);
+  }
+  .dark a:visited {
+    color: var(--dm-link-visited);
   }
   a:hover {
     text-decoration: underline;
@@ -178,17 +236,35 @@
     color: #ffffff;
     border: 5px solid transparent;
   }
+  .dark .btn-on-bg {
+    background-color: var(--dm-brand-red);
+    color: #ffffff;
+    border-color: 5px solid transparent;
+  }
   .btn-on-bg:hover {
     background-color: var(--brand-pink);
     border-color: var(--brand-red);
+  }
+  .dark .btn-on-bg:hover {
+    background-color: var(--dm-brand-pink);
+    border-color: var(--dm-brand-red);
   }
   .btn-on-card {
     background-color: var(--brand-yellow);
     color: #000000;
     border: 5px solid var(--brand-orange);
   }
+  .dark .btn-on-card {
+    background-color: var(--dm-brand-yellow);
+    color: #ffffff;
+    border: 5px solid var(--dm-brand-orange);
+  }
   .btn-on-card:hover {
     background-color: var(--brand-orange);
     border-color: var(--brand-brown);
+  }
+  .dark .btn-on-card:hover {
+    background-color: var(--dm-brand-orange);
+    border-color: var(--dm-brand-brown);
   }
 }

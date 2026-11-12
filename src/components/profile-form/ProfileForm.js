@@ -101,7 +101,7 @@ export default function ProfileForm({ onSubmittedChange }) {
   // set to white and the header gets the primary brand red. pt-0 lets the
   // header reach the top edge. --card-spacing sets the card's padding.
   return (
-    <Card className="w-full max-w-md bg-white pt-0 text-foreground shadow-sm [--card-spacing:--spacing(6)]">
+    <Card className="w-full max-w-md bg-white dark:bg-[var(--dm-card-grey)] pt-0 text-card-foreground shadow-sm [--card-spacing:--spacing(6)]">
       <CardHeader className="bg-primary py-4 text-primary-foreground">
         {submitted ? (
           <>
@@ -134,7 +134,7 @@ export default function ProfileForm({ onSubmittedChange }) {
           which reads it with useFormContext. noValidate turns off the
           browser's own popups. Every step submits the form (button or
           Enter key): steps 1-3 go to the next step, the last one submits. */}
-      <CardContent>
+      <CardContent className="bg-white text-card-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
           <p role="status">
             The profile form was completed. Your profile is saved in this
@@ -163,7 +163,7 @@ export default function ProfileForm({ onSubmittedChange }) {
 
       {/* The buttons are outside the <form>, so form="profile-form" connects
           the submit button to it. */}
-      <CardFooter className="justify-between">
+      <CardFooter className="justify-between bg-white text-card-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
           <Button type="button" size="lg" onClick={startOver}>
             Start another profile
