@@ -71,7 +71,9 @@ export function createOutcomeShift(
 		careerId,
 		currentScore,
 		projectedScore,
-		delta: projectedScore - currentScore,
+		// One decimal place, like Team 4's scores: 85 - 65.4 is 19.6, not
+		// 19.599999999999994.
+		delta: roundScore(projectedScore - currentScore),
 	};
 }
 

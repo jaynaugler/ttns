@@ -10,6 +10,7 @@ import {
 } from "../components/look-forward/mock-matches";
 import {
 	buildDefaultScenarios,
+	createOutcomeShift,
 	describeRankChange,
 	describeScenario,
 	describeShift,
@@ -259,6 +260,20 @@ describe("exports for other teams", () => {
 		assert.equal(shift.careerId, "13102");
 		assert.equal(shift.projectedScore, 85);
 		assert.equal(shift.currentScore, 65.4);
+		assert.equal(shift.delta, 19.6);
+	});
+});
+
+describe("createOutcomeShift", () => {
+	it("rounds the delta to one decimal place, like Team 4's scores", () => {
+		assert.equal(85 - 65.4, 19.599999999999994);
+		assert.equal(createOutcomeShift("13102", 65.4, 85).delta, 19.6);
+		assert.equal(createOutcomeShift("13110", 74.3, 73.8).delta, -0.5);
+	});
+
+	it("reports no change as 0, not -0", () => {
+		assert.ok(Object.is(createOutcomeShift("x", 50, 50.04).delta, 0));
+		assert.ok(Object.is(createOutcomeShift("x", 50.04, 50).delta, 0));
 	});
 });
 
