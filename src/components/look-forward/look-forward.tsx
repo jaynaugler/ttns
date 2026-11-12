@@ -5,7 +5,7 @@
 // this folder.
 
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
@@ -14,6 +14,7 @@ import {
 	projectOutcomes,
 	rankMatches,
 	rankProjections,
+	scenarioKey,
 	TOP_MATCH_COUNT,
 	type ProjectableMatch,
 } from "@/lib/projection-logic";
@@ -32,24 +33,27 @@ export interface LookForwardProps {
 }
 
 export function LookForward({ matches, userSkills, scenarios }: LookForwardProps) {
-	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+	const headingId = useId();
+	// Selection is stored by key, not index, so it can't silently point at a
+	// different scenario if the props change; a vanished one clears it.
+	const [selectedKey, setSelectedKey] = useState<string | null>(null);
 	const [announcement, setAnnouncement] = useState("");
 
 	const options = scenarios ?? buildDefaultScenarios(matches, userSkills);
-	const scenario = selectedIndex === null ? undefined : options[selectedIndex];
+	const scenario = options.find((option) => scenarioKey(option) === selectedKey);
 	const currentTop = rankMatches(matches).slice(0, TOP_MATCH_COUNT);
 	const projectedTop = scenario
 		? rankProjections(matches, projectOutcomes(matches, scenario, { userSkills }))
 		: [];
 
-	function handleSelect(index: number) {
-		setSelectedIndex(index);
+	function handleSelect(next: Scenario) {
+		setSelectedKey(scenarioKey(next));
 		// Includes the scenario so switching back and forth re-announces.
-		setAnnouncement(`Projection updated: ${describeScenario(options[index])}.`);
+		setAnnouncement(`Projection updated: ${describeScenario(next)}.`);
 	}
 
 	return (
-		<section aria-labelledby="look-forward-heading" className="space-y-6">
+		<section aria-labelledby={headingId} className="space-y-6">
 			<header className="relative overflow-hidden rounded-2xl bg-card-blue px-5 py-6 text-white sm:px-8 sm:py-8">
 				<div
 					aria-hidden="true"
@@ -58,11 +62,11 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 				<p className="text-sm font-bold tracking-widest text-brand-yellow uppercase">
 					Look Forward
 				</p>
-				<h2 id="look-forward-heading" className="mt-1 text-2xl font-bold text-balance sm:text-3xl">
+				<h2 id={headingId} className="mt-1 text-2xl font-bold text-balance sm:text-3xl">
 					What if you took one more step?
 				</h2>
 				<p className="mt-2 max-w-prose text-base text-white">
-					Try a change and see how your top {TOP_MATCH_COUNT} career matches would move.
+					Try a change and see how your top career matches would move.
 				</p>
 			</header>
 
@@ -72,7 +76,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 				<>
 					<ScenarioPicker
 						scenarios={options}
-						selectedIndex={selectedIndex}
+						selectedKey={scenario ? selectedKey : null}
 						onSelect={handleSelect}
 					/>
 
@@ -91,14 +95,14 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 							<CardContent className="px-0">
 								{scenario ? (
 									<div
-										key={selectedIndex}
+										key={selectedKey}
 										className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-300"
 									>
 										<ProjectedMatchList outcomes={projectedTop} />
 									</div>
 								) : (
 									<p className="rounded-xl border-2 border-dashed border-brand-yellow p-4">
-										Pick a change above to see your projected top {TOP_MATCH_COUNT}.
+										Pick a change above to see your projected top matches.
 									</p>
 								)}
 							</CardContent>
