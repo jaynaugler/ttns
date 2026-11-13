@@ -106,7 +106,7 @@ export function matchCareers(
   const limit =
     options.limit !== undefined && Number.isInteger(options.limit) && options.limit > 0
       ? options.limit
-      : DEFAULT_LIMIT;
+      : DEFAULT_LIMIT; 
 
   const results: ScoredCareerMatch[] = [];
 
