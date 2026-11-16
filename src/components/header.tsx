@@ -16,14 +16,10 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { JourneyStepList } from "./journey-step-list";
-import { set } from "react-hook-form";
 
 // Stepper-driven navigation: the wizard's steps (not the top bar) are the
 // real navigation, so the top bar stays brand + Home and the drawer mirrors
@@ -39,8 +35,13 @@ export function Header() {
   const [darkMode, setDarkMode] = useState(false);
   const [enhancedFocus, setEnhancedFocus] = useState(false);
 
+  // The saved settings are read after hydration, not during render: the server
+  // can't read localStorage, so any toggle rendered "on" during render would
+  // mismatch its SSR HTML. Synchronizing in an effect is the intentional,
+  // hydration-safe pattern here; the set-state-in-effect warnings are expected.
   useEffect(() => {
     const enabled = localStorage.getItem("dyslexic-font") === "true";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
     setDyslexicFont(enabled);
 
     if (enabled) {
@@ -52,12 +53,14 @@ export function Header() {
 
   useEffect(() => {
     const enabled = localStorage.getItem("dark-mode") === "true";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
     setDarkMode(enabled);
     document.documentElement.classList.toggle("dark", enabled);
   }, []);
 
   useEffect(() => {
     const enabled = localStorage.getItem("enhanced-focus") === "true";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- see above
     setEnhancedFocus(enabled);
     document.documentElement.dataset.enhancedFocus = String(enabled);
   }, []);
@@ -134,7 +137,7 @@ export function Header() {
                   onClick={toggleDyslexicFont}
                   className="flex items-center justify-between gap-4 whitespace-nowrap"
                 >
-                  <span>Use "OpenDyslexic" font</span>
+                  <span>Use &quot;OpenDyslexic&quot; font</span>
                   <span
                     aria-hidden="true"
                     className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors ${
