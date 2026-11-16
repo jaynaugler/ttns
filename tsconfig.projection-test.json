@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2022", "DOM"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": ".tmp/projection-test",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/lib/projection-logic.ts",
+    "src/lib/projection-logic.test.ts",
+    "src/lib/next-steps-validation.ts",
+    "src/lib/next-steps-types.ts",
+    "src/components/look-forward/mock-matches.ts",
+    "src/types/outcomes.ts",
+    "src/types/user.ts",
+    "src/data/careers.json"
+  ]
+}
