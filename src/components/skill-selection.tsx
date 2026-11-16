@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import skillsData from "../../public/data/skills.json";
 
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,10 @@ export function UserSkillSelection() {
   // skill labels are stored; mapping to UserSkillInput is Team 2's job when
   // the pipeline consumes them.
   const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
+  const [isPending, setIsPending] = useState(false);
+  const [isError, setIsError] = useState(false);
   const { journey, hydrated } = useJourneyProgress();
+  const router = useRouter();
   const selectedSkills = userSelection ?? journey.savedSkills ?? [];
 
   const filteredSkills = skills.filter((skill) =>
@@ -30,6 +34,38 @@ export function UserSkillSelection() {
       setUserSelection([...selectedSkills, skill]);
     }
   };
+
+  // Handles the Continue action: POSTs the selection to /api/match, then saves
+  // it for the wizard's later steps and moves on once the response is OK.
+  // async function onSubmit() {
+  //   console.log(
+  //     "POST body:",
+  //     JSON.stringify({ skills: selectedSkills }, null, 2)
+  //   );
+  // }
+
+  async function onSubmit() {
+    setIsPending(true);
+    setIsError(false);
+    try {
+      console.log("Sending:", JSON.stringify({ skills: selectedSkills }));
+      const res = await fetch("/api/match", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ skills: selectedSkills }),
+      });
+      if (!res.ok) throw new Error("Skill matching not successful.");
+      const responseBody = await res.json();
+      console.log("Skill matching successful:", responseBody);
+      saveSkills(selectedSkills);
+      router.push("/current-pathways");
+    } catch (error) {
+      console.error("Skill matching error", error);
+      setIsError(true);
+    } finally {
+      setIsPending(false);
+    }
+  }
 
   // Wait out localStorage hydration so a returning user's saved selection is
   // already there on first paint instead of popping in afterwards.
@@ -103,7 +139,12 @@ export function UserSkillSelection() {
             render={<Link href="/current-pathways" />}
             // saveSkills persists the selection for the wizard's later steps
             // and marks this page complete.
-            onClick={() => saveSkills(selectedSkills)}
+            onClick={() => {
+              saveSkills(selectedSkills);
+              onSubmit();
+            }}
+            disabled={isPending}
+            aria-invalid={isError}
           >
             Continue
           </Button>
