@@ -14,6 +14,7 @@ export interface JourneyState {
   savedSkills?: string[];
   // The submitted profile form values, grouped by step key, e.g.
   // { personal: { firstName, lastName }, skills: { ... }, ... }.
+  selectedCareerCode?: string; // stored for team 5
   profile?: ProfileData;
 }
 
@@ -37,7 +38,7 @@ function parse(raw: string | null): JourneyState {
       // Ignore ids that are no longer journey pages (e.g. after a rename).
       completed: [...parsed.completed].filter(
         (id): id is JourneyStepId =>
-          typeof id === "string" && complete.has(id as JourneyStepId)
+          typeof id === "string" && complete.has(id as JourneyStepId),
       ),
     };
     if (Array.isArray(parsed.savedSkills)) {
@@ -46,6 +47,12 @@ function parse(raw: string | null): JourneyState {
     if (parsed.profile && typeof parsed.profile === "object") {
       state.profile = parsed.profile;
     }
+
+    // Persist the selected career code for team 5 used in the journey state
+    if (typeof parsed.selectedCareerCode === "string") {
+      state.selectedCareerCode = parsed.selectedCareerCode;
+    }
+
     return state;
   } catch {
     return DEFAULT_STATE;
@@ -128,6 +135,16 @@ export function saveProfile(profile: ProfileData) {
   writeState({ ...readState(), profile });
 }
 
+// Persists the selected career code for team 5 used in the journey state.
+export function saveSelectedCareer(code: string) {
+  const state = readState();
+
+  writeState({
+    ...state,
+    selectedCareerCode: code,
+  });
+}
+
 export function resetJourney() {
   try {
     window.localStorage.removeItem(JOURNEY_STORAGE_KEY);
@@ -148,7 +165,15 @@ export function useJourneyProgress(): {
   journey: JourneyState;
   hydrated: boolean;
 } {
-  const journey = useSyncExternalStore(subscribe, readState, () => DEFAULT_STATE);
-  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
+  const journey = useSyncExternalStore(
+    subscribe,
+    readState,
+    () => DEFAULT_STATE,
+  );
+  const hydrated = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
   return { journey, hydrated };
 }

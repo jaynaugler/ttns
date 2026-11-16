@@ -1,0 +1,943 @@
+﻿CH Code,LABEL,DATA,PEOPLE,THING
+0011.0,Legislators,Synthesizing - 0,Negotiating - 1,Not significant - 8
+0012.0,Senior government managers and officials,Synthesizing - 0,Negotiating - 1,Not significant - 8
+0013.0,"Senior managers - financial, communications and other business services",Synthesizing - 0,Negotiating - 1,Not significant - 8
+0014.0,"Senior managers - health, education, social and community services and membership organizations",Synthesizing - 0,Negotiating - 1,Not significant - 8
+0015.0,"Senior managers - trade, broadcasting and other services, n.e.c.",Synthesizing - 0,Negotiating - 1,Not significant - 8
+0016.0,"Senior managers - construction, transportation, production and utilities",Synthesizing - 0,Negotiating - 1,Not significant - 8
+0111.0,Financial managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0112.0,Human resources managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0113.0,Purchasing managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0114.0,Other administrative services managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0121.1,Insurance managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0121.2,Real estate service managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0121.3,Mortgage broker managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0121.4,Securities managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0122.1,Banking and other investment managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0122.2,Credit managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0124.1,Advertising managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0124.2,Marketing managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0124.3,Public relations managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0124.4,E-business managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0125.0,Other business services managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0131.0,Telecommunication carriers managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0132.0,Postal and courier services managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0211.0,Engineering managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0212.0,Architecture and science managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0213.0,Computer and information systems managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0311.0,Managers in health care,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0411.0,Government managers - health and social policy development and program administration,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0412.0,"Government managers - economic analysis, policy development and program administration",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0413.0,Government managers - education policy development and program administration,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0414.0,Other managers in public administration,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0421.1,Faculty administrators,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0421.2,Registrars,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0421.3,Administrators of vocational training schools,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0422.1,School principals,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0422.2,Administrators of elementary and secondary education,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0423.0,"Managers in social, community and correctional services",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0431.0,Commissioned police officers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0432.0,Fire chiefs and senior firefighting officers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0433.0,Commissioned officers of the Canadian Armed Forces,Co-ordinating - 1,Supervising - 3,Not significant - 8
+0511.0,"Library, archive, museum and art gallery managers",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0512.0,"Managers - publishing, motion pictures, broadcasting and performing arts",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0513.0,"Recreation, sports and fitness program and service directors",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0601.0,Corporate sales managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0621.0,Retail and wholesale trade managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0631.0,Restaurant and food service managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0632.0,Accommodation service managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0651.0,"Managers in customer and personal services, n.e.c.",Co-ordinating - 1,Supervising - 3,Not significant - 8
+0711.0,Construction managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0712.0,Home building and renovation managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0714.1,Facility operation managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0714.2,Maintenance managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0731.1,"Transportation managers, operations",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0731.2,"Transportation managers, freight traffic",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0811.0,Managers in natural resources production and fishing,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0821.0,Managers in agriculture,Co-ordinating - 1,Supervising - 3,Driving - Operating - 3
+0822.0,Managers in horticulture,Co-ordinating - 1,Supervising - 3,Not significant - 8
+0823.0,Managers in aquaculture,Co-ordinating - 1,Supervising - 3,Operating - 4
+0911.0,Manufacturing managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0912.1,Water supply managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0912.2,Electrical power distribution managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0912.3,Natural gas supply managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0912.4,Petroleum product distribution managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0912.5,"Water pollution control managers
+
+",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+0912.6,Waste systems managers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+1111.1,Financial auditors,Co-ordinating - 1,Consulting - 2,Not significant - 8
+1111.2,Accountants,Co-ordinating - 1,Consulting - 2,Not significant - 8
+1112.1,Financial analysts,Analyzing - 2,Consulting - 2,Not significant - 8
+1112.2,Investment analysts,Analyzing - 2,Consulting - 2,Not significant - 8
+1113.1,Securities agents and investment dealers,Co-ordinating - 1,Consulting - 2,Not significant - 8
+1113.2,Brokers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+1114.1,Financial planners,Analyzing - 2,Consulting - 2,Not significant - 8
+1114.2,Financial examiners and inspectors,Analyzing - 2,speaking - 6,Not significant - 8
+1114.3,Financial investigators,Analyzing - 2,speaking - 6,Not significant - 8
+1114.4,Underwriters,Analyzing - 2,Negotiating - 1,Not significant - 8
+1114.5,Trust officers,Compiling - 3,speaking - 6,Not significant - 8
+1114.6,Mortgage brokers,Compiling - 3,Negotiating - 1,Not significant - 8
+1121.0,Human resources professionals,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+1122.0,Management Consultants,Analyzing - 2,Consulting - 2,Not significant - 8
+1123.1,Professional occupations in marketing and public relations,Co-ordinating - 1,Persuading - 5,Not significant - 8
+1123.2,Professional occupations in advertising,Analyzing - 2,Consulting - 2,Not significant - 8
+1211.0,"Supervisors, general office and administrative support workers",Co-ordinating - 1,Supervising - 3,Not significant - 8
+1212.0,"Supervisors, finance and insurance office workers",Co-ordinating - 1,Supervising - 3,Not significant - 8
+1213.0,"Supervisors, library, correspondence and related information workers",Co-ordinating - 1,Supervising - 3,Not significant - 8
+1214.0,"Supervisors, mail and message distribution occupations",Co-ordinating - 1,Supervising - 3,Not significant - 8
+1215.0,"Supervisors, supply chain, tracking and scheduling co-ordination occupations",Co-ordinating - 1,Supervising - 3,Not significant - 8
+1221.0,Administrative officers,Co-ordinating - 1,Supervising - 3,Not significant - 8
+1222.0,Executive assistants,Co-ordinating - 1,speaking - 6,Not significant - 8
+1223.0,Human resources and recruitment officers,Co-ordinating - 1,speaking - 6,Not significant - 8
+1224.0,Property administrators,Compiling - 3,speaking - 6,Not significant - 8
+1225.0,Purchasing agents and officers,Compiling - 3,Negotiating - 1,Not significant - 8
+1226.0,Conference and event planners,Co-ordinating - 1,speaking - 6,Not significant - 8
+1227.1,Court officers,Co-ordinating - 1,speaking - 6,Not significant - 8
+1227.2,Justices of the peace,Copying - 5,speaking - 6,Not significant - 8
+1228.1,Immigration officers,Analyzing - 2,speaking - 6,Not significant - 8
+1228.2,Border services officers and customs inspectors ,Analyzing - 2,speaking - 6,Handling - 7
+1228.3,Excise tax revenue officers,Analyzing - 2,speaking - 6,Not significant - 8
+1228.4,Government benefits services officers,Analyzing - 2,speaking - 6,Not significant - 8
+1241.0,Administrative assistants,Compiling - 3,speaking - 6,Operating - 4
+1242.0,Legal administrative assistants,Compiling - 3,speaking - 6,Operating - 4
+1243.0,Medical administrative assistants,Compiling - 3,speaking - 6,Operating - 4
+1251.1,Court reporters,Copying - 5,Not significant - 8,Operating - 4
+1251.2,Medical transcriptionists,Copying - 5,Not significant - 8,Operating - 4
+1252.0,Health information management occupations,Compiling - 3,Not significant - 8,Operating - 4
+1253.0,Records management technicians,Compiling - 3,Not significant - 8,Operating - 4
+1254.0,Statistical officers and related research support occupations, - , - , - 
+1311.0,Accounting technicians and bookkeepers,Compiling - 3,Not significant - 8,Operating - 4
+1312.1,Insurance adjusters,Analyzing - 2,Negotiating - 1,Not significant - 8
+1312.2,Insurance claims examiners,Analyzing - 2,speaking - 6,Not significant - 8
+1313.0,Insurance underwriters,Co-ordinating - 1,speaking - 6,Not significant - 8
+1314.1,Assessors,Analyzing - 2,speaking - 6,Not significant - 8
+1314.2,Valuators,Analyzing - 2,speaking - 6,Not significant - 8
+1314.3,Appraisers,Analyzing - 2,speaking - 6,Not significant - 8
+1315.1,Customs brokers,Co-ordinating - 1,speaking - 6,Not significant - 8
+1315.2,Ship brokers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+1411.1,General office support workers,Compiling - 3,speaking - 6,Operating - 4
+1411.2,Administrative clerks,Compiling - 3,speaking - 6,Operating - 4
+1411.3,File clerks,Comparing - 6,Not significant - 8,Handling - 7
+1414.1,Receptionists,Compiling - 3,speaking - 6,Handling - 7
+1414.2,Hospital admitting clerks,Compiling - 3,speaking - 6,Handling - 7
+1414.3,Medical and dental receptionists,Compiling - 3,speaking - 6,Handling - 7
+1414.4,Switchboard operators,Copying - 5,speaking - 6,Operating - 4
+1414.5,Answering service operators,Copying - 5,speaking - 6,Operating - 4
+1414.6,Front desk clerks (except hotel),Compiling - 3,speaking - 6,Handling - 7
+1414.7,Telephone operators,Copying - 5,speaking - 6,Operating - 4
+1415.0,Personnel clerks,Compiling - 3,speaking - 6,Operating - 4
+1416.0,Court clerks,Compiling - 3,speaking - 6,Handling - 7
+1422.0,Data entry clerks,Copying - 5,Not significant - 8,Operating - 4
+1423.1,Desktop publishing operators,Compiling - 3,Not significant - 8,Operating - 4
+1423.2,Markup persons,Compiling - 3,Not significant - 8,Operating - 4
+1423.3,Typesetting input operators,Copying - 5,Not significant - 8,Operating - 4
+1423.4,Typesetting output operators,Copying - 5,Not significant - 8,Operating - 4
+1431.0,Accounting and related clerks,Compiling - 3,Not significant - 8,Operating - 4
+1432.0,Payroll administrators,Compiling - 3,speaking - 6,Operating - 4
+1434.1,Bank clerks,Compiling - 3,speaking - 6,Operating - 4
+1434.2,Insurance clerks,Compiling - 3,speaking - 6,Operating - 4
+1434.3,Other financial clerks,Compiling - 3,speaking - 6,Operating - 4
+1435.0,Collectors,Compiling - 3,speaking - 6,Not significant - 8
+1451.0,Library assistants and clerks,Comparing - 6,Assisting - 7,Handling - 7
+1452.1,Classified advertising clerks,Copying - 5,speaking - 6,Operating - 4
+1452.2,Correspondence clerks,Copying - 5,Not significant - 8,Operating - 4
+1452.3,Editorial assistants and publication clerks,Compiling - 3,Not significant - 8,Operating - 4
+1452.4,Proofreaders,Copying - 5,Not significant - 8,Handling - 7
+1452.5,Readers and press clippers,Comparing - 6,Not significant - 8,Operating - 4
+1452.6,Regulatory clerks,Compiling - 3,speaking - 6,Operating - 4
+1454.1,Survey interviewers,Copying - 5,speaking - 6,Operating - 4
+1454.2,Statistical clerks,Compiling - 3,Not significant - 8,Operating - 4
+1511.1,Postal clerks,Copying - 5,speaking - 6,Handling - 7
+1511.2,Mail sorters,Copying - 5,Not significant - 8,Handling - 7
+1511.3,Mail room clerks,Copying - 5,Not significant - 8,Handling - 7
+1512.0,Letter carriers,Copying - 5,Assisting - 7,Handling - 7
+1513.0,"Couriers, messengers and door-to-door distributors",Copying - 5,Assisting - 7,Handling - 7
+1521.0,Shippers and receivers,Compiling - 3,Not significant - 8,Operating - 4
+1522.0,Storekeepers and partspersons,Copying - 5,speaking - 6,Operating - 4
+1523.0,Production logistics co-ordinators,Co-ordinating - 1,speaking - 6,Operating - 4
+1524.1,Purchasing Control Workers,Compiling - 3,speaking - 6,Not significant - 8
+1524.2,Inventory Control Workers,Compiling - 3,Not significant - 8,Handling - 7
+1525.1,Dispatchers,Compiling - 3,speaking - 6,Operating - 4
+1525.2,Radio operators,Compiling - 3,speaking - 6,Operating - 4
+1526.0,Transportation route and crew schedulers,Co-ordinating - 1,speaking - 6,Operating - 4
+2111.1,Physicists,Synthesizing - 0,Supervising - 3,Precision working - 1
+2111.2,Astronomers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2112.0,Chemists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2113.1,Geoscientists ,Synthesizing - 0,Consulting - 2,Precision working - 1
+2113.2,Oceanographers,Synthesizing - 0,Consulting - 2,Precision working - 1
+2114.0,Meteorologists and climatologists,Co-ordinating - 1,Consulting - 2,Precision working - 1
+2115.1,Metallurgists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2115.2,Soil scientists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2115.3,Materials scientists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2115.4,Astronauts, - , - , - 
+2121.1,Biologists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2121.2,Microbiologists and cell and molecular biologists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2122.0,Forestry professionals,Synthesizing - 0,Supervising - 3,Precision working - 1
+2123.0,"Agricultural representatives, consultants and specialists",Co-ordinating - 1,Consulting - 2,Not significant - 8
+2131.0,Civil engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2132.0,Mechanical engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2133.0,Electrical and electronics engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2134.0,Chemical engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2141.0,Industrial and manufacturing engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2142.0,Metallurgical and materials engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2143.0,Mining engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2144.0,Geological engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2145.0,Petroleum engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2146.0,Aerospace engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2147.1,Computer and telecommunications hardware engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2147.2,Network system and data communication engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2148.1,Agricultural and bio-resource engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2148.2,Biomedical engineers,Synthesizing - 0,Consulting - 2,Precision working - 1
+2148.3,Engineering physicists and engineering scientists,Synthesizing - 0,Consulting - 2,Precision working - 1
+2148.4,Marine and naval engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2148.5,Textile engineers,Synthesizing - 0,Supervising - 3,Precision working - 1
+2151.0,Architects,Synthesizing - 0,Supervising - 3,Precision working - 1
+2152.0,Landscape architects,Synthesizing - 0,Supervising - 3,Precision working - 1
+2153.0,Urban and land use planners,Synthesizing - 0,Supervising - 3,Precision working - 1
+2154.0,Land surveyors,Co-ordinating - 1,Supervising - 3,Precision working - 1
+2161.1,Mathematicians,Synthesizing - 0,Consulting - 2,Not significant - 8
+2161.2,Statisticians,Synthesizing - 0,Consulting - 2,Not significant - 8
+2161.3,Actuaries,Synthesizing - 0,Consulting - 2,Not significant - 8
+2171.1,Information systems business analysts and consultants,Analyzing - 2,Consulting - 2,Precision working - 1
+2171.2,Systems security analysts,Analyzing - 2,Consulting - 2,Precision working - 1
+2171.3,Information systems quality assurance analysts,Analyzing - 2,Consulting - 2,Precision working - 1
+2171.4,Systems auditors,Analyzing - 2,Consulting - 2,Precision working - 1
+2172.1,Database analysts,Synthesizing - 0,Consulting - 2,Precision working - 1
+2172.2,Data administrators,Co-ordinating - 1,Consulting - 2,Precision working - 1
+2173.0,Software engineers and designers,Synthesizing - 0,Consulting - 2,Precision working - 1
+2174.1,Computer programmers,Analyzing - 2,speaking - 6,Precision working - 1
+2174.2,Interactive media developers,Analyzing - 2,speaking - 6,Precision working - 1
+2175.0,Web designers and developers,Analyzing - 2,Consulting - 2,Precision working - 1
+2211.1,Chemical technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2211.2,Chemical technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2212.1,Geological and mineral technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2212.2,Geological and mineral technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2221.1,Biological technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2221.2,Biological technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2222.1,Fish and fish products inspectors,Analyzing - 2,speaking - 6,Handling - 7
+2222.2,Fruit and vegetables inspectors,Analyzing - 2,speaking - 6,Handling - 7
+2222.3,Grain inspectors,Analyzing - 2,speaking - 6,Handling - 7
+2222.4,Meat inspectors,Analyzing - 2,speaking - 6,Handling - 7
+2222.5,Plant protection inspectors,Analyzing - 2,speaking - 6,Handling - 7
+2223.0,Forestry technologists and technicians,Compiling - 3,Supervising - 3,Precision working - 1
+2224.0,Conservation and fishery officers,Compiling - 3,speaking - 6,Driving - Operating - 3
+2225.1,Arborists and tree service technicians,Analyzing - 2,speaking - 6,Operating - 4
+2225.2,Golf course superintendents,Co-ordinating - 1,Supervising - 3,Operating - 4
+2225.3,Horticulturists,Co-ordinating - 1,Supervising - 3,Precision working - 1
+2225.4,Landscape designers and landscape architectural technicians and technologists,Analyzing - 2,Assisting - 7,Precision working - 1
+2225.5,Landscape gardeners,Copying - 5,Not significant - 8,Operating - 4
+2225.6,Landscapers,Compiling - 3,Not significant - 8,Operating - 4
+2225.7,Lawn care specialists,Copying - 5,speaking - 6,Operating - 4
+2231.1,Civil engineering technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2231.2,Civil engineering technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2232.1,Mechanical engineering technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2232.2,Mechanical engineering technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2233.1,Industrial engineering and manufacturing technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2233.2,Industrial engineering and manufacturing technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2234.0,Construction estimators,Analyzing - 2,Negotiating - 1,Not significant - 8
+2241.1,Electrical and electronics engineering technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2241.2,Electrical and electronics engineering technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2242.0,Electronic service technicians (household and business equipment),Analyzing - 2,speaking - 6,Precision working - 1
+2243.0,Industrial instrument technicians and mechanics,Analyzing - 2,speaking - 6,Precision working - 1
+2244.1,Aircraft instrument mechanics and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2244.2,Aircraft electrical mechanics and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2244.3,Avionics mechanics and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2244.4,Avionics inspectors,Analyzing - 2,Not significant - 8,Precision working - 1
+2251.0,Architectural technologists and technicians,Analyzing - 2,Supervising - 3,Precision working - 1
+2252.0,Industrial designers,Co-ordinating - 1,speaking - 6,Precision working - 1
+2253.1,Drafting technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2253.2,Drafting technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2254.1,Land survey technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+2254.2,Land survey technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2255.1,Cartographic technologists and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2255.2,Photogrammetric technologists and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2255.3,Aerial survey technologists and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2255.4,Remote sensing technologists and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+2255.5,Geographic information systems (GIS) technologists and technicians,Analyzing - 2,speaking - 6,Precision working - 1
+2255.6,Meteorological technologists and technicians,Compiling - 3,speaking - 6,Operating - 4
+2261.0,Non-destructive testers and inspection technicians,Analyzing - 2,speaking - 6,Precision working - 1
+2262.1,Motor vehicle defects investigators,Analyzing - 2,speaking - 6,Operating - Manipulating - 4
+2262.2,Railway accident investigation officers,Analyzing - 2,speaking - 6,Operating - 4
+2262.3,Airworthiness inspectors,Analyzing - 2,speaking - 6,Operating - 4
+2262.4,"Inspectors, weights and measures",Analyzing - 2,speaking - 6,Operating - 4
+2262.5,Oil and gas drilling rig inspectors, - , - , - 
+2263.0,Inspectors in public and environmental health and occupational health and safety,Analyzing - 2,speaking - 6,Handling - 7
+2264.0,Construction inspectors,Analyzing - 2,speaking - 6,Handling - 7
+2271.1,Pilots,Analyzing - 2,speaking - 6,Driving - Operating - 3
+2271.2,Flight engineers (second officers) ,Analyzing - 2,Assisting - 7,Driving - Operating - 3
+2271.3,Flying instructors ,Analyzing - 2,Instructing - 2,Driving - Operating - 3
+2272.1,Air traffic controllers,Co-ordinating - 1,speaking - 6,Controlling - 2
+2272.2,Flight dispatchers,Co-ordinating - 1,speaking - 6,Not significant - 8
+2272.3,Flight service specialists,Co-ordinating - 1,speaking - 6,Operating - 3
+2273.0,"Deck officers, water transport",Co-ordinating - 1,Supervising - 3,Operating - 3
+2274.0,"Engineer officers, water transport",Analyzing - 2,Supervising - 3,Operating - 3
+2275.1,Railway traffic controllers,Co-ordinating - 1,speaking - Signaling - 6,Controlling - 2
+2275.2,Marine traffic regulators,Co-ordinating - 1,speaking - 6,Operating - 4
+2281.1,Computer and network operators,Compiling - 3,Assisting - 7,Precision working - 1
+2281.2,Web technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2282.0,User support technicians,Compiling - 3,Assisting - 7,Precision working - 1
+2283.0,Information systems testing technicians,Copying - 5,Not significant - 8,Operating - 4
+3011.0,Nursing co-ordinators and supervisors,Co-ordinating - 1,Supervising - 3,Operating - 4
+3012.1,General duty registered nurses,Compiling - 3,speaking - 6,Operating - 4
+3012.2,Occupational health nurses ,Compiling - 3,speaking - 6,Operating - 4
+3012.3,Community health nurses ,Compiling - 3,Instructing - 2,Operating - 4
+3012.4,Registered psychiatric nurses,Compiling - 3,Instructing - 2,Operating - 4
+3012.5,Nursing consultants,Co-ordinating - 1,Consulting - 2,Not significant - 8
+3012.6,Nursing researchers ,Synthesizing - 0,Consulting - 2,Not significant - 8
+3012.7,Clinical nurses,Co-ordinating - 1,Consulting - 2,Not significant - 8
+3111.1,Specialists in clinical medicine,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3111.2,Specialists in laboratory medicine,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3111.3,Specialists in surgery,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3112.0,General practitioners and family physicians,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3113.0,Dentists,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3114.0,Veterinarians,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3121.0,Optometrists,Analyzing - 2,speaking - 6,Operating - 4
+3122.0,Chiropractors,Co-ordinating - 1,Mentoring - 0,Manipulating - 4
+3124.1,Nurse practitioners, - , - , - 
+3124.2,Physician assistants, - , - , - 
+3124.3,Midwives,Analyzing - 2,Instructing - 2,Operating - 4
+3125.1,Doctors of podiatric medicine,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3125.2,Chiropodists and podiatrists,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3125.3,Naturopaths,Co-ordinating - 1,Mentoring - 0,Operating - 4
+3125.4,Orthoptists,Compiling - 3,speaking - 6,Operating - 4
+3125.5,"Doctors of osteopathic medicine
+",Co-ordinating - 1,Mentoring - 0,Operating - 4
+3131.1,Community pharmacists and hospital pharmacists,Synthesizing - 0,Instructing - 2,Precision working - 1
+3131.2,Industrial pharmacists,Synthesizing - 0,speaking - 6,Precision working - 1
+3132.0,Dietitians and nutritionists,Co-ordinating - 1,Consulting - 2,Not significant - 8
+3141.1,Audiologists,Co-ordinating - 1,Mentoring - 0,Operating - 4
+3141.2,Speech-language pathologists,Co-ordinating - 1,Instructing - 2,Not significant - 8
+3142.0,Physiotherapists,Co-ordinating - 1,Instructing - 2,Operating - 4
+3143.0,Occupational therapists,Co-ordinating - 1,Consulting - 2,Manipulating - 4
+3144.1,Other professional occupations in therapy and assessment,Co-ordinating - 1,Mentoring - 0,Operating - Manipulating - 4
+3144.2,Kinesiologists,Co-ordinating - 1,Consulting - 2,Handling - 7
+3144.3,Exercise therapists,Co-ordinating - 1,Consulting - 2,Handling - 7
+3211.0,Medical laboratory technologists,Analyzing - 2,Supervising - 3,Precision working - 1
+3212.1,Medical laboratory technicians ,Compiling - 3,Assisting - 7,Setting up - 0
+3212.2,Pathologists' assistants,Compiling - 3,Assisting - 7,Precision working - 1
+3213.0,Animal health technologists and veterinary technicians,Compiling - 3,Assisting - 7,Operating - 4
+3214.1,Respiratory therapists,Compiling - 3,speaking - 6,Precision working - 1
+3214.2,Clinical perfusionists,Compiling - 3,speaking - 6,Precision working - 1
+3214.3,Cardiopulmonary technologists,Compiling - 3,speaking - 6,Precision working - 1
+3215.1,Radiological technologists,Compiling - 3,speaking - 6,Precision working - 1
+3215.2,Nuclear medicine technologists,Compiling - 3,speaking - 6,Precision working - 1
+3215.3,Radiation therapists,Compiling - 3,Assisting - 7,Precision working - 1
+3216.0,Medical sonographers,Compiling - 3,speaking - 6,Operating - 4
+3217.1,Cardiology technologists,Compiling - 3,speaking - 6,Operating - 4
+3217.2,Electroencephalographic (EEG) technologists,Compiling - 3,speaking - 6,Precision working - 1
+3217.3,Electromyography (EMG) technologists,Compiling - 3,speaking - 6,Precision working - 1
+3219.1,Dietary technicians,Compiling - 3,Assisting - 7,Not significant - 8
+3219.2,Ocularists,Analyzing - 2,speaking - 6,Precision working - 1
+3219.3,Prosthetists and orthotists,Analyzing - 2,Supervising - 3,Precision working - 1
+3219.4,Prosthetic and orthotic technicians,Analyzing - 2,speaking - 6,Precision working - 1
+3219.5,Pharmacy technicians,Compiling - 3,Assisting - 7,Handling - 7
+3221.0,Denturists,Analyzing - 2,speaking - 6,Precision working - 1
+3222.1,Dental hygienists,Compiling - 3,Instructing - 2,Precision working - 1
+3222.2,Dental therapists,Compiling - 3,Instructing - 2,Precision working - 1
+3223.1,Dental technologists and technicians,Analyzing - 2,Not significant - 8,Precision working - 1
+3223.2,Dental Laboratory Assistants,Copying - 5,Assisting - 7,Precision working - 1
+3231.0,Opticians,Compiling - 3,speaking - 6,Operating - 4
+3232.1,Acupuncturists,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3232.2,Traditional Chinese medical practitioners,Co-ordinating - 1,Mentoring - 0,Precision working - 1
+3232.3,Herbalists,Analyzing - 2,Instructing - 2,Handling - 7
+3232.4,Homeopaths,Analyzing - 2,Mentoring - 0,Precision working - 1
+3232.5,Reflexologists,Analyzing - 2,Assisting - 7,Manipulating - 4
+3232.6,Rolfers,Analyzing - 2,Assisting - 7,Manipulating - 4
+3233.1,Licensed practical nurses,Compiling - 3,Instructing - 2,Operating - 4
+3233.2,Operating room technicians,Copying - 5,Assisting - 7,Handling - 7
+3234.0,Paramedical occupations,Compiling - 3,Assisting - 7,Operating - 4
+3236.0,Massage therapists,Analyzing - 2,Assisting - 7,Operating - 4
+3237.1,Hearing instrument practitioners,Analyzing - 2,speaking - 6,Operating - 4
+3237.2,Audiometric technicians,Compiling - 3,speaking - 6,Operating - 4
+3237.3,Communicative disorders assistants and speech-language pathology assistants,Compiling - 3,Assisting - 7,Operating - 4
+3237.4,Ophthalmic medical assistants,Compiling - 3,Assisting - 7,Operating - 4
+3237.5,Physiotherapy assistants and occupational therapy assistants,Compiling - 3,Assisting - 7,Operating - 4
+3411.0,Dental assistants,Copying - 5,Assisting - 7,Operating - 4
+3413.0,"Nurse aides, orderlies and patient service associates",Copying - 5,Assisting - 7,Operating - 4
+3414.1,Orthopedic technologists,Copying - 5,Assisting - 7,Operating - 4
+3414.2,Therapy assistants ,Copying - 5,Assisting - 7,Handling - 7
+3414.3,Optical/ophthalmic laboratory technicians and assistants ,Copying - 5,Assisting - 7,Precision working - 1
+3414.4,Pharmacy aides,Compiling - 3,Assisting - 7,Handling - 7
+3414.5,Central supply aides,Copying - 5,Assisting - 7,Operating - 4
+3414.6,Blood donor clinic assistants,Copying - 5,Assisting - 7,Handling - 7
+3414.7,Morgue attendants,Copying - 5,Assisting - 7,Manipulating - 4
+4011.0,University professors and lecturers,Synthesizing - 0,Instructing - 2,Not significant - 8
+4012.1,Post-secondary teaching assistants,Compiling - 3,Instructing - 2,Handling - 7
+4012.2,Post-secondary research assistants,Compiling - 3,Assisting - 7,Setting up - 0
+4021.0,College and other vocational instructors,Co-ordinating - 1,Instructing - 2,Not significant - 8
+4031.0,Secondary school teachers,Co-ordinating - 1,Instructing - 2,Not significant - 8
+4032.0,Elementary school and kindergarten teachers,Co-ordinating - 1,Instructing - 2,Not significant - 8
+4033.0,Educational counsellors,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4111.0,Judges,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4112.0,Lawyers and Quebec notaries,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4151.0,Psychologists,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4152.0,Social workers,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4153.0,"Family, marriage and other related counsellors",Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4154.0,Professional occupations in religion,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4155.1,Probation and parole officers,Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4155.2,"Classification officers, correctional institutions",Co-ordinating - 1,Mentoring - 0,Not significant - 8
+4156.0,Employment counsellors,Compiling - 3,Consulting - 2,Not significant - 8
+4161.1,Ergonomists,Co-ordinating - 1,Consulting - 2,Handling - 7
+4161.2,Occupational/industrial hygienists,Co-ordinating - 1,Consulting - 2,Handling - 7
+4161.3,Patent agents,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4161.4,Science policy and program officers,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4161.5,Technology transfer officers, - , - , - 
+4162.0,Economists and economic policy researchers and analysts,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4163.0,Business development officers and marketing researchers and consultants,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4164.1,Social policy researchers,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4164.2,Home economists,Co-ordinating - 1,Consulting - 2,Handling - 7
+4164.3,Housing policy analysts,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4164.4,International aid and development project officers,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4164.5,Social survey researchers,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4164.6,Social services planners,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4165.0,"Health policy researchers, consultants and program officers",Co-ordinating - 1,Consulting - 2,Not significant - 8
+4166.0,"Education policy researchers, consultants and program officers",Co-ordinating - 1,Consulting - 2,Not significant - 8
+4167.1,Fitness consultant,Co-ordinating - 1,Consulting - 2,Handling - 7
+4167.2,Recreation consultants,Co-ordinating - 1,Consulting - 2,Handling - 7
+4167.3,"Recreation, sports and fitness policy analysts",Co-ordinating - 1,Consulting - 2,Not significant - 8
+4167.4,Recreation and sports program supervisors,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4167.5,Sports consultants,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4168.0,Program officers unique to government,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4169.1,Anthropologists,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4169.2,Archaeologists,Co-ordinating - 1,Consulting - 2,Handling - 7
+4169.3,Geographers,Co-ordinating - 1,Consulting - 2,Handling - 7
+4169.4,Historians,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4169.5,Linguists,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4169.6,Political scientists,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4169.7,Psychometricians and psychometrists,Co-ordinating - 1,Instructing - 2,Handling - 7
+4169.8,Sociologists,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4169.9,Other social science professionals,Co-ordinating - 1,Consulting - 2,Not significant - 8
+4211.1,Paralegals,Compiling - 3,Assisting - 7,Not significant - 8
+4211.2,Notaries public,Compiling - 3,speaking - 6,Not significant - 8
+4211.3,Trademark agents,Compiling - 3,speaking - 6,Not significant - 8
+4211.4,Independent paralegals,Compiling - 3,Consulting - 2,Not significant - 8
+4212.0,Social and community service workers,Compiling - 3,Consulting - 2,Not significant - 8
+4214.1,Early childhood educators,Compiling - 3,Instructing - 2,Handling - 7
+4214.2,Early childhood educator assistants,Copying - 5,Assisting - 7,Handling - 7
+4215.0,Instructors of persons with disabilities,Compiling - 3,Instructing - 2,Operating - 4
+4216.1,Driving instructors,Compiling - 3,Instructing - 2,Driving - 3
+4216.2,Driver's licence examiners,Analyzing - 2,speaking - 6,Not significant - 8
+4216.3,Sewing instructors,Compiling - 3,Instructing - 2,Controlling - 2
+4216.4,Modelling and finishing school instructors,Compiling - 3,Instructing - 2,Not significant - 8
+4217.0,Other religious occupations,Compiling - 3,Instructing - 2,Not significant - 8
+4311.0,Police officers (except commissioned),Analyzing - 2,speaking - 6,Driving - 3
+4312.0,Firefighters,Compiling - 3,Persuading - 5,Not significant - 8
+4313.0,Non-commissioned ranks of the Canadian Armed Forces,Analyzing - 2,speaking - Signaling - 6,Controlling - 2
+4411.1,Babysitters,Copying - 5,Assisting - 7,Handling - 7
+4411.2,Foster parents,Compiling - 3,Serving - Assisting - 7,Not significant - 8
+4411.3,Nannies and Live-In Caregivers,Copying - 5,Assisting - 7,Handling - 7
+4411.4,Parents' helpers,Copying - 5,Assisting - 7,Handling - 7
+4412.1,Visiting homemakers,Compiling - 3,Serving - Assisting - 7,Handling - 7
+4412.2,Housekeepers,Copying - 5,Serving - Assisting - 7,Handling - 7
+4412.3,Companions,Copying - 5,Serving - Assisting - 7,Handling - 7
+4413.0,Elementary and secondary school teacher assistants,Copying - 5,Assisting - 7,Handling - 7
+4421.0,Sheriffs and bailiffs,Copying - 5,speaking - 6,Handling - 7
+4422.0,Correctional service officers,Copying - 5,Supervising - 3,Not significant - 8
+4423.1,Animal control officers,Copying - 5,speaking - 6,Driving - 3
+4423.2,By-law enforcement officers,Compiling - 3,speaking - 6,Not significant - 8
+4423.3,Commercial transport inspectors,Compiling - 3,speaking - 6,Operating - 4
+4423.4,Garbage collection inspectors,Compiling - 3,speaking - 6,Not significant - 8
+4423.5,Liquor licence inspectors,Compiling - 3,speaking - 6,Not significant - 8
+4423.6,Parking control officers,Copying - 5,Not significant - 8,Driving - 3
+4423.7,Taxi inspectors,Compiling - 3,speaking - 6,Operating - Manipulating - 4
+4423.8,Zoning inspectors,Compiling - 3,speaking - 6,Not significant - 8
+5111.0,Librarians,Co-ordinating - 1,Instructing - 2,Operating - 4
+5112.1,Conservators,Analyzing - 2,Instructing - 2,Precision working - 1
+5112.2,Curators,Co-ordinating - 1,Consulting - 2,Not significant - 8
+5113.0,Archivists,Co-ordinating - 1,Instructing - 2,Operating - 4
+5121.1,Authors and Other Creative Writers,Synthesizing - 0,Diverting - 4,Not significant - 8
+5121.2,Technical writers,Synthesizing - 0,Instructing - 2,Not significant - 8
+5121.3,Copywriters,Synthesizing - 0,Persuading - 5,Not significant - 8
+5122.0,Editors,Analyzing - 2,Negotiating - 1,Not significant - 8
+5123.0,Journalists,Compiling - 3,Diverting - 4,Not significant - 8
+5125.1,Translators,Analyzing - 2,Consulting - 2,Not significant - 8
+5125.2,Terminologists,Analyzing - 2,Consulting - 2,Not significant - 8
+5125.3,Interpreters,Analyzing - 2,speaking - 6,Not significant - 8
+5125.4,Sign language interpreters,Analyzing - 2,speaking - Signaling - 6,Not significant - 8
+5131.1,"Film, radio, television and video game producers",Co-ordinating - 1,Negotiating - 1,Not significant - 8
+5131.2,Directors,Co-ordinating - 1,Instructing - 2,Not significant - 8
+5131.3,Choreographers,Synthesizing - 0,Instructing - 2,Not significant - 8
+5131.4,Art directors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+5131.5,Film editors,Co-ordinating - 1,speaking - 6,Operating - 4
+5131.6,Record producers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+5131.7,Directors of photography,Co-ordinating - 1,Supervising - 3,Not significant - 8
+5132.1,Conductors,Synthesizing - 0,Instructing - 2,Precision working - 1
+5132.2,Composers,Synthesizing - 0,Not significant - 8,Precision working - 1
+5132.3,Arrangers,Synthesizing - 0,Not significant - 8,Precision working - 1
+5133.1,Musicians,Co-ordinating - 1,Diverting - 4,Precision working - 1
+5133.2,Singers,Co-ordinating - 1,Diverting - 4,Not significant - 8
+5133.3,Teachers of music or voice,Co-ordinating - 1,Instructing - 2,Precision working - 1
+5134.1,Dancers,Synthesizing - 0,Diverting - 4,Handling - 7
+5134.2,Dance teachers,Synthesizing - 0,Instructing - 2,Not significant - 8
+5135.1,Actors and comedians,Synthesizing - 0,Diverting - 4,Not significant - 8
+5135.2,Acting teachers,Synthesizing - 0,Instructing - 2,Not significant - 8
+5136.1,Painters ,Synthesizing - 0,Not significant - 8,Precision working - 1
+5136.2,Sculptors,Synthesizing - 0,speaking - 6,Precision working - 1
+5136.3,Art instructors and teachers,Synthesizing - 0,Instructing - 2,Precision working - 1
+5211.1,Library  technicians,Compiling - 3,Assisting - 7,Operating - 4
+5211.2,Public archive technicians ,Compiling - 3,Assisting - 7,Not significant - 8
+5212.1,Conservation and restoration technicians,Compiling - 3,Assisting - 7,Precision working - 1
+5212.2,Curatorial assistants,Compiling - 3,Assisting - 7,Handling - 7
+5212.3,Museum and other related interpreters,Copying - 5,speaking - 6,Not significant - 8
+5212.4,Museum extension officers,Co-ordinating - 1,speaking - 6,Not significant - 8
+5212.5,Museum registrars and cataloguers,Compiling - 3,Supervising - 3,Handling - 7
+5212.6,Preparators,Compiling - 3,Not significant - 8,Precision working - 1
+5212.7,Picture framers,Copying - 5,Not significant - 8,Operating - 4
+5212.8,Taxidermists,Analyzing - 2,Not significant - 8,Precision working - 1
+5212.9,Museology technicians ,Compiling - 3,Not significant - 8,Precision working - 1
+5221.0,Photographers,Synthesizing - 0,speaking - 6,Setting up - 0
+5222.0,Film and video camera operators,Synthesizing - 0,Not significant - 8,Operating - 4
+5223.0,Graphic arts technicians,Compiling - 3,speaking - 6,Precision working - 1
+5224.0,Broadcast technicians,Analyzing - 2,Not significant - 8,Controlling - 2
+5225.0,Audio and video recording technicians,Compiling - 3,Not significant - 8,Controlling - 2
+5226.1,Floor managers ,Co-ordinating - 1,Signalling - 6,Not significant - 8
+5226.2,Key grips,Co-ordinating - 1,Supervising - 3,Not significant - 8
+5226.3,Gaffers and lighting technicians,Compiling - 3,Not significant - 8,Precision working - 1
+5226.4,Stunt co-ordinators and special effects technicians,Analyzing - 2,speaking - 6,Precision working - 1
+5226.5,Make-up artists,Compiling - 3,Not significant - 8,Precision working - 1
+5226.6,Costumiers,Co-ordinating - 1,Supervising - 3,Not significant - 8
+5226.7,Settings shop foremen/women,Co-ordinating - 1,Supervising - 3,Not significant - 8
+5226.8,Property masters,Co-ordinating - 1,Supervising - 3,Not significant - 8
+5227.1,Camera crane operators,Copying - 5,speaking - 6,Controlling - 2
+5227.2,Projectionists,Comparing - 6,Not significant - 8,Operating - 4
+5227.3,Props persons and set builders,Analyzing - 2,Not significant - 8,Precision working - 1
+5227.4,Script assistants,Copying - 5,Assisting - 7,Handling - 7
+5227.5,Grips and riggers,Comparing - 6,Not significant - 8,Operating - 4
+5227.6,Dressers,Comparing - 6,Assisting - 7,Handling - 7
+5227.7,Production assistants, - , - , - 
+5231.0,Announcers and other broadcasters,Compiling - 3,Diverting - 4,Handling - 7
+5232.1,Buskers,Co-ordinating - 1,Diverting - 4,Handling - 7
+5232.2,Circus performers,Co-ordinating - 1,Diverting - 4,Operating - 4
+5232.3,Magicians and illusionists,Co-ordinating - 1,Diverting - 4,Manipulating - 4
+5232.4,Fashion models,Comparing - 6,speaking - 6,Not significant - 8
+5232.5,Puppeteers,Co-ordinating - 1,Diverting - 4,Operating - 4
+5241.1,Graphic designers,Synthesizing - 0,Consulting - 2,Precision working - 1
+5241.2,Illustrators,Synthesizing - 0,Consulting - 2,Precision working - 1
+5242.0,Interior designers and interior decorators,Synthesizing - 0,Consulting - 2,Precision working - 1
+5243.1,Theatre designers,Synthesizing - 0,speaking - 6,Precision working - 1
+5243.2,Fashion designers,Synthesizing - 0,speaking - 6,Precision working - 1
+5243.3,Exhibit designers,Synthesizing - 0,speaking - 6,Precision working - 1
+5244.1,Carvers,Synthesizing - 0,Not significant - 8,Precision working - 1
+5244.2,Glass blowers,Synthesizing - 0,Not significant - 8,Precision working - 1
+5244.3,Metal arts workers,Synthesizing - 0,Not significant - 8,Precision working - 1
+5244.4,Potters,Synthesizing - 0,Not significant - 8,Precision working - 1
+5244.5,Stained glass artists,Synthesizing - 0,Not significant - 8,Precision working - 1
+5244.6,Stringed instrument makers,Synthesizing - 0,Not significant - 8,Precision working - 1
+5244.7,Weavers,Synthesizing - 0,Not significant - 8,Operating - 4
+5244.8,Craft instructors,Co-ordinating - 1,Instructing - 2,Operating - 4
+5244.9,Artistic floral arrangers,Synthesizing - 0,speaking - 6,Precision working - 1
+5245.0,"Patternmakers - textile, leather and fur products",Compiling - 3,Not significant - 8,Precision working - 1
+5251.0,Athletes,Analyzing - 2,Not significant - 8,Precision working - 1
+5252.1,Coaches,Co-ordinating - 1,Instructing - 2,Not significant - 8
+5252.2,Sports scouts,Analyzing - 2,Negotiating - 1,Not significant - 8
+5253.0,Sports officials and referees,Analyzing - 2,Signalling - 6,Not significant - 8
+5254.1,Program leaders and instructors in recreation and sport,Co-ordinating - 1,Instructing - 2,Manipulating - 4
+5254.2,Fitness appraisers,Co-ordinating - 1,Consulting - 2,Handling - 7
+6211.0,Retail sales supervisors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6221.1,Technical sales specialists - wholesale trade,Analyzing - 2,Persuading - 5,Not significant - 8
+6221.2,Grain elevator operators,Analyzing - 2,Supervising - 3,Controlling - 2
+6222.0,Retail and wholesale buyers,Co-ordinating - 1,Negotiating - 1,Not significant - 8
+6231.0,Insurance agents and brokers,Compiling - 3,Persuading - 5,Not significant - 8
+6232.0,Real estate agents and salespersons,Compiling - 3,Persuading - 5,Not significant - 8
+6235.0,Financial sales representatives,Compiling - 3,speaking - 6,Not significant - 8
+6311.0,Food service supervisors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6312.0,Executive housekeepers,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6313.1,"Accommodation, travel, tourism and related services supervisors",Co-ordinating - 1,Supervising - 3,Not significant - 8
+6313.2,Casino supervisors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6314.1,Customer service representatives supervisors - financial services,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6314.2,Customer service representatives supervisors (except financial services),Co-ordinating - 1,Supervising - 3,Not significant - 8
+6315.0,Cleaning supervisors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6316.1,Other services supervisors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6316.2,Dry cleaning and laundry supervisors,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6321.1,Chefs,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6321.2,Sous-chefs,Co-ordinating - 1,Supervising - 3,Precision working - 1
+6321.3,Chefs and specialist chefs,Analyzing - 2,Supervising - 3,Precision working - 1
+6322.0,Cooks,Compiling - 3,Supervising - 3,Precision working - 1
+6331.0,"Butchers, meat cutters and fishmongers - retail and wholesale",Compiling - 3,Not significant - 8,Precision working - 1
+6332.0,Bakers,Compiling - 3,Not significant - 8,Controlling - 2
+6341.1,Hairstylists,Compiling - 3,Serving - 7,Manipulating - 4
+6341.2,Barbers,Compiling - 3,Serving - 7,Manipulating - 4
+6342.1,Tailors,Analyzing - 2,speaking - 6,Precision working - 1
+6342.2,Dressmakers,Analyzing - 2,speaking - 6,Precision working - 1
+6342.3,Furriers,Analyzing - 2,Not significant - 8,Precision working - 1
+6342.4,Milliners,Analyzing - 2,Not significant - 8,Precision working - 1
+6342.5,Alterationists,Copying - 5,speaking - 6,Precision working - 1
+6343.1,Shoemakers,Compiling - 3,speaking - 6,Precision working - 1
+6343.2,Shoe repairers,Copying - 5,speaking - 6,Precision working - 1
+6344.1,Jewellers and related workers,Analyzing - 2,Not significant - 8,Precision working - 1
+6344.2,Watch repairers,Analyzing - 2,Not significant - 8,Precision working - 1
+6345.0,Upholsterers,Compiling - 3,speaking - 6,Precision working - 1
+6346.1,Funeral directors,Co-ordinating - 1,Consulting - 2,Not significant - 8
+6346.2,Embalmers,Compiling - 3,Supervising - 3,Precision working - 1
+6411.0,Sales and account representatives - wholesale trade (non-technical),Compiling - 3,Persuading - 5,Not significant - 8
+6421.0,Retail salespersons,Computing - 4,Persuading - 5,Handling - 7
+6511.0,Maîtres d'hôtel and hosts/hostesses,Co-ordinating - 1,Supervising - 3,Not significant - 8
+6512.0,Bartenders,Computing - 4,Serving - 7,Handling - 7
+6513.0,Food and beverage servers,Copying - 5,Serving - 7,Handling - 7
+6521.0,Travel counsellors,Compiling - 3,Persuading - 5,Operating - 4
+6522.1,Flight attendants,Comparing - 6,Assisting - 7,Handling - 7
+6522.2,"Flight pursers, customer service directors and passenger service directors",Compiling - 3,Supervising - 3,Handling - 7
+6522.3,Ship pursers,Compiling - 3,Supervising - 3,Handling - 7
+6523.1,Airline passenger and ticket agents,Copying - 5,speaking - 6,Operating - 4
+6523.2,Airline baggage agents,Copying - 5,speaking - 6,Handling - 7
+6523.3,Airline cargo agents,Computing - 4,speaking - 6,Handling - 7
+6523.4,Airline reservation agents,Copying - 5,speaking - 6,Operating - 4
+6523.5,Airline station agents,Copying - 5,speaking - 6,Operating - 4
+6523.6,Airline load planners,Computing - 4,Not significant - 8,Operating - 4
+6524.1,Ticket agents and related clerks (except airline),Copying - 5,speaking - 6,Operating - 4
+6524.2,Cargo service representatives (except airline),Computing - 4,speaking - 6,Handling - 7
+6525.0,Hotel front desk clerks,Compiling - 3,speaking - 6,Operating - 4
+6531.1,Tour guides,Copying - 5,speaking - 6,Not significant - 8
+6531.2,Travel guides,Copying - 5,speaking - 6,Not significant - 8
+6532.0,Outdoor sport and recreational guides,Co-ordinating - 1,speaking - 6,Handling - 7
+6533.0,Casino workers,Compiling - 3,speaking - 6,Handling - 7
+6541.1,Corporate security officers,Compiling - 3,speaking - 6,Not significant - 8
+6541.2,Private investigators,Compiling - 3,speaking - 6,Not significant - 8
+6541.3,Retail loss prevention officers,Compiling - 3,speaking - 6,Handling - 7
+6541.4,Security guards,Copying - 5,speaking - 6,Driving - 3
+6541.5,Armoured car guards,Copying - 5,speaking - 6,Driving - 3
+6551.0,Customer services representatives - financial institutions,Compiling - 3,speaking - 6,Operating - 4
+6552.1,Customer service clerks in retail establishments,Copying - 5,speaking - 6,Not significant - 8
+6552.2,Call centre agents,Copying - 5,speaking - 6,Not significant - 8
+6552.3,"Customer service clerks in insurance, telephone, utility and similar companies",Copying - 5,speaking - 6,Not significant - 8
+6552.4,Information clerks,Copying - 5,speaking - 6,Not significant - 8
+6561.1,Image consultants,Compiling - 3,Persuading - 5,Not significant - 8
+6561.2,Make-up consultants,Compiling - 3,Assisting - 7,Manipulating - 4
+6561.3,Colour consultants,Compiling - 3,Assisting - 7,Not significant - 8
+6561.4,Wedding consultants,Compiling - 3,Persuading - 5,Not significant - 8
+6561.5,Weight loss consultants,Compiling - 3,Persuading - 5,Not significant - 8
+6562.1,Estheticians,Compiling - 3,Serving - Assisting - 7,Manipulating - 4
+6562.2,Cosmeticians,Compiling - 3,Serving - Assisting - 7,Manipulating - 4
+6562.3,Electrologists,Compiling - 3,Serving - Assisting - 7,Precision working - 1
+6562.4,Manicurists and pedicurists,Comparing - 6,Serving - Assisting - 7,Manipulating - 4
+6562.5,Scalp treatment specialists,Copying - 5,Serving - Assisting - 7,Operating - Manipulating - 4
+6562.6,Tattoo artists,Copying - 5,Serving - Assisting - 7,Precision working - 1
+6562.7,Hair replacement technicians (non-medical),Compiling - 3,Serving - Assisting - 7,Manipulating - 4
+6563.0,Pet groomers and animal care workers,Comparing - 6,Assisting - 7,Handling - 7
+6564.1,Astrologers,Compiling - 3,Persuading - 5,Not significant - 8
+6564.2,Psychic consultants,Compiling - 3,Persuading - 5,Not significant - 8
+6564.3,Other service providers,Compiling - 3,Serving - Assisting - 7,Not significant - 8
+6611.0,Cashiers,Comparing - 6,speaking - 6,Operating - Manipulating - 4
+6621.1,Automotive service station attendants,Comparing - 6,Serving - 7,Operating - Manipulating - 4
+6621.2,Marina service station attendants,Comparing - 6,Serving - 7,Operating - Manipulating - 4
+6622.0,"Store shelf stockers, clerks and order fillers",Comparing - 6,Serving - Assisting - 7,Handling - 7
+6623.1,Direct distributors,Copying - 5,Persuading - 5,Handling - 7
+6623.2,Door-to-door salespersons,Copying - 5,Persuading - 5,Handling - 7
+6623.3,Street vendors,Comparing - 6,Persuading - 5,Handling - 7
+6623.4,Telephone solicitors and telemarketers,Comparing - 6,Persuading - 5,Not significant - 8
+6623.5,Demonstrators,Copying - 5,Persuading - 5,Handling - 7
+6711.1,Food service counter attendants and food preparers,Comparing - 6,Serving - 7,Handling - 7
+6711.2,Kitchen helpers,Comparing - 6,Assisting - 7,Handling - 7
+6711.3,Food service helpers,Comparing - 6,Assisting - 7,Handling - 7
+6711.4,Dishwashers,Comparing - 6,Assisting - 7,Operating - 4
+6721.1,Guest service attendants,Comparing - 6,Assisting - 7,Handling - 7
+6721.2,Baggage porters,Comparing - 6,Assisting - 7,Handling - 7
+6721.3,Ship attendants,Comparing - 6,Serving - 7,Handling - 7
+6721.4,Train service attendants,Comparing - 6,Assisting - 7,Handling - 7
+6721.5,Facilities workers, - , - , - 
+6722.1,Amusement attraction operators,Copying - 5,speaking - 6,Controlling - 2
+6722.2,"Attendants in amusement, recreation and sport",Comparing - 6,speaking - Signaling - 6,Operating - 3
+6731.0,Light duty cleaners,Copying - 5,Not significant - 8,Handling - 7
+6732.1,Carpet and upholstery cleaners,Comparing - 6,Not significant - 8,Operating - 4
+6732.2,Chimney cleaners,Comparing - 6,Not significant - 8,Operating - 4
+6732.3,Furnace and ventilation system cleaners,Comparing - 6,Not significant - 8,Operating - 4
+6732.4,Sandblasters,Comparing - 6,Not significant - 8,Operating - 4
+6732.5,Vehicle cleaners,Comparing - 6,Not significant - 8,Operating - 4
+6732.6,Window cleaners,Comparing - 6,Not significant - 8,Operating - 4
+6733.0,"Janitors, caretakers and building superintendents",Copying - 5,Not significant - 8,Operating - Manipulating - 4
+6741.1,Dry cleaning and laundry machine operators,Comparing - 6,Not significant - 8,Operating - 4
+6741.2,Dry cleaning and laundry inspectors and assemblers,Comparing - 6,Not significant - 8,Handling - 7
+6741.3,"Ironing, pressing and finishing workers",Copying - 5,Not significant - 8,Operating - 4
+6742.1,Beauty salon attendants,Comparing - 6,Assisting - 7,Handling - 7
+6742.2,Door attendants,Comparing - 6,Assisting - 7,Handling - 7
+6742.3,Funeral home attendants,Comparing - 6,Assisting - 7,Driving - 3
+6742.4,Laundromat attendants,Comparing - 6,speaking - 6,Handling - 7
+6742.5,Parking lot attendants and car jockeys,Comparing - 6,speaking - 6,Driving - 3
+6742.6,Ticket takers and ushers,Comparing - 6,speaking - 6,Not significant - 8
+6742.7,Other elemental service workers,Comparing - 6,Assisting - 7,Handling - 7
+7201.1,"Contractors and supervisors, metal forming, shaping and erecting trades",Co-ordinating - 1,Supervising - 3,Setting up - 0
+7201.2,"Supervisors, machinists and related occupations",Co-ordinating - 1,Supervising - 3,Setting up - 0
+7202.0,"Contractors and supervisors, electrical trades and telecommunications occupations",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7203.0,"Contractors and supervisors, pipefitting trades",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7204.0,"Contractors and supervisors, carpentry trades",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7205.0,"Contractors and supervisors, other construction trades, installers, repairers and servicers",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7231.1,Machinists,Compiling - 3,Not significant - 8,Setting up - 0
+7231.2,Machining and tooling inspectors,Compiling - 3,Not significant - 8,Precision working - 1
+7232.1,Tool and die makers,Analyzing - 2,Not significant - 8,Setting up - 0
+7232.2,Metal patternmakers,Analyzing - 2,Not significant - 8,Setting up - 0
+7232.3,Metal mould makers,Analyzing - 2,Not significant - 8,Setting up - 0
+7233.0,Sheet metal workers,Compiling - 3,Not significant - 8,Precision working - 1
+7234.0,Boilermakers,Compiling - 3,speaking - Signaling - 6,Setting up - 0
+7235.0,Structural metal and platework fabricators and fitters,Compiling - 3,Not significant - 8,Setting up - 0
+7236.0,Ironworkers,Compiling - 3,Signalling - 6,Precision working - 1
+7237.1,Welders,Compiling - 3,Not significant - 8,Precision working - 1
+7237.2,"Welding, brazing and soldering machine operators",Comparing - 6,Not significant - 8,Operating - 4
+7241.0,Electricians (except industrial and power system),Analyzing - 2,speaking - Signaling - 6,Precision working - 1
+7242.0,Industrial electricians,Analyzing - 2,speaking - Signaling - 6,Precision working - 1
+7243.0,Power system electricians,Analyzing - 2,speaking - 6,Precision working - 1
+7244.0,Electrical power line and cable workers,Compiling - 3,speaking - 6,Precision working - 1
+7245.0,Telecommunications line and cable workers,Compiling - 3,speaking - 6,Precision working - 1
+7246.1,Telephone installers and repairers,Compiling - 3,speaking - 6,Precision working - 1
+7246.2,Switch network installers and repairers,Analyzing - 2,Signalling - 6,Precision working - 1
+7246.3,Telecommunications service testers,Compiling - 3,speaking - 6,Operating - 4
+7246.4,Telecommunications equipment technicians,Analyzing - 2,speaking - 6,Precision working - 1
+7247.1,Cable television service technicians,Compiling - 3,speaking - 6,Operating - 4
+7247.2,Cable television maintenance technicians,Compiling - 3,speaking - 6,Precision working - 1
+7251.0,Plumbers,Compiling - 3,speaking - Signaling - 6,Precision working - 1
+7252.1,Steamfitters and pipefitters,Compiling - 3,Not significant - 8,Precision working - 1
+7252.2,Sprinkler system installers,Compiling - 3,Not significant - 8,Precision working - 1
+7253.0,Gas fitters,Compiling - 3,speaking - 6,Precision working - 1
+7271.0,Carpenters,Compiling - 3,speaking - 6,Precision working - 1
+7272.0,Cabinetmakers,Compiling - 3,Not significant - 8,Precision working - 1
+7281.0,Bricklayers,Compiling - 3,Not significant - 8,Precision working - 1
+7282.0,Concrete finishers,Copying - 5,Not significant - 8,Operating - 4
+7283.0,Tilesetters,Compiling - 3,Not significant - 8,Precision working - 1
+7284.1,Plasterers,Copying - 5,Not significant - 8,Precision working - 1
+7284.2,Drywall installers and finishers,Copying - 5,Not significant - 8,Precision working - 1
+7284.3,Lathers,Copying - 5,Not significant - 8,Precision working - 1
+7291.1,Roofers,Copying - 5,Not significant - 8,Operating - 4
+7291.2,Shinglers,Comparing - 6,Not significant - 8,Operating - 4
+7292.0,Glaziers,Compiling - 3,speaking - 6,Precision working - 1
+7293.0,Insulators,Copying - 5,Not significant - 8,Operating - 4
+7294.0,Painters and decorators (except interior decorators),Copying - 5,speaking - 6,Operating - 4
+7295.0,Floor covering installers,Computing - 4,speaking - 6,Operating - 4
+7301.0,"Contractors and supervisors, mechanic trades",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7302.0,"Contractors and supervisors, heavy equipment operator crews",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7303.0,"Supervisors, printing and related occupations",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7304.0,"Supervisors, railway transport operations",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7305.0,"Supervisors, motor transport and other ground transit operators",Co-ordinating - 1,Supervising - 3,Not significant - 8
+7311.1,Construction millwrights and industrial mechanics,Analyzing - 2,speaking - 6,Setting up - 0
+7311.2,Textile machinery mechanics and repairers,Analyzing - 2,speaking - 6,Setting up - 0
+7312.0,Heavy-duty equipment mechanics,Analyzing - 2,Not significant - 8,Precision working - 1
+7313.0,"Heating, refrigeration and air conditioning mechanics",Analyzing - 2,Not significant - 8,Precision working - 1
+7314.0,Railway carmen/women,Compiling - 3,Not significant - 8,Precision working - 1
+7315.1,Aircraft mechanics,Analyzing - 2,Not significant - 8,Precision working - 1
+7315.2,Aircraft inspectors,Analyzing - 2,Not significant - 8,Precision working - 1
+7316.0,Machine fitters,Compiling - 3,Not significant - 8,Precision working - 1
+7318.0,Elevator constructors and mechanics,Analyzing - 2,Not significant - 8,Precision working - 1
+7321.1,Automotive service technicians,Analyzing - 2,speaking - 6,Precision working - 1
+7321.2,"Mechanical repairers, motor vehicle manufacturing",Compiling - 3,speaking - 6,Precision working - 1
+7321.3,Transport truck and trailer mechanics,Analyzing - 2,speaking - 6,Precision working - 1
+7322.0,Motor vehicle body repairers,Compiling - 3,Not significant - 8,Precision working - 1
+7331.0,Oil and solid fuel heating mechanics,Analyzing - 2,speaking - 6,Precision working - 1
+7332.1,Small appliance servicers and repairers,Compiling - 3,speaking - 6,Operating - 4
+7332.2,Major appliance repairers/technicians,Compiling - 3,speaking - 6,Operating - 4
+7333.0,Electrical mechanics,Analyzing - 2,Not significant - 8,Precision working - 1
+7334.0,"Motorcycle, all-terrain vehicle and other related mechanics",Analyzing - 2,speaking - 6,Precision working - 1
+7335.0,Other small engine and small equipment repairers,Analyzing - 2,speaking - 6,Precision working - 1
+7361.1,Railway locomotive engineers,Compiling - 3,speaking - Signaling - 6,Operating - 3
+7361.2,Yard locomotive engineers,Compiling - 3,speaking - Signaling - 6,Operating - 3
+7362.1,Railway conductors,Compiling - 3,Supervising - 3,Handling - 7
+7362.2,Brakemen/women,Copying - 5,speaking - Signaling - 6,Operating - 4
+7371.0,Crane operators,Copying - 5,Not significant - 8,Operating - 3
+7372.1,"Drillers - surface mining, quarrying and construction",Copying - 5,Not significant - 8,Controlling - 2
+7372.2,"Blasters - surface mining, quarrying and construction",Analyzing - 2,speaking - Signaling - 6,Precision working - 1
+7373.0,Water well drillers,Comparing - 6,speaking - 6,Controlling - 2
+7381.0,Printing press operators,Comparing - 6,speaking - 6,Setting up - 0
+7384.1,Gunsmiths,Analyzing - 2,speaking - 6,Precision working - 1
+7384.2,Locksmiths,Analyzing - 2,Not significant - 8,Precision working - 1
+7384.3,Recreation  vehicle technicians,Analyzing - 2,speaking - 6,Precision working - 1
+7384.4,Safe and vault servicers,Copying - 5,Not significant - 8,Precision working - 1
+7384.5,Saw fitters,Copying - 5,Not significant - 8,Controlling - 2
+7384.6,Die setters,Compiling - 3,Not significant - 8,Setting up - 0
+7384.7,Commercial divers,Compiling - 3,speaking - Signaling - 6,Operating - 4
+7384.8,Blacksmiths,Compiling - 3,Not significant - 8,Precision working - 1
+7441.0,Residential and commercial installers and servicers,Comparing - 6,Not significant - 8,Operating - 4
+7442.1,Waterworks maintenance workers,Copying - 5,Assisting - 7,Precision working - 1
+7442.2,Gas maintenance workers,Copying - 5,speaking - 6,Precision working - 1
+7444.0,Pest controllers and fumigators,Comparing - 6,speaking - 6,Operating - 4
+7445.0,Other repairers and servicers,Compiling - 3,Not significant - 8,Operating - 4
+7451.0,Longshore workers,Comparing - 6,Not significant - 8,Driving - 3
+7452.1,Material handlers (manual),Comparing - 6,Not significant - 8,Feeding - Offbearing - 6
+7452.2,Material handlers (equipment operators),Comparing - 6,Not significant - 8,Operating - 4
+7511.1,Long-haul truck drivers,Copying - 5,speaking - 6,Driving - 3
+7511.2,Line-haul and local truck drivers,Copying - 5,speaking - 6,Driving - 3
+7512.1,Bus and streetcar drivers,Copying - 5,speaking - 6,Driving - 3
+7512.2,School bus drivers,Copying - 5,speaking - 6,Driving - 3
+7512.3,Subway train and light rail transit operators,Copying - 5,speaking - 6,Driving - Operating - 3
+7513.1,Taxi and limousine drivers,Copying - 5,speaking - 6,Driving - 3
+7513.2,Chauffeurs,Copying - 5,speaking - 6,Driving - 3
+7514.0,Delivery and courier service drivers,Copying - 5,speaking - 6,Driving - 3
+7521.0,Heavy equipment operators (except crane),Comparing - 6,Not significant - 8,Operating - 3
+7522.0,Public works maintenance equipment operators and related workers,Comparing - 6,Not significant - 8,Driving - 3
+7531.1,Railway yard workers ,Comparing - 6,Not significant - 8,Operating - 4
+7531.2,Railway track maintenance workers,Comparing - 6,Not significant - 8,Operating - 4
+7532.1,Water transport engine room crew,Comparing - 6,Not significant - 8,Operating - 4
+7532.2,Water transport deck crew,Comparing - 6,Not significant - 8,Operating - 3
+7533.1,Lock equipment operators,Comparing - 6,speaking - 6,Operating - 4
+7533.2,Cable ferry operators,Comparing - 6,Signalling - 6,Operating - 3
+7533.3,Ferry terminal workers,Comparing - 6,Signalling - 6,Operating - 4
+7533.4,Boat operators,Comparing - 6,speaking - Signaling - 6,Driving - 3
+7534.0,Air transport ramp attendants,Comparing - 6,Not significant - 8,Driving - 3
+7535.0,Other automotive mechanical installers and servicers,Comparing - 6,Assisting - 7,Operating - 4
+7611.0,Construction trades helpers and labourers,Comparing - 6,Assisting - 7,Operating - 4
+7612.0,Other trades helpers and labourers,Comparing - 6,Assisting - 7,Operating - 4
+7621.0,Public works and maintenance labourers,Comparing - 6,Assisting - 7,Operating - 4
+7622.1,Railway labourers,Comparing - 6,Assisting - 7,Handling - 7
+7622.2,Motor transport labourers,Comparing - 6,Assisting - 7,Handling - 7
+8211.0,"Supervisors, logging and forestry",Co-ordinating - 1,Supervising - 3,Not significant - 8
+8221.0,"Supervisors, mining and quarrying",Co-ordinating - 1,Supervising - 3,Not significant - 8
+8222.0,"Contractors and supervisors, oil and gas drilling and services",Co-ordinating - 1,Supervising - 3,Not significant - 8
+8231.0,Underground production and development miners,Comparing - 6,Signalling - 6,Controlling - 2
+8232.1,Oil and gas well drillers and well servicers,Compiling - 3,speaking - 6,Controlling - 2
+8232.2,"Oil and gas well loggers, testers and related workers",Compiling - 3,Not significant - 8,Controlling - 2
+8241.1,Cable yarding system operators,Comparing - 6,Not significant - 8,Driving - Operating - 3
+8241.2,Mechanical harvester and forwarder operators,Comparing - 6,Not significant - 8,Driving - Operating - 3
+8241.3,Mechanical tree processor and loader operators,Comparing - 6,Not significant - 8,Operating - 4
+8252.1,Agricultural service contractors ,Co-ordinating - 1,Negotiating - 1,Handling - 7
+8252.2,Farm supervisors ,Co-ordinating - 1,Supervising - 3,Handling - 7
+8252.3,Specialized livestock workers,Co-ordinating - 1,Supervising - 3,Handling - 7
+8255.1,"Supervisors, landscape and horticulture",Co-ordinating - 1,Supervising - 3,Operating - 4
+8255.2,Landscaping and grounds maintenance contractors and managers,Co-ordinating - 1,Supervising - 3,Not significant - 8
+8261.0,Fishing masters and officers,Co-ordinating - 1,Supervising - 3,Operating - 3
+8262.0,Fishermen/women,Co-ordinating - 1,Supervising - 3,Operating - 3
+8411.0,Underground mine service and support workers,Comparing - 6,Assisting - 7,Driving - Operating - 3
+8412.1,Oil and gas well drilling workers,Compiling - 3,speaking - 6,Controlling - 2
+8412.2,Oil and gas well services operators,Copying - 5,Not significant - 8,Driving - 3
+8421.0,Chain saw and skidder operators,Comparing - 6,Not significant - 8,Driving - 3
+8422.0,Silviculture and forestry workers,Copying - 5,Not significant - 8,Driving - Operating - 3
+8431.0,General farm workers,Comparing - 6,Not significant - 8,Driving - Operating - 3
+8432.0,Nursery and greenhouse workers,Comparing - 6,speaking - 6,Operating - 4
+8441.0,Fishing vessel deckhands,Comparing - 6,Not significant - 8,Operating - Manipulating - 4
+8442.1,Trappers,Comparing - 6,Not significant - 8,Operating - 4
+8442.2,Hunters,Comparing - 6,Not significant - 8,Operating - 4
+8611.0,Harvesting labourers,Comparing - 6,Not significant - 8,Handling - 7
+8612.0,Landscaping and grounds maintenance labourers,Comparing - 6,Not significant - 8,Operating - 4
+8613.1,Aquaculture support workers,Comparing - 6,Not significant - 8,Operating - 4
+8613.2,Marine plant gatherers,Comparing - 6,Not significant - 8,Handling - 7
+8613.3,Mollusk harvesters,Comparing - 6,Not significant - 8,Handling - 7
+8614.0,Mine labourers,Comparing - 6,Not significant - 8,Operating - 4
+8615.0,"Oil and gas drilling, servicing and related labourers",Comparing - 6,Not significant - 8,Operating - 4
+8616.0,Logging and forestry labourers,Comparing - 6,Not significant - 8,Operating - 4
+9211.0,"Supervisors, mineral and metal processing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9212.0,"Supervisors, petroleum, gas and chemical processing and utilities",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9213.0,"Supervisors, food, beverage and associated products processing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9214.0,"Supervisors, plastic and rubber products manufacturing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9215.0,"Supervisors, forest products processing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9217.1,"Supervisors, textile processing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9217.2,"Supervisors, fabric, fur and leather products manufacturing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9221.0,"Supervisors, motor vehicle assembling",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9222.0,"Supervisors, electronics manufacturing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9223.0,"Supervisors, electrical products manufacturing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9224.0,"Supervisors, furniture and fixtures manufacturing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9226.0,"Supervisors, other mechanical and metal products manufacturing",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9227.0,"Supervisors, other products manufacturing and assembly",Co-ordinating - 1,Supervising - 3,Not significant - 8
+9231.0,"Central control and process operators, mineral and metal processing",Analyzing - 2,speaking - 6,Controlling - 2
+9232.0,"Central control and process operators, petroleum, gas and chemical processing",Analyzing - 2,speaking - 6,Controlling - 2
+9235.1,Pulping control operators,Analyzing - 2,Signalling - 6,Controlling - 2
+9235.2,Papermaking and coating control operators,Analyzing - 2,Signalling - 6,Controlling - 2
+9241.1,Power systems operators,Analyzing - 2,speaking - 6,Controlling - 2
+9241.2, Power station operators,Analyzing - 2,speaking - 6,Controlling - 2
+9241.3,Stationary engineers and auxiliary equipment operators ,Analyzing - 2,speaking - 6,Controlling - 2
+9243.1,Water treatment plant operators,Analyzing - 2,Not significant - 8,Controlling - 2
+9243.2,Liquid waste plant operators,Analyzing - 2,Not significant - 8,Controlling - 2
+9411.0,"Machine operators, mineral and metal processing",Copying - 5,Not significant - 8,Operating - 4
+9412.1,Manual mouldmakers,Compiling - 3,Not significant - 8,Precision working - 1
+9412.2,Manual coremakers,Compiling - 3,Not significant - 8,Precision working - 1
+9412.3,Machine mouldmakers and coremakers,Comparing - 6,Not significant - 8,Controlling - 2
+9412.4,Metal casters,Comparing - 6,Not significant - 8,Controlling - 2
+9412.5,Foundry furnace operators,Comparing - 6,Not significant - 8,Controlling - 2
+9413.1,Glass process control operators,Compiling - 3,Not significant - 8,Controlling - 2
+9413.2,Glass forming machine operators,Compiling - 3,Not significant - 8,Controlling - 2
+9413.3,Glass finishing machine operators,Copying - 5,Not significant - 8,Operating - 4
+9413.4,Glass cutters,Copying - 5,Not significant - 8,Operating - 4
+9414.1,Concrete products forming and finishing workers,Copying - 5,Not significant - 8,Operating - 4
+9414.2,Concrete products machine operators,Copying - 5,Not significant - 8,Operating - 4
+9414.3,Clay products forming and finishing machine operators,Copying - 5,Not significant - 8,Operating - 4
+9414.4,Stone forming and finishing workers,Copying - 5,Not significant - 8,Operating - 4
+9415.0,"Inspectors and testers, mineral and metal processing",Copying - 5,Not significant - 8,Handling - 7
+9416.1,Metalworking machine operators,Copying - 5,speaking - 6,Setting up - 0
+9416.2,Forging machine operators,Copying - 5,Not significant - 8,Operating - 4
+9417.0,Machining tool operators,Copying - 5,Not significant - 8,Operating - 4
+9418.0,Other metal products machine operators,Comparing - 6,Not significant - 8,Operating - 4
+9421.0,Chemical plant machine operators,Copying - 5,Not significant - 8,Operating - 4
+9422.1,Mixing machine operators - plastics processing,Copying - 5,Not significant - 8,Operating - 4
+9422.2,Calendering process operators - plastics processing,Copying - 5,Not significant - 8,Controlling - 2
+9422.3,Extruding process operators - plastics processing,Copying - 5,Not significant - 8,Controlling - 2
+9422.4,Moulding process operators - plastics processing,Copying - 5,Not significant - 8,Controlling - 2
+9423.1,Rubber processing machine operators,Comparing - 6,Not significant - 8,Tending - 5
+9423.2,"Assemblers, rubber products",Comparing - 6,Not significant - 8,Operating - 4
+9423.3,Rubber products inspectors,Copying - 5,Not significant - 8,Handling - 7
+9431.0,Sawmill machine operators,Compiling - 3,Not significant - 8,Operating - 4
+9432.0,Pulp mill machine operators,Copying - 5,speaking - 6,Operating - 4
+9433.0,Papermaking and finishing machine operators,Copying - 5,speaking - 6,Operating - 4
+9434.0,Other wood processing machine operators,Copying - 5,Not significant - 8,Operating - 4
+9435.0,Paper converting machine operators,Comparing - 6,Not significant - 8,Operating - 4
+9436.1,Lumber graders,Copying - 5,Not significant - 8,Handling - 7
+9436.2,Other wood processing inspectors and graders,Copying - 5,Not significant - 8,Handling - 7
+9437.0,Woodworking machine operators,Copying - 5,speaking - 6,Setting up - 0
+9441.1,Textile fibre and yarn processing machine operators ,Comparing - 6,speaking - 6,Operating - 4
+9441.2,Textile dyeing and finishing machine operators,Comparing - 6,speaking - 6,Operating - 4
+9441.3,Hide and pelt processing workers,Comparing - 6,Not significant - 8,Operating - 4
+9442.0,"Weavers, knitters and other fabric making occupations",Comparing - 6,speaking - 6,Controlling - 2
+9445.1,Fabric cutters,Copying - 5,Not significant - 8,Precision working - 1
+9445.2,Fur cutters,Copying - 5,Not significant - 8,Precision working - 1
+9445.3,Leather cutters,Copying - 5,Not significant - 8,Precision working - 1
+9446.0,Industrial sewing machine operators,Comparing - 6,Not significant - 8,Operating - 4
+9447.1,"Inspectors and graders, textile, fabric, fur and leather products manufacturing",Copying - 5,Not significant - 8,Handling - 7
+9447.2,"Textile inspectors, graders and samplers",Copying - 5,Not significant - 8,Handling - 7
+9461.1,"Process control operators, food and beverage processing",Comparing - 6,Not significant - 8,Controlling - 2
+9461.2,"Machine operators, food and beverage processing",Comparing - 6,Not significant - 8,Operating - 4
+9461.3,Tobacco processing machine operators,Comparing - 6,Not significant - 8,Operating - 4
+9462.1,Industrial butchers,Comparing - 6,Not significant - 8,Operating - 4
+9462.2,Industrial meat cutters,Comparing - 6,Not significant - 8,Precision working - 1
+9462.3,Poultry preparers,Comparing - 6,Not significant - 8,Operating - 4
+9462.4,Trimmers,Comparing - 6,Not significant - 8,Operating - 4
+9463.1,Fish and seafood plant machine operators,Comparing - 6,Not significant - 8,Operating - 4
+9463.2,Fish plant cutters and cleaners,Comparing - 6,Not significant - 8,Handling - 7
+9465.0,"Testers and graders, food and beverage processing",Copying - 5,Not significant - 8,Handling - 7
+9471.0,Plateless printing equipment operators,Copying - 5,Not significant - 8,Operating - 4
+9472.1,Graphic arts camera operators,Copying - 5,Not significant - 8,Controlling - 2
+9472.2,Cylinder preparers,Copying - 5,Not significant - 8,Precision working - 1
+9472.3,Film strippers/assemblers,Copying - 5,Not significant - 8,Precision working - 1
+9472.4,Platemakers,Copying - 5,Not significant - 8,Precision working - 1
+9472.5,Pre-press technicians,Compiling - 3,Not significant - 8,Controlling - 2
+9472.6,Scanner operators,Copying - 5,Not significant - 8,Controlling - 2
+9472.7,Proofmakers,Copying - 5,Not significant - 8,Precision working - 1
+9472.8,Pre-flight operators,Comparing - 6,Not significant - 8,Operating - 4
+9472.9,File preparation operators,Copying - 5,Not significant - 8,Operating - 4
+9473.1,Binding and finishing machine operators,Copying - 5,Not significant - 8,Controlling - 2
+9473.2,Specialty finishing equipment operators,Copying - 5,Not significant - 8,Controlling - 2
+9474.0,Photographic and film processors,Copying - 5,Not significant - 8,Operating - 4
+9521.1,Aircraft assemblers,Compiling - 3,Not significant - 8,Precision working - 1
+9521.2,Aircraft assembly inspectors,Compiling - 3,Not significant - 8,Precision working - 1
+9522.1,Motor vehicle assemblers,Copying - 5,Not significant - 8,Operating - 4
+9522.2,Motor vehicle inspectors and testers,Copying - 5,Not significant - 8,Driving - 3
+9523.1,Electronics assemblers,Copying - 5,Not significant - 8,Precision working - 1
+9523.2,Electronics fabricators,Copying - 5,Not significant - 8,Operating - 4
+9523.3,Electronics inspectors,Copying - 5,Not significant - 8,Handling - 7
+9523.4,Electronics testers,Comparing - 6,Not significant - 8,Operating - 4
+9524.1,"Assemblers, electrical appliance, apparatus and equipment manufacturing",Copying - 5,Not significant - 8,Operating - 4
+9524.2,"Inspectors and testers, electrical appliance, apparatus and equipment manufacturing",Copying - 5,Not significant - 8,Operating - 4
+9525.1,"Assemblers, industrial electrical motors and transformers",Compiling - 3,Not significant - 8,Operating - 4
+9525.2,"Electrical fitters and wirers, industrial electrical motors and transformers",Compiling - 3,Not significant - 8,Operating - 4
+9525.3,"Inspectors, industrial electrical motors and transformers",Compiling - 3,Not significant - 8,Handling - 7
+9526.1,Mechanical assemblers,Copying - 5,Not significant - 8,Operating - 4
+9526.2,Mechanical inspectors,Copying - 5,Not significant - 8,Handling - 7
+9527.1,"Machine operators, electrical apparatus manufacturing",Copying - 5,Not significant - 8,Operating - 4
+9527.2,"Inspectors and testers, electrical apparatus manufacturing",Copying - 5,Not significant - 8,Handling - 7
+9531.1,Boat assemblers,Copying - 5,Not significant - 8,Operating - 4
+9531.2,Boat inspectors,Copying - 5,Not significant - 8,Handling - 7
+9532.1,Furniture and fixture assemblers,Copying - 5,Not significant - 8,Operating - 4
+9532.2,Furniture and fixture inspectors,Copying - 5,Not significant - 8,Handling - 7
+9533.1,Other wood products assemblers,Copying - 5,Not significant - 8,Operating - 4
+9533.2,Other wood products inspectors,Copying - 5,Not significant - 8,Handling - 7
+9534.1,Furniture finishers,Comparing - 6,Not significant - 8,Operating - 4
+9534.2,Furniture refinishers,Comparing - 6,Not significant - 8,Operating - 4
+9535.1,Plastic products assemblers and finishers,Copying - 5,Not significant - 8,Operating - 4
+9535.2,Plastics products inspectors,Copying - 5,Not significant - 8,Handling - 7
+9536.1,Painters and coaters – industrial,Copying - 5,Not significant - 8,Operating - 4
+9536.2,"Plating, metal spraying and related operators",Copying - 5,Not significant - 8,Operating - 4
+9537.1,Other assemblers,Copying - 5,Not significant - 8,Operating - 4
+9537.2,Other inspectors,Copying - 5,Not significant - 8,Handling - 7
+9537.3,Other products machine operators,Comparing - 6,Not significant - 8,Operating - 4
+9611.0,Labourers in mineral and metal processing,Comparing - 6,Not significant - 8,Operating - 4
+9612.0,Labourers in metal fabrication,Comparing - 6,Not significant - 8,Operating - 4
+9613.0,Labourers in chemical products processing and utilities,Comparing - 6,Not significant - 8,Operating - 4
+9614.0,"Labourers in wood, pulp and paper processing",Comparing - 6,Not significant - 8,Operating - 4
+9615.0,Labourers in rubber and plastic products manufacturing,Comparing - 6,Not significant - 8,Handling - 7
+9616.0,Labourers in textile processing,Comparing - 6,Not significant - 8,Feeding - Offbearing - 6
+9617.0,Labourers in food and beverage processing,Comparing - 6,Not significant - 8,Feeding - Offbearing - 6
+9618.0,Labourers in fish and seafood processing,Comparing - 6,Not significant - 8,Feeding - Offbearing - 6
+9619.0,"Other labourers in processing, manufacturing and utilities",Comparing - 6,Not significant - 8,Handling - 7

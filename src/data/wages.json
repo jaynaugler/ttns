@@ -1,0 +1,5162 @@
+[
+  {
+    "code": "00010",
+    "title": "Legislators",
+    "medianWage": 84000.0,
+    "lowWage": 32867.0,
+    "highWage": 184000.0,
+    "averageWage": 97600.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "00011",
+    "title": "Senior government managers and officials",
+    "medianWage": 65.38,
+    "lowWage": 40.0,
+    "highWage": 105.77,
+    "averageWage": 71.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "00012",
+    "title": "Senior managers - financial, communications and other business services",
+    "medianWage": 96.15,
+    "lowWage": 51.28,
+    "highWage": 153.85,
+    "averageWage": 98.24,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "00013",
+    "title": "Senior managers - health, education, social and community services and membership organizations",
+    "medianWage": null,
+    "lowWage": null,
+    "highWage": null,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "NA"
+  },
+  {
+    "code": "00014",
+    "title": "Senior managers - trade, broadcasting and other services",
+    "medianWage": 42.38,
+    "lowWage": 24.0,
+    "highWage": 98.88,
+    "averageWage": 53.39,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "00015",
+    "title": "Senior managers - construction, transportation, production and utilities",
+    "medianWage": 46.04,
+    "lowWage": 24.5,
+    "highWage": 96.68,
+    "averageWage": 54.4,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10010",
+    "title": "Financial managers",
+    "medianWage": 59.48,
+    "lowWage": 38.5,
+    "highWage": 91.76,
+    "averageWage": 63.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10011",
+    "title": "Human resources managers",
+    "medianWage": 57.69,
+    "lowWage": 37.94,
+    "highWage": 87.18,
+    "averageWage": 61.21,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10012",
+    "title": "Purchasing managers",
+    "medianWage": 56.11,
+    "lowWage": 39.34,
+    "highWage": 86.54,
+    "averageWage": 60.48,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10019",
+    "title": "Other administrative services managers",
+    "medianWage": 50.0,
+    "lowWage": 29.88,
+    "highWage": 85.16,
+    "averageWage": 55.47,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10020",
+    "title": "Insurance, real estate and financial brokerage managers",
+    "medianWage": 59.23,
+    "lowWage": 39.62,
+    "highWage": 105.77,
+    "averageWage": 67.06,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10021",
+    "title": "Banking, credit and other investment managers",
+    "medianWage": 57.14,
+    "lowWage": 37.44,
+    "highWage": 91.35,
+    "averageWage": 61.41,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10022",
+    "title": "Advertising, marketing and public relations managers",
+    "medianWage": 55.29,
+    "lowWage": 34.62,
+    "highWage": 89.74,
+    "averageWage": 59.91,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10029",
+    "title": "Other business services managers",
+    "medianWage": 49.23,
+    "lowWage": 30.65,
+    "highWage": 86.06,
+    "averageWage": 54.35,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "10030",
+    "title": "Telecommunication carriers managers",
+    "medianWage": 49.74,
+    "lowWage": 29.81,
+    "highWage": 72.12,
+    "averageWage": 50.52,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11100",
+    "title": "Financial auditors and accountants",
+    "medianWage": 40.36,
+    "lowWage": 25.0,
+    "highWage": 71.43,
+    "averageWage": 44.67,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11101",
+    "title": "Financial and investment analysts",
+    "medianWage": 43.27,
+    "lowWage": 28.21,
+    "highWage": 72.36,
+    "averageWage": 48.3,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11102",
+    "title": "Financial advisors",
+    "medianWage": 36.06,
+    "lowWage": 23.91,
+    "highWage": 73.08,
+    "averageWage": 43.57,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11103",
+    "title": "Securities agents, investment dealers and brokers",
+    "medianWage": 42.56,
+    "lowWage": 24.0,
+    "highWage": 88.21,
+    "averageWage": 51.92,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11109",
+    "title": "Other financial officers",
+    "medianWage": 38.46,
+    "lowWage": 24.04,
+    "highWage": 66.67,
+    "averageWage": 42.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11200",
+    "title": "Human resources professionals",
+    "medianWage": 40.87,
+    "lowWage": 26.0,
+    "highWage": 59.77,
+    "averageWage": 42.65,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11201",
+    "title": "Professional occupations in business management consulting",
+    "medianWage": 44.1,
+    "lowWage": 27.0,
+    "highWage": 69.71,
+    "averageWage": 47.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "11202",
+    "title": "Professional occupations in advertising, marketing and public relations",
+    "medianWage": 35.58,
+    "lowWage": 20.5,
+    "highWage": 57.44,
+    "averageWage": 37.85,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12010",
+    "title": "Supervisors, general office and administrative support workers",
+    "medianWage": 32.0,
+    "lowWage": 22.0,
+    "highWage": 46.0,
+    "averageWage": 33.59,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12011",
+    "title": "Supervisors, finance and insurance office workers",
+    "medianWage": 34.73,
+    "lowWage": 22.51,
+    "highWage": 51.28,
+    "averageWage": 36.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12012",
+    "title": "Supervisors, library, correspondence and related information workers",
+    "medianWage": 35.9,
+    "lowWage": 28.21,
+    "highWage": 44.78,
+    "averageWage": 36.53,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12013",
+    "title": "Supervisors, supply chain, tracking and scheduling coordination occupations",
+    "medianWage": 28.85,
+    "lowWage": 19.9,
+    "highWage": 45.0,
+    "averageWage": 31.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12100",
+    "title": "Executive assistants",
+    "medianWage": 34.62,
+    "lowWage": 25.85,
+    "highWage": 49.0,
+    "averageWage": 36.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12101",
+    "title": "Human resources and recruitment officers",
+    "medianWage": 33.33,
+    "lowWage": 22.0,
+    "highWage": 52.73,
+    "averageWage": 36.33,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12102",
+    "title": "Procurement and purchasing agents and officers",
+    "medianWage": 36.06,
+    "lowWage": 24.68,
+    "highWage": 57.69,
+    "averageWage": 39.43,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12103",
+    "title": "Conference and event planners",
+    "medianWage": 28.37,
+    "lowWage": 17.65,
+    "highWage": 47.53,
+    "averageWage": 32.08,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12104",
+    "title": "Employment insurance and revenue officers",
+    "medianWage": 34.87,
+    "lowWage": 27.0,
+    "highWage": 51.65,
+    "averageWage": 37.26,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12110",
+    "title": "Court reporters, medical transcriptionists and related occupations",
+    "medianWage": 26.0,
+    "lowWage": 17.0,
+    "highWage": 36.06,
+    "averageWage": 26.35,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12111",
+    "title": "Health information management occupations",
+    "medianWage": 30.51,
+    "lowWage": 22.0,
+    "highWage": 46.19,
+    "averageWage": 33.08,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12112",
+    "title": "Records management technicians",
+    "medianWage": 31.32,
+    "lowWage": 23.0,
+    "highWage": 45.05,
+    "averageWage": 32.96,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12113",
+    "title": "Statistical officers and related research support occupations",
+    "medianWage": 28.21,
+    "lowWage": 19.0,
+    "highWage": 44.9,
+    "averageWage": 31.16,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12200",
+    "title": "Accounting technicians and bookkeepers",
+    "medianWage": 28.02,
+    "lowWage": 19.55,
+    "highWage": 45.07,
+    "averageWage": 31.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12201",
+    "title": "Insurance adjusters and claims examiners",
+    "medianWage": 35.0,
+    "lowWage": 22.56,
+    "highWage": 52.2,
+    "averageWage": 36.2,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12202",
+    "title": "Insurance underwriters",
+    "medianWage": 34.62,
+    "lowWage": 25.0,
+    "highWage": 51.28,
+    "averageWage": 36.95,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "12203",
+    "title": "Assessors, business valuators and appraisers",
+    "medianWage": 35.0,
+    "lowWage": 26.37,
+    "highWage": 54.0,
+    "averageWage": 37.25,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13100",
+    "title": "Administrative officers",
+    "medianWage": 29.0,
+    "lowWage": 21.0,
+    "highWage": 44.15,
+    "averageWage": 31.71,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13101",
+    "title": "Property administrators",
+    "medianWage": 31.25,
+    "lowWage": 18.46,
+    "highWage": 56.41,
+    "averageWage": 35.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13102",
+    "title": "Payroll administrators",
+    "medianWage": 30.0,
+    "lowWage": 20.0,
+    "highWage": 43.27,
+    "averageWage": 31.47,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13110",
+    "title": "Administrative assistants",
+    "medianWage": 26.44,
+    "lowWage": 19.23,
+    "highWage": 36.88,
+    "averageWage": 27.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13111",
+    "title": "Legal administrative assistants",
+    "medianWage": 27.47,
+    "lowWage": 18.75,
+    "highWage": 41.72,
+    "averageWage": 29.63,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13112",
+    "title": "Medical administrative assistants",
+    "medianWage": 25.0,
+    "lowWage": 18.92,
+    "highWage": 32.0,
+    "averageWage": 25.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13200",
+    "title": "Customs, ship and other brokers",
+    "medianWage": 27.12,
+    "lowWage": 20.51,
+    "highWage": 36.63,
+    "averageWage": 28.77,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "13201",
+    "title": "Production and transportation logistics coordinators",
+    "medianWage": 29.49,
+    "lowWage": 21.63,
+    "highWage": 44.79,
+    "averageWage": 32.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14100",
+    "title": "General office support workers",
+    "medianWage": 23.99,
+    "lowWage": 16.55,
+    "highWage": 34.0,
+    "averageWage": 25.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14101",
+    "title": "Receptionists",
+    "medianWage": 21.0,
+    "lowWage": 16.25,
+    "highWage": 29.0,
+    "averageWage": 22.2,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14102",
+    "title": "Personnel clerks",
+    "medianWage": 27.88,
+    "lowWage": 21.75,
+    "highWage": 38.46,
+    "averageWage": 28.91,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14103",
+    "title": "Court clerks and related court services occupations",
+    "medianWage": 29.81,
+    "lowWage": 24.0,
+    "highWage": 37.0,
+    "averageWage": 30.4,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14110",
+    "title": "Survey interviewers and statistical clerks",
+    "medianWage": 22.0,
+    "lowWage": 15.5,
+    "highWage": 40.0,
+    "averageWage": 25.55,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14111",
+    "title": "Data entry clerks",
+    "medianWage": 23.5,
+    "lowWage": 17.0,
+    "highWage": 32.6,
+    "averageWage": 24.7,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14112",
+    "title": "Desktop publishing operators and related occupations",
+    "medianWage": 23.77,
+    "lowWage": 18.0,
+    "highWage": 32.5,
+    "averageWage": 25.24,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14200",
+    "title": "Accounting and related clerks",
+    "medianWage": 25.0,
+    "lowWage": 18.46,
+    "highWage": 35.71,
+    "averageWage": 26.66,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14201",
+    "title": "Banking, insurance and other financial clerks",
+    "medianWage": 25.33,
+    "lowWage": 18.46,
+    "highWage": 36.62,
+    "averageWage": 26.8,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14202",
+    "title": "Collection clerks",
+    "medianWage": 28.2,
+    "lowWage": 17.25,
+    "highWage": 37.91,
+    "averageWage": 28.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14300",
+    "title": "Library assistants and clerks",
+    "medianWage": 23.17,
+    "lowWage": 15.8,
+    "highWage": 34.0,
+    "averageWage": 23.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14301",
+    "title": "Correspondence, publication and regulatory clerks",
+    "medianWage": 28.57,
+    "lowWage": 20.48,
+    "highWage": 39.0,
+    "averageWage": 29.45,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14400",
+    "title": "Shippers and receivers",
+    "medianWage": 22.5,
+    "lowWage": 17.0,
+    "highWage": 31.0,
+    "averageWage": 23.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14401",
+    "title": "Storekeepers and partspersons",
+    "medianWage": 26.0,
+    "lowWage": 19.17,
+    "highWage": 40.0,
+    "averageWage": 28.08,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14402",
+    "title": "Production logistics workers",
+    "medianWage": 30.77,
+    "lowWage": 22.0,
+    "highWage": 40.06,
+    "averageWage": 31.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14403",
+    "title": "Purchasing and inventory control workers",
+    "medianWage": 24.0,
+    "lowWage": 17.5,
+    "highWage": 36.06,
+    "averageWage": 25.63,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14404",
+    "title": "Dispatchers",
+    "medianWage": 28.0,
+    "lowWage": 20.0,
+    "highWage": 41.76,
+    "averageWage": 30.14,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "14405",
+    "title": "Transportation route and crew schedulers",
+    "medianWage": 32.69,
+    "lowWage": 21.68,
+    "highWage": 52.2,
+    "averageWage": 35.27,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "20010",
+    "title": "Engineering managers",
+    "medianWage": 71.79,
+    "lowWage": 44.42,
+    "highWage": 106.25,
+    "averageWage": 73.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "20011",
+    "title": "Architecture and science managers",
+    "medianWage": 62.56,
+    "lowWage": 43.27,
+    "highWage": 98.9,
+    "averageWage": 67.32,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "20012",
+    "title": "Computer and information systems managers",
+    "medianWage": 66.67,
+    "lowWage": 43.75,
+    "highWage": 103.37,
+    "averageWage": 70.65,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21100",
+    "title": "Physicists and astronomers",
+    "medianWage": 56.49,
+    "lowWage": 34.95,
+    "highWage": 96.15,
+    "averageWage": 66.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21101",
+    "title": "Chemists",
+    "medianWage": 38.46,
+    "lowWage": 24.0,
+    "highWage": 65.93,
+    "averageWage": 42.33,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21102",
+    "title": "Geoscientists and oceanographers",
+    "medianWage": 50.0,
+    "lowWage": 30.77,
+    "highWage": 100.0,
+    "averageWage": 57.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21103",
+    "title": "Meteorologists and climatologists",
+    "medianWage": 53.94,
+    "lowWage": 33.89,
+    "highWage": 75.12,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "21109",
+    "title": "Other professional occupations in physical sciences",
+    "medianWage": 43.0,
+    "lowWage": 27.78,
+    "highWage": 75.9,
+    "averageWage": 51.12,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21110",
+    "title": "Biologists and related scientists",
+    "medianWage": 40.0,
+    "lowWage": 25.71,
+    "highWage": 66.67,
+    "averageWage": 43.59,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21111",
+    "title": "Forestry professionals",
+    "medianWage": 47.0,
+    "lowWage": 31.39,
+    "highWage": 62.5,
+    "averageWage": 47.96,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21112",
+    "title": "Agricultural representatives, consultants and specialists",
+    "medianWage": 40.0,
+    "lowWage": 25.72,
+    "highWage": 55.29,
+    "averageWage": 40.96,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21120",
+    "title": "Public and environmental health and safety professionals",
+    "medianWage": 45.0,
+    "lowWage": 29.33,
+    "highWage": 56.41,
+    "averageWage": 44.21,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21200",
+    "title": "Architects",
+    "medianWage": 38.94,
+    "lowWage": 26.44,
+    "highWage": 74.52,
+    "averageWage": 44.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21201",
+    "title": "Landscape architects",
+    "medianWage": 40.87,
+    "lowWage": 22.53,
+    "highWage": 82.05,
+    "averageWage": 48.25,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21202",
+    "title": "Urban and land use planners",
+    "medianWage": 46.15,
+    "lowWage": 28.21,
+    "highWage": 65.0,
+    "averageWage": 47.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21203",
+    "title": "Land surveyors",
+    "medianWage": 42.2,
+    "lowWage": 29.0,
+    "highWage": 60.51,
+    "averageWage": 43.3,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21210",
+    "title": "Mathematicians, statisticians and actuaries",
+    "medianWage": 51.0,
+    "lowWage": 31.25,
+    "highWage": 77.33,
+    "averageWage": 55.3,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21211",
+    "title": "Data scientists",
+    "medianWage": 46.15,
+    "lowWage": 30.0,
+    "highWage": 69.74,
+    "averageWage": 48.93,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21220",
+    "title": "Cybersecurity specialists",
+    "medianWage": 49.52,
+    "lowWage": 30.0,
+    "highWage": 72.12,
+    "averageWage": 52.06,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21221",
+    "title": "Business systems specialists",
+    "medianWage": 45.13,
+    "lowWage": 30.67,
+    "highWage": 62.5,
+    "averageWage": 46.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21222",
+    "title": "Information systems specialists",
+    "medianWage": 46.15,
+    "lowWage": 28.85,
+    "highWage": 68.68,
+    "averageWage": 48.18,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21223",
+    "title": "Database analysts and data administrators",
+    "medianWage": 40.87,
+    "lowWage": 25.0,
+    "highWage": 61.03,
+    "averageWage": 42.92,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21230",
+    "title": "Computer systems developers and programmers",
+    "medianWage": 43.27,
+    "lowWage": 25.43,
+    "highWage": 65.0,
+    "averageWage": 45.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21231",
+    "title": "Software engineers and designers",
+    "medianWage": 56.49,
+    "lowWage": 35.0,
+    "highWage": 91.35,
+    "averageWage": 60.57,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21232",
+    "title": "Software developers and programmers",
+    "medianWage": 48.08,
+    "lowWage": 30.0,
+    "highWage": 76.92,
+    "averageWage": 51.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21233",
+    "title": "Web designers",
+    "medianWage": 33.65,
+    "lowWage": 20.0,
+    "highWage": 57.69,
+    "averageWage": 37.12,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21234",
+    "title": "Web developers and programmers",
+    "medianWage": 38.46,
+    "lowWage": 21.48,
+    "highWage": 57.16,
+    "averageWage": 40.19,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21300",
+    "title": "Civil engineers",
+    "medianWage": 48.56,
+    "lowWage": 32.0,
+    "highWage": 72.12,
+    "averageWage": 50.95,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21301",
+    "title": "Mechanical engineers",
+    "medianWage": 45.67,
+    "lowWage": 30.0,
+    "highWage": 72.49,
+    "averageWage": 49.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21310",
+    "title": "Electrical and electronics engineers",
+    "medianWage": 50.67,
+    "lowWage": 33.65,
+    "highWage": 79.23,
+    "averageWage": 54.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21311",
+    "title": "Computer engineers (except software engineers and designers)",
+    "medianWage": 52.5,
+    "lowWage": 32.05,
+    "highWage": 78.85,
+    "averageWage": 55.95,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21320",
+    "title": "Chemical engineers",
+    "medianWage": 51.92,
+    "lowWage": 27.45,
+    "highWage": 76.92,
+    "averageWage": 52.17,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21321",
+    "title": "Industrial and manufacturing engineers",
+    "medianWage": 44.23,
+    "lowWage": 29.0,
+    "highWage": 75.0,
+    "averageWage": 48.56,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21322",
+    "title": "Metallurgical and materials engineers",
+    "medianWage": 48.08,
+    "lowWage": 33.17,
+    "highWage": 66.35,
+    "averageWage": 50.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21330",
+    "title": "Mining engineers",
+    "medianWage": 60.0,
+    "lowWage": 37.02,
+    "highWage": 115.38,
+    "averageWage": 64.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21331",
+    "title": "Geological engineers",
+    "medianWage": 49.81,
+    "lowWage": 31.27,
+    "highWage": 83.24,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "21332",
+    "title": "Petroleum engineers",
+    "medianWage": 64.9,
+    "lowWage": 46.25,
+    "highWage": 96.15,
+    "averageWage": 69.19,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21390",
+    "title": "Aerospace engineers",
+    "medianWage": 50.0,
+    "lowWage": 33.76,
+    "highWage": 100.0,
+    "averageWage": 55.83,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "21399",
+    "title": "Other professional engineers",
+    "medianWage": 50.0,
+    "lowWage": 28.0,
+    "highWage": 82.42,
+    "averageWage": 54.15,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22100",
+    "title": "Chemical technologists and technicians",
+    "medianWage": 29.8,
+    "lowWage": 21.0,
+    "highWage": 47.69,
+    "averageWage": 32.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22101",
+    "title": "Geological and mineral technologists and technicians",
+    "medianWage": 30.53,
+    "lowWage": 20.95,
+    "highWage": 52.0,
+    "averageWage": 34.35,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22110",
+    "title": "Biological technologists and technicians",
+    "medianWage": 29.12,
+    "lowWage": 19.5,
+    "highWage": 43.0,
+    "averageWage": 29.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22111",
+    "title": "Agricultural and fish products inspectors",
+    "medianWage": 35.0,
+    "lowWage": 27.0,
+    "highWage": 55.0,
+    "averageWage": 39.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22112",
+    "title": "Forestry technologists and technicians",
+    "medianWage": 32.97,
+    "lowWage": 22.5,
+    "highWage": 44.71,
+    "averageWage": 34.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22113",
+    "title": "Conservation and fishery officers",
+    "medianWage": 35.9,
+    "lowWage": 22.0,
+    "highWage": 51.28,
+    "averageWage": 36.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22114",
+    "title": "Landscape and horticulture technicians and specialists",
+    "medianWage": 30.0,
+    "lowWage": 21.0,
+    "highWage": 40.87,
+    "averageWage": 30.71,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22210",
+    "title": "Architectural technologists and technicians",
+    "medianWage": 30.1,
+    "lowWage": 21.0,
+    "highWage": 50.68,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "22211",
+    "title": "Industrial designers",
+    "medianWage": 36.06,
+    "lowWage": 23.0,
+    "highWage": 49.74,
+    "averageWage": 37.83,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22212",
+    "title": "Drafting technologists and technicians",
+    "medianWage": 31.79,
+    "lowWage": 21.5,
+    "highWage": 48.38,
+    "averageWage": 33.7,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22213",
+    "title": "Land survey technologists and technicians",
+    "medianWage": 29.75,
+    "lowWage": 22.0,
+    "highWage": 46.0,
+    "averageWage": 32.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22214",
+    "title": "Technical occupations in geomatics and meteorology",
+    "medianWage": 38.1,
+    "lowWage": 23.08,
+    "highWage": 53.85,
+    "averageWage": 38.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22220",
+    "title": "Computer network and web technicians",
+    "medianWage": 36.0,
+    "lowWage": 21.0,
+    "highWage": 55.0,
+    "averageWage": 37.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22221",
+    "title": "User support technicians",
+    "medianWage": 31.47,
+    "lowWage": 20.5,
+    "highWage": 49.0,
+    "averageWage": 33.71,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22222",
+    "title": "Information systems testing technicians",
+    "medianWage": 35.0,
+    "lowWage": 17.5,
+    "highWage": 51.28,
+    "averageWage": 35.64,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22230",
+    "title": "Non-destructive testers and inspectors",
+    "medianWage": 36.0,
+    "lowWage": 21.13,
+    "highWage": 52.48,
+    "averageWage": 36.39,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22231",
+    "title": "Engineering inspectors and regulatory officers",
+    "medianWage": 36.1,
+    "lowWage": 24.0,
+    "highWage": 67.18,
+    "averageWage": 42.2,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22232",
+    "title": "Occupational health and safety specialists",
+    "medianWage": 40.98,
+    "lowWage": 23.56,
+    "highWage": 61.03,
+    "averageWage": 42.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22233",
+    "title": "Construction inspectors",
+    "medianWage": 38.46,
+    "lowWage": 24.52,
+    "highWage": 54.95,
+    "averageWage": 39.57,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22300",
+    "title": "Civil engineering technologists and technicians",
+    "medianWage": 33.89,
+    "lowWage": 22.0,
+    "highWage": 51.1,
+    "averageWage": 35.89,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22301",
+    "title": "Mechanical engineering technologists and technicians",
+    "medianWage": 35.0,
+    "lowWage": 23.08,
+    "highWage": 51.28,
+    "averageWage": 37.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22302",
+    "title": "Industrial engineering and manufacturing technologists and technicians",
+    "medianWage": 31.25,
+    "lowWage": 21.0,
+    "highWage": 46.25,
+    "averageWage": 33.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22303",
+    "title": "Construction estimators",
+    "medianWage": 37.84,
+    "lowWage": 24.04,
+    "highWage": 61.54,
+    "averageWage": 41.18,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22310",
+    "title": "Electrical and electronics engineering technologists and technicians",
+    "medianWage": 35.58,
+    "lowWage": 24.04,
+    "highWage": 55.34,
+    "averageWage": 38.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22311",
+    "title": "Electronic service technicians (household and business equipment)",
+    "medianWage": 26.5,
+    "lowWage": 18.0,
+    "highWage": 41.35,
+    "averageWage": 28.84,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22312",
+    "title": "Industrial instrument technicians and mechanics",
+    "medianWage": 46.0,
+    "lowWage": 31.0,
+    "highWage": 65.78,
+    "averageWage": 48.87,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "22313",
+    "title": "Aircraft instrument, electrical and avionics mechanics, technicians and inspectors",
+    "medianWage": 40.47,
+    "lowWage": 26.27,
+    "highWage": 57.4,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "30010",
+    "title": "Managers in health care",
+    "medianWage": 55.29,
+    "lowWage": 35.0,
+    "highWage": 79.33,
+    "averageWage": 56.53,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31100",
+    "title": "Specialists in clinical and laboratory medicine",
+    "medianWage": 311297.0,
+    "lowWage": 126465.0,
+    "highWage": 607184.0,
+    "averageWage": null,
+    "isAnnual": true,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31101",
+    "title": "Specialists in surgery",
+    "medianWage": 419180.0,
+    "lowWage": 144482.0,
+    "highWage": 766730.0,
+    "averageWage": null,
+    "isAnnual": true,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31102",
+    "title": "General practitioners and family physicians",
+    "medianWage": 232227.0,
+    "lowWage": 90826.0,
+    "highWage": 435240.0,
+    "averageWage": null,
+    "isAnnual": true,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31103",
+    "title": "Veterinarians",
+    "medianWage": 60.0,
+    "lowWage": 34.15,
+    "highWage": 84.13,
+    "averageWage": 59.76,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31110",
+    "title": "Dentists",
+    "medianWage": 110000.0,
+    "lowWage": 32867.0,
+    "highWage": 228000.0,
+    "averageWage": 124000.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "31111",
+    "title": "Optometrists",
+    "medianWage": 81000.0,
+    "lowWage": 32867.0,
+    "highWage": 162000.0,
+    "averageWage": 89300.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "31112",
+    "title": "Audiologists and speech-language pathologists",
+    "medianWage": 46.15,
+    "lowWage": 33.33,
+    "highWage": 59.52,
+    "averageWage": 46.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31120",
+    "title": "Pharmacists",
+    "medianWage": 55.49,
+    "lowWage": 40.0,
+    "highWage": 67.0,
+    "averageWage": 54.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31121",
+    "title": "Dietitians and nutritionists",
+    "medianWage": 41.63,
+    "lowWage": 22.53,
+    "highWage": 50.0,
+    "averageWage": 39.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31200",
+    "title": "Psychologists",
+    "medianWage": 52.88,
+    "lowWage": 37.65,
+    "highWage": 77.43,
+    "averageWage": 55.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31201",
+    "title": "Chiropractors",
+    "medianWage": 62000.0,
+    "lowWage": 32867.0,
+    "highWage": 138000.0,
+    "averageWage": 71600.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "31202",
+    "title": "Physiotherapists",
+    "medianWage": 46.15,
+    "lowWage": 30.0,
+    "highWage": 56.21,
+    "averageWage": 45.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31203",
+    "title": "Occupational therapists",
+    "medianWage": 46.0,
+    "lowWage": 36.17,
+    "highWage": 55.0,
+    "averageWage": 46.31,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31204",
+    "title": "Kinesiologists and other professional occupations in therapy and assessment",
+    "medianWage": 32.0,
+    "lowWage": 22.0,
+    "highWage": 49.73,
+    "averageWage": 33.26,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31209",
+    "title": "Other professional occupations in health diagnosing and treating",
+    "medianWage": 56800.0,
+    "lowWage": 32867.0,
+    "highWage": 123000.0,
+    "averageWage": 64400.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "31300",
+    "title": "Nursing coordinators and supervisors",
+    "medianWage": 46.43,
+    "lowWage": 29.11,
+    "highWage": 59.0,
+    "averageWage": 45.07,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31301",
+    "title": "Registered nurses and registered psychiatric nurses",
+    "medianWage": 43.27,
+    "lowWage": 30.0,
+    "highWage": 54.37,
+    "averageWage": 43.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31302",
+    "title": "Nurse practitioners",
+    "medianWage": 61.54,
+    "lowWage": 42.0,
+    "highWage": 75.0,
+    "averageWage": 60.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "31303",
+    "title": "Physician assistants, midwives and allied health professionals",
+    "medianWage": 46.81,
+    "lowWage": 24.09,
+    "highWage": 60.26,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "32100",
+    "title": "Opticians",
+    "medianWage": 28.5,
+    "lowWage": 17.8,
+    "highWage": 39.4,
+    "averageWage": 28.68,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32101",
+    "title": "Licensed practical nurses",
+    "medianWage": 31.32,
+    "lowWage": 25.0,
+    "highWage": 38.0,
+    "averageWage": 31.53,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32102",
+    "title": "Paramedical occupations",
+    "medianWage": 38.0,
+    "lowWage": 25.56,
+    "highWage": 49.0,
+    "averageWage": 37.44,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32103",
+    "title": "Respiratory therapists, clinical perfusionists and cardiopulmonary technologists",
+    "medianWage": 41.0,
+    "lowWage": 30.16,
+    "highWage": 51.0,
+    "averageWage": 42.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32104",
+    "title": "Animal health technologists and veterinary technicians",
+    "medianWage": 23.0,
+    "lowWage": 17.0,
+    "highWage": 33.16,
+    "averageWage": 24.14,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32109",
+    "title": "Other technical occupations in therapy and assessment",
+    "medianWage": 26.85,
+    "lowWage": 17.62,
+    "highWage": 36.71,
+    "averageWage": 27.52,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32110",
+    "title": "Denturists",
+    "medianWage": 54000.0,
+    "lowWage": 32867.0,
+    "highWage": 122000.0,
+    "averageWage": 67000.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "32111",
+    "title": "Dental hygienists and dental therapists",
+    "medianWage": 45.0,
+    "lowWage": 32.0,
+    "highWage": 60.0,
+    "averageWage": 45.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32112",
+    "title": "Dental technologists and technicians",
+    "medianWage": 29.0,
+    "lowWage": 19.0,
+    "highWage": 45.0,
+    "averageWage": 29.96,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32120",
+    "title": "Medical laboratory technologists",
+    "medianWage": 39.0,
+    "lowWage": 25.13,
+    "highWage": 49.0,
+    "averageWage": 38.51,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32121",
+    "title": "Medical radiation technologists",
+    "medianWage": 40.0,
+    "lowWage": 29.81,
+    "highWage": 51.12,
+    "averageWage": 40.8,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32122",
+    "title": "Medical sonographers",
+    "medianWage": 42.0,
+    "lowWage": 34.9,
+    "highWage": 51.0,
+    "averageWage": 42.46,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32123",
+    "title": "Cardiology technologists and electrophysiological diagnostic technologists",
+    "medianWage": 34.0,
+    "lowWage": 23.0,
+    "highWage": 51.0,
+    "averageWage": 35.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32124",
+    "title": "Pharmacy technicians",
+    "medianWage": 24.83,
+    "lowWage": 17.5,
+    "highWage": 34.2,
+    "averageWage": 25.55,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32129",
+    "title": "Other medical technologists and technicians",
+    "medianWage": 28.0,
+    "lowWage": 21.0,
+    "highWage": 40.0,
+    "averageWage": 29.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "32200",
+    "title": "Traditional Chinese medicine practitioners and acupuncturists",
+    "medianWage": 32867.0,
+    "lowWage": 32867.0,
+    "highWage": 79500.0,
+    "averageWage": 39600.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "32201",
+    "title": "Massage therapists",
+    "medianWage": 32867.0,
+    "lowWage": 32867.0,
+    "highWage": 62400.0,
+    "averageWage": 33480.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "32209",
+    "title": "Other practitioners of natural healing",
+    "medianWage": 32867.0,
+    "lowWage": 32867.0,
+    "highWage": 76500.0,
+    "averageWage": 33600.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "33100",
+    "title": "Dental assistants and dental laboratory assistants",
+    "medianWage": 27.0,
+    "lowWage": 21.0,
+    "highWage": 35.0,
+    "averageWage": 27.82,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "33101",
+    "title": "Medical laboratory assistants and related technical occupations",
+    "medianWage": 27.0,
+    "lowWage": 19.18,
+    "highWage": 36.11,
+    "averageWage": 27.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "33102",
+    "title": "Nurse aides, orderlies and patient service associates",
+    "medianWage": 24.0,
+    "lowWage": 19.0,
+    "highWage": 28.84,
+    "averageWage": 24.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "33103",
+    "title": "Pharmacy technical assistants and pharmacy assistants",
+    "medianWage": 20.0,
+    "lowWage": 16.0,
+    "highWage": 26.0,
+    "averageWage": 20.86,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "33109",
+    "title": "Other assisting occupations in support of health services",
+    "medianWage": 23.0,
+    "lowWage": 18.0,
+    "highWage": 29.81,
+    "averageWage": 23.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40010",
+    "title": "Government managers - health and social policy development and program administration",
+    "medianWage": 61.54,
+    "lowWage": 46.0,
+    "highWage": 75.0,
+    "averageWage": 62.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40011",
+    "title": "Government managers - economic analysis, policy development and program administration",
+    "medianWage": 63.4,
+    "lowWage": 47.6,
+    "highWage": 80.22,
+    "averageWage": 63.63,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40012",
+    "title": "Government managers - education policy development and program administration",
+    "medianWage": 63.74,
+    "lowWage": 47.01,
+    "highWage": 68.68,
+    "averageWage": 62.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40019",
+    "title": "Other managers in public administration",
+    "medianWage": 60.51,
+    "lowWage": 40.87,
+    "highWage": 80.13,
+    "averageWage": 61.12,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40020",
+    "title": "Administrators - post-secondary education and vocational training",
+    "medianWage": 56.41,
+    "lowWage": 35.9,
+    "highWage": 91.35,
+    "averageWage": 61.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40021",
+    "title": "School principals and administrators of elementary and secondary education",
+    "medianWage": 55.29,
+    "lowWage": 36.54,
+    "highWage": 71.51,
+    "averageWage": 55.52,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40030",
+    "title": "Managers in social, community and correctional services",
+    "medianWage": 43.96,
+    "lowWage": 27.0,
+    "highWage": 71.43,
+    "averageWage": 47.27,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40040",
+    "title": "Commissioned police officers and related occupations in public protection services",
+    "medianWage": 68.75,
+    "lowWage": 51.28,
+    "highWage": 93.75,
+    "averageWage": 70.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40041",
+    "title": "Fire chiefs and senior firefighting officers",
+    "medianWage": 62.64,
+    "lowWage": 37.02,
+    "highWage": 83.84,
+    "averageWage": 61.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "40042",
+    "title": "Commissioned officers of the Canadian Armed Forces",
+    "medianWage": 55.03,
+    "lowWage": 34.62,
+    "highWage": 74.83,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "41100",
+    "title": "Judges",
+    "medianWage": 387006.46,
+    "lowWage": 310000.0,
+    "highWage": 414900.0,
+    "averageWage": 379751.44,
+    "isAnnual": true,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "41101",
+    "title": "Lawyers and Quebec notaries",
+    "medianWage": 59.76,
+    "lowWage": 30.22,
+    "highWage": 107.14,
+    "averageWage": 66.6,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41200",
+    "title": "University professors and lecturers",
+    "medianWage": 58.89,
+    "lowWage": 30.46,
+    "highWage": 92.31,
+    "averageWage": 61.75,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41201",
+    "title": "Post-secondary teaching and research assistants",
+    "medianWage": 27.0,
+    "lowWage": 15.53,
+    "highWage": 47.0,
+    "averageWage": 29.64,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41210",
+    "title": "College and other vocational instructors",
+    "medianWage": 45.0,
+    "lowWage": 24.04,
+    "highWage": 73.72,
+    "averageWage": 47.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41220",
+    "title": "Secondary school teachers",
+    "medianWage": 45.67,
+    "lowWage": 28.85,
+    "highWage": 59.76,
+    "averageWage": 45.47,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41221",
+    "title": "Elementary school and kindergarten teachers",
+    "medianWage": 43.27,
+    "lowWage": 26.67,
+    "highWage": 56.59,
+    "averageWage": 43.03,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41300",
+    "title": "Social workers",
+    "medianWage": 38.46,
+    "lowWage": 25.0,
+    "highWage": 50.26,
+    "averageWage": 38.33,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41301",
+    "title": "Therapists in counselling and related specialized therapies",
+    "medianWage": 34.0,
+    "lowWage": 23.0,
+    "highWage": 50.0,
+    "averageWage": 36.37,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41302",
+    "title": "Religious leaders",
+    "medianWage": 27.53,
+    "lowWage": 17.31,
+    "highWage": 44.07,
+    "averageWage": 31.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41310",
+    "title": "Police investigators and other investigative occupations",
+    "medianWage": 55.77,
+    "lowWage": 38.46,
+    "highWage": 67.0,
+    "averageWage": 54.48,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41311",
+    "title": "Probation and parole officers",
+    "medianWage": 40.35,
+    "lowWage": 30.39,
+    "highWage": 56.25,
+    "averageWage": 41.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41320",
+    "title": "Educational counsellors",
+    "medianWage": 40.84,
+    "lowWage": 23.25,
+    "highWage": 53.57,
+    "averageWage": 39.87,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41321",
+    "title": "Career development practitioners and career counsellors (except education)",
+    "medianWage": 29.95,
+    "lowWage": 22.56,
+    "highWage": 43.41,
+    "averageWage": 31.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41400",
+    "title": "Natural and applied science policy researchers, consultants and program officers",
+    "medianWage": 43.27,
+    "lowWage": 28.57,
+    "highWage": 65.38,
+    "averageWage": 45.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41401",
+    "title": "Economists and economic policy researchers and analysts",
+    "medianWage": 48.08,
+    "lowWage": 33.65,
+    "highWage": 71.79,
+    "averageWage": 51.99,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41402",
+    "title": "Business development officers and market researchers and analysts",
+    "medianWage": 44.0,
+    "lowWage": 27.64,
+    "highWage": 69.23,
+    "averageWage": 46.33,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41403",
+    "title": "Social policy researchers, consultants and program officers",
+    "medianWage": 42.56,
+    "lowWage": 26.67,
+    "highWage": 60.0,
+    "averageWage": 43.56,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41404",
+    "title": "Health policy researchers, consultants and program officers",
+    "medianWage": 43.08,
+    "lowWage": 27.0,
+    "highWage": 60.0,
+    "averageWage": 44.46,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41405",
+    "title": "Education policy researchers, consultants and program officers",
+    "medianWage": 41.52,
+    "lowWage": 26.64,
+    "highWage": 57.69,
+    "averageWage": 42.64,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41406",
+    "title": "Recreation, sports and fitness policy researchers, consultants and program officers",
+    "medianWage": 31.0,
+    "lowWage": 21.0,
+    "highWage": 47.8,
+    "averageWage": 33.3,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41407",
+    "title": "Program officers unique to government",
+    "medianWage": 43.71,
+    "lowWage": 26.83,
+    "highWage": 66.67,
+    "averageWage": 46.51,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "41409",
+    "title": "Other professional occupations in social science",
+    "medianWage": 40.0,
+    "lowWage": 26.15,
+    "highWage": 62.0,
+    "averageWage": 42.32,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42100",
+    "title": "Police officers (except commissioned)",
+    "medianWage": 50.0,
+    "lowWage": 32.0,
+    "highWage": 64.1,
+    "averageWage": 48.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42101",
+    "title": "Firefighters",
+    "medianWage": 45.79,
+    "lowWage": 29.0,
+    "highWage": 61.4,
+    "averageWage": 45.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42102",
+    "title": "Specialized members of the Canadian Armed Forces",
+    "medianWage": 35.43,
+    "lowWage": 25.15,
+    "highWage": 45.45,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "42200",
+    "title": "Paralegals and related occupations",
+    "medianWage": 33.05,
+    "lowWage": 21.63,
+    "highWage": 52.19,
+    "averageWage": 35.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42201",
+    "title": "Social and community service workers",
+    "medianWage": 26.0,
+    "lowWage": 19.0,
+    "highWage": 36.06,
+    "averageWage": 27.01,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42202",
+    "title": "Early childhood educators and assistants",
+    "medianWage": 22.3,
+    "lowWage": 16.95,
+    "highWage": 30.03,
+    "averageWage": 23.17,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42203",
+    "title": "Instructors of persons with disabilities",
+    "medianWage": 30.0,
+    "lowWage": 20.0,
+    "highWage": 35.9,
+    "averageWage": 30.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "42204",
+    "title": "Religion workers",
+    "medianWage": 20.19,
+    "lowWage": 15.0,
+    "highWage": 37.61,
+    "averageWage": 23.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43100",
+    "title": "Elementary and secondary school teacher assistants",
+    "medianWage": 25.01,
+    "lowWage": 18.29,
+    "highWage": 32.42,
+    "averageWage": 25.59,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43109",
+    "title": "Other instructors",
+    "medianWage": 20.0,
+    "lowWage": 15.0,
+    "highWage": 31.5,
+    "averageWage": 22.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43200",
+    "title": "Sheriffs and bailiffs",
+    "medianWage": 33.65,
+    "lowWage": 21.63,
+    "highWage": 42.0,
+    "averageWage": 32.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43201",
+    "title": "Correctional service officers",
+    "medianWage": 36.15,
+    "lowWage": 28.85,
+    "highWage": 46.15,
+    "averageWage": 37.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43202",
+    "title": "By-law enforcement and other regulatory officers",
+    "medianWage": 36.92,
+    "lowWage": 24.0,
+    "highWage": 50.14,
+    "averageWage": 36.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43203",
+    "title": "Border services, customs, and immigration officers",
+    "medianWage": 40.1,
+    "lowWage": 24.62,
+    "highWage": 54.34,
+    "averageWage": 39.98,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "43204",
+    "title": "Operations members of the Canadian Armed Forces",
+    "medianWage": 34.35,
+    "lowWage": 25.95,
+    "highWage": 44.57,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "44100",
+    "title": "Home child care providers",
+    "medianWage": 19.0,
+    "lowWage": 15.0,
+    "highWage": 28.0,
+    "averageWage": 20.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "44101",
+    "title": "Home support workers, caregivers and related occupations",
+    "medianWage": 20.5,
+    "lowWage": 16.0,
+    "highWage": 27.0,
+    "averageWage": 21.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "44200",
+    "title": "Primary combat members of the Canadian Armed Forces",
+    "medianWage": 36.69,
+    "lowWage": 22.0,
+    "highWage": 47.8,
+    "averageWage": 36.62,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "45100",
+    "title": "Student monitors, crossing guards and related occupations",
+    "medianWage": 20.0,
+    "lowWage": 15.5,
+    "highWage": 26.0,
+    "averageWage": 21.09,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "50010",
+    "title": "Library, archive, museum and art gallery managers",
+    "medianWage": 45.0,
+    "lowWage": 24.73,
+    "highWage": 76.92,
+    "averageWage": 47.18,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "50011",
+    "title": "Managers - publishing, motion pictures, broadcasting and performing arts",
+    "medianWage": 50.48,
+    "lowWage": 30.0,
+    "highWage": 82.42,
+    "averageWage": 56.13,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "50012",
+    "title": "Recreation, sports and fitness program and service directors",
+    "medianWage": 36.63,
+    "lowWage": 22.0,
+    "highWage": 76.92,
+    "averageWage": 43.83,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51100",
+    "title": "Librarians",
+    "medianWage": 41.21,
+    "lowWage": 23.08,
+    "highWage": 67.9,
+    "averageWage": 42.31,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51101",
+    "title": "Conservators and curators",
+    "medianWage": 36.36,
+    "lowWage": 23.54,
+    "highWage": 54.74,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "51102",
+    "title": "Archivists",
+    "medianWage": 39.24,
+    "lowWage": 20.0,
+    "highWage": 54.09,
+    "averageWage": 38.75,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51110",
+    "title": "Editors",
+    "medianWage": 34.62,
+    "lowWage": 20.0,
+    "highWage": 50.0,
+    "averageWage": 35.07,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51111",
+    "title": "Authors and writers (except technical)",
+    "medianWage": 36.81,
+    "lowWage": 25.48,
+    "highWage": 53.0,
+    "averageWage": 38.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51112",
+    "title": "Technical writers",
+    "medianWage": 36.06,
+    "lowWage": 27.0,
+    "highWage": 53.37,
+    "averageWage": 40.12,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51113",
+    "title": "Journalists",
+    "medianWage": 36.92,
+    "lowWage": 20.19,
+    "highWage": 62.5,
+    "averageWage": 37.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51114",
+    "title": "Translators, terminologists and interpreters",
+    "medianWage": 33.95,
+    "lowWage": 20.0,
+    "highWage": 51.0,
+    "averageWage": 35.63,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51120",
+    "title": "Producers, directors, choreographers and related occupations",
+    "medianWage": 41.03,
+    "lowWage": 22.0,
+    "highWage": 70.0,
+    "averageWage": 43.83,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "51121",
+    "title": "Conductors, composers and arrangers",
+    "medianWage": 36000.0,
+    "lowWage": 32867.0,
+    "highWage": 101000.0,
+    "averageWage": 48300.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "51122",
+    "title": "Musicians and singers",
+    "medianWage": 32867.0,
+    "lowWage": 32867.0,
+    "highWage": 74500.0,
+    "averageWage": 33360.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "52100",
+    "title": "Library and public archive technicians",
+    "medianWage": 28.0,
+    "lowWage": 20.0,
+    "highWage": 36.56,
+    "averageWage": 28.13,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52110",
+    "title": "Film and video camera operators",
+    "medianWage": 36.35,
+    "lowWage": 19.0,
+    "highWage": 55.0,
+    "averageWage": 36.37,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52111",
+    "title": "Graphic arts technicians",
+    "medianWage": 34.96,
+    "lowWage": 20.75,
+    "highWage": 67.31,
+    "averageWage": 40.38,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52112",
+    "title": "Broadcast technicians",
+    "medianWage": 37.09,
+    "lowWage": 24.75,
+    "highWage": 51.03,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "52113",
+    "title": "Audio and video recording technicians",
+    "medianWage": 32.86,
+    "lowWage": 21.0,
+    "highWage": 45.46,
+    "averageWage": 33.09,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52114",
+    "title": "Announcers and other broadcasters",
+    "medianWage": 27.97,
+    "lowWage": 17.63,
+    "highWage": 57.69,
+    "averageWage": 33.93,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52119",
+    "title": "Other technical and coordinating occupations in motion pictures, broadcasting and the performing arts",
+    "medianWage": 33.0,
+    "lowWage": 21.0,
+    "highWage": 43.0,
+    "averageWage": 32.65,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52120",
+    "title": "Graphic designers and illustrators",
+    "medianWage": 31.25,
+    "lowWage": 20.0,
+    "highWage": 52.88,
+    "averageWage": 34.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "52121",
+    "title": "Interior designers and interior decorators",
+    "medianWage": 28.85,
+    "lowWage": 18.35,
+    "highWage": 48.72,
+    "averageWage": 31.52,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53100",
+    "title": "Registrars, restorers, interpreters and other occupations related to museum and art galleries",
+    "medianWage": 20.53,
+    "lowWage": 16.0,
+    "highWage": 31.0,
+    "averageWage": 22.21,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53110",
+    "title": "Photographers",
+    "medianWage": 24.04,
+    "lowWage": 17.5,
+    "highWage": 48.63,
+    "averageWage": 29.65,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53111",
+    "title": "Motion pictures, broadcasting, photography and performing arts assistants and operators",
+    "medianWage": 26.8,
+    "lowWage": 18.0,
+    "highWage": 40.0,
+    "averageWage": 28.13,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53120",
+    "title": "Dancers",
+    "medianWage": 32.94,
+    "lowWage": 20.1,
+    "highWage": 50.0,
+    "averageWage": 34.64,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53121",
+    "title": "Actors, comedians and circus performers",
+    "medianWage": 24.13,
+    "lowWage": 16.75,
+    "highWage": 39.97,
+    "averageWage": 26.75,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53122",
+    "title": "Painters, sculptors and other visual artists",
+    "medianWage": 29.57,
+    "lowWage": 18.75,
+    "highWage": 45.09,
+    "averageWage": 31.58,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53123",
+    "title": "Theatre, fashion, exhibit and other creative designers",
+    "medianWage": 31.25,
+    "lowWage": 17.85,
+    "highWage": 47.96,
+    "averageWage": 32.07,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53124",
+    "title": "Artisans and craftspersons",
+    "medianWage": 20.0,
+    "lowWage": 15.6,
+    "highWage": 28.0,
+    "averageWage": 21.15,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53125",
+    "title": "Patternmakers - textile, leather and fur products",
+    "medianWage": 27.48,
+    "lowWage": 18.5,
+    "highWage": 39.7,
+    "averageWage": 28.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53200",
+    "title": "Athletes",
+    "medianWage": 27.5,
+    "lowWage": 18.0,
+    "highWage": 51.71,
+    "averageWage": 33.36,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53201",
+    "title": "Coaches",
+    "medianWage": 25.0,
+    "lowWage": 16.0,
+    "highWage": 43.27,
+    "averageWage": 27.8,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "53202",
+    "title": "Sports officials and referees",
+    "medianWage": 19.0,
+    "lowWage": 15.0,
+    "highWage": 30.0,
+    "averageWage": 21.55,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "54100",
+    "title": "Program leaders and instructors in recreation, sport and fitness",
+    "medianWage": 19.0,
+    "lowWage": 15.44,
+    "highWage": 31.0,
+    "averageWage": 21.71,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "55109",
+    "title": "Other performers",
+    "medianWage": 28.48,
+    "lowWage": 17.0,
+    "highWage": 49.84,
+    "averageWage": 32.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "60010",
+    "title": "Corporate sales managers",
+    "medianWage": 60.1,
+    "lowWage": 36.54,
+    "highWage": 112.0,
+    "averageWage": 69.29,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "60020",
+    "title": "Retail and wholesale trade managers",
+    "medianWage": 42.74,
+    "lowWage": 21.63,
+    "highWage": 80.77,
+    "averageWage": 47.87,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "60030",
+    "title": "Restaurant and food service managers",
+    "medianWage": 26.0,
+    "lowWage": 18.0,
+    "highWage": 48.08,
+    "averageWage": 30.37,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "60031",
+    "title": "Accommodation service managers",
+    "medianWage": 38.0,
+    "lowWage": 21.54,
+    "highWage": 71.15,
+    "averageWage": 44.44,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "60040",
+    "title": "Managers in customer and personal services",
+    "medianWage": 34.0,
+    "lowWage": 20.0,
+    "highWage": 62.93,
+    "averageWage": 39.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62010",
+    "title": "Retail sales supervisors",
+    "medianWage": 22.0,
+    "lowWage": 16.55,
+    "highWage": 36.06,
+    "averageWage": 24.67,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62020",
+    "title": "Food service supervisors",
+    "medianWage": 19.0,
+    "lowWage": 15.75,
+    "highWage": 27.69,
+    "averageWage": 20.59,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62021",
+    "title": "Executive housekeepers",
+    "medianWage": 21.63,
+    "lowWage": 17.0,
+    "highWage": 28.0,
+    "averageWage": 22.38,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62022",
+    "title": "Accommodation, travel, tourism and related services supervisors",
+    "medianWage": 25.0,
+    "lowWage": 17.5,
+    "highWage": 38.94,
+    "averageWage": 26.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62023",
+    "title": "Customer and information services supervisors",
+    "medianWage": 30.87,
+    "lowWage": 19.58,
+    "highWage": 43.27,
+    "averageWage": 31.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62024",
+    "title": "Cleaning supervisors",
+    "medianWage": 25.0,
+    "lowWage": 17.5,
+    "highWage": 41.0,
+    "averageWage": 27.2,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62029",
+    "title": "Other services supervisors",
+    "medianWage": 23.1,
+    "lowWage": 17.0,
+    "highWage": 36.41,
+    "averageWage": 25.62,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62100",
+    "title": "Technical sales specialists - wholesale trade",
+    "medianWage": 37.07,
+    "lowWage": 20.0,
+    "highWage": 66.11,
+    "averageWage": 40.79,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62101",
+    "title": "Retail and wholesale buyers",
+    "medianWage": 30.0,
+    "lowWage": 19.23,
+    "highWage": 48.08,
+    "averageWage": 32.06,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62200",
+    "title": "Chefs",
+    "medianWage": 23.0,
+    "lowWage": 16.03,
+    "highWage": 32.69,
+    "averageWage": 24.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62201",
+    "title": "Funeral directors and embalmers",
+    "medianWage": 31.25,
+    "lowWage": 18.0,
+    "highWage": 50.48,
+    "averageWage": 33.29,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "62202",
+    "title": "Jewellers, jewellery and watch repairers and related occupations",
+    "medianWage": 22.45,
+    "lowWage": 16.09,
+    "highWage": 35.86,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "63100",
+    "title": "Insurance agents and brokers",
+    "medianWage": 30.0,
+    "lowWage": 21.31,
+    "highWage": 51.28,
+    "averageWage": 33.59,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63101",
+    "title": "Real estate agents and salespersons",
+    "medianWage": 58400.0,
+    "lowWage": 32867.0,
+    "highWage": 178000.0,
+    "averageWage": 85000.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "63102",
+    "title": "Financial sales representatives",
+    "medianWage": 31.88,
+    "lowWage": 21.0,
+    "highWage": 53.85,
+    "averageWage": 34.97,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63200",
+    "title": "Cooks",
+    "medianWage": 18.0,
+    "lowWage": 15.0,
+    "highWage": 25.0,
+    "averageWage": 19.19,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63201",
+    "title": "Butchers - retail and wholesale",
+    "medianWage": 20.0,
+    "lowWage": 15.25,
+    "highWage": 28.0,
+    "averageWage": 21.15,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63202",
+    "title": "Bakers",
+    "medianWage": 17.5,
+    "lowWage": 15.0,
+    "highWage": 24.81,
+    "averageWage": 18.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63210",
+    "title": "Hairstylists and barbers",
+    "medianWage": 19.88,
+    "lowWage": 15.0,
+    "highWage": 30.0,
+    "averageWage": 21.18,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63211",
+    "title": "Estheticians, electrologists and related occupations",
+    "medianWage": 20.0,
+    "lowWage": 15.0,
+    "highWage": 30.0,
+    "averageWage": 21.39,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "63220",
+    "title": "Shoe repairers and shoemakers",
+    "medianWage": 23.35,
+    "lowWage": 16.69,
+    "highWage": 35.57,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "63221",
+    "title": "Upholsterers",
+    "medianWage": 22.46,
+    "lowWage": 17.99,
+    "highWage": 31.0,
+    "averageWage": 23.75,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64100",
+    "title": "Retail salespersons and visual merchandisers",
+    "medianWage": 17.31,
+    "lowWage": 15.0,
+    "highWage": 28.85,
+    "averageWage": 20.09,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64101",
+    "title": "Sales and account representatives - wholesale trade (non-technical)",
+    "medianWage": 31.5,
+    "lowWage": 19.23,
+    "highWage": 56.23,
+    "averageWage": 35.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64200",
+    "title": "Tailors, dressmakers, furriers and milliners",
+    "medianWage": 19.0,
+    "lowWage": 15.5,
+    "highWage": 26.0,
+    "averageWage": 20.48,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64201",
+    "title": "Image, social and other personal consultants",
+    "medianWage": 26.83,
+    "lowWage": 16.19,
+    "highWage": 43.01,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "64300",
+    "title": "Maîtres d'hôtel and hosts/hostesses",
+    "medianWage": 17.58,
+    "lowWage": 15.0,
+    "highWage": 26.0,
+    "averageWage": 19.6,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64301",
+    "title": "Bartenders",
+    "medianWage": 20.0,
+    "lowWage": 15.0,
+    "highWage": 30.0,
+    "averageWage": 21.7,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64310",
+    "title": "Travel counsellors",
+    "medianWage": 24.0,
+    "lowWage": 17.5,
+    "highWage": 35.0,
+    "averageWage": 25.04,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64311",
+    "title": "Pursers and flight attendants",
+    "medianWage": 31.25,
+    "lowWage": 22.55,
+    "highWage": 60.0,
+    "averageWage": 37.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64312",
+    "title": "Airline ticket and service agents",
+    "medianWage": 21.0,
+    "lowWage": 17.0,
+    "highWage": 30.0,
+    "averageWage": 22.86,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64313",
+    "title": "Ground and water transport ticket agents, cargo service representatives and related clerks",
+    "medianWage": 21.2,
+    "lowWage": 16.5,
+    "highWage": 30.55,
+    "averageWage": 22.68,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64314",
+    "title": "Hotel front desk clerks",
+    "medianWage": 19.0,
+    "lowWage": 15.5,
+    "highWage": 26.5,
+    "averageWage": 20.38,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64320",
+    "title": "Tour and travel guides",
+    "medianWage": 20.0,
+    "lowWage": 16.25,
+    "highWage": 27.0,
+    "averageWage": 21.07,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64321",
+    "title": "Casino workers",
+    "medianWage": 23.0,
+    "lowWage": 17.0,
+    "highWage": 32.0,
+    "averageWage": 24.48,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64322",
+    "title": "Outdoor sport and recreational guides",
+    "medianWage": 20.89,
+    "lowWage": 17.0,
+    "highWage": 30.0,
+    "averageWage": 22.44,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64400",
+    "title": "Customer services representatives - financial institutions",
+    "medianWage": 22.5,
+    "lowWage": 18.0,
+    "highWage": 30.67,
+    "averageWage": 23.8,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64401",
+    "title": "Postal services representatives",
+    "medianWage": 20.15,
+    "lowWage": 15.25,
+    "highWage": 30.0,
+    "averageWage": 22.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64409",
+    "title": "Other customer and information services representatives",
+    "medianWage": 22.0,
+    "lowWage": 16.0,
+    "highWage": 33.14,
+    "averageWage": 23.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "64410",
+    "title": "Security guards and related security service occupations",
+    "medianWage": 21.0,
+    "lowWage": 16.55,
+    "highWage": 31.45,
+    "averageWage": 23.26,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65100",
+    "title": "Cashiers",
+    "medianWage": 16.0,
+    "lowWage": 15.0,
+    "highWage": 19.02,
+    "averageWage": 16.68,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65101",
+    "title": "Service station attendants",
+    "medianWage": 16.0,
+    "lowWage": 15.0,
+    "highWage": 21.0,
+    "averageWage": 17.01,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65102",
+    "title": "Store shelf stockers, clerks and order fillers",
+    "medianWage": 16.55,
+    "lowWage": 15.0,
+    "highWage": 22.0,
+    "averageWage": 17.7,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65109",
+    "title": "Other sales related occupations",
+    "medianWage": 19.0,
+    "lowWage": 15.25,
+    "highWage": 41.03,
+    "averageWage": 23.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65200",
+    "title": "Food and beverage servers",
+    "medianWage": 18.5,
+    "lowWage": 15.0,
+    "highWage": 30.0,
+    "averageWage": 20.65,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65201",
+    "title": "Food counter attendants, kitchen helpers and related support occupations",
+    "medianWage": 16.55,
+    "lowWage": 15.0,
+    "highWage": 21.5,
+    "averageWage": 17.45,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65202",
+    "title": "Meat cutters and fishmongers - retail and wholesale",
+    "medianWage": 19.5,
+    "lowWage": 15.5,
+    "highWage": 28.0,
+    "averageWage": 20.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65210",
+    "title": "Support occupations in accommodation, travel and facilities set-up services",
+    "medianWage": 20.8,
+    "lowWage": 16.07,
+    "highWage": 29.33,
+    "averageWage": 21.97,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65211",
+    "title": "Operators and attendants in amusement, recreation and sport",
+    "medianWage": 17.5,
+    "lowWage": 15.0,
+    "highWage": 27.0,
+    "averageWage": 19.45,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65220",
+    "title": "Pet groomers and animal care workers",
+    "medianWage": 18.0,
+    "lowWage": 15.0,
+    "highWage": 25.5,
+    "averageWage": 19.63,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65229",
+    "title": "Other support occupations in personal services",
+    "medianWage": 32867.0,
+    "lowWage": 32867.0,
+    "highWage": 94000.0,
+    "averageWage": 40000.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "65310",
+    "title": "Light duty cleaners",
+    "medianWage": 19.74,
+    "lowWage": 15.5,
+    "highWage": 25.0,
+    "averageWage": 20.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65311",
+    "title": "Specialized cleaners",
+    "medianWage": 19.23,
+    "lowWage": 15.5,
+    "highWage": 27.0,
+    "averageWage": 20.76,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65312",
+    "title": "Janitors, caretakers and heavy-duty cleaners",
+    "medianWage": 21.27,
+    "lowWage": 16.0,
+    "highWage": 28.72,
+    "averageWage": 22.24,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65320",
+    "title": "Dry cleaning, laundry and related occupations",
+    "medianWage": 19.5,
+    "lowWage": 15.75,
+    "highWage": 24.0,
+    "averageWage": 19.75,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "65329",
+    "title": "Other service support occupations",
+    "medianWage": 17.5,
+    "lowWage": 15.0,
+    "highWage": 24.73,
+    "averageWage": 18.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "70010",
+    "title": "Construction managers",
+    "medianWage": 48.72,
+    "lowWage": 31.25,
+    "highWage": 83.76,
+    "averageWage": 54.59,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "70011",
+    "title": "Home building and renovation managers",
+    "medianWage": 46800.0,
+    "lowWage": 32867.0,
+    "highWage": 107000.0,
+    "averageWage": 58000.0,
+    "isAnnual": true,
+    "referencePeriod": "2021"
+  },
+  {
+    "code": "70012",
+    "title": "Facility operation and maintenance managers",
+    "medianWage": 45.2,
+    "lowWage": 25.96,
+    "highWage": 70.67,
+    "averageWage": 47.17,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "70020",
+    "title": "Managers in transportation",
+    "medianWage": 52.88,
+    "lowWage": 31.25,
+    "highWage": 79.93,
+    "averageWage": 54.95,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "70021",
+    "title": "Postal and courier services managers",
+    "medianWage": 44.23,
+    "lowWage": 29.0,
+    "highWage": 75.0,
+    "averageWage": 48.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72010",
+    "title": "Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations",
+    "medianWage": 40.0,
+    "lowWage": 28.1,
+    "highWage": 55.0,
+    "averageWage": 41.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72011",
+    "title": "Contractors and supervisors, electrical trades and telecommunications occupations",
+    "medianWage": 44.79,
+    "lowWage": 30.0,
+    "highWage": 64.0,
+    "averageWage": 46.37,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72012",
+    "title": "Contractors and supervisors, pipefitting trades",
+    "medianWage": 48.1,
+    "lowWage": 30.0,
+    "highWage": 61.52,
+    "averageWage": 47.46,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72013",
+    "title": "Contractors and supervisors, carpentry trades",
+    "medianWage": 38.0,
+    "lowWage": 25.0,
+    "highWage": 51.17,
+    "averageWage": 38.83,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72014",
+    "title": "Contractors and supervisors, other construction trades, installers, repairers and servicers",
+    "medianWage": 37.5,
+    "lowWage": 26.0,
+    "highWage": 50.0,
+    "averageWage": 37.98,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72020",
+    "title": "Contractors and supervisors, mechanic trades",
+    "medianWage": 40.0,
+    "lowWage": 25.0,
+    "highWage": 60.0,
+    "averageWage": 41.4,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72021",
+    "title": "Contractors and supervisors, heavy equipment operator crews",
+    "medianWage": 38.46,
+    "lowWage": 26.92,
+    "highWage": 55.0,
+    "averageWage": 40.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72022",
+    "title": "Supervisors, printing and related occupations",
+    "medianWage": 30.0,
+    "lowWage": 23.08,
+    "highWage": 41.35,
+    "averageWage": 31.15,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72023",
+    "title": "Supervisors, railway transport operations",
+    "medianWage": 40.0,
+    "lowWage": 20.19,
+    "highWage": 52.88,
+    "averageWage": 38.98,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72024",
+    "title": "Supervisors, motor transport and other ground transit operators",
+    "medianWage": 33.0,
+    "lowWage": 21.0,
+    "highWage": 52.5,
+    "averageWage": 35.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72025",
+    "title": "Supervisors, mail and message distribution occupations",
+    "medianWage": 31.86,
+    "lowWage": 21.0,
+    "highWage": 40.38,
+    "averageWage": 31.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72100",
+    "title": "Machinists and machining and tooling inspectors",
+    "medianWage": 30.0,
+    "lowWage": 21.0,
+    "highWage": 41.5,
+    "averageWage": 30.94,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72101",
+    "title": "Tool and die makers",
+    "medianWage": 34.0,
+    "lowWage": 22.5,
+    "highWage": 44.65,
+    "averageWage": 33.43,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72102",
+    "title": "Sheet metal workers",
+    "medianWage": 34.07,
+    "lowWage": 22.7,
+    "highWage": 45.95,
+    "averageWage": 34.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72103",
+    "title": "Boilermakers",
+    "medianWage": 49.0,
+    "lowWage": 37.66,
+    "highWage": 54.57,
+    "averageWage": 47.6,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72104",
+    "title": "Structural metal and platework fabricators and fitters",
+    "medianWage": 29.0,
+    "lowWage": 21.0,
+    "highWage": 43.3,
+    "averageWage": 30.46,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72105",
+    "title": "Ironworkers",
+    "medianWage": 43.0,
+    "lowWage": 29.0,
+    "highWage": 49.8,
+    "averageWage": 41.12,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72106",
+    "title": "Welders and related machine operators",
+    "medianWage": 30.0,
+    "lowWage": 22.0,
+    "highWage": 47.0,
+    "averageWage": 32.77,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72200",
+    "title": "Electricians (except industrial and power system)",
+    "medianWage": 35.0,
+    "lowWage": 20.0,
+    "highWage": 48.0,
+    "averageWage": 35.01,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72201",
+    "title": "Industrial electricians",
+    "medianWage": 42.0,
+    "lowWage": 28.0,
+    "highWage": 54.0,
+    "averageWage": 41.85,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72202",
+    "title": "Power system electricians",
+    "medianWage": 46.55,
+    "lowWage": 36.26,
+    "highWage": 60.0,
+    "averageWage": 47.58,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72203",
+    "title": "Electrical power line and cable workers",
+    "medianWage": 46.0,
+    "lowWage": 28.4,
+    "highWage": 62.0,
+    "averageWage": 44.67,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72204",
+    "title": "Telecommunications line and cable installers and repairers",
+    "medianWage": 36.0,
+    "lowWage": 23.0,
+    "highWage": 43.0,
+    "averageWage": 34.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72205",
+    "title": "Telecommunications equipment installation and cable television service technicians",
+    "medianWage": 33.8,
+    "lowWage": 21.63,
+    "highWage": 42.86,
+    "averageWage": 32.97,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72300",
+    "title": "Plumbers",
+    "medianWage": 34.0,
+    "lowWage": 21.0,
+    "highWage": 46.0,
+    "averageWage": 33.95,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72301",
+    "title": "Steamfitters, pipefitters and sprinkler system installers",
+    "medianWage": 43.89,
+    "lowWage": 27.0,
+    "highWage": 55.59,
+    "averageWage": 42.68,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72302",
+    "title": "Gas fitters",
+    "medianWage": 40.0,
+    "lowWage": 26.44,
+    "highWage": 59.62,
+    "averageWage": 41.57,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72310",
+    "title": "Carpenters",
+    "medianWage": 32.12,
+    "lowWage": 22.0,
+    "highWage": 44.23,
+    "averageWage": 33.21,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72311",
+    "title": "Cabinetmakers",
+    "medianWage": 24.0,
+    "lowWage": 19.0,
+    "highWage": 31.0,
+    "averageWage": 24.65,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72320",
+    "title": "Bricklayers",
+    "medianWage": 40.0,
+    "lowWage": 25.78,
+    "highWage": 48.78,
+    "averageWage": 37.97,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72321",
+    "title": "Insulators",
+    "medianWage": 37.61,
+    "lowWage": 23.0,
+    "highWage": 48.65,
+    "averageWage": 36.29,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72400",
+    "title": "Construction millwrights and industrial mechanics",
+    "medianWage": 37.0,
+    "lowWage": 24.0,
+    "highWage": 52.0,
+    "averageWage": 37.55,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72401",
+    "title": "Heavy-duty equipment mechanics",
+    "medianWage": 37.12,
+    "lowWage": 23.87,
+    "highWage": 55.0,
+    "averageWage": 38.89,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72402",
+    "title": "Heating, refrigeration and air conditioning mechanics",
+    "medianWage": 37.5,
+    "lowWage": 22.0,
+    "highWage": 56.0,
+    "averageWage": 38.4,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72403",
+    "title": "Railway carmen/women",
+    "medianWage": 42.0,
+    "lowWage": 32.0,
+    "highWage": 47.0,
+    "averageWage": 40.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72404",
+    "title": "Aircraft mechanics and aircraft inspectors",
+    "medianWage": 39.0,
+    "lowWage": 24.48,
+    "highWage": 52.88,
+    "averageWage": 39.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72405",
+    "title": "Machine fitters",
+    "medianWage": 35.39,
+    "lowWage": 23.58,
+    "highWage": 48.23,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "72406",
+    "title": "Elevator constructors and mechanics",
+    "medianWage": 45.0,
+    "lowWage": 22.0,
+    "highWage": 68.0,
+    "averageWage": 44.86,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72410",
+    "title": "Automotive service technicians, truck and bus mechanics and mechanical repairers",
+    "medianWage": 29.89,
+    "lowWage": 19.0,
+    "highWage": 43.27,
+    "averageWage": 30.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72411",
+    "title": "Auto body collision, refinishing and glass technicians and damage repair estimators",
+    "medianWage": 27.0,
+    "lowWage": 18.5,
+    "highWage": 40.0,
+    "averageWage": 28.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72420",
+    "title": "Oil and solid fuel heating mechanics",
+    "medianWage": 27.0,
+    "lowWage": 20.0,
+    "highWage": 40.0,
+    "averageWage": 29.66,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72421",
+    "title": "Appliance servicers and repairers",
+    "medianWage": 28.13,
+    "lowWage": 20.0,
+    "highWage": 41.59,
+    "averageWage": 30.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72422",
+    "title": "Electrical mechanics",
+    "medianWage": 31.0,
+    "lowWage": 24.0,
+    "highWage": 43.0,
+    "averageWage": 32.78,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72423",
+    "title": "Motorcycle, all-terrain vehicle and other related mechanics",
+    "medianWage": 30.0,
+    "lowWage": 20.0,
+    "highWage": 40.0,
+    "averageWage": 30.54,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72429",
+    "title": "Other small engine and small equipment repairers",
+    "medianWage": 24.0,
+    "lowWage": 15.3,
+    "highWage": 32.0,
+    "averageWage": 24.35,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72500",
+    "title": "Crane operators",
+    "medianWage": 42.77,
+    "lowWage": 26.5,
+    "highWage": 52.19,
+    "averageWage": 40.73,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72501",
+    "title": "Water well drillers",
+    "medianWage": 30.0,
+    "lowWage": 21.6,
+    "highWage": 41.92,
+    "averageWage": 30.97,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72600",
+    "title": "Air pilots, flight engineers and flying instructors",
+    "medianWage": 52.0,
+    "lowWage": 24.04,
+    "highWage": 106.0,
+    "averageWage": 58.64,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72601",
+    "title": "Air traffic controllers and related occupations",
+    "medianWage": 54.88,
+    "lowWage": 25.25,
+    "highWage": 106.19,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "72602",
+    "title": "Deck officers, water transport",
+    "medianWage": 41.36,
+    "lowWage": 24.33,
+    "highWage": 72.12,
+    "averageWage": 45.82,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72603",
+    "title": "Engineer officers, water transport",
+    "medianWage": 37.0,
+    "lowWage": 26.78,
+    "highWage": 61.54,
+    "averageWage": 41.03,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72604",
+    "title": "Railway traffic controllers and marine traffic regulators",
+    "medianWage": 41.0,
+    "lowWage": 31.0,
+    "highWage": 54.0,
+    "averageWage": 43.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "72999",
+    "title": "Other technical trades and related occupations",
+    "medianWage": 34.72,
+    "lowWage": 21.63,
+    "highWage": 47.85,
+    "averageWage": 34.41,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73100",
+    "title": "Concrete finishers",
+    "medianWage": 34.0,
+    "lowWage": 24.5,
+    "highWage": 43.47,
+    "averageWage": 33.99,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73101",
+    "title": "Tilesetters",
+    "medianWage": 34.76,
+    "lowWage": 24.04,
+    "highWage": 44.0,
+    "averageWage": 34.07,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73102",
+    "title": "Plasterers, drywall installers and finishers and lathers",
+    "medianWage": 33.0,
+    "lowWage": 23.0,
+    "highWage": 43.75,
+    "averageWage": 33.57,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73110",
+    "title": "Roofers and shinglers",
+    "medianWage": 30.97,
+    "lowWage": 22.0,
+    "highWage": 44.24,
+    "averageWage": 32.16,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73111",
+    "title": "Glaziers",
+    "medianWage": 30.16,
+    "lowWage": 22.0,
+    "highWage": 43.09,
+    "averageWage": 31.91,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73112",
+    "title": "Painters and decorators (except interior decorators)",
+    "medianWage": 28.0,
+    "lowWage": 20.0,
+    "highWage": 40.99,
+    "averageWage": 29.14,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73113",
+    "title": "Floor covering installers",
+    "medianWage": 26.0,
+    "lowWage": 17.0,
+    "highWage": 43.0,
+    "averageWage": 28.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73200",
+    "title": "Residential and commercial installers and servicers",
+    "medianWage": 26.0,
+    "lowWage": 18.65,
+    "highWage": 40.0,
+    "averageWage": 28.05,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73201",
+    "title": "General building maintenance workers and building superintendents",
+    "medianWage": 25.0,
+    "lowWage": 16.55,
+    "highWage": 38.46,
+    "averageWage": 26.68,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73202",
+    "title": "Pest controllers and fumigators",
+    "medianWage": 25.96,
+    "lowWage": 19.23,
+    "highWage": 37.5,
+    "averageWage": 26.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73209",
+    "title": "Other repairers and servicers",
+    "medianWage": 25.0,
+    "lowWage": 17.25,
+    "highWage": 38.46,
+    "averageWage": 26.9,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73300",
+    "title": "Transport truck drivers",
+    "medianWage": 26.42,
+    "lowWage": 19.45,
+    "highWage": 37.0,
+    "averageWage": 27.89,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73301",
+    "title": "Bus drivers, subway operators and other transit operators",
+    "medianWage": 25.0,
+    "lowWage": 17.18,
+    "highWage": 37.68,
+    "averageWage": 26.66,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73310",
+    "title": "Railway and yard locomotive engineers",
+    "medianWage": 50.0,
+    "lowWage": 33.0,
+    "highWage": 68.85,
+    "averageWage": 50.66,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73311",
+    "title": "Railway conductors and brakemen/women",
+    "medianWage": 43.27,
+    "lowWage": 24.31,
+    "highWage": 56.25,
+    "averageWage": 43.01,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73400",
+    "title": "Heavy equipment operators",
+    "medianWage": 32.5,
+    "lowWage": 24.0,
+    "highWage": 45.0,
+    "averageWage": 33.84,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73401",
+    "title": "Printing press operators",
+    "medianWage": 25.0,
+    "lowWage": 18.27,
+    "highWage": 35.0,
+    "averageWage": 26.16,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "73402",
+    "title": "Drillers and blasters - surface mining, quarrying and construction",
+    "medianWage": 37.5,
+    "lowWage": 27.0,
+    "highWage": 49.0,
+    "averageWage": 37.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74100",
+    "title": "Mail and parcel sorters and related occupations",
+    "medianWage": 26.0,
+    "lowWage": 18.56,
+    "highWage": 30.66,
+    "averageWage": 25.64,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74101",
+    "title": "Letter carriers",
+    "medianWage": 28.85,
+    "lowWage": 23.0,
+    "highWage": 33.65,
+    "averageWage": 28.74,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74102",
+    "title": "Couriers and messengers",
+    "medianWage": 23.0,
+    "lowWage": 17.5,
+    "highWage": 35.0,
+    "averageWage": 25.19,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74200",
+    "title": "Railway yard and track maintenance workers",
+    "medianWage": 36.0,
+    "lowWage": 26.0,
+    "highWage": 42.0,
+    "averageWage": 35.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74201",
+    "title": "Water transport deck and engine room crew",
+    "medianWage": 28.0,
+    "lowWage": 17.75,
+    "highWage": 43.0,
+    "averageWage": 30.04,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74202",
+    "title": "Air transport ramp attendants",
+    "medianWage": 23.36,
+    "lowWage": 18.0,
+    "highWage": 32.23,
+    "averageWage": 24.85,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74203",
+    "title": "Automotive and heavy truck and equipment parts installers and servicers",
+    "medianWage": 20.0,
+    "lowWage": 16.55,
+    "highWage": 30.0,
+    "averageWage": 22.6,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74204",
+    "title": "Utility maintenance workers",
+    "medianWage": 34.0,
+    "lowWage": 23.0,
+    "highWage": 48.08,
+    "averageWage": 35.53,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "74205",
+    "title": "Public works maintenance equipment operators and related workers",
+    "medianWage": 28.5,
+    "lowWage": 22.0,
+    "highWage": 35.33,
+    "averageWage": 28.94,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75100",
+    "title": "Longshore workers",
+    "medianWage": 32.81,
+    "lowWage": 19.18,
+    "highWage": 51.14,
+    "averageWage": 34.95,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75101",
+    "title": "Material handlers",
+    "medianWage": 22.0,
+    "lowWage": 16.55,
+    "highWage": 30.29,
+    "averageWage": 22.98,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75110",
+    "title": "Construction trades helpers and labourers",
+    "medianWage": 25.0,
+    "lowWage": 18.25,
+    "highWage": 40.0,
+    "averageWage": 27.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75119",
+    "title": "Other trades helpers and labourers",
+    "medianWage": 24.0,
+    "lowWage": 17.75,
+    "highWage": 36.4,
+    "averageWage": 25.42,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75200",
+    "title": "Taxi and limousine drivers and chauffeurs",
+    "medianWage": 19.0,
+    "lowWage": 15.0,
+    "highWage": 30.0,
+    "averageWage": 20.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75201",
+    "title": "Delivery service drivers and door-to-door distributors",
+    "medianWage": 20.0,
+    "lowWage": 15.0,
+    "highWage": 29.35,
+    "averageWage": 20.76,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75210",
+    "title": "Boat and cable ferry operators and related occupations",
+    "medianWage": 27.64,
+    "lowWage": 20.0,
+    "highWage": 47.5,
+    "averageWage": 30.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75211",
+    "title": "Railway and motor transport labourers",
+    "medianWage": 22.0,
+    "lowWage": 17.0,
+    "highWage": 30.0,
+    "averageWage": 22.98,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "75212",
+    "title": "Public works and maintenance labourers",
+    "medianWage": 26.95,
+    "lowWage": 18.0,
+    "highWage": 34.7,
+    "averageWage": 26.68,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "80010",
+    "title": "Managers in natural resources production and fishing",
+    "medianWage": 72.12,
+    "lowWage": 43.27,
+    "highWage": 134.62,
+    "averageWage": 79.86,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "80020",
+    "title": "Managers in agriculture",
+    "medianWage": 30.0,
+    "lowWage": 16.25,
+    "highWage": 57.69,
+    "averageWage": 34.46,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "80021",
+    "title": "Managers in horticulture",
+    "medianWage": 21.8,
+    "lowWage": 17.0,
+    "highWage": 33.54,
+    "averageWage": 23.7,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "80022",
+    "title": "Managers in aquaculture",
+    "medianWage": 32.0,
+    "lowWage": 23.6,
+    "highWage": 72.12,
+    "averageWage": 42.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "82010",
+    "title": "Supervisors, logging and forestry",
+    "medianWage": 34.85,
+    "lowWage": 23.7,
+    "highWage": 50.48,
+    "averageWage": 35.86,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "82020",
+    "title": "Supervisors, mining and quarrying",
+    "medianWage": 50.62,
+    "lowWage": 30.0,
+    "highWage": 74.79,
+    "averageWage": 51.7,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "82021",
+    "title": "Contractors and supervisors, oil and gas drilling and services",
+    "medianWage": 50.0,
+    "lowWage": 31.5,
+    "highWage": 79.33,
+    "averageWage": 52.83,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "82030",
+    "title": "Agricultural service contractors and farm supervisors",
+    "medianWage": 24.04,
+    "lowWage": 17.0,
+    "highWage": 38.46,
+    "averageWage": 25.96,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "82031",
+    "title": "Contractors and supervisors, landscaping, grounds maintenance and horticulture services",
+    "medianWage": 29.81,
+    "lowWage": 21.0,
+    "highWage": 41.0,
+    "averageWage": 31.23,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "83100",
+    "title": "Underground production and development miners",
+    "medianWage": 42.0,
+    "lowWage": 28.0,
+    "highWage": 56.0,
+    "averageWage": 42.38,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "83101",
+    "title": "Oil and gas well drillers, servicers, testers and related workers",
+    "medianWage": 47.12,
+    "lowWage": 26.37,
+    "highWage": 70.0,
+    "averageWage": 47.8,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "83110",
+    "title": "Logging machinery operators",
+    "medianWage": 32.0,
+    "lowWage": 22.0,
+    "highWage": 40.78,
+    "averageWage": 32.62,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "83120",
+    "title": "Fishing masters and officers",
+    "medianWage": 40.26,
+    "lowWage": 20.0,
+    "highWage": 100.0,
+    "averageWage": 50.12,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "83121",
+    "title": "Fishermen/women",
+    "medianWage": 27.77,
+    "lowWage": 18.1,
+    "highWage": 60.0,
+    "averageWage": 35.71,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "84100",
+    "title": "Underground mine service and support workers",
+    "medianWage": 38.0,
+    "lowWage": 23.75,
+    "highWage": 52.0,
+    "averageWage": 37.15,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "84101",
+    "title": "Oil and gas well drilling and related workers and services operators",
+    "medianWage": 40.0,
+    "lowWage": 25.0,
+    "highWage": 47.3,
+    "averageWage": 38.2,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "84110",
+    "title": "Chain saw and skidder operators",
+    "medianWage": 30.0,
+    "lowWage": 20.0,
+    "highWage": 40.0,
+    "averageWage": 29.93,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "84111",
+    "title": "Silviculture and forestry workers",
+    "medianWage": 25.0,
+    "lowWage": 19.75,
+    "highWage": 34.0,
+    "averageWage": 26.04,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "84120",
+    "title": "Specialized livestock workers and farm machinery operators",
+    "medianWage": 22.0,
+    "lowWage": 15.0,
+    "highWage": 32.0,
+    "averageWage": 23.6,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "84121",
+    "title": "Fishing vessel deckhands",
+    "medianWage": 25.0,
+    "lowWage": 18.0,
+    "highWage": 50.0,
+    "averageWage": 30.99,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85100",
+    "title": "Livestock labourers",
+    "medianWage": 20.0,
+    "lowWage": 15.0,
+    "highWage": 28.0,
+    "averageWage": 20.53,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85101",
+    "title": "Harvesting labourers",
+    "medianWage": 18.0,
+    "lowWage": 16.0,
+    "highWage": 25.0,
+    "averageWage": 19.71,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85102",
+    "title": "Aquaculture and marine harvest labourers",
+    "medianWage": 22.0,
+    "lowWage": 17.0,
+    "highWage": 36.06,
+    "averageWage": 25.86,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85103",
+    "title": "Nursery and greenhouse labourers",
+    "medianWage": 19.5,
+    "lowWage": 15.25,
+    "highWage": 29.0,
+    "averageWage": 21.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85104",
+    "title": "Trappers and hunters",
+    "medianWage": 23.23,
+    "lowWage": 16.12,
+    "highWage": 35.85,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "85110",
+    "title": "Mine labourers",
+    "medianWage": 32.5,
+    "lowWage": 21.0,
+    "highWage": 48.65,
+    "averageWage": 33.87,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85111",
+    "title": "Oil and gas drilling, servicing and related labourers",
+    "medianWage": 31.0,
+    "lowWage": 21.52,
+    "highWage": 39.5,
+    "averageWage": 31.16,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85120",
+    "title": "Logging and forestry labourers",
+    "medianWage": 28.71,
+    "lowWage": 19.37,
+    "highWage": 47.5,
+    "averageWage": 30.75,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "85121",
+    "title": "Landscaping and grounds maintenance labourers",
+    "medianWage": 20.75,
+    "lowWage": 17.0,
+    "highWage": 28.0,
+    "averageWage": 21.66,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "90010",
+    "title": "Manufacturing managers",
+    "medianWage": 52.82,
+    "lowWage": 33.33,
+    "highWage": 93.33,
+    "averageWage": 58.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "90011",
+    "title": "Utilities managers",
+    "medianWage": 61.0,
+    "lowWage": 40.38,
+    "highWage": 93.75,
+    "averageWage": 64.21,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92010",
+    "title": "Supervisors, mineral and metal processing",
+    "medianWage": 36.0,
+    "lowWage": 25.0,
+    "highWage": 56.25,
+    "averageWage": 38.99,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92011",
+    "title": "Supervisors, petroleum, gas and chemical processing and utilities",
+    "medianWage": 43.0,
+    "lowWage": 25.0,
+    "highWage": 73.0,
+    "averageWage": 46.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92012",
+    "title": "Supervisors, food and beverage processing",
+    "medianWage": 27.5,
+    "lowWage": 20.5,
+    "highWage": 45.41,
+    "averageWage": 30.39,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92013",
+    "title": "Supervisors, plastic and rubber products manufacturing",
+    "medianWage": 31.25,
+    "lowWage": 23.0,
+    "highWage": 45.0,
+    "averageWage": 33.48,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92014",
+    "title": "Supervisors, forest products processing",
+    "medianWage": 36.06,
+    "lowWage": 25.14,
+    "highWage": 57.69,
+    "averageWage": 38.52,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92015",
+    "title": "Supervisors, textile, fabric, fur and leather products processing and manufacturing",
+    "medianWage": 27.0,
+    "lowWage": 17.0,
+    "highWage": 44.71,
+    "averageWage": 29.51,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92020",
+    "title": "Supervisors, motor vehicle assembling",
+    "medianWage": 34.62,
+    "lowWage": 23.0,
+    "highWage": 50.48,
+    "averageWage": 35.18,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92021",
+    "title": "Supervisors, electronics and electrical products manufacturing",
+    "medianWage": 33.65,
+    "lowWage": 25.0,
+    "highWage": 48.27,
+    "averageWage": 35.37,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92022",
+    "title": "Supervisors, furniture and fixtures manufacturing",
+    "medianWage": 28.5,
+    "lowWage": 22.33,
+    "highWage": 36.54,
+    "averageWage": 29.57,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92023",
+    "title": "Supervisors, other mechanical and metal products manufacturing",
+    "medianWage": 36.0,
+    "lowWage": 26.92,
+    "highWage": 50.0,
+    "averageWage": 37.55,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92024",
+    "title": "Supervisors, other products manufacturing and assembly",
+    "medianWage": 30.77,
+    "lowWage": 22.0,
+    "highWage": 44.71,
+    "averageWage": 32.21,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92100",
+    "title": "Power engineers and power systems operators",
+    "medianWage": 49.23,
+    "lowWage": 30.0,
+    "highWage": 75.55,
+    "averageWage": 51.08,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "92101",
+    "title": "Water and waste treatment plant operators",
+    "medianWage": 36.06,
+    "lowWage": 25.0,
+    "highWage": 48.0,
+    "averageWage": 36.08,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "93100",
+    "title": "Central control and process operators, mineral and metal processing",
+    "medianWage": 44.5,
+    "lowWage": 32.0,
+    "highWage": 53.83,
+    "averageWage": 42.8,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "93101",
+    "title": "Central control and process operators, petroleum, gas and chemical processing",
+    "medianWage": 50.0,
+    "lowWage": 28.0,
+    "highWage": 67.64,
+    "averageWage": 50.38,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "93102",
+    "title": "Pulping, papermaking and coating control operators",
+    "medianWage": 40.0,
+    "lowWage": 35.0,
+    "highWage": 58.0,
+    "averageWage": 45.19,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "93200",
+    "title": "Aircraft assemblers and aircraft assembly inspectors",
+    "medianWage": 34.0,
+    "lowWage": 20.0,
+    "highWage": 47.0,
+    "averageWage": 34.35,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94100",
+    "title": "Machine operators, mineral and metal processing",
+    "medianWage": 35.0,
+    "lowWage": 22.0,
+    "highWage": 50.0,
+    "averageWage": 35.01,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94101",
+    "title": "Foundry workers",
+    "medianWage": 25.0,
+    "lowWage": 18.5,
+    "highWage": 34.45,
+    "averageWage": 26.16,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94102",
+    "title": "Glass forming and finishing machine operators and glass cutters",
+    "medianWage": 22.74,
+    "lowWage": 18.0,
+    "highWage": 29.4,
+    "averageWage": 23.27,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94103",
+    "title": "Concrete, clay and stone forming operators",
+    "medianWage": 26.0,
+    "lowWage": 20.0,
+    "highWage": 34.91,
+    "averageWage": 26.63,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94104",
+    "title": "Inspectors and testers, mineral and metal processing",
+    "medianWage": 26.24,
+    "lowWage": 19.5,
+    "highWage": 40.12,
+    "averageWage": 29.03,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94105",
+    "title": "Metalworking and forging machine operators",
+    "medianWage": 25.0,
+    "lowWage": 19.0,
+    "highWage": 34.68,
+    "averageWage": 26.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94106",
+    "title": "Machining tool operators",
+    "medianWage": 25.0,
+    "lowWage": 17.5,
+    "highWage": 33.08,
+    "averageWage": 26.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94107",
+    "title": "Machine operators of other metal products",
+    "medianWage": 22.65,
+    "lowWage": 18.0,
+    "highWage": 34.0,
+    "averageWage": 24.6,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94110",
+    "title": "Chemical plant machine operators",
+    "medianWage": 25.48,
+    "lowWage": 18.44,
+    "highWage": 40.0,
+    "averageWage": 28.5,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94111",
+    "title": "Plastics processing machine operators",
+    "medianWage": 23.0,
+    "lowWage": 17.5,
+    "highWage": 30.0,
+    "averageWage": 23.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94112",
+    "title": "Rubber processing machine operators and related workers",
+    "medianWage": 29.36,
+    "lowWage": 20.0,
+    "highWage": 38.76,
+    "averageWage": 29.39,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94120",
+    "title": "Sawmill machine operators",
+    "medianWage": 27.35,
+    "lowWage": 19.0,
+    "highWage": 37.0,
+    "averageWage": 28.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94121",
+    "title": "Pulp mill, papermaking and finishing machine operators",
+    "medianWage": 32.01,
+    "lowWage": 22.0,
+    "highWage": 45.5,
+    "averageWage": 33.51,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94122",
+    "title": "Paper converting machine operators",
+    "medianWage": 28.0,
+    "lowWage": 18.0,
+    "highWage": 34.0,
+    "averageWage": 27.48,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94123",
+    "title": "Lumber graders and other wood processing inspectors and graders",
+    "medianWage": 27.5,
+    "lowWage": 20.0,
+    "highWage": 38.0,
+    "averageWage": 29.27,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94124",
+    "title": "Woodworking machine operators",
+    "medianWage": 22.0,
+    "lowWage": 18.0,
+    "highWage": 32.0,
+    "averageWage": 23.72,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94129",
+    "title": "Other wood processing machine operators",
+    "medianWage": 25.72,
+    "lowWage": 17.5,
+    "highWage": 37.0,
+    "averageWage": 26.08,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94130",
+    "title": "Textile fibre and yarn, hide and pelt processing machine operators and workers",
+    "medianWage": 22.6,
+    "lowWage": 17.0,
+    "highWage": 28.5,
+    "averageWage": 23.06,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94131",
+    "title": "Weavers, knitters and other fabric making occupations",
+    "medianWage": 19.26,
+    "lowWage": 16.48,
+    "highWage": 25.0,
+    "averageWage": 20.17,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94132",
+    "title": "Industrial sewing machine operators",
+    "medianWage": 18.0,
+    "lowWage": 15.3,
+    "highWage": 23.0,
+    "averageWage": 18.51,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94133",
+    "title": "Inspectors and graders, textile, fabric, fur and leather products manufacturing",
+    "medianWage": 17.5,
+    "lowWage": 15.5,
+    "highWage": 24.0,
+    "averageWage": 19.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94140",
+    "title": "Process control and machine operators, food and beverage processing",
+    "medianWage": 22.5,
+    "lowWage": 17.2,
+    "highWage": 32.0,
+    "averageWage": 23.82,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94141",
+    "title": "Industrial butchers and meat cutters, poultry preparers and related workers",
+    "medianWage": 23.0,
+    "lowWage": 18.0,
+    "highWage": 26.15,
+    "averageWage": 22.55,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94142",
+    "title": "Fish and seafood plant workers",
+    "medianWage": 17.25,
+    "lowWage": 15.5,
+    "highWage": 20.0,
+    "averageWage": 17.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94143",
+    "title": "Testers and graders, food and beverage processing",
+    "medianWage": 25.0,
+    "lowWage": 17.0,
+    "highWage": 34.0,
+    "averageWage": 25.39,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94150",
+    "title": "Plateless printing equipment operators",
+    "medianWage": 21.0,
+    "lowWage": 16.55,
+    "highWage": 28.75,
+    "averageWage": 21.81,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94151",
+    "title": "Camera, platemaking and other prepress occupations",
+    "medianWage": 25.85,
+    "lowWage": 20.03,
+    "highWage": 38.09,
+    "averageWage": null,
+    "isAnnual": false,
+    "referencePeriod": "2024"
+  },
+  {
+    "code": "94152",
+    "title": "Binding and finishing machine operators",
+    "medianWage": 22.0,
+    "lowWage": 18.26,
+    "highWage": 31.48,
+    "averageWage": 23.35,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94153",
+    "title": "Photographic and film processors",
+    "medianWage": 20.0,
+    "lowWage": 16.2,
+    "highWage": 30.78,
+    "averageWage": 21.45,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94200",
+    "title": "Motor vehicle assemblers, inspectors and testers",
+    "medianWage": 32.49,
+    "lowWage": 21.89,
+    "highWage": 42.35,
+    "averageWage": 32.0,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94201",
+    "title": "Electronics assemblers, fabricators, inspectors and testers",
+    "medianWage": 20.95,
+    "lowWage": 17.0,
+    "highWage": 29.47,
+    "averageWage": 22.42,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94202",
+    "title": "Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing",
+    "medianWage": 22.31,
+    "lowWage": 16.0,
+    "highWage": 36.25,
+    "averageWage": 25.14,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94203",
+    "title": "Assemblers, fabricators and inspectors, industrial electrical motors and transformers",
+    "medianWage": 22.7,
+    "lowWage": 18.0,
+    "highWage": 38.0,
+    "averageWage": 25.3,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94204",
+    "title": "Mechanical assemblers and inspectors",
+    "medianWage": 26.0,
+    "lowWage": 20.0,
+    "highWage": 37.99,
+    "averageWage": 27.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94205",
+    "title": "Machine operators and inspectors, electrical apparatus manufacturing",
+    "medianWage": 22.0,
+    "lowWage": 17.5,
+    "highWage": 29.89,
+    "averageWage": 23.02,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94210",
+    "title": "Furniture and fixture assemblers, finishers, refinishers and inspectors",
+    "medianWage": 22.79,
+    "lowWage": 17.0,
+    "highWage": 30.0,
+    "averageWage": 23.11,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94211",
+    "title": "Assemblers and inspectors of other wood products",
+    "medianWage": 22.21,
+    "lowWage": 17.5,
+    "highWage": 29.0,
+    "averageWage": 23.22,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94212",
+    "title": "Plastic products assemblers, finishers and inspectors",
+    "medianWage": 21.91,
+    "lowWage": 17.77,
+    "highWage": 30.0,
+    "averageWage": 23.17,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94213",
+    "title": "Industrial painters, coaters and metal finishing process operators",
+    "medianWage": 24.61,
+    "lowWage": 18.0,
+    "highWage": 36.0,
+    "averageWage": 26.09,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "94219",
+    "title": "Other products assemblers, finishers and inspectors",
+    "medianWage": 22.03,
+    "lowWage": 17.0,
+    "highWage": 34.0,
+    "averageWage": 24.1,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95100",
+    "title": "Labourers in mineral and metal processing",
+    "medianWage": 25.45,
+    "lowWage": 19.0,
+    "highWage": 39.48,
+    "averageWage": 27.61,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95101",
+    "title": "Labourers in metal fabrication",
+    "medianWage": 24.0,
+    "lowWage": 18.5,
+    "highWage": 32.5,
+    "averageWage": 24.84,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95102",
+    "title": "Labourers in chemical products processing and utilities",
+    "medianWage": 25.0,
+    "lowWage": 18.25,
+    "highWage": 38.53,
+    "averageWage": 27.07,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95103",
+    "title": "Labourers in wood, pulp and paper processing",
+    "medianWage": 24.13,
+    "lowWage": 18.0,
+    "highWage": 33.95,
+    "averageWage": 25.28,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95104",
+    "title": "Labourers in rubber and plastic products manufacturing",
+    "medianWage": 20.45,
+    "lowWage": 16.0,
+    "highWage": 28.0,
+    "averageWage": 21.36,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95105",
+    "title": "Labourers in textile processing and cutting",
+    "medianWage": 18.5,
+    "lowWage": 15.0,
+    "highWage": 24.0,
+    "averageWage": 19.34,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95106",
+    "title": "Labourers in food and beverage processing",
+    "medianWage": 20.0,
+    "lowWage": 16.5,
+    "highWage": 25.67,
+    "averageWage": 20.93,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95107",
+    "title": "Labourers in fish and seafood processing",
+    "medianWage": 18.0,
+    "lowWage": 16.0,
+    "highWage": 21.4,
+    "averageWage": 18.4,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  },
+  {
+    "code": "95109",
+    "title": "Other labourers in processing, manufacturing and utilities",
+    "medianWage": 20.0,
+    "lowWage": 16.5,
+    "highWage": 25.4,
+    "averageWage": 20.49,
+    "isAnnual": false,
+    "referencePeriod": "2023-2024"
+  }
+]

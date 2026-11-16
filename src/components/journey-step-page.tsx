@@ -43,10 +43,11 @@ export function JourneyStepPage({
   if (!isPageUnlocked(pageId, journey.completed)) {
     // Point the user at the first page they can still complete.
     const nextUp = JOURNEY_STEPS.find(
-      (step) => !journey.completed.includes(step.id)
+      (step) => !journey.completed.includes(step.id),
     );
     return (
-      <div className="max-w-2xl">
+      // change max-w-2xl to max-w-5xl to make the cards(team 4) wider
+      <div className="max-w-5xl">
         <h1 className="text-2xl font-bold">{title}</h1>
         <Card className="mt-4">
           <CardContent>
@@ -66,7 +67,8 @@ export function JourneyStepPage({
   }
 
   return (
-    <div className="max-w-2xl space-y-6">
+    // change max-w-2xl to max-w-5xl to make the cards(team 4) wider
+    <div className="max-w-5xl space-y-6">
       <div>
         <h1 className="text-2xl font-bold">{title}</h1>
         <p className="text-sm text-muted-foreground mt-1">{description}</p>
