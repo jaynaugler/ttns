@@ -305,6 +305,64 @@ describe("request validation", () => {
   });
 });
 
+// ------------------------------------------------ cross-team contract boundary
+
+describe("cross-team integration contracts", () => {
+  it("accepts and sanitizes a simulated Team 4 match while preserving its string ID", () => {
+    // ScoredCareerMatch on origin/feature/matching-logic adds these two lists
+    // to the shared CareerMatch fields. Team 6 must not depend on those lists.
+    const result = validateNextStepsRequest({
+      matches: [{
+        careerId: "00010",
+        score: 83.5,
+        rationale: ["Example rationale"],
+        matchedSkills: ["Numeracy"],
+        missingSkills: ["Writing"],
+      }],
+      profile: { id: "provided-user-id", skills: [], interests: [] },
+    });
+    assert.equal(result.ok, true);
+    if (!result.ok) return;
+    assert.deepEqual(result.value.matches, [{
+      careerId: "00010",
+      score: 83.5,
+      rationale: ["Example rationale"],
+    }]);
+    const data = dataset(record("s1", { careerIds: ["00010"] }));
+    assert.deepEqual(ids(generateNextSteps(result.value, data)), ["s1"]);
+    assert.deepEqual(
+      generateNextSteps({ ...result.value, matches: [{ careerId: "NOC_00010", score: 83.5 }] }, data),
+      [],
+    );
+  });
+
+  it("rejects the current stored profile shape with actionable required-field errors", async () => {
+    const response = await post(JSON.stringify({
+      matches: [{ careerId: "00010", score: 83.5 }],
+      profile: {
+        personal: { firstName: "Example", lastName: "User" },
+        skills: { primarySkill: "Numeracy", yearsOfExperience: "2" },
+        interests: { interest1: "Example", interest2: "Example" },
+        education: { school: "Example", degree: "Example" },
+      },
+    }));
+    assert.equal(response.status, 400);
+    const body = (await response.json()) as { error: string };
+    assert.match(body.error, /profile\.id is required/);
+    assert.match(body.error, /profile\.skills must be an array/);
+    assert.match(body.error, /profile\.interests must be an array/);
+  });
+
+  it("returns the existing API response for simulated Team 4 matches and a shared profile", async () => {
+    const response = await post(JSON.stringify({
+      matches: [{ careerId: "00010", score: 83.5, matchedSkills: ["Numeracy"], missingSkills: [] }],
+      profile: { id: "provided-user-id", skills: [], interests: [] },
+    }));
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), { steps: [] });
+  });
+});
+
 // --------------------------------------------------------------- gap analysis
 
 describe("gap analysis", () => {
