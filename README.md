@@ -108,8 +108,9 @@ Hand-off notes, status and open items: `src/components/look-forward/README.md`.
 ### Run and test
 
 - Logic: `src/lib/projection-logic.ts` (pure functions, no fetch or React).
-- UI: `LookForward` in `src/components/look-forward/look-forward.tsx`, meant
-  for `src/app/updated-pathways/page.tsx`:
+- UI: `LookForward` in `src/components/look-forward/look-forward.tsx` is
+  live on `/updated-pathways` (`src/app/updated-pathways/page.tsx`), with
+  mock data:
 
   ```tsx
   <LookForward matches={MOCK_MATCHES} userSkills={MOCK_USER_SKILLS} />
