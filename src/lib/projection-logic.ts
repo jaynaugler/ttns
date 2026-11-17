@@ -1,14 +1,20 @@
 // Team 5 logic for calculating outcome shifts
 //
-// Status (2026-11-12, for the halfway team switch):
+// Status (2026-11-17, for the halfway team switch):
 // Done
 //   - Wage projection: findCareerById, createWageProjection, createOutcomeShift.
+//     The wage card that uses them isn't on any page yet.
 //   - Look Forward: projectOutcomes(current, scenario, options) for three
 //     scenarios (gain a skill, finish an education step, add experience),
 //     each with a score shift and a one-line reason. Plus ranking, wording
 //     helpers, default scenarios, and toCareerMatches for Team 6.
+//   - LookForward is mounted on /updated-pathways, with mock matches.
 //   - Tests: src/lib/projection-logic.test.ts (pnpm run test:projection).
 // Left
+//   - Replace the mock matches with Team 4's results and the user's saved
+//     skills.
+//   - Nothing calls toCareerMatches yet; the class still has to decide
+//     whether POST /api/steps gets current or projected matches.
 //   - Import Team 4's DEFAULT_ALPHA and ScoredCareerMatch once
 //     feature/matching-logic is on main; MATCH_ALPHA mirrors it until then.
 //   - Agree a real rule for education and experience. EDUCATION_GAP_SHARE and
