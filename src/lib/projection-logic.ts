@@ -426,7 +426,8 @@ export function scenarioKey(scenario: Scenario): string {
 	}
 }
 
-// Bridges a projection to the OutcomeShift shape used elsewhere in Team 5.
+// Converts a projection to the earlier OutcomeShift shape (careerId, both
+// scores, rounded delta). Only the tests call it so far; no page uses it.
 export function toOutcomeShift(outcome: ProjectedOutcome): OutcomeShift {
 	return createOutcomeShift(outcome.careerId, outcome.currentScore, outcome.score);
 }
