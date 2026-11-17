@@ -32,7 +32,10 @@ export function ScenarioPicker({
 			<FieldLegend className="text-lg font-bold text-foreground data-[variant=legend]:text-lg">
 				Choose a change to try
 			</FieldLegend>
-			<FieldDescription id={descriptionId} className="text-base text-neutral-700">
+			<FieldDescription
+				id={descriptionId}
+				className="text-base text-neutral-700 dark:text-neutral-300"
+			>
 				Your matches are re-scored as if you had already made the change.
 			</FieldDescription>
 
@@ -41,10 +44,12 @@ export function ScenarioPicker({
 					const key = scenarioKey(scenario);
 					return (
 						// Only border and background animate, so the focus outline
-						// appears at full strength immediately.
+						// appears at full strength immediately. Dark mode swaps in
+						// PR #28's grey card and yellow; card blue and brand red
+						// are under 3:1 against the dark page.
 						<label
 							key={key}
-							className="flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border-2 border-neutral-500 bg-white p-4 text-black transition-[border-color,background-color] hover:border-card-blue has-checked:border-card-blue has-checked:bg-brand-yellow has-focus-visible:outline-3 has-focus-visible:outline-offset-2 has-focus-visible:outline-brand-red motion-reduce:transition-none"
+							className="group flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border-2 border-neutral-500 bg-white p-4 text-black transition-[border-color,background-color] hover:border-card-blue has-checked:border-card-blue has-checked:bg-brand-yellow has-focus-visible:outline-3 has-focus-visible:outline-offset-2 has-focus-visible:outline-brand-red motion-reduce:transition-none dark:border-neutral-400 dark:bg-[var(--dm-card-grey)] dark:text-white dark:hover:border-white dark:has-checked:border-white dark:has-checked:bg-[var(--dm-brand-yellow)] dark:has-checked:text-black dark:has-focus-visible:outline-[var(--dm-brand-yellow)]"
 						>
 							<input
 								type="radio"
@@ -58,7 +63,7 @@ export function ScenarioPicker({
 								<span className="font-bold leading-snug">
 									{SCENARIO_TITLES[scenario.kind]}
 								</span>
-								<span className="text-sm break-words text-neutral-800">
+								<span className="text-sm break-words text-neutral-800 dark:text-neutral-200 dark:group-has-checked:text-neutral-800">
 									{describeScenario(scenario)}
 								</span>
 							</span>
