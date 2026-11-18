@@ -28,14 +28,17 @@ export function NewSkillPicker() {
   const savedSkills = journey.savedSkills ?? [];
   const matches = journey.savedMatches ?? [];
   const counts = missingSkillCounts(matches);
-  const suggested =
-    matches.length > 0
-      ? suggestSkillToGain(toProjectable(matches), savedSkills)
-      : undefined;
+  const suggested = suggestSkillToGain(
+    toProjectable(matches),
+    savedSkills,
+  );
 
   // The user can't pick a skill they already selected: the projection needs
-  // the pick to be *missing* from their current skills.
-  const options = skillsData.filter((skill) => !savedSkills.includes(skill));
+  // the pick to be *missing* from their current skills. The recommended
+  // skill leads the list; the rest follows in dataset order.
+  const options = skillsData
+    .filter((skill) => !savedSkills.includes(skill))
+    .sort((a, b) => (a === suggested ? -1 : b === suggested ? 1 : 0));
 
   return (
     <FieldSet aria-describedby={descriptionId}>
@@ -47,6 +50,15 @@ export function NewSkillPicker() {
           ? "Badges count how many of your current top matches are missing that skill."
           : "Your matches haven't been saved yet — pick any skill that interests you."}
       </FieldDescription>
+
+      {suggested && counts.get(suggested)! > 0 && (
+        <p className="rounded-xl border-2 border-card-blue bg-white p-4 text-base text-neutral-900">
+          Quickest win:{" "}
+          <span className="font-bold">{suggested}</span> — listed as missing by{" "}
+          {counts.get(suggested)} of your {matches.length} top matches. It&apos;s
+          first in the list.
+        </p>
+      )}
 
       {options.length === 0 ? (
         <p className="rounded-xl border-2 border-neutral-500 bg-white p-4">
@@ -89,7 +101,7 @@ export function NewSkillPicker() {
 
                 {count > 0 && skill === suggested && (
                   <span className="mt-2 inline-block rounded-full bg-brand-yellow px-3 py-1 text-xs font-semibold">
-                    Most requested by your matches
+                    Recommended for you
                   </span>
                 )}
               </label>

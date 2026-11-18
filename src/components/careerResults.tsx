@@ -14,7 +14,7 @@ import type { CareerMatch, MatchResponse } from "@/types/careers";
 const DEFAULT_ALPHA = 0.7;
 
 function formatPercentage(value: number): string {
-  return `${value.toFixed(1)}%`;
+  return `${Math.round(value)}%`;
 }
 
 function formatWage(wage: number | null, isAnnual: boolean | null): string {
@@ -103,7 +103,7 @@ function CareerCard({
           <p className="text-3xl font-bold text-primary">
             {formatPercentage(career.matchPercentage)}
           </p>
-          <p className="text-xs text-muted-foreground">Hybrid Match</p>
+          <p className="text-xs text-muted-foreground">Skill overlap</p>
         </div>
       </div>
 

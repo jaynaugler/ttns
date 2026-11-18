@@ -5,9 +5,6 @@ import { WageProjectionCard } from "@/components/look-forward/wage-projection-ca
 import { JourneyStepPage } from "@/components/journey-step-page";
 import { toProjectable } from "@/lib/match-adapter";
 import {
-  MAX_EXPERIENCE_YEARS,
-} from "@/lib/projection-logic";
-import {
   useJourneyProgress,
   type ProfileData,
 } from "@/lib/journey-progress";
@@ -61,25 +58,19 @@ export default function UpdatedPathwaysPage() {
   );
 }
 
-// The gain-skill scenario leads when the user picked one at /new-skill; the
-// education and experience scenarios start from what the profile form asked
-// for. Empty or invalid answers fall back to the same defaults Team 5 uses
-// when it builds scenarios itself.
+// The gain-skill scenario leads when the user picked one at /new-skill, and
+// the education scenario starts from the degree the profile form recorded.
+// Experience stays at Team 5's default generic "+1 year" — deriving added
+// years from the user's CURRENT experience would be fake personalization.
 function buildScenarios(
   newSkill: string,
   profile: ProfileData | undefined,
 ): Scenario[] {
   const degree = profile?.education?.degree?.trim();
-  const years = Number.parseInt(profile?.skills?.yearsOfExperience ?? "", 10);
 
   return [
     { kind: "gain-skill", skill: newSkill },
     { kind: "finish-education", step: degree || "a diploma or certificate" },
-    {
-      kind: "add-experience",
-      years: Number.isFinite(years)
-        ? Math.min(Math.max(years, 1), MAX_EXPERIENCE_YEARS)
-        : 1,
-    },
+    { kind: "add-experience", years: 1 },
   ];
 }
