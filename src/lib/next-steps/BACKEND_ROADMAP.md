@@ -113,8 +113,12 @@ Team 6 backend ownership.
 - **Completion criteria:** curated and sourced records, valid existing string
   career IDs, dataset integrity checks, and API tests showing meaningful
   expected results from the bundled dataset.
-- **Status:** not started; `education-steps.json` contains an empty `steps`
-  array, so valid requests using bundled data return no recommendations.
+- **Status:** in progress (first pass landed); `education-steps.json` now
+  carries nine skill-gap steps for the most commonly missing skills in top
+  matches plus three generic application/experience steps. Rounds one is
+  authored without `educationLevelNotIn` conditions or deep prerequisite
+  chains; requests using bundled data return recommendations once the client
+  sends matches and a profile.
 
 ## Phase 4 — Final backend integration
 

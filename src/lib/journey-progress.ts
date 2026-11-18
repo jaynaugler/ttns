@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 import { JOURNEY_STEPS, type JourneyStepId } from "./journey";
+import type { CareerMatch } from "@/types/careers";
 
 export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 
@@ -16,6 +17,13 @@ export interface JourneyState {
   // { personal: { firstName, lastName }, skills: { ... }, ... }.
   selectedCareerCode?: string; // stored for team 5
   profile?: ProfileData;
+  // The matches shown on /current-pathways, persisted so /updated-pathways
+  // can project them and /next-step can send them to POST /api/steps.
+  savedMatches?: CareerMatch[];
+  // The skill the user wants to learn next (the /new-skill pick). Deliberately
+  // NOT in savedSkills: team 6's gap detection needs it missing to recommend
+  // the training step for exactly what the user asked to learn.
+  newSkill?: string;
 }
 
 export type ProfileData = Record<string, Record<string, string>>;
@@ -51,6 +59,22 @@ function parse(raw: string | null): JourneyState {
     // Persist the selected career code for team 5 used in the journey state
     if (typeof parsed.selectedCareerCode === "string") {
       state.selectedCareerCode = parsed.selectedCareerCode;
+    }
+
+    if (typeof parsed.newSkill === "string" && parsed.newSkill.trim() !== "") {
+      state.newSkill = parsed.newSkill;
+    }
+
+    // Partial corruption must not lose the rest of the journey state, so
+    // invalid entries are dropped rather than rejecting the whole field.
+    if (Array.isArray(parsed.savedMatches)) {
+      state.savedMatches = (parsed.savedMatches as unknown[]).filter(
+        (item: unknown): item is CareerMatch =>
+          typeof item === "object" &&
+          item !== null &&
+          typeof (item as CareerMatch).code === "string" &&
+          Number.isFinite((item as CareerMatch).matchPercentage),
+      );
     }
 
     return state;
@@ -143,6 +167,19 @@ export function saveSelectedCareer(code: string) {
     ...state,
     selectedCareerCode: code,
   });
+}
+
+// Persists the /current-pathways matches for /updated-pathways and /next-step.
+// Callers only pass non-empty result sets, and the page's career pick persists
+// selectedCareerCode, so this doesn't mark anything complete.
+export function saveMatches(matches: CareerMatch[]) {
+  writeState({ ...readState(), savedMatches: [...matches] });
+}
+
+// Persists the /new-skill pick for the projection and next-step pages. The
+// page's Continue marks the step complete, so this doesn't (like saveProfile).
+export function saveNewSkill(skill: string) {
+  writeState({ ...readState(), newSkill: skill });
 }
 
 export function resetJourney() {

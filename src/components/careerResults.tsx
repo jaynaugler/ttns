@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   markStepComplete,
+  saveMatches,
   saveSelectedCareer,
   useJourneyProgress,
 } from "@/lib/journey-progress";
@@ -286,6 +287,10 @@ export default function CareerResults({
         if (currentRequest !== requestNumber.current) return;
 
         setResults(data.results);
+        // Persisted for /updated-pathways (projection) and /next-step
+        // (POST /api/steps). The fetch effect is keyed on skillsKey/alpha,
+        // so the journey-state write can't re-trigger it.
+        saveMatches(data.results);
       } catch (err) {
         if (controller.signal.aborted) return;
         if (currentRequest !== requestNumber.current) return;
