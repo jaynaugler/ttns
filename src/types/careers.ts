@@ -37,7 +37,8 @@ export interface CareerMatch {
 export interface MatchRequest {
   skills: string[];
   alpha?: number;
-  region?: string;
+  // Outlook/wage data is Nova Scotia-only right now; if regional support
+  // arrives, add the field back with route validation.
 }
 
 export interface MatchResponse {

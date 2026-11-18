@@ -2,7 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { saveSelectedCareer } from "@/lib/journey-progress";
+import {
+  markStepComplete,
+  saveSelectedCareer,
+  useJourneyProgress,
+} from "@/lib/journey-progress";
 
 import type { CareerMatch, MatchResponse } from "@/types/careers";
 
@@ -225,15 +229,17 @@ export default function CareerResults({
   selectedSkills: string[];
 }) {
   const router = useRouter();
+  // Safe in the useState initializer below: the parent page only renders us
+  // once the persisted journey state has hydrated.
+  const { journey } = useJourneyProgress();
 
   const [alpha, setAlpha] = useState(DEFAULT_ALPHA);
   const [results, setResults] = useState<CareerMatch[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [selectedCareerCode, setSelectedCareerCode] = useState<string | null>(
-    null,
+    () => journey.selectedCareerCode ?? null,
   );
 
   const [choosingCode, setChoosingCode] = useState<string | null>(null);
@@ -241,6 +247,9 @@ export default function CareerResults({
   const requestNumber = useRef(0);
 
   const skills = selectedSkills;
+  // Keyed on this string in the refetch effect: journey-state writes recreate
+  // the array with a new identity, which would otherwise refire the fetch.
+  const skillsKey = skills.join("|");
 
   // Fetch career matches when skills or slider weight changes.
   useEffect(() => {
@@ -298,7 +307,10 @@ export default function CareerResults({
     return () => {
       controller.abort();
     };
-  }, [skills, alpha]);
+    // Keyed on skillsKey instead of skills (the string is content-stable;
+    // see its declaration above).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skillsKey, alpha]);
 
   // Handles the selection of a career and persists it using the journey state.
   async function chooseCareer(code: string) {
@@ -309,9 +321,11 @@ export default function CareerResults({
 
     try {
       saveSelectedCareer(code);
+      // The career pick is this page's real Continue action: without it the
+      // user would land on /new-skill while the step is still incomplete.
+      markStepComplete("current-pathways");
 
       setSelectedCareerCode(code);
-      setSuccess("Career selected successfully!");
 
       router.push("/new-skill");
     } catch (err) {
@@ -321,15 +335,8 @@ export default function CareerResults({
     }
   }
 
-  // Show a loading message while career matches are being fetched.
-  if (loading) {
-    return (
-      <p className="py-10 text-center text-muted-foreground">
-        Loading your career profile...
-      </p>
-    );
-  }
-
+  // Checked before the loading state: with no skills the fetch effect bails
+  // out early (loading stays true), and this must win instead.
   if (skills.length === 0) {
     return (
       <section className="rounded-xl border border-border bg-white p-6 text-foreground">
@@ -343,6 +350,15 @@ export default function CareerResults({
           Go to Skills
         </Button>
       </section>
+    );
+  }
+
+  // Show a loading message while career matches are being fetched.
+  if (loading) {
+    return (
+      <p className="py-10 text-center text-muted-foreground">
+        Loading your career profile...
+      </p>
     );
   }
 
@@ -448,16 +464,6 @@ export default function CareerResults({
       bg-red-50 p-3 text-sm text-red-700"
         >
           {error}
-        </p>
-      )}
-
-      {success && (
-        <p
-          role="status"
-          className="rounded-lg border border-green-200
-      bg-green-50 p-3 text-sm text-green-800"
-        >
-          {success}
         </p>
       )}
 

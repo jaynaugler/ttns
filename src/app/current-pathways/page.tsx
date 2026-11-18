@@ -13,6 +13,7 @@ export default function CurrentPathwaysPage() {
       pageId="current-pathways"
       nextHref="/new-skill"
       description="Careers that match the skills you have today."
+      contentClassName="max-w-5xl"
     >
       {hydrated ? (
         <CareerResults selectedSkills={journey.savedSkills ?? []} />

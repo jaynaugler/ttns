@@ -132,20 +132,23 @@ export function hybridScore(
   careerSkills: string[],
   alpha = 0.7,
 ): number {
-  if (!Number.isFinite(alpha)) {
-    throw new Error("Invalid alpha");
-  }
-
   const coverage = calculateCoverage(
     userSkills,
     careerSkills,
   );
 
-  if (
-    userSkills.length === 0 ||
-    coverage.requiredSkills.length === 0
-  ) {
-    return 0;
+  return hybridScoreFromCoverage(coverage, alpha);
+}
+
+// Scores from a coverage object the caller already computed. Value-identical
+// to hybridScore: its early returns for an empty user or empty career list
+// are covered by arithmetic (0 matched skills → 0 on both coverages → 0).
+function hybridScoreFromCoverage(
+  coverage: ReturnType<typeof calculateCoverage>,
+  alpha: number,
+): number {
+  if (!Number.isFinite(alpha)) {
+    throw new Error("Invalid alpha");
   }
 
   const weight = Math.max(0, Math.min(1, alpha));
@@ -208,9 +211,8 @@ export function matchCareers(
       continue;
     }
 
-    const matchPercentage = hybridScore(
-      selected,
-      mapping.skills,
+    const matchPercentage = hybridScoreFromCoverage(
+      coverage,
       alpha,
     );
 

@@ -23,6 +23,7 @@ export function JourneyStepPage({
   description,
   isLast,
   showContinue = true,
+  contentClassName = "max-w-2xl",
   children,
 }: {
   pageId: JourneyStepId;
@@ -30,6 +31,9 @@ export function JourneyStepPage({
   description: string;
   isLast?: boolean;
   showContinue?: boolean;
+  // Lets a page widen (or otherwise adjust) its content area without
+  // changing the shared skeleton's default for every step.
+  contentClassName?: string;
   children?: React.ReactNode;
 }) {
   const { journey, hydrated } = useJourneyProgress();
@@ -46,8 +50,7 @@ export function JourneyStepPage({
       (step) => !journey.completed.includes(step.id),
     );
     return (
-      // change max-w-2xl to max-w-5xl to make the cards(team 4) wider
-      <div className="max-w-5xl">
+      <div className={contentClassName}>
         <h1 className="text-2xl font-bold">{title}</h1>
         <Card className="mt-4">
           <CardContent>
@@ -67,8 +70,7 @@ export function JourneyStepPage({
   }
 
   return (
-    // change max-w-2xl to max-w-5xl to make the cards(team 4) wider
-    <div className="max-w-5xl space-y-6">
+    <div className={`${contentClassName} space-y-6`}>
       <div>
         <h1 className="text-2xl font-bold">{title}</h1>
         <p className="text-sm text-muted-foreground mt-1">{description}</p>
