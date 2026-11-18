@@ -19,7 +19,7 @@ const MAX_BODY_CHARS = 1_000_000;
 const MAX_REPORTED_ISSUES = 5;
 
 function errorResponse(status: 400 | 500, error: string): Response {
-  const body: NextStepsErrorResponse = { error };
+  const body: NextStepsErrorResponse = { error, image: "../../public/ttns-error.svg" };
   return Response.json(body, { status });
 }
 
