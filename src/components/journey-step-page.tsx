@@ -23,6 +23,7 @@ export function JourneyStepPage({
   description,
   isLast,
   showContinue = true,
+  contentClassName = "max-w-2xl",
   children,
 }: {
   pageId: JourneyStepId;
@@ -30,6 +31,9 @@ export function JourneyStepPage({
   description: string;
   isLast?: boolean;
   showContinue?: boolean;
+  // Lets a page widen (or otherwise adjust) its content area without
+  // changing the shared skeleton's default for every step.
+  contentClassName?: string;
   children?: React.ReactNode;
 }) {
   const { journey, hydrated } = useJourneyProgress();
@@ -43,10 +47,10 @@ export function JourneyStepPage({
   if (!isPageUnlocked(pageId, journey.completed)) {
     // Point the user at the first page they can still complete.
     const nextUp = JOURNEY_STEPS.find(
-      (step) => !journey.completed.includes(step.id)
+      (step) => !journey.completed.includes(step.id),
     );
     return (
-      <div className="max-w-2xl">
+      <div className={contentClassName}>
         <h1 className="text-2xl font-bold">{title}</h1>
         <Card className="mt-4">
           <CardContent>
@@ -66,7 +70,7 @@ export function JourneyStepPage({
   }
 
   return (
-    <div className="max-w-2xl space-y-6">
+    <div className={`${contentClassName} space-y-6`}>
       <div>
         <h1 className="text-2xl font-bold">{title}</h1>
         <p className="text-sm text-muted-foreground mt-1">{description}</p>
