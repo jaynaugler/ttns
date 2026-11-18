@@ -18,10 +18,12 @@ export default function UpdatedPathwaysPage() {
 
   const matches = toProjectable(journey.savedMatches ?? []);
   const userSkills = journey.savedSkills ?? [];
-  // Without a pick, LookForward falls back to its three default scenarios.
-  const scenarios = journey.newSkill
-    ? buildScenarios(journey.newSkill, journey.profile)
-    : undefined;
+  // One gain-skill scenario per pick (projected independently — there is no
+  // honest combined multi-skill math), then the education/experience pair.
+  // Without picks, LookForward falls back to its three default scenarios.
+  const picks = journey.newSkills ?? [];
+  const scenarios =
+    picks.length > 0 ? buildScenarios(picks, journey.profile) : undefined;
 
   return (
     <JourneyStepPage
@@ -58,18 +60,18 @@ export default function UpdatedPathwaysPage() {
   );
 }
 
-// The gain-skill scenario leads when the user picked one at /new-skill, and
-// the education scenario starts from the degree the profile form recorded.
-// Experience stays at Team 5's default generic "+1 year" — deriving added
+// Each picked skill becomes its own "learn X" scenario, ahead of the
+// education scenario (started from the degree the profile form recorded) and
+// Team 5's default generic "+1 year" experience scenario — deriving added
 // years from the user's CURRENT experience would be fake personalization.
 function buildScenarios(
-  newSkill: string,
+  picks: string[],
   profile: ProfileData | undefined,
 ): Scenario[] {
   const degree = profile?.education?.degree?.trim();
 
   return [
-    { kind: "gain-skill", skill: newSkill },
+    ...picks.map((skill) => ({ kind: "gain-skill", skill } as const)),
     { kind: "finish-education", step: degree || "a diploma or certificate" },
     { kind: "add-experience", years: 1 },
   ];
