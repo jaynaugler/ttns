@@ -3,7 +3,7 @@
 Shows how a user's career matches would shift if they made one change, and
 today's median wage for a career.
 
-Status as of 2026-11-12, written for the halfway team switch.
+Status as of 2026-11-17, written for the halfway team switch.
 
 ## Files
 
@@ -13,26 +13,27 @@ Status as of 2026-11-12, written for the halfway team switch.
 | `scenario-picker.tsx` | Radio group in a fieldset with a legend |
 | `match-list.tsx` | Current and projected match lists, shift and rank change in words |
 | `mock-matches.ts` | Mock Team 4 output (real NOC codes) until matching is on main |
-| `wage-projection-card.tsx` | Wage outlook card (earlier Team 5 work); optional `headingLevel` |
+| `wage-projection-card.tsx` | Wage outlook card (earlier Team 5 work); optional `headingLevel`. Not on any page yet |
 | `src/lib/projection-logic.ts` | Pure logic, no fetch or React |
 | `src/lib/projection-logic.test.ts` | Tests: `pnpm run test:projection` (also part of `pnpm test`) |
 | `src/types/outcomes.ts` | Team 5 added `Scenario`, `ScenarioKind`, `ProjectedOutcome`, `OutcomeShift` |
 
 ## Mounting
 
-Journey step 4, `src/app/updated-pathways/page.tsx`, replaces the
-placeholder `<p>` inside `JourneyStepPage`:
+`LookForward` is mounted on journey step 4, `/updated-pathways`
+(`src/app/updated-pathways/page.tsx`, added by the page owner on
+2026-11-16), inside `JourneyStepPage`:
 
 ```tsx
-import { LookForward } from "@/components/look-forward/look-forward";
-import { MOCK_MATCHES, MOCK_USER_SKILLS } from "@/components/look-forward/mock-matches";
-
 <LookForward matches={MOCK_MATCHES} userSkills={MOCK_USER_SKILLS} />
 ```
 
-`LookForward` is a client component, so the page can stay a server
-component. Swap the mocks for Team 4's `matchCareers(savedSkills)` result
-and `journey.savedSkills` once matching is merged.
+It still uses the mock data, so every user sees the same six careers.
+`LookForward` is a client component, so the page stays a server component.
+Swap the mocks for Team 4's `matchCareers(savedSkills)` result and
+`journey.savedSkills` once matching is merged.
+
+The wage card (`WageProjectionCard`) isn't on any page.
 
 ## Contract
 
@@ -88,12 +89,19 @@ anything specific of Team 5. Open points that touch Team 5:
 - Motion only runs under `prefers-reduced-motion: no-preference`.
 - Checked in the browser: text contrast is at least 5.59:1, option borders
   at least 4.47:1, and no horizontal scroll at 375px or 320px.
+- Dark mode (the header's toggle, from PR #28): option and match cards use
+  `--dm-card-grey` with white text, hint text is `neutral-300`, and the
+  checked option and focus outline use `--dm-brand-yellow`, because card
+  blue and brand red are under 3:1 against the dark page. The empty-state
+  link also uses the yellow, since the global dark link blue (`#2d2dff`)
+  is under 2:1 on grey.
 - Section heading id comes from `useId`, so two instances on one page don't
   collide.
 
 ## Left to do
 
-- Mount on `/updated-pathways` (page owners' call) and wire real data.
+- Wire real data into `/updated-pathways` (it's mounted with mocks).
+- Decide whether the wage card goes on a page or is retired.
 - Import Team 4's `DEFAULT_ALPHA` / `ScoredCareerMatch` once merged.
 - Agree on the education/experience rule.
 - Let the user pick which skill to gain.
@@ -111,15 +119,20 @@ page turned up six issues, each fixed in its own commit:
 2. **Heading structure.** The card's `<h2>Look Forward</h2>` duplicated the
    Look Forward section on the same page. It is now named for its content,
    and an optional `headingLevel="h3"` prop lets it nest inside another
-   section:
+   section. The live `/updated-pathways` outline today:
 
    ```
    h1  Updated Pathways                     (JourneyStepPage)
      h2  What if you took one more step?    (LookForward; "Look Forward" eyebrow)
-       h3  Today / <chosen change>
+       h3  Today
          h4  career titles
-     h2  Wage outlook for <career>          (wage card)
+       h3  <chosen change>, or "With a change"
+         h4  career titles
    ```
+
+   If the wage card is added to the page, it sits beside LookForward as
+   `h2 Wage outlook for <career>`, or as an `h3` with
+   `headingLevel="h3"` when nested in another section.
 
 3. **Rounding.** `createOutcomeShift` returned the raw difference
    (85 − 65.4 gave 19.599999999999994). `delta` now uses the same one-decimal

@@ -36,7 +36,7 @@ function ScoreBar({ score, previousScore }: { score: number; previousScore?: num
 			/>
 			{previousScore !== undefined && (
 				<div
-					className="absolute -top-1 h-4.5 w-0.5 rounded-full bg-black"
+					className="absolute -top-1 h-4.5 w-0.5 rounded-full bg-black dark:bg-white"
 					style={{ left: `calc(${percent(previousScore)}% - 1px)` }}
 				/>
 			)}
@@ -56,11 +56,15 @@ function RankBadge({ rank }: { rank: number }) {
 	);
 }
 
+// White cards in light mode, PR #28's grey card in dark mode.
+const MATCH_CARD = "flex gap-3 rounded-xl bg-white p-4 text-black dark:bg-[var(--dm-card-grey)] dark:text-white";
+const SECONDARY_TEXT = "text-neutral-800 dark:text-neutral-200";
+
 export function CurrentMatchList({ matches }: { matches: readonly CareerMatch[] }) {
 	return (
 		<ol role="list" className="space-y-3">
 			{matches.map((match, index) => (
-				<li key={match.careerId} className="flex gap-3 rounded-xl bg-white p-4 text-black">
+				<li key={match.careerId} className={MATCH_CARD}>
 					<RankBadge rank={index + 1} />
 					<div className="min-w-0 flex-1">
 						<h4 className="font-bold leading-snug break-words">{careerTitle(match.careerId)}</h4>
@@ -82,7 +86,7 @@ export function ProjectedMatchList({ outcomes }: { outcomes: readonly RankedProj
 				const shift = describeShift(outcome.scoreShift);
 				const Icon = SHIFT_ICONS[shift.direction];
 				return (
-					<li key={outcome.careerId} className="flex gap-3 rounded-xl bg-white p-4 text-black">
+					<li key={outcome.careerId} className={MATCH_CARD}>
 						<RankBadge rank={outcome.rank} />
 						<div className="min-w-0 flex-1">
 							<h4 className="font-bold leading-snug break-words">
@@ -98,8 +102,8 @@ export function ProjectedMatchList({ outcomes }: { outcomes: readonly RankedProj
 								<Icon aria-hidden="true" className="size-4" strokeWidth={3} />
 								{shift.text}
 							</p>
-							<p className="mt-2 text-sm text-neutral-800">{outcome.reason}</p>
-							<p className="mt-1 text-sm font-medium text-neutral-800">
+							<p className={`mt-2 text-sm ${SECONDARY_TEXT}`}>{outcome.reason}</p>
+							<p className={`mt-1 text-sm font-medium ${SECONDARY_TEXT}`}>
 								{describeRankChange(outcome.rank, outcome.previousRank)}
 							</p>
 							<ScoreBar score={outcome.score} previousScore={outcome.currentScore} />
