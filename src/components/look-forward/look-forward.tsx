@@ -54,7 +54,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 
 	return (
 		<section aria-labelledby={headingId} className="space-y-6">
-			<header className="relative overflow-hidden rounded-2xl bg-card-blue px-5 py-6 text-white sm:px-8 sm:py-8">
+			<header className="relative overflow-hidden rounded-2xl bg-card-blue px-5 py-6 text-card-foreground sm:px-8 sm:py-8">
 				<div
 					aria-hidden="true"
 					className="absolute inset-y-0 right-0 w-3 bg-brand-yellow sm:w-4"
@@ -65,7 +65,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 				<h2 id={headingId} className="mt-1 text-2xl font-bold text-balance sm:text-3xl">
 					What if you took one more step?
 				</h2>
-				<p className="mt-2 max-w-prose text-base text-white">
+				<p className="mt-2 max-w-prose text-base">
 					Try a change and see how your top career matches would move.
 				</p>
 			</header>
@@ -83,7 +83,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 					{/* items-start: each column keeps its own height instead of
 					    stretching "Today" to match the taller projected column. */}
 					<div className="grid items-start gap-4 md:grid-cols-2">
-						<div className="rounded-xl border-2 border-neutral-500 bg-neutral-100 p-4 text-black dark:border-neutral-400 dark:bg-transparent dark:text-white">
+						<div className="rounded-xl border-2 border-muted-foreground bg-muted p-4 text-foreground dark:bg-transparent">
 							<h3 className="mb-3 text-lg font-bold">Today</h3>
 							<CurrentMatchList matches={currentTop} />
 						</div>
@@ -111,7 +111,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 						</Card>
 					</div>
 
-					<p className="text-sm text-neutral-700 dark:text-neutral-300">
+					<p className="text-sm text-foreground">
 						Estimates only. A new skill is scored the same way as your matches;
 						education and experience shifts are rough guides.
 					</p>
@@ -127,7 +127,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 
 function EmptyState() {
 	return (
-		<div className="rounded-xl border-2 border-neutral-500 bg-white p-5 text-black dark:border-neutral-400 dark:bg-[var(--dm-card-grey)] dark:text-white">
+		<div className="rounded-xl border-2 border-muted-foreground bg-background p-5 text-foreground dark:bg-[var(--dm-card-grey)]">
 			<p className="font-bold">No career matches yet.</p>
 			<p className="mt-1">
 				Look Forward needs your current matches to project a change.

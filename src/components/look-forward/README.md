@@ -89,12 +89,18 @@ anything specific of Team 5. Open points that touch Team 5:
 - Motion only runs under `prefers-reduced-motion: no-preference`.
 - Checked in the browser: text contrast is at least 5.59:1, option borders
   at least 4.47:1, and no horizontal scroll at 375px or 320px.
+- Colours: every colour in this folder is a token from `globals.css`
+  (`background`, `foreground`, `muted`, `muted-foreground`, `card`,
+  `primary`, the brand colours and the `--dm-*` dark-mode colours). No
+  Tailwind palette colours, no hex values.
 - Dark mode (the header's toggle, from PR #28): option and match cards use
-  `--dm-card-grey` with white text, hint text is `neutral-300`, and the
-  checked option and focus outline use `--dm-brand-yellow`, because card
-  blue and brand red are under 3:1 against the dark page. The empty-state
-  link also uses the yellow, since the global dark link blue (`#2d2dff`)
-  is under 2:1 on grey.
+  `--dm-card-grey` with `foreground` text, borders are `muted-foreground`,
+  and the checked option and focus outline use `--dm-brand-yellow`, because
+  card blue and brand red are under 3:1 against the dark page. The
+  empty-state link also uses the yellow, since the global dark link blue
+  (`#2d2dff`) is under 2:1 on grey.
+- Lowest measured ratios with these tokens: text 5.59:1, borders and focus
+  4.47:1 in light mode; text 5.94:1, borders and focus 5.33:1 in dark mode.
 - Section heading id comes from `useId`, so two instances on one page don't
   collide.
 
@@ -145,5 +151,6 @@ page turned up six issues, each fixed in its own commit:
    newlines were added.
 6. **Grey text contrast.** `text-muted-foreground` (`#737373`) measured
    4.47:1 on the cream page background (`#faf8f5`), under the 4.5:1 minimum.
-   The card now uses `text-neutral-700` (`#404040`), measured 9.78:1.
+   The card now uses `text-foreground`, a `globals.css` token, which is
+   black on cream in light mode and white on the dark page in dark mode.
    `globals.css` is unchanged.

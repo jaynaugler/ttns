@@ -9,10 +9,12 @@ import {
 } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/outcomes";
 
+// globals.css tokens only. The arrow icon and the text carry the meaning,
+// so the chip colour is never the only signal.
 const SHIFT_STYLES: Record<ShiftDirection, string> = {
-	up: "bg-emerald-100 text-emerald-900",
-	down: "bg-rose-100 text-brand-red",
-	none: "bg-neutral-200 text-neutral-900",
+	up: "bg-card text-card-foreground",
+	down: "bg-primary text-primary-foreground",
+	none: "bg-muted text-foreground",
 };
 
 const SHIFT_ICONS = { up: ArrowUp, down: ArrowDown, none: Minus } as const;
@@ -29,14 +31,14 @@ function percent(score: number): number {
 // the score before the change so the bar shows the shift at a glance.
 function ScoreBar({ score, previousScore }: { score: number; previousScore?: number }) {
 	return (
-		<div aria-hidden="true" className="relative mt-3 h-2.5 rounded-full bg-neutral-300">
+		<div aria-hidden="true" className="relative mt-3 h-2.5 rounded-full bg-muted-foreground/40">
 			<div
-				className="h-full rounded-full bg-card-blue motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-out"
+				className="h-full rounded-full bg-card motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-out"
 				style={{ width: `${percent(score)}%` }}
 			/>
 			{previousScore !== undefined && (
 				<div
-					className="absolute -top-1 h-4.5 w-0.5 rounded-full bg-black dark:bg-white"
+					className="absolute -top-1 h-4.5 w-0.5 rounded-full bg-foreground"
 					style={{ left: `calc(${percent(previousScore)}% - 1px)` }}
 				/>
 			)}
@@ -49,16 +51,16 @@ function RankBadge({ rank }: { rank: number }) {
 	return (
 		<span
 			aria-hidden="true"
-			className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white"
+			className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-primary-foreground"
 		>
 			{rank}
 		</span>
 	);
 }
 
-// White cards in light mode, PR #28's grey card in dark mode.
-const MATCH_CARD = "flex gap-3 rounded-xl bg-white p-4 text-black dark:bg-[var(--dm-card-grey)] dark:text-white";
-const SECONDARY_TEXT = "text-neutral-800 dark:text-neutral-200";
+// Page background in light mode, the dark-mode grey card in dark mode.
+// Both come from globals.css.
+const MATCH_CARD = "flex gap-3 rounded-xl bg-background p-4 text-foreground dark:bg-[var(--dm-card-grey)]";
 
 export function CurrentMatchList({ matches }: { matches: readonly CareerMatch[] }) {
 	return (
@@ -102,8 +104,8 @@ export function ProjectedMatchList({ outcomes }: { outcomes: readonly RankedProj
 								<Icon aria-hidden="true" className="size-4" strokeWidth={3} />
 								{shift.text}
 							</p>
-							<p className={`mt-2 text-sm ${SECONDARY_TEXT}`}>{outcome.reason}</p>
-							<p className={`mt-1 text-sm font-medium ${SECONDARY_TEXT}`}>
+							<p className="mt-2 text-sm">{outcome.reason}</p>
+							<p className="mt-1 text-sm font-medium">
 								{describeRankChange(outcome.rank, outcome.previousRank)}
 							</p>
 							<ScoreBar score={outcome.score} previousScore={outcome.currentScore} />
