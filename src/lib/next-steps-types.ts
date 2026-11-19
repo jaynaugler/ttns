@@ -47,6 +47,7 @@ export interface NextStepsResponse {
 /** 400 / 500 response. Never contains stack traces or internal details. */
 export interface NextStepsErrorResponse {
   error: string;
+  image?: string;
 }
 
 // ---------------------------------------------------------------------------
