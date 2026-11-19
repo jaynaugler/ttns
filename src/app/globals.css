@@ -268,3 +268,12 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
     border-color: var(--dm-brand-brown);
   }
 }
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}

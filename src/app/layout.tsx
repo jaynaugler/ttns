@@ -3,7 +3,7 @@ import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
-
+export const instant =false;
 export const metadata: Metadata = {
   title: "Take The Next Step",
   description:
