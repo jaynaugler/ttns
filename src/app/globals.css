@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "OpenDyslexic";
-  src: url("/fonts/OpenDyslexic-Regular.otf") format("truetype");
+  src: url("../fonts/local/OpenDyslexic-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
