@@ -2,7 +2,7 @@
 // useState, react-hook-form and click handlers, which only run in the browser.
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import {
   profileSteps,
@@ -120,6 +120,29 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
     setEditingFromReview(false);
     setCurrentStep(reviewStep);
   }
+
+  // Reset journey (the sidebar dev tool) wipes the saved profile from journey
+  // state — but this form is already mounted and useForm only reads its
+  // defaultValues once, so without this the old values stay on screen. The
+  // effect watches the saved-profile signal and drops the form back to
+  // blank-and-unsubmitted the moment the profile disappears. Only the
+  // present→absent direction matters: present→present is a re-save, which
+  // must keep local state, and absent→present is an initial submit.
+  const lastHadSavedProfile = useRef(Boolean(initialValues));
+  useEffect(() => {
+    const hasNext = Boolean(initialValues);
+    if (lastHadSavedProfile.current && !hasNext) {
+      methods.reset(profileDefaultValues);
+      setCurrentStep(0);
+      setEditingFromReview(false);
+      setSubmitted(false);
+      onSubmittedChange?.(false);
+    }
+    lastHadSavedProfile.current = hasNext;
+    // journey.profile's identity only changes when journey state does;
+    // methods and the page's setState are stable, so this fires on real
+    // saves/resets, not every render.
+  }, [initialValues, methods, onSubmittedChange]);
 
   // Card uses bg-card, which is blue in our theme, so the card body is
   // set to white and the header gets the primary brand red. pt-0 lets the
