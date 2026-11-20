@@ -124,6 +124,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   /* Dark mode colours */
   --dm-surface-grey: #2d2d2d;
   --dm-card-grey: #383838;
+  --dm-text-lightgrey: #979797;
   --dm-card-blue: #42649c;
   --dm-brand-red: #910b2b;
   --dm-brand-pink: #cd4565;
