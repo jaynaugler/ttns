@@ -1,48 +1,55 @@
-"use client";
-
-import { useMemo, useState } from "react";
-
 import { JourneyStepPage } from "@/components/journey-step-page";
-import { NextStepView } from "@/components/next-step-view";
-import { buildStepsRequest } from "@/lib/profile-adapter";
-import { useJourneyProgress } from "@/lib/journey-progress";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Construction } from "lucide-react";
 
-// Journey step 5 — the last. NextStepView calls POST /api/steps (Team 6) with
-// the persisted matches, skills and profile; Continue shows once the call
-// has resolved (so the user reads the plan before the journey ends).
+// Journey step 4 — the last, and the only one not implemented. GUTTED FOR
+// RE-DESIGN: the original page sent the persisted matches/skills/profile to
+// Team 6's POST /api/steps and rendered the returned action plan (see
+// components/next-step-view.tsx in git history; the route and the
+// lib/next-steps validation/adapter stack are kept for the new design to
+// reuse). What this page should be is deliberately unresolved — treat
+// everything below as scaffolding to replace, and keep the "needs work"
+// signal until that happens. Its Continue ("Chart a new path") wraps the
+// journey back to /profile instead of dead-ending on the landing page.
 export default function NextStepPage() {
-  const [resolved, setResolved] = useState(false);
-  const { journey } = useJourneyProgress();
-
-  // Keyed on the request payload's content, not object identity: every
-  // journey-state write rebuilds the state object, and this request must not
-  // refire on that (the same fix careerResults.tsx got for its fetch).
-  const matchesKey = (journey.savedMatches ?? [])
-    .map((match) => `${match.code}:${match.matchPercentage}`)
-    .join("|");
-  const skillsKey = (journey.savedSkills ?? []).join("|");
-  const profileKey = journey.profile ? JSON.stringify(journey.profile) : "";
-
-  const request = useMemo(
-    () =>
-      buildStepsRequest({
-        savedMatches: journey.savedMatches,
-        savedSkills: journey.savedSkills,
-        profile: journey.profile,
-      }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [matchesKey, skillsKey, profileKey],
-  );
-
   return (
     <JourneyStepPage
       pageId="next-step"
-      nextHref="/"
+      nextHref="/profile"
       isLast
-      description="Concrete steps toward the skill you picked."
-      showContinue={resolved}
+      description="The wrap-up step of your journey — what it offers is being re-imagined."
     >
-      <NextStepView request={request} onResolved={() => setResolved(true)} />
+      {/* The card bg (bg-card) is brand blue, so every line here is explicitly
+          white rather than muted tokens that would read blue-grey on it. */}
+      <Card className="border-dashed">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-lg font-semibold">
+            <Construction aria-hidden="true" className="size-5" />
+            Under construction
+          </CardTitle>
+          <CardDescription className="text-white">
+            This step is a placeholder for now — what it&apos;s for is still
+            being decided.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3 text-white">
+          <p>
+            It will eventually wrap up the journey — a last look at where
+            you&apos;re headed, and the send-off into charting a fresh path
+            through the wizard.
+          </p>
+          <p>
+            For now, &ldquo;Chart a new path&rdquo; simply takes you back to
+            Personal Info to work through the journey again.
+          </p>
+        </CardContent>
+      </Card>
     </JourneyStepPage>
   );
 }
