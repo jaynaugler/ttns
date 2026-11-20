@@ -39,9 +39,9 @@ const reviewStep = steps.length - 1;
  *   page can show its Continue button. Optional: callers that don't care can
  *   render `<ProfileForm />`.
  * @param {Object} [props.initialValues] Previously saved profile data
- *   (journey.profile), grouped by step key. Prefills the form so returning
- *   users (e.g. via "Chart a new path") see what they entered instead of
- *   retyping. Fields with no saved value fall back to the empty default.
+ *   (journey.profile), grouped by step key. Prefills the form and lands
+ *   returning users on the Review step so they can see what they entered;
+ *   fields with no saved value fall back to the empty default.
  */
 export default function ProfileForm({ onSubmittedChange, initialValues }) {
   // react-hook-form holds all form values. They survive step changes because
@@ -55,7 +55,13 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
     mode: "onTouched",
     defaultValues: withSavedValues(profileDefaultValues, initialValues),
   });
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(
+    // Returning users (saved profile) land on the Review so they can see —
+    // and edit via the section Edit buttons — everything they entered,
+    // instead of starting over at "Personal info". First-time users have no
+    // initialValues and get the wizard from its first step.
+    initialValues ? reviewStep : 0
+  );
   // True after clicking Edit on the review, so Next goes straight back to the
   // review instead of walking through the remaining steps again.
   const [editingFromReview, setEditingFromReview] = useState(false);
@@ -107,6 +113,17 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
     setEditingFromReview(false);
     setSubmitted(false);
     onSubmittedChange?.(false);
+  }
+
+  // The submitted card is only a confirmation — it shows no data. "View my
+  // profile" drops back into the Review of what was just saved, which is the
+  // same view returning users land on. From there the user can edit and
+  // re-submit, or move on with the page's Continue (the saved journey profile
+  // keeps that visible either way).
+  function viewProfile() {
+    setSubmitted(false);
+    setEditingFromReview(false);
+    setCurrentStep(reviewStep);
   }
 
   // DEV TOOL — remove before launch (with profileDevValues). Loads the sample
@@ -212,9 +229,14 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
           the submit button to it. */}
       <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
-          <Button type="button" size="lg" onClick={startOver}>
-            Start another profile
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button type="button" size="lg" onClick={viewProfile}>
+              View my profile
+            </Button>
+            <Button type="button" variant="ghost" size="lg" onClick={startOver}>
+              Start another profile
+            </Button>
+          </div>
         ) : (
           <>
             {/* DEV TOOL — remove before launch, same as profileDevValues. */}
