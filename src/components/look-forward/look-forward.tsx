@@ -83,7 +83,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 					{/* items-start: each column keeps its own height instead of
 					    stretching "Today" to match the taller projected column. */}
 					<div className="grid items-start gap-4 md:grid-cols-2">
-						<div className="rounded-xl border-2 border-neutral-500 bg-neutral-100 p-4">
+						<div className="rounded-xl border-2 border-neutral-500 bg-neutral-100 p-4 dark:bg-[var(--dm-card-grey)]">
 							<h3 className="mb-3 text-lg font-bold">Today</h3>
 							<CurrentMatchList matches={currentTop} />
 						</div>
@@ -111,7 +111,7 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 						</Card>
 					</div>
 
-					<p className="text-sm text-neutral-700">
+					<p className="text-sm dark:text-[var(--dm-text-lightgrey)]">
 						Estimates only. A new skill is scored the same way as your matches;
 						education and experience shifts are rough guides.
 					</p>
