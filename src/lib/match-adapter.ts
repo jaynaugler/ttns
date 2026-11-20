@@ -1,6 +1,8 @@
 // Adapters between Team 4's CareerMatch shape (src/types/careers.ts) and the
 // shared shapes Teams 5 and 6 consume (src/types/outcomes.ts), plus the
-// missing-skill counter the /new-skill picker uses for "why it matters".
+// missing-skill counter ("why it matters" for a skill to learn — its last
+// consumer was the removed /new-skill page; it stays until the redesigned
+// add-skills flow needs it again).
 // Pure: no React, no storage, no imports from "server-only" modules.
 
 import type { CareerMatch as TeamFourMatch } from "@/types/careers";
@@ -54,8 +56,9 @@ export function toStepsMatches(
     }));
 }
 
-// How many of the matches list each skill as missing. The /new-skill picker
-// badges each option with this count so the user sees why a skill matters.
+// How many of the matches list each skill as missing. Last used by the
+// removed /new-skill picker to badge each option with why a skill matters;
+// exported for the redesigned add-skills flow.
 export function missingSkillCounts(
   matches: readonly TeamFourMatch[],
 ): Map<string, number> {

@@ -60,6 +60,8 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
           );
         })}
       </ul>
+      {/* DEV TOOL — remove before launch (with the profile form's Autofill
+          button and profileDevValues). */}
       <Button
         variant="link"
         className="mt-6 h-auto p-0 text-xs"

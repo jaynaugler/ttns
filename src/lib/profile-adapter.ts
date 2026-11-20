@@ -26,11 +26,11 @@ export interface StepsRequestInput {
   profile?: ProfileGroups;
 }
 
-// The /new-skill picks are deliberately NOT included in profile.skills:
-// Team 6's gap detection needs them missing to recommend the training steps
-// for exactly what the user asked to learn. And the /next-step request
-// carries the user's CURRENT persisted matches, not Team 5's projections —
-// gap logic keys on today's skills.
+// The add-skills picks (journey.newSkills) are deliberately NOT included in
+// profile.skills: Team 6's gap detection needs them missing to recommend the
+// training steps for exactly what the user asked to learn. And the /next-step
+// request carries the user's CURRENT persisted matches, not Team 5's
+// projections — gap logic keys on today's skills.
 export function buildStepsRequest(
   input: StepsRequestInput,
 ): NextStepsRequest | null {

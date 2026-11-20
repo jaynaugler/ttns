@@ -30,7 +30,7 @@ export default function UpdatedPathwaysPage() {
     <JourneyStepPage
       pageId="updated-pathways"
       nextHref="/next-step"
-      description="How your match changes once the new skill is in the picture."
+      description="How your pathways change as education, experience, and new skills come into the picture."
       contentClassName="max-w-5xl"
     >
       {hydrated ? (
@@ -42,9 +42,9 @@ export default function UpdatedPathwaysPage() {
           />
 
           <p className="text-sm text-neutral-700">
-            Projections re-score your saved top matches. A new skill can also
-            lift careers that aren&apos;t in today&apos;s top 10 — re-check
-            your current pathways after you&apos;ve gained it.
+            Projections re-score your saved top matches. New skills and
+            experience can also lift careers that aren&apos;t in today&apos;s
+            top 10 — re-check your current pathways as you grow.
           </p>
 
           {journey.selectedCareerCode && (
