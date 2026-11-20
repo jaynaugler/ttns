@@ -89,6 +89,25 @@ export const profileDefaultValues = Object.fromEntries(
   ])
 );
 
+// Overlays saved profile data on the empty defaults: only the shape
+// profileDefaultValues defines gets through, so an older saved profile that's
+// missing a newly added field (or a stale group) can't leave a hole — the
+// field just starts empty.
+export function withSavedValues(defaults, saved) {
+  if (!saved) return defaults;
+  return Object.fromEntries(
+    Object.entries(defaults).map(([key, fields]) => [
+      key,
+      Object.fromEntries(
+        Object.entries(fields).map(([field, value]) => [
+          field,
+          typeof saved[key]?.[field] === "string" ? saved[key][field] : value,
+        ])
+      ),
+    ])
+  );
+}
+
 // DEV TOOL — remove before launch (alongside the "Reset journey" dev button).
 // Sample values ProfileForm's "Autofill (dev)" button loads so the journey can
 // be walked without retyping the form each run. Kept in this file so the one

@@ -4,7 +4,12 @@
 
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { profileSteps, profileDefaultValues, profileDevValues } from "./profileSteps";
+import {
+  profileSteps,
+  profileDefaultValues,
+  profileDevValues,
+  withSavedValues,
+} from "./profileSteps";
 import FieldsStep from "./FieldsStep";
 import ReviewStep from "./ReviewStep";
 import { Button } from "@/components/ui/button";
@@ -33,15 +38,22 @@ const reviewStep = steps.length - 1;
  *   parent when the form is completed (true) or started over (false), so the
  *   page can show its Continue button. Optional: callers that don't care can
  *   render `<ProfileForm />`.
+ * @param {Object} [props.initialValues] Previously saved profile data
+ *   (journey.profile), grouped by step key. Prefills the form so returning
+ *   users (e.g. via "Chart a new path") see what they entered instead of
+ *   retyping. Fields with no saved value fall back to the empty default.
  */
-export default function ProfileForm({ onSubmittedChange }) {
+export default function ProfileForm({ onSubmittedChange, initialValues }) {
   // react-hook-form holds all form values. They survive step changes because
   // unmounted fields keep their values by default (shouldUnregister: false).
+  // NOTE: defaultValues are read once at mount — the page renders this form
+  // only after journey state hydrates, so initialValues is the persisted one,
+  // not the pre-read default.
   const methods = useForm({
     // Check a field when the user leaves it, then again on every keystroke,
     // so an error disappears as soon as it's fixed.
     mode: "onTouched",
-    defaultValues: profileDefaultValues,
+    defaultValues: withSavedValues(profileDefaultValues, initialValues),
   });
   const [currentStep, setCurrentStep] = useState(0);
   // True after clicking Edit on the review, so Next goes straight back to the
