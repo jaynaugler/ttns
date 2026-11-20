@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { profileSteps, profileDefaultValues } from "./profileSteps";
+import { profileSteps, profileDefaultValues, profileDevValues } from "./profileSteps";
 import FieldsStep from "./FieldsStep";
 import ReviewStep from "./ReviewStep";
 import { Button } from "@/components/ui/button";
@@ -97,6 +97,18 @@ export default function ProfileForm({ onSubmittedChange }) {
     onSubmittedChange?.(false);
   }
 
+  // DEV TOOL — remove before launch (with profileDevValues). Loads the sample
+  // values into every field and jumps straight to the review, so walking the
+  // journey takes two clicks (this, then "Create my profile") instead of
+  // retyping the form.
+  function fillForDev() {
+    methods.reset(profileDevValues);
+    // If Review's Edit was used, editingFromReview would bend the next flow;
+    // the jump below must behave like a fresh arrival at the review.
+    setEditingFromReview(false);
+    setCurrentStep(reviewStep);
+  }
+
   // Card uses bg-card, which is blue in our theme, so the card body is
   // set to white and the header gets the primary brand red. pt-0 lets the
   // header reach the top edge. --card-spacing sets the card's padding.
@@ -170,15 +182,26 @@ export default function ProfileForm({ onSubmittedChange }) {
           </Button>
         ) : (
           <>
-            <Button
-              type="button"
-              variant="ghost"
-              size="lg"
-              onClick={() => setCurrentStep(currentStep - 1)}
-              disabled={currentStep === 0}
-            >
-              Back
-            </Button>
+            {/* DEV TOOL — remove before launch, same as profileDevValues. */}
+            <div className="flex items-center gap-1">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={fillForDev}
+              >
+                Autofill (dev)
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="lg"
+                onClick={() => setCurrentStep(currentStep - 1)}
+                disabled={currentStep === 0}
+              >
+                Back
+              </Button>
+            </div>
             <Button type="submit" form="profile-form" size="lg">
               {nextLabel}
             </Button>

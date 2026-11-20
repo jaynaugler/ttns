@@ -88,3 +88,18 @@ export const profileDefaultValues = Object.fromEntries(
     Object.fromEntries(step.fields.map((field) => [field.name, ""])),
   ])
 );
+
+// DEV TOOL — remove before launch (alongside the "Reset journey" dev button).
+// Sample values ProfileForm's "Autofill (dev)" button loads so the journey can
+// be walked without retyping the form each run. Kept in this file so the one
+// place describing the form's shape stays that place: when you add a field
+// above, its review will fail "required" until you add a value here too.
+export const profileDevValues = {
+  personal: { firstName: "Alex", lastName: "Sample" },
+  skills: { primarySkill: "Customer Service", yearsOfExperience: "4" },
+  interests: { interest1: "Building things", interest2: "Helping people" },
+  education: {
+    school: "Red River College Polytechnic",
+    degree: "Business Administration Diploma",
+  },
+};
