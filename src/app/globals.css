@@ -132,6 +132,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --dm-brand-brown: #b06204;
   --dm-link-default: #2d2dff;
   --dm-link-visited: #9d47ed;
+  --dm-badge-green: rgb(39, 187, 39);
 
   --background: var(--surface-cream);
   --foreground: #000000;

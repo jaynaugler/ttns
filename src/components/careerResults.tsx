@@ -81,11 +81,11 @@ function CareerCard({
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <article className="rounded-xl border border-border bg-white p-5 text-foreground shadow-sm sm:p-6">
+    <article className="rounded-xl border border-border bg-white dark:bg-[var(--dm-card-grey)] p-5 text-foreground shadow-sm sm:p-6">
       {/* Career title and match score */}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-primary">
+          <p className="text-sm font-bold text-primary dark:text-[var(--dm-brand-pink)]">
             Recommendation #{rank}
           </p>
 
@@ -99,7 +99,7 @@ function CareerCard({
         </div>
 
         <div className="text-right">
-          <p className="text-3xl font-bold text-primary">
+          <p className="text-3xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
             {formatPercentage(career.matchPercentage)}
           </p>
           <p className="text-xs text-muted-foreground">Hybrid Match</p>
@@ -109,7 +109,7 @@ function CareerCard({
       {/* Matching progress bar */}
       <div className="mt-4 h-3 overflow-hidden rounded-full bg-muted">
         <div
-          className="h-full rounded-full bg-primary transition-all"
+          className="h-full rounded-full bg-primary dark:bg-[var(--dm-brand-pink)] transition-all"
           style={{
             width: `${Math.max(0, Math.min(100, career.matchPercentage))}%`,
           }}
@@ -157,7 +157,7 @@ function CareerCard({
 
       {/* Matched Skills */}
       <div className="mt-5">
-        <h3 className="mb-2 font-semibold text-green-800">
+        <h3 className="mb-2 font-semibold text-green-800 dark:text-[var(--dm-badge-green)]">
           Matched Skills ({career.matchedSkills.length})
         </h3>
 
@@ -382,7 +382,7 @@ export default function CareerResults({
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground"
+                className="rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground dark:text-black"
               >
                 {skill}
               </span>
@@ -423,7 +423,7 @@ export default function CareerResults({
           value={Math.round(alpha * 100)}
           onChange={(event) => setAlpha(Number(event.target.value) / 100)}
           aria-label="Career coverage weight"
-          className="mt-4 w-full cursor-pointer accent-primary"
+          className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-pink)]"
         />
 
         <div className="mt-1 flex justify-between text-xs text-muted-foreground">
@@ -439,7 +439,7 @@ export default function CareerResults({
         <button
           type="button"
           onClick={() => setAlpha(DEFAULT_ALPHA)}
-          className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline"
+          className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-pink)]"
         >
           Reset to 70% / 30%
         </button>
