@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 import { JOURNEY_STEPS, type JourneyStepId } from "./journey";
+import type { CareerMatch } from "@/types/careers";
 
 export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 
@@ -16,6 +17,16 @@ export interface JourneyState {
   // { personal: { firstName, lastName }, skills: { ... }, ... }.
   selectedCareerCode?: string; // stored for team 5
   profile?: ProfileData;
+  // The matches shown on /current-pathways, persisted so /updated-pathways
+  // can project them and /next-step can send them to POST /api/steps.
+  savedMatches?: CareerMatch[];
+  // The skill(s) the user wants to learn next (picked once on
+  // /updated-pathways after its redesign; the /new-skill page that used to
+  // collect them is gone, so these are optional and usually absent).
+  // Deliberately NOT in savedSkills: team 6's gap detection needs them
+  // missing to recommend the training step for exactly what the user asked
+  // to learn.
+  newSkills?: string[];
 }
 
 export type ProfileData = Record<string, Record<string, string>>;
@@ -51,6 +62,36 @@ function parse(raw: string | null): JourneyState {
     // Persist the selected career code for team 5 used in the journey state
     if (typeof parsed.selectedCareerCode === "string") {
       state.selectedCareerCode = parsed.selectedCareerCode;
+    }
+
+    if (Array.isArray(parsed.newSkills)) {
+      const rawSkills = parsed.newSkills as unknown[];
+      const picks = [...new Set(
+        rawSkills
+          .filter((skill: unknown): skill is string => typeof skill === "string")
+          .map((skill: string) => skill.trim())
+          .filter((skill: string) => skill !== ""),
+      )];
+      if (picks.length > 0) {
+        state.newSkills = picks;
+      }
+    } else if (
+      typeof parsed.newSkill === "string" && parsed.newSkill.trim() !== ""
+    ) {
+      // A single pick persisted by earlier builds.
+      state.newSkills = [parsed.newSkill];
+    }
+
+    // Partial corruption must not lose the rest of the journey state, so
+    // invalid entries are dropped rather than rejecting the whole field.
+    if (Array.isArray(parsed.savedMatches)) {
+      state.savedMatches = (parsed.savedMatches as unknown[]).filter(
+        (item: unknown): item is CareerMatch =>
+          typeof item === "object" &&
+          item !== null &&
+          typeof (item as CareerMatch).code === "string" &&
+          Number.isFinite((item as CareerMatch).matchPercentage),
+      );
     }
 
     return state;
@@ -143,6 +184,20 @@ export function saveSelectedCareer(code: string) {
     ...state,
     selectedCareerCode: code,
   });
+}
+
+// Persists the /current-pathways matches for /updated-pathways and /next-step.
+// Callers only pass non-empty result sets, and the page's career pick persists
+// selectedCareerCode, so this doesn't mark anything complete.
+export function saveMatches(matches: CareerMatch[]) {
+  writeState({ ...readState(), savedMatches: [...matches] });
+}
+
+// Persists the picks for the add-skills option on /updated-pathways (any
+// number, stored in pick order) for the projection and next-step pages. Kept
+// for that page's redesign; nothing calls it until then.
+export function saveNewSkills(skills: string[]) {
+  writeState({ ...readState(), newSkills: [...skills] });
 }
 
 export function resetJourney() {

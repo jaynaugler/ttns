@@ -2,6 +2,8 @@
 // after compiling with tsc:  node --test <compiled>/next-steps.test.js
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, it } from "node:test";
 import type { NextStep } from "@/types/outcomes";
 import { POST } from "../../app/api/steps/route";
@@ -111,10 +113,25 @@ describe("education-step dataset loading", () => {
     assert.deepEqual(generateNextSteps(request(), { steps: [] }), []);
   });
 
-  it("the bundled education-steps.json loads and is empty", () => {
+  it("the bundled education-steps.json loads and is not empty", () => {
     const result = loadEducationStepData();
     assert.equal(result.ok, true);
-    assert.equal(result.ok && result.isEmpty, true);
+    assert.ok(result.ok && result.isEmpty === false);
+    assert.ok(result.ok && result.dataset.steps.length >= 10);
+    // Every career ID in the bundled dataset is a real NOC code (string form
+    // matches Team 4's matches), so recommendations can actually fire.
+    // Read from the project root: tsc's @/* alias does not apply at node's
+    // runtime, and the compiled test tree doesn't mirror src/data.
+    const mapping = JSON.parse(
+      readFileSync(join(process.cwd(), "src/data/skillToOccupation.json"), "utf8"),
+    ) as Array<{ code: string }>;
+    const careerIds = new Set(mapping.map((entry) => entry.code));
+    for (const step of result.ok ? result.dataset.steps : []) {
+      assert.ok(step.careerIds.length > 0, step.id);
+      for (const careerId of step.careerIds) {
+        assert.ok(careerIds.has(careerId), `${step.id}: ${careerId}`);
+      }
+    }
   });
 
   it("missing or mistyped `steps` is malformed, not empty", () => {

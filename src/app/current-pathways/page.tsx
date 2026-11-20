@@ -5,14 +5,17 @@ import CareerResults from "@/components/careerResults";
 
 // Journey step 2. Team 4's career-results UI (career cards, ranjot-career-
 // details) lands here, fed by matchCareers() over the skills saved at /skills.
+// Continue is hidden until a career is picked: the pick feeds the wage card
+// and the /next-step request, and is the step's meaningful completion.
 export default function CurrentPathwaysPage() {
   const { journey, hydrated } = useJourneyProgress();
 
   return (
     <JourneyStepPage
       pageId="current-pathways"
-      nextHref="/new-skill"
+      nextHref="/updated-pathways"
       description="Careers that match the skills you have today."
+      showContinue={Boolean(journey.selectedCareerCode)}
       contentClassName="max-w-5xl"
     >
       {hydrated ? (

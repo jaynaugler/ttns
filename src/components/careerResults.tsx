@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   markStepComplete,
+  saveMatches,
   saveSelectedCareer,
   useJourneyProgress,
 } from "@/lib/journey-progress";
@@ -13,7 +14,7 @@ import type { CareerMatch, MatchResponse } from "@/types/careers";
 const DEFAULT_ALPHA = 0.7;
 
 function formatPercentage(value: number): string {
-  return `${value.toFixed(1)}%`;
+  return `${Math.round(value)}%`;
 }
 
 function formatWage(wage: number | null, isAnnual: boolean | null): string {
@@ -102,7 +103,7 @@ function CareerCard({
           <p className="text-3xl font-bold text-primary">
             {formatPercentage(career.matchPercentage)}
           </p>
-          <p className="text-xs text-muted-foreground">Hybrid Match</p>
+          <p className="text-xs text-muted-foreground">Skill overlap</p>
         </div>
       </div>
 
@@ -286,6 +287,10 @@ export default function CareerResults({
         if (currentRequest !== requestNumber.current) return;
 
         setResults(data.results);
+        // Persisted for /updated-pathways (projection) and /next-step
+        // (POST /api/steps). The fetch effect is keyed on skillsKey/alpha,
+        // so the journey-state write can't re-trigger it.
+        saveMatches(data.results);
       } catch (err) {
         if (controller.signal.aborted) return;
         if (currentRequest !== requestNumber.current) return;
@@ -322,12 +327,13 @@ export default function CareerResults({
     try {
       saveSelectedCareer(code);
       // The career pick is this page's real Continue action: without it the
-      // user would land on /new-skill while the step is still incomplete.
+      // user would land on /updated-pathways while the step is still
+      // incomplete.
       markStepComplete("current-pathways");
 
       setSelectedCareerCode(code);
 
-      router.push("/new-skill");
+      router.push("/updated-pathways");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to select career");
     } finally {

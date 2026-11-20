@@ -92,14 +92,19 @@ export function Header() {
   }
 
   return (
-    <header className="border-b bg-primary px-4 md:px-8 py-4 text-primary-foreground">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    // Sticky so the brand/nav/accessibility toggles stay reachable while the
+    // page scrolls; h-16 is the anchor the sticky sidebar nav offsets from.
+    <header className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground">
+      <div className="max-w-7xl mx-auto flex h-full w-full items-center justify-between">
         <div className="font-bold text-xl">
           <Link href="/" className="text-primary-foreground hover:no-underline">Take The Next Step</Link>
         </div>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex gap-6 text-sm font-medium">
             <li><Link href="/" className="text-primary-foreground">Home</Link></li>
+            {/* Same loop "Chart a new path" does: back to the profile form
+                (prefilled from the last submission) to run the journey again. */}
+            <li><Link href="/profile" className="text-primary-foreground">Profile</Link></li>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
@@ -205,6 +210,15 @@ export function Header() {
                     onClick={() => setOpen(false)}
                   >
                     Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/profile"
+                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    onClick={() => setOpen(false)}
+                  >
+                    Profile
                   </Link>
                 </li>
                 <li>

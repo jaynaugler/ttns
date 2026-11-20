@@ -16,9 +16,8 @@ export default function LandingPage() {
       </div>
       <h1 className="text-3xl font-bold">Take The Next Step</h1>
       <p className="text-muted-foreground mt-3">
-        Share your current skills and the skill you want to learn next, and
-        we&apos;ll map the pathways in between — from the careers you match
-        today to a concrete plan for your next step.
+        Share your skills and we&apos;ll map the pathways — from the careers
+        you match today to the steps that take you further.
       </p>
       <Button size="lg" className="mt-6" nativeButton={false} render={<Link href="/profile" />}>
         Get Started

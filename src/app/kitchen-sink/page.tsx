@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import ProfileForm from "@/components/profile-form/ProfileForm";
 import { RadioButtonGroup } from "@/components/ui/radio-button";
@@ -56,7 +58,8 @@ export default function KitchenSinkPage() {
           <h2 id="profile-form-heading" className="text-xl font-medium">
             Profile Form
           </h2>
-          <ProfileForm />
+          {/* Form demo only: the sink ignores submission state changes. */}
+          <ProfileForm onSubmittedChange={() => {}} />
         </section>
 
       <br></br>

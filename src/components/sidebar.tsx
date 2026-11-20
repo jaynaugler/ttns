@@ -11,7 +11,12 @@ export function Sidebar() {
 
   return (
     <aside className="hidden w-64 shrink-0 bg-sidebar text-sidebar-foreground border-r min-h-full md:block">
-      <nav aria-label="Your Journey" className="p-6">
+      {/* Sticky inside the stretching aside so the journey list stays visible
+          while content scrolls; offset matches the sticky header (h-16). */}
+      <nav
+        aria-label="Your Journey"
+        className="p-6 md:sticky md:top-16 md:max-h-[calc(100vh-4rem)] md:overflow-y-auto"
+      >
         <h2 className="text-xs font-semibold uppercase tracking-wider opacity-60 mb-4">Your Journey</h2>
         <JourneyStepList />
       </nav>
