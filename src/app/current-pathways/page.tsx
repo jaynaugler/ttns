@@ -13,7 +13,7 @@ export default function CurrentPathwaysPage() {
   return (
     <JourneyStepPage
       pageId="current-pathways"
-      nextHref="/new-skill"
+      nextHref="/updated-pathways"
       description="Careers that match the skills you have today."
       showContinue={Boolean(journey.selectedCareerCode)}
       contentClassName="max-w-5xl"

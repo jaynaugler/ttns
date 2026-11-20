@@ -327,12 +327,13 @@ export default function CareerResults({
     try {
       saveSelectedCareer(code);
       // The career pick is this page's real Continue action: without it the
-      // user would land on /new-skill while the step is still incomplete.
+      // user would land on /updated-pathways while the step is still
+      // incomplete.
       markStepComplete("current-pathways");
 
       setSelectedCareerCode(code);
 
-      router.push("/new-skill");
+      router.push("/updated-pathways");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to select career");
     } finally {

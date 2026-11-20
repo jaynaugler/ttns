@@ -10,9 +10,10 @@ import {
 } from "@/lib/journey-progress";
 import type { Scenario } from "@/types/outcomes";
 
-// Journey step 4. Team 5's Look Forward runs over the matches persisted at
-// /current-pathways, with the /new-skill pick as the headline scenario and
-// the profile's education/experience answers personalizing the other two.
+// Journey step 3. Team 5's Look Forward runs over the matches persisted at
+// /current-pathways, with any add-skills picks as extra scenarios (the
+// interest page was removed; its redesign will restore picking here) and the
+// profile's education/experience answers personalizing the other two.
 export default function UpdatedPathwaysPage() {
   const { journey, hydrated } = useJourneyProgress();
 

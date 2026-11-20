@@ -20,7 +20,9 @@ export interface JourneyState {
   // The matches shown on /current-pathways, persisted so /updated-pathways
   // can project them and /next-step can send them to POST /api/steps.
   savedMatches?: CareerMatch[];
-  // The skill(s) the user wants to learn next (the /new-skill picks).
+  // The skill(s) the user wants to learn next (picked once on
+  // /updated-pathways after its redesign; the /new-skill page that used to
+  // collect them is gone, so these are optional and usually absent).
   // Deliberately NOT in savedSkills: team 6's gap detection needs them
   // missing to recommend the training step for exactly what the user asked
   // to learn.
@@ -191,9 +193,9 @@ export function saveMatches(matches: CareerMatch[]) {
   writeState({ ...readState(), savedMatches: [...matches] });
 }
 
-// Persists the /new-skill picks (any number, stored in pick order) for the
-// projection and next-step pages. The page's Continue marks the step
-// complete, so this doesn't (like saveProfile).
+// Persists the picks for the add-skills option on /updated-pathways (any
+// number, stored in pick order) for the projection and next-step pages. Kept
+// for that page's redesign; nothing calls it until then.
 export function saveNewSkills(skills: string[]) {
   writeState({ ...readState(), newSkills: [...skills] });
 }
