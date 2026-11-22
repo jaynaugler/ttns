@@ -176,14 +176,26 @@ export function saveProfile(profile: ProfileData) {
   writeState({ ...readState(), profile });
 }
 
-// Persists the selected career code for team 5 used in the journey state.
-export function saveSelectedCareer(code: string) {
+// Select, replace, or unselect a career. Changing the choice invalidates later
+// journey steps so a previous continuation does not remain falsely complete.
+export function saveSelectedCareer(code: string | null) {
   const state = readState();
+  const previous = state.selectedCareerCode ?? null;
+  if (code === previous) return;
 
-  writeState({
-    ...state,
-    selectedCareerCode: code,
-  });
+  const completed = state.completed.filter(
+    (id) =>
+      id !== "current-pathways" &&
+      id !== "updated-pathways" &&
+      id !== "next-step",
+  );
+  const next: JourneyState = { ...state, completed };
+  if (code === null) {
+    delete next.selectedCareerCode;
+  } else {
+    next.selectedCareerCode = code;
+  }
+  writeState(next);
 }
 
 // Persists the /current-pathways matches for /updated-pathways and /next-step.

@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { SlidersHorizontal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -12,6 +13,8 @@ import {
 import type { CareerMatch, MatchResponse } from "@/types/careers";
 
 const DEFAULT_ALPHA = 0.7;
+const PAGE_SIZE = 10;
+const MAX_RESULTS = 1000;
 
 function formatPercentage(value: number): string {
   return `${Math.round(value)}%`;
@@ -40,9 +43,10 @@ function SkillBadges({
   color?: "green" | "gray" | "blue";
 }) {
   const styles = {
-    green: "bg-green-100 text-green-800",
+    green:
+      "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-100",
     gray: "bg-muted text-foreground",
-    blue: "bg-secondary text-secondary-foreground",
+    blue: "bg-secondary text-secondary-foreground dark:text-black",
   };
 
   if (skills.length === 0) {
@@ -70,19 +74,26 @@ function CareerCard({
   career,
   rank,
   onChoose,
-  choosing,
+  onContinue,
   selected,
 }: {
   career: CareerMatch;
   rank: number;
-  onChoose: (code: string) => Promise<void>;
-  choosing: boolean;
+  onChoose: (code: string) => void;
+  onContinue: () => void;
   selected: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <article className="rounded-xl border border-border bg-white dark:bg-[var(--dm-card-grey)] p-5 text-foreground shadow-sm sm:p-6">
+    <article
+      id={`career-${career.code}`}
+      className={`scroll-mt-36 rounded-xl border p-5 text-foreground shadow-sm transition-colors sm:p-6 ${
+        selected
+          ? "border-green-700 bg-green-50 ring-2 ring-green-600 dark:border-green-400 dark:bg-green-950/30 dark:ring-green-500"
+          : "border-border bg-white dark:bg-[var(--dm-card-grey)]"
+      }`}
+    >
       {/* Career title and match score */}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
@@ -190,7 +201,7 @@ function CareerCard({
           variant="ghost"
           onClick={() => setExpanded((current) => !current)}
           aria-expanded={expanded}
-          className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary"
+          className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
         >
           {expanded
             ? "Hide All Career Skills ▲"
@@ -198,27 +209,37 @@ function CareerCard({
         </Button>
 
         {expanded && (
-          <div className="mt-3 rounded-lg border border-border bg-white p-4">
+          <div className="mt-3 rounded-lg border border-border bg-white p-4 dark:bg-[var(--dm-card-grey)]">
             <SkillBadges skills={career.requiredSkills} color="blue" />
           </div>
         )}
       </div>
 
       {/* Selection action */}
-      <div className="mt-6 border-t border-border pt-4">
+      <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-border pt-4">
         <Button
           type="button"
           size="lg"
-          disabled={choosing || selected}
-          onClick={() => void onChoose(career.code)}
-          className="cursor-pointer"
+          aria-pressed={selected}
+          onClick={() => onChoose(career.code)}
+          title={
+            selected ? "Click to unselect this career" : "Select this career"
+          }
+          className={
+            selected
+              ? "cursor-pointer border-green-700 bg-green-700 text-white hover:border-green-800 hover:bg-green-800 dark:border-green-400 dark:bg-green-900 dark:text-green-100 dark:hover:bg-green-800"
+              : "cursor-pointer"
+          }
         >
-          {selected
-            ? "✓ Career Selected"
-            : choosing
-              ? "Submitting..."
-              : "Choose This Career"}
+          {selected ? "✓ This career is selected" : "Choose This Career"}
         </Button>
+        {selected && (
+          <>
+            <Button type="button" size="lg" onClick={onContinue}>
+              Continue →
+            </Button>
+          </>
+        )}
       </div>
     </article>
   );
@@ -236,6 +257,10 @@ export default function CareerResults({
 
   const [alpha, setAlpha] = useState(DEFAULT_ALPHA);
   const [results, setResults] = useState<CareerMatch[]>([]);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [hasMore, setHasMore] = useState(false);
+  const [selectedRank, setSelectedRank] = useState<number | null>(null);
+  const [isSelectedCardVisible, setIsSelectedCardVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [error, setError] = useState("");
@@ -243,9 +268,10 @@ export default function CareerResults({
     () => journey.selectedCareerCode ?? null,
   );
 
-  const [choosingCode, setChoosingCode] = useState<string | null>(null);
-
   const requestNumber = useRef(0);
+  // Selection changes should not cause a redundant match request. The next
+  // slider/show-more request reads the latest choice from this ref.
+  const selectedCodeRef = useRef(selectedCareerCode);
 
   const skills = selectedSkills;
   // Keyed on this string in the refetch effect: journey-state writes recreate
@@ -274,6 +300,8 @@ export default function CareerResults({
           body: JSON.stringify({
             skills,
             alpha,
+            limit: visibleCount,
+            selectedCareerCode: selectedCodeRef.current ?? undefined,
           }),
           signal: controller.signal,
         });
@@ -287,6 +315,8 @@ export default function CareerResults({
         if (currentRequest !== requestNumber.current) return;
 
         setResults(data.results);
+        setHasMore(Boolean(data.hasMore));
+        setSelectedRank(data.selectedRank ?? null);
         // Persisted for /updated-pathways (projection) and /next-step
         // (POST /api/steps). The fetch effect is keyed on skillsKey/alpha,
         // so the journey-state write can't re-trigger it.
@@ -315,37 +345,74 @@ export default function CareerResults({
     // Keyed on skillsKey instead of skills (the string is content-stable;
     // see its declaration above).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skillsKey, alpha]);
+  }, [skillsKey, alpha, visibleCount]);
 
-  // Handles the selection of a career and persists it using the journey state.
-  async function chooseCareer(code: string) {
-    if (choosingCode !== null) return;
-
-    setChoosingCode(code);
-    setError("");
-
-    try {
-      saveSelectedCareer(code);
-      // The career pick is this page's real Continue action: without it the
-      // user would land on /updated-pathways while the step is still
-      // incomplete.
-      markStepComplete("current-pathways");
-
-      setSelectedCareerCode(code);
-
-      router.push("/updated-pathways");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to select career");
-    } finally {
-      setChoosingCode(null);
-    }
+  // A click selects or unselects the career without navigating.
+  function chooseCareer(code: string) {
+    const nextCode = selectedCareerCode === code ? null : code;
+    selectedCodeRef.current = nextCode;
+    saveSelectedCareer(nextCode);
+    setSelectedCareerCode(nextCode);
+    // The user clicked a card that is already on screen. Avoid a banner flash.
+    setIsSelectedCardVisible(Boolean(nextCode));
+    setSelectedRank(
+      nextCode
+        ? (() => {
+            const index = results.findIndex((item) => item.code === nextCode);
+            return index >= 0 ? index + 1 : null;
+          })()
+        : null,
+    );
   }
+
+  // Only Continue completes this step and moves to Team 5's page.
+  function continueWithCareer() {
+    if (!selectedCareerCode) return;
+    markStepComplete("current-pathways");
+    router.push("/updated-pathways");
+  }
+
+  function changeAlpha(next: number) {
+    setVisibleCount(PAGE_SIZE);
+    setAlpha(next);
+  }
+
+  const selectedIndex = selectedCareerCode
+    ? results.findIndex((item) => item.code === selectedCareerCode)
+    : -1;
+  const selectedMatch =
+    selectedIndex >= 0
+      ? results[selectedIndex]
+      : journey.savedMatches?.find((item) => item.code === selectedCareerCode);
+  const currentSelectedRank =
+    selectedIndex >= 0 ? selectedIndex + 1 : selectedRank;
+
+  // Watch the selected card as it enters/leaves the visible viewport.
+  // The floating shortcut is only useful when that card is off-screen.
+  useEffect(() => {
+    if (!selectedCareerCode || selectedIndex < 0) return;
+
+    const card = document.getElementById(`career-${selectedCareerCode}`);
+    if (!card) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsSelectedCardVisible(entry.isIntersecting),
+      {
+        // Ignore the top sticky-header area and the bottom edge.
+        rootMargin: "-80px 0px -24px 0px",
+        threshold: 0,
+      },
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [selectedCareerCode, selectedIndex]);
 
   // Checked before the loading state: with no skills the fetch effect bails
   // out early (loading stays true), and this must win instead.
   if (skills.length === 0) {
     return (
-      <section className="rounded-xl border border-border bg-white p-6 text-foreground">
+      <section className="rounded-xl border border-border bg-white p-6 text-foreground dark:bg-[var(--dm-card-grey)]">
         <h2 className="text-xl font-semibold">No Skills Selected</h2>
 
         <p className="mt-2 text-muted-foreground">
@@ -369,7 +436,28 @@ export default function CareerResults({
   }
 
   return (
-    <section className="space-y-6">
+    <section className={`space-y-6 ${selectedCareerCode ? "pb-24" : ""}`}>
+      {selectedCareerCode && (selectedIndex < 0 || !isSelectedCardVisible) && (
+        <button
+          type="button"
+          onClick={() => {
+            document
+              .getElementById(`career-${selectedCareerCode}`)
+              ?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+          }}
+          className="fixed bottom-4 left-1/2 z-40 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-xl border border-green-700 bg-green-800 px-5 py-3 text-left text-sm font-semibold text-white shadow-xl hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 dark:border-green-400 dark:bg-green-950 dark:text-green-100 dark:hover:bg-green-900 dark:focus-visible:outline-green-400 sm:bottom-6"
+          aria-label={`Scroll to chosen career: ${selectedMatch?.title ?? selectedCareerCode}`}
+        >
+          You chose:{" "}
+          {currentSelectedRank
+            ? `Recommendation #${currentSelectedRank} — `
+            : ""}
+          {selectedMatch?.title ?? `NOC ${selectedCareerCode}`} ↑
+        </button>
+      )}
       {/* Page heading */}
       <div>
         <h1 className="text-3xl font-bold">Career Matching Results</h1>
@@ -399,7 +487,7 @@ export default function CareerResults({
         <Button
           type="button"
           variant="ghost"
-          className="mt-3 border-border bg-white text-primary hover:bg-muted hover:text-primary"
+          className="mt-3 border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
           onClick={() => router.push("/skills")}
         >
           Edit My Skills
@@ -407,8 +495,11 @@ export default function CareerResults({
       </div>
 
       {/* Weighted hybrid slider */}
-      <div className="rounded-xl border border-border bg-muted p-5 text-foreground">
-        <h2 className="text-xl font-semibold">Adjust Matching Weights</h2>
+      <div className="rounded-2xl border-2 border-primary/60 bg-muted p-6 shadow-md dark:border-[var(--dm-brand-pink)]">
+        <h2 className="flex items-center gap-2 text-2xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
+          <SlidersHorizontal className="h-6 w-6" />
+          Adjust Matching Weights
+        </h2>
 
         <p className="mt-2 text-sm text-muted-foreground">
           Career coverage measures how many career skills you have. User
@@ -427,7 +518,7 @@ export default function CareerResults({
           max="100"
           step="5"
           value={Math.round(alpha * 100)}
-          onChange={(event) => setAlpha(Number(event.target.value) / 100)}
+          onChange={(event) => changeAlpha(Number(event.target.value) / 100)}
           aria-label="Career coverage weight"
           className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-pink)]"
         />
@@ -444,10 +535,10 @@ export default function CareerResults({
 
         <button
           type="button"
-          onClick={() => setAlpha(DEFAULT_ALPHA)}
+          onClick={() => changeAlpha(DEFAULT_ALPHA)}
           className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-pink)]"
         >
-          Reset to 70% / 30%
+          <span aria-hidden="true">↺</span> Reset to 70% / 30%
         </button>
 
         <p className="mt-2 text-xs text-muted-foreground">
@@ -466,8 +557,7 @@ export default function CareerResults({
       {error && (
         <p
           role="alert"
-          className="rounded-lg border border-red-200
-      bg-red-50 p-3 text-sm text-red-700"
+          className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-950/40 dark:text-red-200"
         >
           {error}
         </p>
@@ -491,17 +581,73 @@ export default function CareerResults({
             career={career}
             rank={index + 1}
             onChoose={chooseCareer}
-            choosing={choosingCode !== null}
+            onContinue={continueWithCareer}
             selected={selectedCareerCode === career.code}
           />
         ))}
+
+        {/* The saved choice may move outside the visible top results after
+            changing weights. Keep Continue accessible without reselecting. */}
+        {selectedCareerCode &&
+          !results.some((c) => c.code === selectedCareerCode) && (
+            <div className="rounded-lg border border-green-300 bg-green-50 p-4 text-green-900 dark:border-green-600 dark:bg-green-950/40 dark:text-green-100">
+              <p className="font-semibold">
+                You have already selected a career (NOC {selectedCareerCode}).
+              </p>
+              <p className="mt-1 text-sm">
+                It is not in the currently displayed recommendations.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <Button type="button" onClick={continueWithCareer}>
+                  Continue →
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => {
+                    selectedCodeRef.current = null;
+                    saveSelectedCareer(null);
+                    setSelectedCareerCode(null);
+                    setSelectedRank(null);
+                  }}
+                >
+                  Unselect career
+                </Button>
+              </div>
+            </div>
+          )}
+
+        {hasMore && (
+          <div className="flex justify-center">
+            <Button
+              type="button"
+              size="lg"
+              variant="ghost"
+              disabled={updating || visibleCount >= MAX_RESULTS}
+              onClick={() =>
+                setVisibleCount(
+                  Math.min(
+                    Math.max(
+                      visibleCount,
+                      Math.ceil(results.length / PAGE_SIZE) * PAGE_SIZE,
+                    ) + PAGE_SIZE,
+                    MAX_RESULTS,
+                  ),
+                )
+              }
+              className="cursor-pointer border border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+            >
+              {updating ? "Loading more careers..." : "Show 10 More Careers"}
+            </Button>
+          </div>
+        )}
       </div>
 
       <div className="flex justify-center">
         <Button
           type="button"
           variant="ghost"
-          className="border-border bg-white text-primary hover:bg-muted hover:text-primary"
+          className="border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
           onClick={() =>
             window.scrollTo({
               top: 0,
