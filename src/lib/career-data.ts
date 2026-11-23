@@ -182,10 +182,11 @@ function buildRationale(
   );
 }
 
-// Rank all occupations and return the top ten.
+// Rank all occupations and return up to the requested number.
 export function matchCareers(
   userSkills: string[],
   alpha = 0.7,
+  limit = 10,
 ): CareerMatch[] {
   const selected = [...new Set(userSkills)];
 
@@ -260,5 +261,5 @@ export function matchCareers(
           a.matchedSkills.length ||
         a.code.localeCompare(b.code),
     )
-    .slice(0, 10);
+    .slice(0, limit);
 }
