@@ -16,13 +16,14 @@ for development phases, ownership boundaries, and unresolved decisions.
 | `src/lib/next-steps.ts` | Data loader + algorithm (normalize, gaps, candidates, dedupe, order) |
 | `src/lib/next-steps-validation.ts` | Request, dataset and output validators |
 | `src/lib/next-steps-types.ts` | Team 6 request/response/dataset types |
-| `src/data/education-steps.json` | Knowledge base (intentionally empty: `{"steps": []}`) |
+| `src/data/education-steps.json` | Knowledge base (12 records covering 16 career IDs at baseline `8cd20de`) |
 | `src/lib/next-steps/next-steps.test.ts` | Tests (Node built-in runner) |
 
 ## Contract
 
 Request: `{ "matches": CareerMatch[], "profile": UserProfile }` (shared types).
-Responses: `200 {"steps": NextStep[]}`, `400 {"error": string}`, `500 {"error": string}`.
+Responses: `200 {"steps": NextStep[]}`; `400` and `500` return an
+`error` string and currently include an `image` string.
 Empty data always yields `200 {"steps": []}`.
 
 Each match requires a nonblank string `careerId` and a finite numeric `score`;
@@ -40,12 +41,12 @@ preserve leading zeroes, e.g. `"00010"`. The 516 codes in
 `src/data/careers.json` at main commit `db5b81b`. A different representation,
 such as `"NOC_00010"` from `job_outlook.json`, does not match `"00010"`.
 
-The unmerged Team 4 branch `origin/feature/matching-logic` at `7e5f32a` emits
-the shared `careerId`, `score`, and `rationale` fields plus `matchedSkills` and
-`missingSkills`. Team 6 accepts that shape and discards the extra fields; it
-does not use them for gap analysis. Main's matching algorithm and match route
-are still placeholders at `db5b81b`. Team 6 tests use simulated matches, so
-they do not depend on that branch being merged or on a match API.
+Main's `POST /api/match` returns `results` with `code`,
+`matchPercentage`, and a string `rationale`. The existing
+`src/lib/match-adapter.ts` export `toStepsMatches` converts those fields to
+the shared `careerId`, `score`, and `rationale: string[]`. It keeps at most
+500 results. Team 6 tests use simulated match snapshots and the real bundled
+recommendation data; they do not call the matching API.
 
 ## Profile conversion and integration boundary
 
@@ -57,15 +58,44 @@ directly fails validation: it has no profile `id`, and its `skills` and
 `interests` are objects rather than arrays. The free-text degree is not a
 verified education level; years of experience has no shared profile field.
 
-The application integration layer must obtain the data, provide a legitimate
-identity, construct a valid shared profile, and send it with matches to
-`POST /api/steps`. The API does not read browser storage. No profile adapter
-is implemented: the repository does not establish an identity source or
-canonical skill and interest IDs for this conversion. A future pure adapter
-must use agreed identifiers, preserve unknown values as unknown, and report
-unmappable required fields rather than inventing them. Empty required arrays
-are accepted but must not be presented as proof that the user has no skills
-or interests. See the roadmap for the specific decisions to resolve.
+The existing `buildStepsRequest` export in `src/lib/profile-adapter.ts`
+combines saved matches, skills, and grouped form values. Its identity
+`ttns-journey-user` and its label-as-ID mappings are **provisional**, not
+approved production identifiers. It leaves free-text education and experience
+unmapped and returns `null` when there are no matches. The application
+integration layer must agree on identity and mapping rules, construct an
+appropriate shared profile, and send it with matches. The API does not read
+browser storage, and the current next-step page does not call it.
+
+The following consumer-side example uses the existing adapter for match
+conversion while requiring the caller to supply an already approved profile.
+It does not treat the adapter's provisional profile as production-ready:
+
+```ts
+import { buildStepsRequest, type StepsRequestInput } from "@/lib/profile-adapter";
+import type { NextStepsRequest, NextStepsResponse } from "@/lib/next-steps-types";
+import type { UserProfile } from "@/types/user";
+
+export async function requestSteps(
+  input: StepsRequestInput,
+  approvedProfile: UserProfile,
+): Promise<NextStepsResponse["steps"]> {
+  const draft = buildStepsRequest(input);
+  if (!draft) return [];
+  const body: NextStepsRequest = { matches: draft.matches, profile: approvedProfile };
+  const response = await fetch("/api/steps", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) throw new Error("Unable to load next steps.");
+  return ((await response.json()) as NextStepsResponse).steps;
+}
+```
+
+Empty required arrays are accepted but are not proof that the user has no
+skills or interests. The integration layer must also decide which matches to
+send and how to display `NextStep` fields. See the roadmap for open decisions.
 
 ## Dataset record (education-steps.json)
 
@@ -103,7 +133,10 @@ file invalid (API returns 500) so bad data can never be half-loaded.
   conditions, not credential or experience checks.
 - **Order**: recommended prerequisites first; then steps closing a confirmed gap; then
   explicit `priority`; then best match score (higher first); then `id`.
-- **Dedupe**: only by shared `dedupeKey` (or identical id). Titles are never compared.
-- **Known limitation**: deduplication can introduce a prerequisite cycle after
-  dataset validation; the ordering fallback may violate the resulting links.
-  Fixing that algorithm defect belongs to Phase 2.
+- **Dedupe**: only by shared `dedupeKey` (or identical id). Titles are never
+  compared. Equivalent records should have consistent prerequisites: the
+  kept record's prerequisite list is used, not a union of duplicate lists.
+- **Prerequisite cycles**: dataset validation rejects cycles in the original
+  records. If deduplication creates a cycle among the recommended steps, the
+  handler returns the existing generic 500 response instead of an invalid
+  ordering. Prerequisites that are not recommended remain ordering hints only.

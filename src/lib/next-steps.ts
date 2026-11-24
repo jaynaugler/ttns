@@ -146,14 +146,11 @@ export function assessGap(
 ): GapAssessment {
   if (closesGap === undefined) return { relevant: true, confirmedGap: false };
 
-  const statuses: GapStatus[] = [];
-  if (closesGap.missingSkills) {
-    statuses.push(assessSkills(closesGap.missingSkills, input));
-  }
-  if (closesGap.educationLevelNotIn) {
-    statuses.push(assessEducation(closesGap.educationLevelNotIn, input));
-  }
-  const confirmedGap = statuses.includes("gap");
+  const confirmedGap =
+    (closesGap.missingSkills !== undefined &&
+      assessSkills(closesGap.missingSkills, input) === "gap") ||
+    (closesGap.educationLevelNotIn !== undefined &&
+      assessEducation(closesGap.educationLevelNotIn, input) === "gap");
   return { relevant: confirmedGap, confirmedGap };
 }
 
@@ -240,10 +237,12 @@ function orderByPrerequisites(
     const ready = remaining.filter((candidate) =>
       prerequisitesOf(candidate).every((id) => emitted.has(id)),
     );
-    // Dataset validation rejects prerequisite cycles; if deduplication ever
-    // creates one, fall back to the plain ordering instead of looping.
-    const pool = ready.length > 0 ? ready : remaining;
-    const next = pool.reduce((best, candidate) =>
+    // Deduplication can create a cycle even when the original dataset is
+    // acyclic. Never return an order that violates the remaining dependencies.
+    if (ready.length === 0) {
+      throw new Error("Recommendation prerequisites form a cycle after deduplication.");
+    }
+    const next = ready.reduce((best, candidate) =>
       compareCandidates(candidate, best) < 0 ? candidate : best,
     );
     ordered.push(next);
