@@ -127,14 +127,17 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 
 function EmptyState() {
 	return (
-		<div className="rounded-xl border-2 border-neutral-500 bg-white p-5">
+		<div className="rounded-xl border-2 border-neutral-500 bg-white p-5 text-black dark:border-neutral-400 dark:bg-[var(--dm-card-grey)] dark:text-white">
 			<p className="font-bold">No career matches yet.</p>
 			<p className="mt-1">
 				Look Forward needs your current matches to project a change.
 			</p>
+			{/* Dark mode: the global dark link blue is under 2:1 on the grey
+			    card, and brand red is under 3:1 as a focus outline, so both
+			    switch to the dark-mode yellow here. */}
 			<Link
 				href="/current-pathways"
-				className="mt-2 inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
+				className="mt-2 inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-red dark:text-[var(--dm-brand-yellow)] dark:focus-visible:outline-[var(--dm-brand-yellow)]"
 			>
 				See your current pathways
 			</Link>
