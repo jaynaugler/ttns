@@ -25,7 +25,7 @@ function errorResponse(status: 400 | 500, error: string): Response {
 
 export async function handleNextStepsRequest(
   request: Request,
-  loadData: () => DatasetLoadResult = () => loadEducationStepData(),
+  loadData: () => DatasetLoadResult = loadEducationStepData,
 ): Promise<Response> {
   // 1-2. Receive and parse JSON safely.
   let text: string;

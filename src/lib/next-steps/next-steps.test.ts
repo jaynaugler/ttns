@@ -5,8 +5,13 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, it } from "node:test";
+import { runInNewContext } from "node:vm";
+import ts from "typescript";
 import type { NextStep } from "@/types/outcomes";
+import type { CareerMatch as TeamFourMatch } from "@/types/careers";
+import type { buildStepsRequest as BuildStepsRequest } from "../profile-adapter";
 import { POST } from "../../app/api/steps/route";
+import { toStepsMatches } from "../match-adapter";
 import {
   generateNextSteps,
   loadEducationStepData,
@@ -72,6 +77,47 @@ function post(body: string): Promise<Response> {
 }
 
 const VALID_BODY = JSON.stringify(request());
+
+// Simulated shape returned by Team 4's current /api/match, not a live result.
+function teamFourMatch(code: string, matchPercentage: number): TeamFourMatch {
+  return {
+    code,
+    title: "Simulated career",
+    matchPercentage,
+    careerSkillCoverage: 80,
+    userSkillCoverage: 80,
+    requiredSkills: ["Numeracy"],
+    matchedSkills: ["Numeracy"],
+    missingSkills: [],
+    medianWage: null,
+    isAnnual: null,
+    wageReferencePeriod: null,
+    outlook: null,
+    outlookRegion: null,
+    outlookReleaseDate: null,
+    rationale: "Simulated match",
+  };
+}
+
+// tsc leaves the integration adapter's @/ import unchanged in CommonJS.
+// Transpile the actual source for this test and resolve that one import to the
+// real match adapter, without changing another team's code or test runner.
+function loadProfileAdapter(): typeof BuildStepsRequest {
+  const source = readFileSync(join(process.cwd(), "src/lib/profile-adapter.ts"), "utf8");
+  const code = ts.transpileModule(source, {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+  }).outputText;
+  const exports: { buildStepsRequest?: typeof BuildStepsRequest } = {};
+  runInNewContext(code, {
+    exports,
+    require(specifier: string) {
+      if (specifier === "@/lib/match-adapter") return { toStepsMatches };
+      throw new Error(`Unexpected profile adapter import: ${specifier}`);
+    },
+  });
+  if (!exports.buildStepsRequest) throw new Error("Profile adapter export is missing.");
+  return exports.buildStepsRequest;
+}
 
 // ------------------------------------------------------- 1, 3, 15: empty/no match
 
@@ -325,6 +371,100 @@ describe("request validation", () => {
 // ------------------------------------------------ cross-team contract boundary
 
 describe("cross-team integration contracts", () => {
+  it("passes a simulated saved journey through both existing adapters and the real dataset", async () => {
+    const buildStepsRequest = loadProfileAdapter();
+    const adapted = buildStepsRequest({
+      savedMatches: [teamFourMatch("12201", 80)],
+      savedSkills: ["Numeracy"],
+      profile: {
+        personal: { firstName: "Example", lastName: "Person" },
+        skills: { primarySkill: "Writing", yearsOfExperience: "3" },
+        interests: { interest1: "Helping", interest2: "Building" },
+        education: { school: "School", degree: "Diploma" },
+      },
+    });
+    assert.ok(adapted);
+    // These are the integration adapter's current provisional choices, not
+    // an approval of the placeholder identity or label-as-ID conventions.
+    assert.equal(adapted.profile.id, "ttns-journey-user");
+    assert.deepEqual(JSON.parse(JSON.stringify(adapted.profile.skills)), [
+      { skillId: "Numeracy", label: "Numeracy" },
+    ]);
+    assert.deepEqual(JSON.parse(JSON.stringify(adapted.profile.interests)), [
+      { interestId: "Helping", label: "Helping" },
+      { interestId: "Building", label: "Building" },
+    ]);
+    assert.equal(adapted.profile.demographics, undefined);
+    assert.equal(validateNextStepsRequest(adapted).ok, true);
+    const response = await post(JSON.stringify(adapted));
+    assert.equal(response.status, 200);
+    const steps = ((await response.json()) as { steps: NextStep[] }).steps;
+    assert.ok(steps.some((step) => step.id === "learn-oral-comprehension"));
+    assert.equal(validateNextStepOutput(steps).ok, true);
+  });
+
+  it("keeps incomplete saved profile data empty and does not invent matches", () => {
+    const buildStepsRequest = loadProfileAdapter();
+    assert.equal(buildStepsRequest({}), null);
+    const adapted = buildStepsRequest({ savedMatches: [teamFourMatch("00010", 80)] });
+    assert.ok(adapted);
+    assert.equal(adapted.matches[0].careerId, "00010");
+    assert.equal(adapted.profile.skills.length, 0);
+    assert.equal(adapted.profile.interests.length, 0);
+    assert.equal(adapted.profile.demographics, undefined);
+    assert.equal(validateNextStepsRequest(adapted).ok, true);
+  });
+
+  it("uses the real match adapter and bundled data to return recommendations", async () => {
+    const matches = toStepsMatches([teamFourMatch("12201", 80)]);
+    const profile = {
+      id: "provided-test-user",
+      skills: [{ skillId: "Numeracy", label: "Numeracy" }],
+      interests: [],
+    };
+    assert.deepEqual(matches, [{
+      careerId: "12201",
+      score: 80,
+      rationale: ["Simulated match"],
+    }]);
+    const response = await post(JSON.stringify({ matches, profile }));
+    assert.equal(response.status, 200);
+    const result = (await response.json()) as { steps: NextStep[] };
+    assert.ok(result.steps.some((step) => step.id === "learn-oral-comprehension"));
+    assert.ok(result.steps.some((step) => step.id === "refresh-resume"));
+    assert.equal(validateNextStepOutput(result.steps).ok, true);
+  });
+
+  it("preserves leading-zero IDs and returns an empty result for unsupported careers", async () => {
+    const matches = toStepsMatches([teamFourMatch("00010", 80)]);
+    assert.equal(matches[0].careerId, "00010");
+    const response = await post(JSON.stringify({
+      matches,
+      profile: { id: "provided-test-user", skills: [], interests: [] },
+    }));
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), { steps: [] });
+  });
+
+  it("returns shared recommendations once for multiple converted matches", async () => {
+    const matches = toStepsMatches([
+      teamFourMatch("12201", 80),
+      teamFourMatch("12202", 70),
+    ]);
+    const response = await post(JSON.stringify({
+      matches,
+      profile: { id: "provided-test-user", skills: [], interests: [] },
+    }));
+    assert.equal(response.status, 200);
+    const steps = ((await response.json()) as { steps: NextStep[] }).steps;
+    assert.deepEqual(ids(steps), [
+      "volunteer-practice-project",
+      "refresh-resume",
+      "tell-your-network",
+    ]);
+    assert.equal(new Set(ids(steps)).size, steps.length);
+  });
+
   it("accepts and sanitizes a simulated Team 4 match while preserving its string ID", () => {
     // ScoredCareerMatch on origin/feature/matching-logic adds these two lists
     // to the shared CareerMatch fields. Team 6 must not depend on those lists.
@@ -433,6 +573,29 @@ describe("gap analysis", () => {
     assert.deepEqual(generateNextSteps(withEdu("   "), dataset(step)), []);
   });
 
+  it("recommends when either evaluable gap condition is confirmed", () => {
+    const data = dataset(record("combined", {
+      closesGap: {
+        missingSkills: [{ skill: "Numeracy" }],
+        educationLevelNotIn: ["Bachelor"],
+      },
+    }));
+    const profile = { id: "u", skills: [], interests: [] };
+    assert.deepEqual(ids(generateNextSteps(request({
+      profile: { ...profile, demographics: { educationLevel: "Diploma" } },
+    }), data)), ["combined"]);
+    assert.deepEqual(generateNextSteps(request({
+      profile: { ...profile, demographics: { educationLevel: "Bachelor" } },
+    }), data), []);
+    assert.deepEqual(ids(generateNextSteps(request({
+      profile: {
+        ...profile,
+        skills: [{ skillId: "Writing", label: "Writing" }],
+        demographics: { educationLevel: "Bachelor" },
+      },
+    }), data)), ["combined"]);
+  });
+
   it("supports all four categories", () => {
     const data = dataset(
       record("e", { category: "education" }),
@@ -511,6 +674,19 @@ describe("deduplication", () => {
     assert.ok(out.indexOf("dup-1") < out.indexOf("after"));
   });
 
+  it("fails instead of returning an invalid order when deduplication creates a cycle", () => {
+    const data = dataset(
+      record("a1", { dedupeKey: "a", priority: 1, prerequisiteStepIds: ["b1"] }),
+      record("a2", { dedupeKey: "a", priority: 2 }),
+      record("b1", { dedupeKey: "b", priority: 2 }),
+      record("b2", { dedupeKey: "b", priority: 1, prerequisiteStepIds: ["a2"] }),
+    );
+    assert.throws(
+      () => generateNextSteps(request(), data),
+      /prerequisites form a cycle after deduplication/,
+    );
+  });
+
   it("output validation removes repeated ids", () => {
     const result = validateNextStepOutput([
       { id: "a", title: "A" },
@@ -553,6 +729,14 @@ describe("prioritization and determinism", () => {
       "a-generic", // priority 2
       "z-generic-hi", // no priority: last
     ]);
+  });
+
+  it("treats a filtered-out prerequisite as an ordering hint, not an eligibility rule", () => {
+    const data = dataset(
+      record("base", { careerIds: ["career-b"] }),
+      record("advanced", { prerequisiteStepIds: ["base"] }),
+    );
+    assert.deepEqual(ids(generateNextSteps(request(), data)), ["advanced"]);
   });
 
   it("10. output is identical for any input ordering and repeated runs", () => {
@@ -642,7 +826,7 @@ describe("output contract", () => {
 // ------------------------------------------------------------------ API route
 
 describe("POST /api/steps", () => {
-  it("valid request with empty bundled data returns 200 { steps: [] }", async () => {
+  it("valid request with no matching bundled records returns 200 { steps: [] }", async () => {
     const response = await post(VALID_BODY);
     assert.equal(response.status, 200);
     assert.deepEqual(await response.json(), { steps: [] });
@@ -658,8 +842,9 @@ describe("POST /api/steps", () => {
     for (const body of ["{not json", "", "undefined"]) {
       const response = await post(body);
       assert.equal(response.status, 400, body);
-      const json = (await response.json()) as { error: string };
+      const json = (await response.json()) as { error: string; image?: string };
       assert.equal(typeof json.error, "string");
+      assert.equal(json.image, "../../public/ttns-error.svg");
     }
   });
 
@@ -693,6 +878,24 @@ describe("POST /api/steps", () => {
     assert.deepEqual(ids(((await response.json()) as { steps: NextStep[] }).steps), ["s1"]);
   });
 
+  it("returns a generic 500 when deduplication creates a prerequisite cycle", async () => {
+    const data = dataset(
+      record("a1", { dedupeKey: "a", priority: 1, prerequisiteStepIds: ["b1"] }),
+      record("a2", { dedupeKey: "a", priority: 2 }),
+      record("b1", { dedupeKey: "b", priority: 2 }),
+      record("b2", { dedupeKey: "b", priority: 1, prerequisiteStepIds: ["a2"] }),
+    );
+    const response = await handleNextStepsRequest(
+      new Request("http://localhost/api/steps", { method: "POST", body: VALID_BODY }),
+      () => ({ ok: true, dataset: data, isEmpty: false }),
+    );
+    assert.equal(response.status, 500);
+    assert.deepEqual(await response.json(), {
+      error: "Next steps could not be generated.",
+      image: "../../public/ttns-error.svg",
+    });
+  });
+
   it("8. malformed server-side data returns 500 without internal details", async () => {
     const malformed: DatasetLoadResult = parseEducationStepDataset({
       steps: [record("bad", { category: "secret-internal-detail" })],
@@ -704,7 +907,10 @@ describe("POST /api/steps", () => {
     );
     assert.equal(response.status, 500);
     const text = await response.text();
-    assert.deepEqual(JSON.parse(text), { error: "Next step data is currently unavailable." });
+    assert.deepEqual(JSON.parse(text), {
+      error: "Next step data is currently unavailable.",
+      image: "../../public/ttns-error.svg",
+    });
     assert.equal(text.includes("secret-internal-detail"), false);
   });
 
@@ -718,7 +924,10 @@ describe("POST /api/steps", () => {
     assert.equal(response.status, 500);
     const text = await response.text();
     assert.equal(text.includes("hunter2"), false);
-    assert.deepEqual(JSON.parse(text), { error: "Next steps could not be generated." });
+    assert.deepEqual(JSON.parse(text), {
+      error: "Next steps could not be generated.",
+      image: "../../public/ttns-error.svg",
+    });
   });
 
   it("invalid generated output returns 500", async () => {
