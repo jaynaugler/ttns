@@ -1,6 +1,7 @@
 "use client";
 
 import { LookForward } from "@/components/look-forward/look-forward";
+import { NewSkillPicker } from "@/components/new-skill-picker";
 import { WageProjectionCard } from "@/components/look-forward/wage-projection-card";
 import { JourneyStepPage } from "@/components/journey-step-page";
 import { toProjectable } from "@/lib/match-adapter";
@@ -40,6 +41,12 @@ export default function UpdatedPathwaysPage() {
             userSkills={userSkills}
             scenarios={scenarios}
           />
+          <section className="rounded-xl border-2 border-neutral-500 bg-white p-5 text-neutral-900">
+  <h2 className="mb-4 text-xl font-bold">
+    Gain New Skills
+  </h2>
+  <NewSkillPicker />
+</section>
 
           <p className="text-sm text-neutral-700">
             Projections re-score your saved top matches. New skills and
