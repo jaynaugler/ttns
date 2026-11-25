@@ -7,6 +7,18 @@ export function Footer() {
         <p className="text-sm text-center">
           © 2026 NSCC Class of 2027. All rights reserved.
         </p>
+        <p className="mt-1 text-xs text-center text-muted-foreground">
+          Unless stated otherwise, images are sourced from{" "}
+          <a
+            href="https://unsplash.com/license"
+            className="underline underline-offset-2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Unsplash
+          </a>
+          .
+        </p>
       </div>
     </footer>
   );

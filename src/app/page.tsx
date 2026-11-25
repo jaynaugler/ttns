@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -7,13 +8,15 @@ import { Button } from "@/components/ui/button";
 export default function LandingPage() {
   return (
     <div className="mx-auto flex min-h-full max-w-2xl flex-col items-center justify-center text-center">
-      {/* Hero art goes here — swap this block for a next/image when we have it */}
-      <div
-        aria-hidden="true"
-        className="mb-8 flex aspect-video w-full items-center justify-center rounded-xl border-2 border-dashed border-border bg-muted text-sm text-muted-foreground"
-      >
-        Hero image placeholder
-      </div>
+      <Image
+        src="/hero_image.webp"
+        alt=""
+        width={4896}
+        height={3084}
+        preload
+        sizes="(max-width: 640px) calc(100vw - 2rem), 656px"
+        className="mb-8 h-auto w-full rounded-xl"
+      />
       <h1 className="text-3xl font-bold">Take The Next Step</h1>
       <p className="text-muted-foreground mt-3">
         Share your skills and we&apos;ll map the pathways — from the careers
