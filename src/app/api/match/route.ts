@@ -85,7 +85,7 @@ export async function POST(request: Request) {
 
   const uniqueSkills = [...new Set(body.skills)];
 
-  const alpha = body.alpha ?? 0.7;
+  const alpha = body.alpha ?? 0.3;
 
   // Rank all matching occupations once, so the saved career's current rank
   // is known even when it falls outside the initially requested top ten.
