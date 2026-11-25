@@ -30,7 +30,7 @@ export default function FormField({ name, label, rules, ...inputProps }) {
             aria-invalid={fieldState.invalid}
           />
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          {fieldState.invalid && <img src="../../public/ttns-error.svg" alt="Error" />}
+          {/* {fieldState.invalid && <img src="../../public/ttns-error.svg" alt="Error" />} */}
         </Field>
       )}
     />

@@ -25,27 +25,6 @@ export const profileSteps = [
     ],
   },
   {
-    key: "skills",
-    title: "Skills",
-    reviewTitle: "Skills",
-    fields: [
-      {
-        name: "primarySkill",
-        label: "Primary skill",
-        rules: { required: "Primary skill is required" },
-      },
-      {
-        name: "yearsOfExperience",
-        label: "Years of experience",
-        inputProps: { inputMode: "numeric" },
-        rules: {
-          required: "Years of experience is required",
-          pattern: { value: /^\d+$/, message: "Enter a whole number" },
-        },
-      },
-    ],
-  },
-  {
     key: "interests",
     title: "Interests",
     reviewTitle: "Interests",
