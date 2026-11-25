@@ -4,7 +4,7 @@ Frontend work by Arshdeep Singh for TTNS.
 
 ## What's included
 
-- `NextStepCard.tsx`: one recommendation card showing title, description, priority, and suggested action.
+- `NextStepCard.tsx`: one recommendation card showing title, description, category, estimated duration, and a suggested resource link. Fields the API omits are simply not rendered.
 - `NextStepsList.tsx`: responsive cards plus loading, error, and no-recommendations states.
 - `mock-steps.ts`: sample data for testing. **Not actual career advice or live API data.**
 
@@ -14,22 +14,27 @@ This folder does **not** make API calls or change the backend. Xiaoyi will conne
 
 ```tsx
 import NextStepsList from "@/components/next-steps/NextStepsList";
-import type { NextStepRecommendation } from "@/components/next-steps/NextStepCard";
+import type { NextStep } from "@/types/outcomes";
 
-const steps: NextStepRecommendation[] = [
+const steps: NextStep[] = [
   {
     id: "step-1",
     title: "Learn TypeScript",
     description: "Improve your TypeScript skills.",
-    priority: "High",
-    action: "Complete a TypeScript course",
+    category: "education",
+    estimatedWeeks: 6,
+    resourceUrl: "https://www.typescriptlang.org/docs/handbook/intro.html",
   },
 ];
 
 <NextStepsList steps={steps} />;
 ```
 
-The frontend expects each step to have `id`, `title`, `description`, `priority` (`High`, `Medium`, or `Low`), and `action`. Xiaoyi can map the API response to this shape without modifying these components.
+The components take the shared `NextStep` type from `src/types/outcomes.ts` —
+the exact contract `POST /api/steps` returns (200: `{ steps: NextStep[] }`), so
+the API response can be passed straight to `NextStepsList` with no mapping.
+`description`, `category`, `estimatedWeeks`, and `resourceUrl` are all optional;
+each renders only when present.
 
 Optional states:
 
@@ -38,12 +43,6 @@ Optional states:
 <NextStepsList steps={[]} isLoading />              // loading
 <NextStepsList steps={[]} error="Please try again." /> // error
 ```
-
-## Test preview
-
-The downloaded ZIP also includes **temporary** `src/app/team6-preview/page.tsx` for screenshot testing. Open `/team6-preview` while running the dev server. It shows the sample cards and offers a button to display the empty state.
-
-**Remove** the temporary `src/app/team6-preview` folder before committing. It is not part of the final Team 6 contribution.
 
 ## Handoff checklist
 

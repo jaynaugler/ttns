@@ -1,9 +1,8 @@
-import NextStepCard, {
-  type NextStepRecommendation,
-} from "./NextStepCard";
+import NextStepCard from "./NextStepCard";
+import type { NextStep } from "@/types/outcomes";
 
 type NextStepsListProps = {
-  steps: readonly NextStepRecommendation[];
+  steps: readonly NextStep[];
   title?: string;
   description?: string;
   isLoading?: boolean;
