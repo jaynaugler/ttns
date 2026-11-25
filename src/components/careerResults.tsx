@@ -256,6 +256,10 @@ export default function CareerResults({
   const { journey } = useJourneyProgress();
 
   const [alpha, setAlpha] = useState(DEFAULT_ALPHA);
+  // Is the "Adjust Matching Weights" panel open? It starts closed.
+  const [showWeights, setShowWeights] = useState(false);
+  // The slider value while the panel is open. Only Save copies it into alpha.
+  const [draftAlpha, setDraftAlpha] = useState(DEFAULT_ALPHA);
   const [results, setResults] = useState<CareerMatch[]>([]);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [hasMore, setHasMore] = useState(false);
@@ -377,6 +381,23 @@ export default function CareerResults({
     setAlpha(next);
   }
 
+  // Open the panel, starting the slider at the weights in use right now.
+  function openWeights() {
+    setDraftAlpha(alpha);
+    setShowWeights(true);
+  }
+
+  // Use the new weights (this reloads the rankings) and close the panel.
+  function saveWeights() {
+    changeAlpha(draftAlpha);
+    setShowWeights(false);
+  }
+
+  // Close the panel without changing anything.
+  function cancelWeights() {
+    setShowWeights(false);
+  }
+
   const selectedIndex = selectedCareerCode
     ? results.findIndex((item) => item.code === selectedCareerCode)
     : -1;
@@ -484,68 +505,105 @@ export default function CareerResults({
           </div>
         </div>
 
-        <Button
-          type="button"
-          variant="ghost"
-          className="mt-3 border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
-          onClick={() => router.push("/skills")}
-        >
-          Edit My Skills
-        </Button>
+        {/* Edit My Skills and Adjust Matching Weights, side by side */}
+        <div className="mt-3 flex flex-wrap gap-3">
+          <Button
+            type="button"
+            variant="ghost"
+            className="border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+            onClick={() => router.push("/skills")}
+          >
+            Edit My Skills
+          </Button>
+
+          <Button
+            type="button"
+            variant="ghost"
+            aria-expanded={showWeights}
+            aria-controls="matching-weights-panel"
+            onClick={showWeights ? cancelWeights : openWeights}
+            className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+          >
+            <SlidersHorizontal className="h-4 w-4" />
+            Adjust Matching Weights ({Math.round(alpha * 100)}% /{" "}
+            {Math.round((1 - alpha) * 100)}%) {showWeights ? "▲" : "▼"}
+          </Button>
+        </div>
       </div>
 
-      {/* Weighted hybrid slider */}
-      <div className="rounded-2xl border-2 border-primary/60 bg-muted p-6 shadow-md dark:border-[var(--dm-brand-pink)]">
-        <h2 className="flex items-center gap-2 text-2xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
-          <SlidersHorizontal className="h-6 w-6" />
-          Adjust Matching Weights
-        </h2>
-
-        <p className="mt-2 text-sm text-muted-foreground">
-          Career coverage measures how many career skills you have. User
-          coverage measures how many of your selected skills apply.
-        </p>
-
-        <div className="mt-5 flex justify-between gap-4 font-semibold">
-          <span>Career Coverage: {Math.round(alpha * 100)}%</span>
-
-          <span>User Coverage: {Math.round((1 - alpha) * 100)}%</span>
-        </div>
-
-        <input
-          type="range"
-          min="0"
-          max="100"
-          step="5"
-          value={Math.round(alpha * 100)}
-          onChange={(event) => changeAlpha(Number(event.target.value) / 100)}
-          aria-label="Career coverage weight"
-          className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-pink)]"
-        />
-
-        <div className="mt-1 flex justify-between text-xs text-muted-foreground">
-          <span>Focus on your skills</span>
-          <span>Focus on career skills</span>
-        </div>
-
-        <p className="mt-4 text-sm text-foreground">
-          Hybrid Score = {alpha.toFixed(2)} × Career Coverage +{" "}
-          {(1 - alpha).toFixed(2)} × User Coverage
-        </p>
-
-        <button
-          type="button"
-          onClick={() => changeAlpha(DEFAULT_ALPHA)}
-          className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-pink)]"
+      {/* Weighted hybrid slider: only shown after the button is clicked */}
+      {showWeights && (
+        <div
+          id="matching-weights-panel"
+          className="rounded-2xl border-2 border-primary/60 bg-muted p-6 shadow-md dark:border-[var(--dm-brand-pink)]"
         >
-          <span aria-hidden="true">↺</span> Reset to 30% / 70%
-        </button>
+          <h2 className="flex items-center gap-2 text-2xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
+            <SlidersHorizontal className="h-6 w-6" />
+            Adjust Matching Weights
+          </h2>
 
-        <p className="mt-2 text-xs text-muted-foreground">
-          Match scores measure skill overlap, not the probability of getting a
-          job.
-        </p>
-      </div>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Career coverage measures how many career skills you have. User
+            coverage measures how many of your selected skills apply.
+          </p>
+
+          <div className="mt-5 flex justify-between gap-4 font-semibold">
+            <span>Career Coverage: {Math.round(draftAlpha * 100)}%</span>
+
+            <span>User Coverage: {Math.round((1 - draftAlpha) * 100)}%</span>
+          </div>
+
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="5"
+            value={Math.round(draftAlpha * 100)}
+            onChange={(event) => setDraftAlpha(Number(event.target.value) / 100)}
+            aria-label="Career coverage weight"
+            className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-pink)]"
+          />
+
+          <div className="mt-1 flex justify-between text-xs text-muted-foreground">
+            <span>Focus on your skills</span>
+            <span>Focus on career skills</span>
+          </div>
+
+          <p className="mt-4 text-sm text-foreground">
+            Hybrid Score = {draftAlpha.toFixed(2)} × Career Coverage +{" "}
+            {(1 - draftAlpha).toFixed(2)} × User Coverage
+          </p>
+
+          <button
+            type="button"
+            onClick={() => setDraftAlpha(DEFAULT_ALPHA)}
+            className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-pink)]"
+          >
+            <span aria-hidden="true">↺</span> Reset to 30% / 70%
+          </button>
+
+          <p className="mt-2 text-xs text-muted-foreground">
+            Match scores measure skill overlap, not the probability of getting a
+            job.
+          </p>
+
+          {/* Save uses the new weights; Cancel keeps the old ones */}
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Button type="button" onClick={saveWeights} className="cursor-pointer">
+              Save
+            </Button>
+
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={cancelWeights}
+              className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      )}
 
       {/* Status */}
       {updating && (
