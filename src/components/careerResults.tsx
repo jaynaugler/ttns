@@ -12,7 +12,7 @@ import {
 
 import type { CareerMatch, MatchResponse } from "@/types/careers";
 
-const DEFAULT_ALPHA = 0.7;
+const DEFAULT_ALPHA = 0.3;
 const PAGE_SIZE = 10;
 const MAX_RESULTS = 1000;
 
@@ -538,7 +538,7 @@ export default function CareerResults({
           onClick={() => changeAlpha(DEFAULT_ALPHA)}
           className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-pink)]"
         >
-          <span aria-hidden="true">↺</span> Reset to 70% / 30%
+          <span aria-hidden="true">↺</span> Reset to 30% / 70%
         </button>
 
         <p className="mt-2 text-xs text-muted-foreground">
