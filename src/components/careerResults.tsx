@@ -4,9 +4,10 @@ import { SlidersHorizontal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
+  MAX_TOP_CAREERS,
   markStepComplete,
   saveMatches,
-  saveSelectedCareer,
+  saveTopCareers,
   useJourneyProgress,
 } from "@/lib/journey-progress";
 
@@ -73,16 +74,20 @@ function SkillBadges({
 function CareerCard({
   career,
   rank,
-  onChoose,
-  onContinue,
-  selected,
+  pickNumber,
+  canPickMore,
+  onTogglePick,
 }: {
   career: CareerMatch;
   rank: number;
-  onChoose: (code: string) => void;
-  onContinue: () => void;
-  selected: boolean;
+  // 1, 2 or 3 if this career is one of the user's Top 3; null if not picked.
+  pickNumber: number | null;
+  // False when 3 careers are already picked (so this box can't be checked).
+  canPickMore: boolean;
+  onTogglePick: (code: string) => void;
 }) {
+  const selected = pickNumber !== null;
+  const disabled = !selected && !canPickMore;
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -110,11 +115,37 @@ function CareerCard({
           </p>
         </div>
 
-        <div className="text-right">
-          <p className="text-3xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
-            {formatPercentage(career.matchPercentage)}
-          </p>
-          <p className="text-xs text-muted-foreground">Skill overlap</p>
+        <div className="flex flex-col items-end gap-3 text-right">
+          {/* Top 3 tick box in the top right corner */}
+          <label
+            title={
+              disabled
+                ? `You already picked ${MAX_TOP_CAREERS} careers. Uncheck one to pick this.`
+                : undefined
+            }
+            className={`flex items-center gap-2 text-sm font-semibold ${
+              disabled
+                ? "cursor-not-allowed text-muted-foreground opacity-60"
+                : "cursor-pointer text-foreground"
+            }`}
+          >
+            <input
+              type="checkbox"
+              checked={selected}
+              disabled={disabled}
+              onChange={() => onTogglePick(career.code)}
+              aria-label={`Add ${career.title} to my Top ${MAX_TOP_CAREERS} career choices`}
+              className="h-4 w-4 cursor-pointer accent-green-700 disabled:cursor-not-allowed"
+            />
+            {selected ? `Top Choice #${pickNumber}` : "Add to Top 3"}
+          </label>
+
+          <div>
+            <p className="text-3xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
+              {formatPercentage(career.matchPercentage)}
+            </p>
+            <p className="text-xs text-muted-foreground">Skill overlap</p>
+          </div>
         </div>
       </div>
 
@@ -215,32 +246,6 @@ function CareerCard({
         )}
       </div>
 
-      {/* Selection action */}
-      <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-border pt-4">
-        <Button
-          type="button"
-          size="lg"
-          aria-pressed={selected}
-          onClick={() => onChoose(career.code)}
-          title={
-            selected ? "Click to unselect this career" : "Select this career"
-          }
-          className={
-            selected
-              ? "cursor-pointer border-green-700 bg-green-700 text-white hover:border-green-800 hover:bg-green-800 dark:border-green-400 dark:bg-green-900 dark:text-green-100 dark:hover:bg-green-800"
-              : "cursor-pointer"
-          }
-        >
-          {selected ? "✓ This career is selected" : "Choose This Career"}
-        </Button>
-        {selected && (
-          <>
-            <Button type="button" size="lg" onClick={onContinue}>
-              Continue →
-            </Button>
-          </>
-        )}
-      </div>
     </article>
   );
 }
@@ -263,19 +268,22 @@ export default function CareerResults({
   const [results, setResults] = useState<CareerMatch[]>([]);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [hasMore, setHasMore] = useState(false);
-  const [selectedRank, setSelectedRank] = useState<number | null>(null);
-  const [isSelectedCardVisible, setIsSelectedCardVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [error, setError] = useState("");
-  const [selectedCareerCode, setSelectedCareerCode] = useState<string | null>(
-    () => journey.selectedCareerCode ?? null,
+  // The user's Top 3 picks, in the order they were checked. Starts from what
+  // was saved before (older saves only had one pick).
+  const [topCareerCodes, setTopCareerCodes] = useState<string[]>(
+    () =>
+      journey.topCareerCodes ??
+      (journey.selectedCareerCode ? [journey.selectedCareerCode] : []),
   );
 
   const requestNumber = useRef(0);
-  // Selection changes should not cause a redundant match request. The next
-  // slider/show-more request reads the latest choice from this ref.
-  const selectedCodeRef = useRef(selectedCareerCode);
+  // Picking a career should not reload the matches. The next slider/show-more
+  // request reads the latest #1 pick from this ref, so the API keeps it in
+  // the results even if it is ranked lower than the top 10.
+  const firstPickRef = useRef<string | null>(topCareerCodes[0] ?? null);
 
   const skills = selectedSkills;
   // Keyed on this string in the refetch effect: journey-state writes recreate
@@ -305,7 +313,7 @@ export default function CareerResults({
             skills,
             alpha,
             limit: visibleCount,
-            selectedCareerCode: selectedCodeRef.current ?? undefined,
+            selectedCareerCode: firstPickRef.current ?? undefined,
           }),
           signal: controller.signal,
         });
@@ -320,7 +328,6 @@ export default function CareerResults({
 
         setResults(data.results);
         setHasMore(Boolean(data.hasMore));
-        setSelectedRank(data.selectedRank ?? null);
         // Persisted for /updated-pathways (projection) and /next-step
         // (POST /api/steps). The fetch effect is keyed on skillsKey/alpha,
         // so the journey-state write can't re-trigger it.
@@ -351,27 +358,23 @@ export default function CareerResults({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skillsKey, alpha, visibleCount]);
 
-  // A click selects or unselects the career without navigating.
-  function chooseCareer(code: string) {
-    const nextCode = selectedCareerCode === code ? null : code;
-    selectedCodeRef.current = nextCode;
-    saveSelectedCareer(nextCode);
-    setSelectedCareerCode(nextCode);
-    // The user clicked a card that is already on screen. Avoid a banner flash.
-    setIsSelectedCardVisible(Boolean(nextCode));
-    setSelectedRank(
-      nextCode
-        ? (() => {
-            const index = results.findIndex((item) => item.code === nextCode);
-            return index >= 0 ? index + 1 : null;
-          })()
-        : null,
-    );
+  // Check or uncheck a career. Checking adds it to the end of the Top 3 list;
+  // unchecking removes it, and the other picks move up a number.
+  function togglePick(code: string) {
+    const next = topCareerCodes.includes(code)
+      ? topCareerCodes.filter((item) => item !== code)
+      : topCareerCodes.length < MAX_TOP_CAREERS
+        ? [...topCareerCodes, code]
+        : topCareerCodes; // already 3 picks: ignore the click
+
+    firstPickRef.current = next[0] ?? null;
+    saveTopCareers(next);
+    setTopCareerCodes(next);
   }
 
-  // Only Continue completes this step and moves to Team 5's page.
-  function continueWithCareer() {
-    if (!selectedCareerCode) return;
+  // Continue completes this step and moves to Team 5's page.
+  function continueWithCareers() {
+    if (topCareerCodes.length === 0) return;
     markStepComplete("current-pathways");
     router.push("/updated-pathways");
   }
@@ -398,36 +401,15 @@ export default function CareerResults({
     setShowWeights(false);
   }
 
-  const selectedIndex = selectedCareerCode
-    ? results.findIndex((item) => item.code === selectedCareerCode)
-    : -1;
-  const selectedMatch =
-    selectedIndex >= 0
-      ? results[selectedIndex]
-      : journey.savedMatches?.find((item) => item.code === selectedCareerCode);
-  const currentSelectedRank =
-    selectedIndex >= 0 ? selectedIndex + 1 : selectedRank;
-
-  // Watch the selected card as it enters/leaves the visible viewport.
-  // The floating shortcut is only useful when that card is off-screen.
-  useEffect(() => {
-    if (!selectedCareerCode || selectedIndex < 0) return;
-
-    const card = document.getElementById(`career-${selectedCareerCode}`);
-    if (!card) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsSelectedCardVisible(entry.isIntersecting),
-      {
-        // Ignore the top sticky-header area and the bottom edge.
-        rootMargin: "-80px 0px -24px 0px",
-        threshold: 0,
-      },
+  // A picked career's title: from the results on screen, or from the saved
+  // matches if it has dropped out of the list after changing weights.
+  function titleFor(code: string): string {
+    return (
+      results.find((item) => item.code === code)?.title ??
+      journey.savedMatches?.find((item) => item.code === code)?.title ??
+      `NOC ${code}`
     );
-
-    observer.observe(card);
-    return () => observer.disconnect();
-  }, [selectedCareerCode, selectedIndex]);
+  }
 
   // Checked before the loading state: with no skills the fetch effect bails
   // out early (loading stays true), and this must win instead.
@@ -457,35 +439,71 @@ export default function CareerResults({
   }
 
   return (
-    <section className={`space-y-6 ${selectedCareerCode ? "pb-24" : ""}`}>
-      {selectedCareerCode && (selectedIndex < 0 || !isSelectedCardVisible) && (
-        <button
-          type="button"
-          onClick={() => {
-            document
-              .getElementById(`career-${selectedCareerCode}`)
-              ?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-          }}
-          className="fixed bottom-4 left-1/2 z-40 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-xl border border-green-700 bg-green-800 px-5 py-3 text-left text-sm font-semibold text-white shadow-xl hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 dark:border-green-400 dark:bg-green-950 dark:text-green-100 dark:hover:bg-green-900 dark:focus-visible:outline-green-400 sm:bottom-6"
-          aria-label={`Scroll to chosen career: ${selectedMatch?.title ?? selectedCareerCode}`}
-        >
-          You chose:{" "}
-          {currentSelectedRank
-            ? `Recommendation #${currentSelectedRank} — `
-            : ""}
-          {selectedMatch?.title ?? `NOC ${selectedCareerCode}`} ↑
-        </button>
-      )}
+    <section className="space-y-6 pb-48">
+      {/* Top 3 bar: always at the bottom of the screen */}
+      <div className="fixed bottom-4 left-1/2 z-40 w-[min(56rem,calc(100vw-2rem))] -translate-x-1/2 rounded-xl border-2 border-green-700 bg-white p-4 text-foreground shadow-xl dark:border-green-400 dark:bg-[var(--dm-card-grey)] sm:bottom-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="font-bold">
+              Your Top {MAX_TOP_CAREERS} Career Choices ({topCareerCodes.length}/
+              {MAX_TOP_CAREERS})
+            </p>
+
+            {topCareerCodes.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                Check the box on up to {MAX_TOP_CAREERS} careers. We recommend
+                picking {MAX_TOP_CAREERS}.
+              </p>
+            ) : (
+              <ol className="mt-2 flex flex-wrap gap-2">
+                {topCareerCodes.map((code, index) => (
+                  <li
+                    key={code}
+                    className="flex items-center gap-2 rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-900 dark:bg-green-900/50 dark:text-green-100"
+                  >
+                    <button
+                      type="button"
+                      onClick={() =>
+                        document
+                          .getElementById(`career-${code}`)
+                          ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                      }
+                      className="cursor-pointer hover:underline"
+                    >
+                      #{index + 1} {titleFor(code)}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => togglePick(code)}
+                      aria-label={`Remove ${titleFor(code)} from my Top ${MAX_TOP_CAREERS}`}
+                      className="cursor-pointer font-bold hover:text-red-700"
+                    >
+                      ✕
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
+
+          <Button
+            type="button"
+            size="lg"
+            disabled={topCareerCodes.length === 0}
+            onClick={continueWithCareers}
+            className="cursor-pointer"
+          >
+            Continue →
+          </Button>
+        </div>
+      </div>
       {/* Page heading */}
       <div>
         <h1 className="text-3xl font-bold">Career Matching Results</h1>
 
         <p className="mt-2 text-muted-foreground">
-          Explore your top career matches and choose the occupation that
-          interests you most.
+          Explore your top career matches and check the box on up to{" "}
+          {MAX_TOP_CAREERS} careers that interest you most.
         </p>
 
         <div className="mt-3">
@@ -638,42 +656,15 @@ export default function CareerResults({
             key={career.code}
             career={career}
             rank={index + 1}
-            onChoose={chooseCareer}
-            onContinue={continueWithCareer}
-            selected={selectedCareerCode === career.code}
+            pickNumber={
+              topCareerCodes.includes(career.code)
+                ? topCareerCodes.indexOf(career.code) + 1
+                : null
+            }
+            canPickMore={topCareerCodes.length < MAX_TOP_CAREERS}
+            onTogglePick={togglePick}
           />
         ))}
-
-        {/* The saved choice may move outside the visible top results after
-            changing weights. Keep Continue accessible without reselecting. */}
-        {selectedCareerCode &&
-          !results.some((c) => c.code === selectedCareerCode) && (
-            <div className="rounded-lg border border-green-300 bg-green-50 p-4 text-green-900 dark:border-green-600 dark:bg-green-950/40 dark:text-green-100">
-              <p className="font-semibold">
-                You have already selected a career (NOC {selectedCareerCode}).
-              </p>
-              <p className="mt-1 text-sm">
-                It is not in the currently displayed recommendations.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-3">
-                <Button type="button" onClick={continueWithCareer}>
-                  Continue →
-                </Button>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => {
-                    selectedCodeRef.current = null;
-                    saveSelectedCareer(null);
-                    setSelectedCareerCode(null);
-                    setSelectedRank(null);
-                  }}
-                >
-                  Unselect career
-                </Button>
-              </div>
-            </div>
-          )}
 
         {hasMore && (
           <div className="flex justify-center">
