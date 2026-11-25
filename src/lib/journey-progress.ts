@@ -7,6 +7,9 @@ import type { CareerMatch } from "@/types/careers";
 
 export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 
+// How many careers the user can pick as their "Top 3 Career Choices".
+export const MAX_TOP_CAREERS = 3;
+
 // Journey progress plus the payloads later wizard steps consume. Fields are
 // explicit, not a bag — a new stage's data gets its own field added here the
 // way savedSkills does.
@@ -15,7 +18,10 @@ export interface JourneyState {
   savedSkills?: string[];
   // The submitted profile form values, grouped by step key, e.g.
   // { personal: { firstName, lastName }, skills: { ... }, ... }.
-  selectedCareerCode?: string; // stored for team 5
+  selectedCareerCode?: string; // stored for team 5 (always the #1 pick)
+  // The user's "Top 3 Career Choices", in the order they were picked.
+  // topCareerCodes[0] is the same code as selectedCareerCode.
+  topCareerCodes?: string[];
   profile?: ProfileData;
   // The matches shown on /current-pathways, persisted so /updated-pathways
   // can project them and /next-step can send them to POST /api/steps.
@@ -62,6 +68,22 @@ function parse(raw: string | null): JourneyState {
     // Persist the selected career code for team 5 used in the journey state
     if (typeof parsed.selectedCareerCode === "string") {
       state.selectedCareerCode = parsed.selectedCareerCode;
+    }
+
+    // Read the Top 3 picks: only text codes, no repeats, at most 3.
+    if (Array.isArray(parsed.topCareerCodes)) {
+      const codes = [...new Set(
+        (parsed.topCareerCodes as unknown[]).filter(
+          (code: unknown): code is string => typeof code === "string",
+        ),
+      )].slice(0, MAX_TOP_CAREERS);
+      if (codes.length > 0) {
+        state.topCareerCodes = codes;
+        state.selectedCareerCode = codes[0];
+      }
+    } else if (state.selectedCareerCode) {
+      // Saved by an older build that only had one pick.
+      state.topCareerCodes = [state.selectedCareerCode];
     }
 
     if (Array.isArray(parsed.newSkills)) {
@@ -194,6 +216,36 @@ export function saveSelectedCareer(code: string | null) {
     delete next.selectedCareerCode;
   } else {
     next.selectedCareerCode = code;
+  }
+  writeState(next);
+}
+
+// Saves the user's Top 3 picks (in pick order). The #1 pick is also saved as
+// selectedCareerCode so Team 5's /updated-pathways keeps working unchanged.
+// Changing the picks resets later journey steps, like saveSelectedCareer.
+export function saveTopCareers(codes: string[]) {
+  const state = readState();
+  const picks = [...new Set(codes)].slice(0, MAX_TOP_CAREERS);
+  const previous = state.topCareerCodes ?? [];
+
+  const unchanged =
+    picks.length === previous.length &&
+    picks.every((code, i) => code === previous[i]);
+  if (unchanged) return;
+
+  const completed = state.completed.filter(
+    (id) =>
+      id !== "current-pathways" &&
+      id !== "updated-pathways" &&
+      id !== "next-step",
+  );
+  const next: JourneyState = { ...state, completed };
+  if (picks.length === 0) {
+    delete next.topCareerCodes;
+    delete next.selectedCareerCode;
+  } else {
+    next.topCareerCodes = picks;
+    next.selectedCareerCode = picks[0];
   }
   writeState(next);
 }
