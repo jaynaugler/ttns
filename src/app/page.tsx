@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import type { Metadata } from "next";
+
 import { Button } from "@/components/ui/button";
+
+// "absolute" so the title stays as written whether or not the root layout
+// adds a title template.
+export const metadata: Metadata = { title: { absolute: "Home | Take The Next Step" } };
 
 // Landing page: introduce the journey and hand off to the wizard. Step
 // content lives on the step pages, not here.
