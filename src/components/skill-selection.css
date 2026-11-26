@@ -34,6 +34,10 @@
   width: 100%;
 }
 
+html[data-font="dyslexic"] .profile-skill-selection-card [data-slot="card-header"] {
+  min-height: 97.2px;
+}
+
 .skills-grid-scrollbar {
   grid-template-columns: minmax(0, var(--skill-w));
   justify-content: start;
@@ -58,7 +62,6 @@
     scrollbar-width: thin;
   }
   .skills-grid-scrollbar > button {
-    height: 46px;
     width: 100%;
   }
 }
