@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 
 import { JOURNEY_STEPS, type JourneyStepId } from "./journey";
 import type { CareerMatch } from "@/types/careers";
+import type { Scenario } from "@/types/outcomes";
 
 export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 
@@ -33,9 +34,19 @@ export interface JourneyState {
   // missing to recommend the training step for exactly what the user asked
   // to learn.
   newSkills?: string[];
+  // Team 5: the path chosen on /updated-pathways, for /next-step to lead
+  // with. Saved whenever the change, its years, or the career row changes.
+  lookForward?: LookForwardChoice;
   // Set when a skills change cleared earlier picks, so later pages can say
   // why they need re-picking; cleared once new Top 3 picks are saved.
   picksCleared?: boolean;
+}
+
+// The Look Forward change the user selected (the whole scenario, so
+// /next-step can re-project it) and the career whose wage was showing.
+export interface LookForwardChoice {
+  scenario: Scenario;
+  careerCode: string;
 }
 
 export type ProfileData = Record<string, Record<string, string>>;
@@ -119,12 +130,41 @@ function parse(raw: string | null): JourneyState {
       );
     }
 
+    const lookForward = parseLookForward(parsed.lookForward);
+    if (lookForward) state.lookForward = lookForward;
     if (parsed.picksCleared === true) state.picksCleared = true;
 
     return state;
   } catch {
     return DEFAULT_STATE;
   }
+}
+
+function isTextList(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === "string");
+}
+
+function isYears(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0;
+}
+
+// A saved Look Forward choice, or undefined if any part of it is malformed.
+function parseLookForward(value: unknown): LookForwardChoice | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const { scenario, careerCode } = value as Record<string, unknown>;
+  if (typeof careerCode !== "string" || !/^\d{5}$/.test(careerCode)) return undefined;
+  if (!scenario || typeof scenario !== "object") return undefined;
+  const s = scenario as Record<string, unknown>;
+  const valid =
+    (s.kind === "gain-skill" && typeof s.skill === "string") ||
+    (s.kind === "gain-skills" && isTextList(s.skills)) ||
+    (s.kind === "finish-education" && typeof s.step === "string") ||
+    (s.kind === "add-experience" && isYears(s.years)) ||
+    (s.kind === "combined" &&
+      isTextList(s.skills) &&
+      typeof s.step === "string" &&
+      isYears(s.years));
+  return valid ? { scenario: scenario as Scenario, careerCode } : undefined;
 }
 
 function readState(): JourneyState {
@@ -182,8 +222,8 @@ export function markStepComplete(id: JourneyStepId) {
 
 // Persists the /skills selection and marks that page complete. Different
 // skills mean different matches, so it also drops what was chosen from the
-// old ones (Top 3 picks, saved matches, the skills picked to learn) and
-// resets the later steps, as saveTopCareers does.
+// old ones (Top 3 picks, saved matches, the skills picked to learn, the Look
+// Forward choice) and resets the later steps, as saveTopCareers does.
 // Without this, an old #1 pick stayed #1: /api/match pads its results to
 // include selectedCareerCode. Re-saving the same skills changes nothing.
 export function saveSkills(skills: string[]) {
@@ -206,7 +246,7 @@ export function saveSkills(skills: string[]) {
 
   const next: JourneyState = { ...state, completed, savedSkills: [...skills] };
   if (!sameSkills) {
-    if (state.topCareerCodes || state.savedMatches) {
+    if (state.topCareerCodes || state.savedMatches || state.lookForward) {
       next.picksCleared = true;
     }
     delete next.topCareerCodes;
@@ -214,6 +254,7 @@ export function saveSkills(skills: string[]) {
     delete next.savedMatches;
     // A skill picked to learn may be one the user now has.
     delete next.newSkills;
+    delete next.lookForward;
   }
   writeState(next);
 }
@@ -289,6 +330,18 @@ export function saveMatches(matches: CareerMatch[]) {
 // for that page's redesign; nothing calls it until then.
 export function saveNewSkills(skills: string[]) {
   writeState({ ...readState(), newSkills: [...skills] });
+}
+
+// Saves (or with null, clears) the Look Forward choice. Skips the write when
+// nothing changed, so callers can save on every render-driven change.
+export function saveLookForward(choice: LookForwardChoice | null) {
+  const state = readState();
+  const previous = state.lookForward ?? null;
+  if (JSON.stringify(previous) === JSON.stringify(choice)) return;
+  const next: JourneyState = { ...state };
+  if (choice === null) delete next.lookForward;
+  else next.lookForward = { scenario: choice.scenario, careerCode: choice.careerCode };
+  writeState(next);
 }
 
 export function resetJourney() {

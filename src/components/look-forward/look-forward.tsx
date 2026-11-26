@@ -5,7 +5,7 @@
 // career they select. Status and hand-off notes: README.md in this folder.
 
 import Link from "next/link";
-import { useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 
 import {
 	buildDefaultScenarios,
@@ -26,6 +26,7 @@ import {
 	type ProjectableMatch,
 	type SkillToLearn,
 } from "@/lib/projection-logic";
+import type { LookForwardChoice } from "@/lib/journey-progress";
 import type { Scenario } from "@/types/outcomes";
 
 import { careerTitle, PathList, rankText, type PathRow } from "./match-list";
@@ -49,17 +50,31 @@ export interface LookForwardProps {
 		picks: readonly string[];
 		onChange: (picks: string[]) => void;
 	};
+	// Keeps the user's choice across visits: `saved` restores the selected
+	// change, its years and the career row; onChange gets every change (null
+	// when no change is selected), for /next-step to lead with.
+	choice?: {
+		saved?: LookForwardChoice;
+		onChange: (choice: LookForwardChoice | null) => void;
+	};
 }
 
-export function LookForward({ matches, userSkills, scenarios, skillPicker }: LookForwardProps) {
+export function LookForward({ matches, userSkills, scenarios, skillPicker, choice }: LookForwardProps) {
 	const headingId = useId();
+	const saved = choice?.saved;
 	// Selection is stored by key, not index, so it can't silently point at a
 	// different scenario if the props change; a vanished one clears it.
-	const [selectedKey, setSelectedKey] = useState<string | null>(null);
+	const [selectedKey, setSelectedKey] = useState<string | null>(
+		saved ? scenarioKey(saved.scenario) : null,
+	);
 	// The career row the user clicked; until then the wage card follows #1.
-	const [chosenCareer, setChosenCareer] = useState<string | null>(null);
+	const [chosenCareer, setChosenCareer] = useState<string | null>(saved?.careerCode ?? null);
 	const [announcement, setAnnouncement] = useState("");
-	const [experienceYears, setExperienceYears] = useState(1);
+	const [experienceYears, setExperienceYears] = useState(
+		saved?.scenario.kind === "add-experience" || saved?.scenario.kind === "combined"
+			? saved.scenario.years
+			: 1,
+	);
 
 	// The experience and "Do all three" options take the years chosen on the
 	// experience card.
@@ -84,6 +99,16 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 		scenario?.kind === "add-experience" || scenario?.kind === "combined"
 			? scenario.years
 			: undefined;
+
+	// Report the choice whenever the change, its years or the wage career
+	// changes. Keyed on strings, so a new array identity doesn't re-fire it.
+	const choiceKey = scenario && wageCareer ? `${scenarioKey(scenario)}@${wageCareer}` : "";
+	const onChoiceChange = choice?.onChange;
+	useEffect(() => {
+		if (!onChoiceChange) return;
+		onChoiceChange(scenario && wageCareer ? { scenario, careerCode: wageCareer } : null);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [choiceKey, onChoiceChange]);
 
 	function pathRows(next: Scenario | undefined): PathRow[] {
 		if (!next) {
