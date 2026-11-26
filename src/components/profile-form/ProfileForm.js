@@ -229,12 +229,17 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
           the submit button to it. */}
       <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
-          <div className="flex flex-wrap items-center gap-2">
-            <Button type="button" size="lg" onClick={viewProfile}>
-              View my profile
-            </Button>
+          <div className="flex w-full flex-wrap items-center gap-2">
             <Button type="button" variant="ghost" size="lg" onClick={startOver}>
               Start another profile
+            </Button>
+            <Button
+              type="button"
+              size="lg"
+              onClick={viewProfile}
+              className="ml-auto"
+            >
+              View my profile
             </Button>
           </div>
         ) : (
