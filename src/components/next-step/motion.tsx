@@ -37,11 +37,19 @@ export function CountUp({ to, from = 0, ms = 900 }: { to: string; from?: number;
   }, [target, from, ms]);
 
   if (!Number.isFinite(target)) return <>{to}</>;
+  const counting = shown !== target;
+  // The final value is the only real text, so screen readers and copied
+  // text get it once. While counting it's kept invisible (holding the
+  // width) under a layer of digits that is aria-hidden and unselectable.
   return (
-    <>
-      <span aria-hidden="true">{shown.toFixed(decimals)}</span>
-      <span className="sr-only">{to}</span>
-    </>
+    <span className="relative inline-block tabular-nums">
+      <span className={counting ? "text-transparent" : undefined}>{to}</span>
+      {counting && (
+        <span aria-hidden="true" className="absolute inset-0 select-none">
+          {shown.toFixed(decimals)}
+        </span>
+      )}
+    </span>
   );
 }
 

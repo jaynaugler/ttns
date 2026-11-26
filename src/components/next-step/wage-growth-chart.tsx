@@ -3,11 +3,12 @@
 import { useId, useState } from "react";
 
 import { formatCurrency } from "@/components/look-forward/wage-projection-card";
-import { wageGrowth } from "@/lib/career-summary";
+import { payRange } from "@/lib/career-summary";
 
 import { H3, TILE } from "./scale";
 
-// "Wage growth": a single-series bar chart, one hue (card blue, brand
+// "Pay range": Job Bank's starting out, typical and top earners pay (its
+// 10th percentile, median and 90th percentile). A single-series bar chart, one hue (card blue, brand
 // yellow in dark mode; both over 3:1 against the card), bars from a zero
 // baseline with 4px rounded tops, every value labelled. The bars are inline
 // SVG; values and labels are HTML text so they stay readable at 320px. The
@@ -18,19 +19,19 @@ export function WageGrowthChart({ careerCode }: { careerCode: string }) {
   const summaryId = useId();
   const regionId = useId();
   const [table, setTable] = useState(false);
-  const points = wageGrowth(careerCode);
+  const points = payRange(careerCode);
   if (points.length === 0) return null;
 
   const max = Math.max(...points.map((p) => p.annual));
-  const summary = `Wage growth, a rough guide: ${points
-    .map((p) => `${p.label.toLowerCase()} about ${formatCurrency(p.annual)} a year`)
+  const summary = `Pay range from Job Bank: ${points
+    .map((p) => `${p.label.toLowerCase()} (${p.note}) ${formatCurrency(p.annual)} a year`)
     .join("; ")}.`;
 
   return (
     <div className={`${TILE} gap-3`}>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 id={headingId} className={H3}>
-          Wage growth
+          Pay range
         </h3>
         <button
           type="button"
@@ -47,14 +48,14 @@ export function WageGrowthChart({ careerCode }: { careerCode: string }) {
       <div id={regionId}>
         {table ? (
           <table className="w-full border-collapse text-left">
-            <caption className="sr-only">Wage growth, a rough guide</caption>
+            <caption className="sr-only">Pay range from Job Bank</caption>
             <thead>
               <tr>
                 <th scope="col" className="border-b-2 border-foreground/30 py-2 pr-3">
-                  When
+                  Pay level
                 </th>
                 <th scope="col" className="border-b-2 border-foreground/30 py-2">
-                  About, a year
+                  A year
                 </th>
               </tr>
             </thead>
@@ -62,7 +63,7 @@ export function WageGrowthChart({ careerCode }: { careerCode: string }) {
               {points.map((p) => (
                 <tr key={p.label}>
                   <th scope="row" className="border-b border-foreground/20 py-2 pr-3 font-normal">
-                    {p.label}
+                    {p.label} ({p.note})
                   </th>
                   <td className="border-b border-foreground/20 py-2 font-bold">
                     {formatCurrency(p.annual)}
@@ -76,8 +77,10 @@ export function WageGrowthChart({ careerCode }: { careerCode: string }) {
             {points.map((p) => {
               const height = Math.max(4, Math.round((p.annual / max) * 100));
               return (
+                // The {" "} text nodes don't show (flex items) but keep the raw
+                // text apart: "$43,992 Starting out 10th percentile $68,250 …".
                 <div key={p.label} className="flex min-w-0 flex-col items-center gap-1 text-center">
-                  <span className="text-sm font-bold break-words">{formatCurrency(p.annual)}</span>
+                  <span className="text-sm font-bold break-words">{formatCurrency(p.annual)}</span>{" "}
                   <svg
                     viewBox="0 0 40 100"
                     preserveAspectRatio="none"
@@ -90,8 +93,9 @@ export function WageGrowthChart({ careerCode }: { careerCode: string }) {
                     />
                   </svg>
                   <span className="w-full border-t-2 border-foreground/30 pt-1 text-sm break-words">
-                    {p.label}
-                  </span>
+                    {p.label}{" "}
+                    <span className="block text-xs">{p.note}</span>
+                  </span>{" "}
                 </div>
               );
             })}

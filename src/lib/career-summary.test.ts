@@ -29,7 +29,8 @@ import {
 	recommendedSkill,
 	skillGapsFor,
 	splitPicks,
-	wageGrowth,
+	payRange,
+	educationPhrase,
 	SUMMARY_YEARS,
 	type OutlookRecord,
 } from "./career-summary";
@@ -418,7 +419,7 @@ describe("plan document", () => {
 		]);
 	});
 
-	it("has the plan, the match change, wages, growth, outlook and skills", () => {
+	it("has the plan, the match change, wages, outlook and skills", () => {
 		assert.deepEqual(section("The plan"), ["Learn Teamwork"]);
 		assert.match(section("Match")![0], /^58\.7 → 70\.5 out of 100 after this plan$/);
 		assert.deepEqual(section("Wages (Job Bank)"), [
@@ -427,7 +428,8 @@ describe("plan document", () => {
 			"Top earners: $149,994 a year",
 			"Reference period: 2023-2024",
 		]);
-		assert.equal(section("Wage growth (a rough guide)")?.length, 3);
+		// The pay chart's figures are the Wages section's; not repeated.
+		assert.equal(section("Wage growth (a rough guide)"), undefined);
 		assert.deepEqual(section("Nova Scotia outlook"), ["Good (published 2025-11-21)"]);
 		assert.deepEqual(section("Skills to build"), ["Leadership"]);
 	});
@@ -472,19 +474,31 @@ describe("moveImpact", () => {
 	});
 });
 
-describe("wageGrowth", () => {
-	it("gives starting out, after 5 years and after 15 years", () => {
+describe("educationPhrase", () => {
+	it("reads naturally after \"finishing\"", () => {
+		assert.equal(educationPhrase("College diploma"), "a college diploma");
+		assert.equal(educationPhrase("High School"), "high school");
+		assert.equal(educationPhrase("electrician apprenticeship"), "an electrician apprenticeship");
+		assert.equal(educationPhrase("a diploma or certificate"), "a diploma or certificate");
+		// Capitals inside may be a proper name, so they stay.
+		assert.equal(educationPhrase("Bachelor of Science"), "a Bachelor of Science");
+		assert.equal(educationPhrase("  "), "the education step");
+	});
+});
+
+describe("payRange", () => {
+	it("gives Job Bank's 10th percentile, median and 90th percentile", () => {
 		// 21232: $30 / $48.08 / $76.92 an hour, at 1950 hours a year.
-		assert.deepEqual(wageGrowth("21232"), [
-			{ label: "Starting out", annual: 58500 },
-			{ label: "After 5 years", annual: 93756 },
-			{ label: "After 15 years", annual: 149994 },
+		assert.deepEqual(payRange("21232"), [
+			{ label: "Starting out", note: "10th percentile", annual: 58500 },
+			{ label: "Typical", note: "median", annual: 93756 },
+			{ label: "Top earners", note: "90th percentile", annual: 149994 },
 		]);
 	});
 
 	it("is empty without a published range", () => {
-		assert.deepEqual(wageGrowth("00013"), []);
-		assert.deepEqual(wageGrowth("99999"), []);
+		assert.deepEqual(payRange("00013"), []);
+		assert.deepEqual(payRange("99999"), []);
 	});
 });
 
@@ -551,6 +565,20 @@ describe("rankNextMoves", () => {
 		// The plan's skill isn't offered again.
 		assert.ok(!moves.some((move) => move.kind === "skill"));
 		assert.equal(moves[moves.length - 1].kind, "job-search");
+	});
+
+	it("says where the plan's gain comes from when its skills don't count", () => {
+		const plan: Scenario = { kind: "combined", skills: ["Underwater Welding"], step: "High School", years: 2 };
+		const [card] = rankNextMoves({ careerCode: "21232", savedMatches: [match(), ...others], userSkills: skills, plan });
+		const parts = card.why.match(/finishing high school adds ([\d.]+) and 2 years of experience add ([\d.]+)\.$/);
+		assert.ok(parts, card.why);
+		assert.match(card.why, /Its skill isn't listed for this career/);
+		// The two parts add up to the plan's change.
+		assert.ok(Math.abs(Number(parts[1]) + Number(parts[2]) - card.gain!) < 0.11);
+
+		const counted: Scenario = { ...plan, skills: ["Teamwork"] };
+		const [usual] = rankNextMoves({ careerCode: "21232", savedMatches: [match({ missingSkills: ["Teamwork"] }), ...others], userSkills: skills, plan: counted });
+		assert.equal(usual.why, "The path you chose on Updated Pathways.");
 	});
 
 	it("leaves out changes the plan already covers", () => {

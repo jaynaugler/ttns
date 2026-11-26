@@ -422,14 +422,12 @@ function Banner({
                 <span className="block text-sm font-normal">no change from this plan</span>
               </>
             ) : path ? (
+              // Reads in order as "82.9 today → 89.7 after this plan"; the
+              // arrow is decorative, the words carry the change.
               <>
-                <span>
-                  {path.scoreToday}
-                  {/* Arrow is decorative; the words carry the change. */}
-                  <span aria-hidden="true"> → </span>
-                  <span className="sr-only"> today, </span>
-                  <CountUp to={path.scoreAfter} from={Number.parseFloat(path.scoreToday)} />
-                </span>
+                {path.scoreToday} <span className="text-base font-normal">today</span>{" "}
+                <span aria-hidden="true">→</span>{" "}
+                <CountUp to={path.scoreAfter} from={Number.parseFloat(path.scoreToday)} />{" "}
                 <span className="block text-sm font-normal">after this plan</span>
               </>
             ) : summary.score !== undefined ? (
@@ -456,23 +454,23 @@ function Banner({
               only repeat the tile beside it. */}
           {path?.afterYears && path.years !== undefined && (
             <StatChip
-              term={`Starting out → after ${path.years} ${path.years === 1 ? "year" : "years"}`}
+              term={`Starting out, then after ${path.years} ${path.years === 1 ? "year" : "years"}`}
             >
               {summary.wages?.startingOut ? (
-                // Each amount stays whole; the line may break at the arrow.
-                <span>
+                // "$31,571 to $39,870 a year": each amount stays whole; the
+                // line may break around "to".
+                <>
                   <span className="whitespace-nowrap">
                     {formatCurrency(summary.wages.startingOut.yearly)}
-                  </span>
-                  <span aria-hidden="true"> → </span>
-                  <span className="sr-only"> to </span>
+                  </span>{" "}
+                  <span className="text-base font-normal">to</span>{" "}
                   <span className="whitespace-nowrap">
                     {formatCurrency(path.afterYears.yearly)}
                   </span>
-                </span>
+                </>
               ) : (
                 formatCurrency(path.afterYears.yearly)
-              )}
+              )}{" "}
               <span className="block text-sm font-normal">a year (rough guide)</span>
             </StatChip>
           )}
@@ -499,7 +497,8 @@ function Banner({
 function StatChip({ term, children }: { term: string; children: ReactNode }) {
   return (
     <div className="flex min-w-0 flex-col gap-1 rounded-xl border-2 border-brand-yellow bg-card-blue/60 px-4 py-3">
-      <dt className="text-sm font-bold tracking-wide break-words uppercase">{term}</dt>
+      {/* Sentence case, like the Next Step and Look Forward tiles. */}
+      <dt className="text-sm font-bold break-words">{term}</dt>
       <dd className="min-w-0 text-2xl font-bold break-words">{children}</dd>
     </div>
   );
@@ -539,9 +538,10 @@ function WageTiles({ wages }: { wages: CareerWages | undefined }) {
             <dd className="flex min-w-0 flex-col gap-1 break-words">
               {figure ? (
                 <>
-                  <span className="text-xl font-bold">{formatCurrency(figure.yearly)}/yr</span>
-                  {/* Read as "…/yr, …/hour", not run together. */}
-                  <span className="sr-only">, </span>
+                  {/* Read and copied as "…/yr, …/hour", not run together. */}
+                  <span className="text-xl font-bold">
+                    {formatCurrency(figure.yearly)}/yr<span className="sr-only">,</span>
+                  </span>{" "}
                   <span className="text-sm">
                     {wages.isAnnual ? "about " : ""}
                     {formatHourly(figure.hourly)}/hour
@@ -589,7 +589,7 @@ function badgeClass(outlook: string): string {
 function OutlookBadge({ outlook }: { outlook: string }) {
   return (
     <p className="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <span className="font-bold">Job Bank outlook:</span>
+      <span className="font-bold">Job Bank outlook:</span>{" "}
       <span className={`rounded-full border-2 px-4 py-1 text-lg font-bold ${badgeClass(outlook)}`}>
         {outlook}
       </span>
@@ -753,12 +753,18 @@ function CareerSkillsCard({
                     key={skill}
                     className="flex min-w-0 flex-wrap items-baseline justify-between gap-x-3 rounded-lg border-2 border-foreground/30 px-3 py-2"
                   >
-                    <span className="min-w-0 font-bold break-words">{skill}</span>
+                    {/* Reads and copies as "Decision Making, also listed by
+                        7 …": the comma is hidden on screen, where the row's
+                        layout already separates the two. */}
+                    <span className="min-w-0 font-bold break-words">
+                      {skill}
+                      {gaps.countsVary && alsoNeededBy > 0 && <span className="sr-only">,</span>}
+                    </span>{" "}
                     {/* Only when it differs between skills; the same count on
                         every row says nothing. */}
                     {gaps.countsVary && alsoNeededBy > 0 && (
                       <span className="text-sm">
-                        Also listed by {alsoNeededBy} of your other matches
+                        also listed by {alsoNeededBy} of your other matches
                       </span>
                     )}
                   </li>

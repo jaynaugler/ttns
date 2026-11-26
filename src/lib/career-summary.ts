@@ -10,7 +10,7 @@
 // Tests: src/lib/career-summary.test.ts (pnpm run test:career-summary).
 
 import type { CareerMatch } from "@/types/careers";
-import type { Scenario } from "@/types/outcomes";
+import type { ProjectedOutcome, Scenario } from "@/types/outcomes";
 
 import { toProjectable } from "./match-adapter";
 import {
@@ -21,6 +21,7 @@ import {
 	formatScore,
 	HOURS_PER_YEAR,
 	projectOutcomes,
+	skillsUsed,
 	toAnnualWage,
 } from "./projection-logic";
 
@@ -237,29 +238,32 @@ export interface CareerWages {
 	referencePeriod?: string;
 }
 
-// The wage path's milestones: starting out, after 5 years (the median by
-// estimateWageAfterYears' placeholder rule) and after 15 years (top earners).
-export const WAGE_MILESTONES = [
-	{ years: 0, label: "Starting out" },
-	{ years: 5, label: "After 5 years" },
-	{ years: 15, label: "After 15 years" },
+// The pay chart's three levels: Job Bank's published low, median and high
+// wages, its 10th, median and 90th percentiles. Not pay by years worked.
+export const PAY_LEVELS = [
+	{ key: "lowWage", label: "Starting out", note: "10th percentile" },
+	{ key: "medianWage", label: "Typical", note: "median" },
+	{ key: "highWage", label: "Top earners", note: "90th percentile" },
 ] as const;
 
 export interface WagePoint {
 	label: string;
+	// Which Job Bank figure it is, e.g. "10th percentile".
+	note: string;
 	// Yearly, at HOURS_PER_YEAR for hourly careers.
 	annual: number;
 }
 
-// The wage growth chart's three points, or none when Job Bank doesn't
-// publish the full range (so a lone median isn't drawn as "growth").
-export function wageGrowth(careerCode: string): WagePoint[] {
+// The pay chart's three points, or none when Job Bank doesn't publish the
+// full range (so a lone median isn't drawn as a range).
+export function payRange(careerCode: string): WagePoint[] {
 	const wage = findWage(careerCode);
+	if (!wage) return [];
 	const points: WagePoint[] = [];
-	for (const { years, label } of WAGE_MILESTONES) {
-		const estimate = estimateWageAfterYears(wage, years);
-		if (!estimate?.rangePublished) return [];
-		points.push({ label, annual: estimate.annual });
+	for (const { key, label, note } of PAY_LEVELS) {
+		const amount = wage[key];
+		if (typeof amount !== "number" || !Number.isFinite(amount)) return [];
+		points.push({ label, note, annual: Math.round(toAnnualWage(amount, wage.isAnnual)) });
 	}
 	return points;
 }
@@ -501,6 +505,48 @@ export interface NextMovesInput {
 	jobBankUrl?: string;
 }
 
+// The education step as it reads after "finishing": "College diploma" →
+// "a college diploma", "High School" → "high school". The step is the
+// degree typed on the profile, so only a step that's sentence case (just its
+// first letter capital) is lowercased; anything else, e.g. "Bachelor of
+// Science", may be a proper name and keeps its capitals ("a Bachelor of
+// Science"). Steps that already start with a/an/the are left alone.
+export function educationPhrase(rawStep: string): string {
+	const step = rawStep.trim();
+	if (!step) return "the education step";
+	if (/^(a|an|the)\s/i.test(step)) return step;
+	if (/^high school$/i.test(step)) return "high school";
+	const rest = step.slice(1);
+	const phrase = rest === rest.toLowerCase() ? step.toLowerCase() : step;
+	return `${/^[aeiou]/i.test(phrase) ? "an" : "a"} ${phrase}`;
+}
+
+// When a "Do all three" plan's skills don't count for this career, the
+// whole match gain comes from its education and experience parts. Splits
+// it with the same projection: the education step alone, then the rest
+// (experience). The two parts add up to the plan's change. Undefined
+// otherwise, or when the gain is zero.
+function planGainSource(
+	plan: Scenario,
+	matches: ReturnType<typeof toProjectable>,
+	careerCode: string,
+	userSkills: readonly string[],
+	project: (scenario: Scenario) => ProjectedOutcome | undefined,
+): string | undefined {
+	if (plan.kind !== "combined" || plan.skills.length === 0) return undefined;
+	const match = matches.find((item) => item.careerId === careerCode);
+	if (!match || skillsUsed(match, plan.skills, userSkills).length > 0) return undefined;
+	const whole = project(plan);
+	const education = project({ kind: "finish-education", step: plan.step });
+	if (!whole || !education || whole.scoreShift <= 0) return undefined;
+	const fromEducation = education.score - whole.currentScore;
+	const fromExperience = whole.score - education.score;
+	const step = educationPhrase(plan.step);
+	const years = `${plan.years} ${plan.years === 1 ? "year" : "years"} of experience`;
+	const skills = plan.skills.length === 1 ? "Its skill isn't" : "Its skills aren't";
+	return ` ${skills} listed for this career, so the gain comes from the other two parts: finishing ${step} adds ${formatScore(fromEducation)} and ${years} ${plan.years === 1 ? "adds" : "add"} ${formatScore(fromExperience)}.`;
+}
+
 // The moves for the lead career, best first:
 // 1. The Look Forward plan, if any, with its real match change (even none).
 // 2. Finishing the education step, one more year of experience, and the
@@ -548,7 +594,7 @@ export function rankNextMoves(input: NextMovesInput): NextMove[] {
 		moves.push({
 			kind: "plan",
 			title: describePlan(plan!).join(" · ") || "Your chosen plan",
-			why: "The path you chose on Updated Pathways.",
+			why: `The path you chose on Updated Pathways.${planGainSource(plan!, matches, careerCode, userSkills, project) ?? ""}`,
 			...planMove,
 		});
 	}
@@ -672,14 +718,13 @@ export interface PlanInput {
 }
 
 // Everything "My career plan" says, as headed lists: who and when, the
-// career, the plan, match, wages and growth, the Nova Scotia outlook, skills
+// career, the plan, match, wages, the Nova Scotia outlook, skills
 // to build and the next moves with full links. Print and copy both use it.
 export function buildPlanDocument(input: PlanInput): PlanDocument {
 	const { summary, path } = input;
 	const career = summary.title ?? `Career ${summary.code}`;
 	const date = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" }).format(input.date);
 	const wages = summary.wages;
-	const growth = wageGrowth(summary.code);
 	const sections: PlanSection[] = [
 		{ heading: "About this plan", items: [...(input.name?.trim() ? [`Name: ${input.name.trim()}`] : []), `Date: ${date}`] },
 		{ heading: "Career", items: [`${career} (NOC ${summary.code})`, ...(summary.jobBankUrl ? [`Nova Scotia job postings: ${summary.jobBankUrl}`] : [])] },
@@ -707,9 +752,6 @@ export function buildPlanDocument(input: PlanInput): PlanDocument {
 					]
 				: ["Not published"],
 		},
-		...(growth.length > 0
-			? [{ heading: "Wage growth (a rough guide)", items: growth.map((p) => `${p.label}: about ${dollars(p.annual)} a year`) }]
-			: []),
 		{
 			heading: "Nova Scotia outlook",
 			items: [summary.outlook ? `${summary.outlook}${summary.outlookReleaseDate ? ` (published ${summary.outlookReleaseDate})` : ""}` : "Not published"],
