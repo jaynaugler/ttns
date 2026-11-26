@@ -131,8 +131,8 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --dm-brand-yellow: #ffd67e;
   --dm-brand-orange: #eb952d;
   --dm-brand-brown: #b06204;
-  --dm-link-default: #2d2dff;
-  --dm-link-visited: #9d47ed;
+  --dm-link-default: #9db4ff;
+  --dm-link-visited: #d0a8ff;
   --dm-badge-green: rgb(39, 187, 39);
 
   --background: var(--surface-cream);
@@ -146,7 +146,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --secondary: var(--brand-yellow);
   --secondary-foreground: #000000;
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.53 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -179,7 +179,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --primary: var(--dm-brand-red);
   --primary-foreground: #ffffff;
   --secondary: var(--dm-brand-yellow);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: #000000;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -241,7 +241,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   .dark .btn-on-bg {
     background-color: var(--dm-brand-red);
     color: #ffffff;
-    border-color: 5px solid transparent;
+    border: 5px solid transparent;
   }
   .btn-on-bg:hover {
     background-color: var(--brand-pink);
@@ -258,7 +258,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   }
   .dark .btn-on-card {
     background-color: var(--dm-brand-yellow);
-    color: #ffffff;
+    color: #000000;
     border: 5px solid var(--dm-brand-orange);
   }
   .btn-on-card:hover {
