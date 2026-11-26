@@ -540,7 +540,8 @@ export default function CareerResults({
             aria-expanded={showWeights}
             aria-controls="matching-weights-panel"
             onClick={showWeights ? cancelWeights : openWeights}
-            className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+            // Wraps at 320px instead of pushing the page sideways.
+            className="h-auto min-h-8 max-w-full whitespace-normal text-left cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
           >
             <SlidersHorizontal className="h-4 w-4" />
             Adjust Matching Weights ({Math.round(alpha * 100)}% /{" "}
