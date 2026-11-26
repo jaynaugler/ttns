@@ -15,11 +15,7 @@ import { Input } from "@/components/ui/input";
 import { saveSkills, useJourneyProgress } from "@/lib/journey-progress";
 import "./skill-selection.css";
 
-export function UserSkillSelection({
-  embedded = false,
-}: {
-  embedded?: boolean;
-}) {
+export function UserSkillSelection() {
   const [skills] = useState<string[]>(skillsData as string[]);
   const [searchQuery, setSearchQuery] = useState("");
   // undefined until the user toggles something, so the saved selection from
@@ -86,20 +82,15 @@ export function UserSkillSelection({
   // already there on first paint instead of popping in afterwards.
   if (!hydrated) return null;
 
-  const searchInput = (
-    <Input
-      type="text"
-      placeholder="Search Skills"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-    />
-  );
-  const searchBar = embedded ? (
+  const searchBar = (
     <div className="profile-skill-search translate-y-2.5 rounded-lg bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
-      {searchInput}
+      <Input
+        type="text"
+        placeholder="Search Skills"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
     </div>
-  ) : (
-    searchInput
   );
 
   const selectionContent = (
@@ -180,40 +171,23 @@ export function UserSkillSelection({
     </>
   );
 
-  if (embedded) {
-    return (
-      <>
-        <CardHeader className="min-h-[102px] bg-card-blue py-4 text-card-foreground">
-          <CardTitle className="text-lg font-semibold">
-            User Skills Selection
-          </CardTitle>
-          {searchBar}
-        </CardHeader>
-        <CardContent className="flex-1 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
-          <div className="space-y-4">{selectionContent}</div>
-        </CardContent>
-        <CardFooter className="flex-col items-stretch justify-between gap-2 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
-          {errorAlert}
-          <div className="profile-skill-actions">{skillActions}</div>
-        </CardFooter>
-      </>
-    );
-  }
-
+  // Rendered inside the profile card's Card (see src/app/profile/page.tsx):
+  // the fragments are the card's header, content and footer.
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold">User Skill Selection</h2>
-        <p className="text-sm text-muted-foreground mt-1">
-          Select your skills from the list below or use search.
-        </p>
-      </div>
-      {searchBar}
-      {selectionContent}
-      {errorAlert}
-      <div className="profile-skill-actions flex items-center justify-between border-t pt-4">
-        {skillActions}
-      </div>
-    </div>
+    <>
+      <CardHeader className="min-h-[102px] bg-card-blue py-4 text-card-foreground">
+        <CardTitle className="text-lg font-semibold">
+          User Skills Selection
+        </CardTitle>
+        {searchBar}
+      </CardHeader>
+      <CardContent className="flex-1 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
+        <div className="space-y-4">{selectionContent}</div>
+      </CardContent>
+      <CardFooter className="flex-col items-stretch justify-between gap-2 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
+        {errorAlert}
+        <div className="profile-skill-actions">{skillActions}</div>
+      </CardFooter>
+    </>
   );
 }

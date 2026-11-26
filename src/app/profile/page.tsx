@@ -30,7 +30,7 @@ export default function ProfilePage() {
         />
         <div className="profile-skill-selection-panel">
           <Card className="profile-skill-selection-card bg-white pt-0 text-foreground shadow-sm [--card-spacing:--spacing(6)] dark:bg-[var(--dm-card-grey)]">
-            <UserSkillSelection embedded />
+            <UserSkillSelection />
           </Card>
         </div>
       </div>
