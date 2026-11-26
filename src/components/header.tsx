@@ -129,6 +129,9 @@ export function Header() {
                 Profile
               </Link>
             </li>
+            {/* In its own <li>: a <ul> may only hold list items, and a bare
+                button here made screen readers report a broken list. */}
+            <li>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
@@ -205,6 +208,7 @@ export function Header() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            </li>
           </ul>
         </nav>
         <Sheet open={open} onOpenChange={setOpen}>
