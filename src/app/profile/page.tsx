@@ -9,6 +9,7 @@ import { markStepComplete, useJourneyProgress } from "@/lib/journey-progress";
 import {
   Card,
 } from "@/components/ui/card";
+import "./profile.css";
 
 // Journey step 1: personal information and current skills are completed
 // together on this page — the multi-step form in one card, the skill panel

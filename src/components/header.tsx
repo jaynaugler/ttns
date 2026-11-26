@@ -95,7 +95,10 @@ export function Header() {
   return (
     // Sticky so the brand/nav/accessibility toggles stay reachable while the
     // page scrolls; h-16 is the anchor the sticky sidebar nav offsets from.
-    <header className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground">
+    <header
+      data-profile-route={pathname === "/profile" ? "true" : undefined}
+      className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground"
+    >
       <div className="max-w-7xl mx-auto flex h-full w-full items-center justify-between gap-6">
         <div className="font-bold text-xl">
           <Link href="/" className="text-primary-foreground hover:no-underline">Take The Next Step</Link>
@@ -109,7 +112,7 @@ export function Header() {
               <Link
                 href="/"
                 aria-current={isLanding ? "page" : undefined}
-                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
+                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 hover:no-underline ${
                   isLanding ? "bg-primary-foreground/15" : ""
                 }`}
               >
@@ -122,7 +125,7 @@ export function Header() {
               <Link
                 href="/profile"
                 aria-current={pathname === "/profile" ? "page" : undefined}
-                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
+                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 hover:no-underline ${
                   pathname === "/profile" ? "bg-primary-foreground/15" : ""
                 }`}
               >
@@ -232,7 +235,7 @@ export function Header() {
                 <li>
                   <Link
                     href="/"
-                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted hover:no-underline"
                     onClick={() => setOpen(false)}
                   >
                     Home
@@ -241,7 +244,7 @@ export function Header() {
                 <li>
                   <Link
                     href="/profile"
-                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted hover:no-underline"
                     onClick={() => setOpen(false)}
                   >
                     Profile

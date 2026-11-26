@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <div className="flex flex-1">
   <Sidebar />
   <main className="min-w-0 flex-1 flex flex-col px-4 py-6 md:px-8">
-    <div className="mx-auto w-full max-w-5xl flex-1">
+    <div className="mx-auto w-full max-w-5xl min-h-0 flex-1">
       {children}
     </div>
   </main>

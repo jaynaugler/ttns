@@ -31,6 +31,8 @@ const steps = [
   { key: "review", title: "Review your profile" },
 ];
 const reviewStep = steps.length - 1;
+const wrappingActionButtonClass =
+  "h-auto min-h-9 min-w-0 max-w-full w-fit shrink whitespace-normal text-center leading-tight";
 
 /**
  * @param {Object} props
@@ -229,23 +231,35 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
           the submit button to it. */}
       <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
-          <div className="flex flex-wrap items-center gap-2">
-            <Button type="button" size="lg" onClick={viewProfile}>
-              View my profile
-            </Button>
-            <Button type="button" variant="ghost" size="lg" onClick={startOver}>
+          <div className="flex w-full flex-nowrap items-center gap-2">
+            <Button
+              type="button"
+              variant="ghost"
+              size="lg"
+              onClick={startOver}
+              className={wrappingActionButtonClass}
+            >
               Start another profile
+            </Button>
+            <Button
+              type="button"
+              size="lg"
+              onClick={viewProfile}
+              className={`${wrappingActionButtonClass} ml-auto`}
+            >
+              View my profile
             </Button>
           </div>
         ) : (
           <>
             {/* DEV TOOL — remove before launch, same as profileDevValues. */}
-            <div className="flex items-center gap-1">
+            <div className="flex min-w-0 items-center gap-1">
               <Button
                 type="button"
                 variant="ghost"
                 size="sm"
                 onClick={fillForDev}
+                className="h-auto min-h-7 min-w-0 max-w-full w-fit shrink whitespace-normal text-center leading-tight"
               >
                 Autofill (dev)
               </Button>
@@ -259,7 +273,12 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
                 Back
               </Button>
             </div>
-            <Button type="submit" form="profile-form" size="lg">
+            <Button
+              type="submit"
+              form="profile-form"
+              size="lg"
+              className={wrappingActionButtonClass}
+            >
               {nextLabel}
             </Button>
           </>
