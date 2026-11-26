@@ -78,7 +78,8 @@ const buttonClass =
 const fitGridClass =
   "grid grid-cols-[repeat(auto-fit,minmax(min(100%,12rem),1fr))] gap-3";
 
-// "Skills to develop" shows this many before "Show all".
+// "Skills this career lists that you didn't select" shows this many before
+// "Show all".
 const SKILLS_SHOWN = 5;
 
 type OutlookStatus = "loading" | "ready" | "error";
@@ -572,7 +573,7 @@ function CareerSkillsCard({
 }: {
   summary: CareerSummary;
   savedMatches: CareerMatch[] | undefined;
-  // Skills the chosen path already learns, left out of "Skills to develop".
+  // Skills the chosen path already learns, left out of the unselected list.
   plan: string[];
 }) {
   const [showAll, setShowAll] = useState(false);
@@ -601,7 +602,7 @@ function CareerSkillsCard({
     <SectionCard title="Your skills and this career">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="min-w-0 space-y-2">
-          <h3 className="text-lg font-bold">Skills you have that it uses</h3>
+          <h3 className="text-lg font-bold">Skills you selected that it uses</h3>
           {matched.length > 0 ? (
             <ul className="flex flex-wrap gap-2">
               {matched.map((skill) => (
@@ -611,20 +612,25 @@ function CareerSkillsCard({
               ))}
             </ul>
           ) : (
-            <p>None of your skills yet.</p>
+            <p>None of the skills you selected.</p>
           )}
         </div>
 
         <div className="min-w-0 space-y-2">
-          <h3 className="text-lg font-bold">Skills to develop</h3>
-          {toDevelop.length > 0 && (gaps.countsVary || sharedCount > 0 || inPlan.length > 0) && (
+          <h3 className="text-lg font-bold">
+            Skills this career lists that you didn&apos;t select
+          </h3>
+          {/* We only know the skills the user picked, not every skill they
+              have, so none of this is stated as a gap. */}
+          {toDevelop.length > 0 && (
             <p className="text-sm">
               {[
-                gaps.countsVary && "The ones your other matches also need come first.",
+                "You may already have some of these; we only know the skills you selected.",
+                gaps.countsVary && "The ones your other matches also list come first.",
                 // The same count on every row: said once here instead.
                 !gaps.countsVary &&
                   sharedCount > 0 &&
-                  `Each of these is needed by ${sharedCount} of your matches.`,
+                  `Each of these is also listed by ${sharedCount} of your other matches.`,
                 inPlan.length > 0 && `Not counting ${inPlan.join(", ")}: already in your plan.`,
               ]
                 .filter(Boolean)
@@ -644,7 +650,7 @@ function CareerSkillsCard({
                         every row says nothing. */}
                     {gaps.countsVary && alsoNeededBy > 0 && (
                       <span className="text-sm">
-                        Also needed by {alsoNeededBy} of your matches
+                        Also listed by {alsoNeededBy} of your other matches
                       </span>
                     )}
                   </li>
@@ -666,7 +672,7 @@ function CareerSkillsCard({
             <p>
               {inPlan.length > 0
                 ? "None left: your plan covers the rest."
-                : "None. You have every skill it lists."}
+                : "None. You selected every skill it lists."}
             </p>
           )}
         </div>
