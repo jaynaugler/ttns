@@ -335,6 +335,12 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   }
   .profile-panels-container > :first-child {
     align-self: start;
+    /* Review lists every field and can be taller than the fixed page: cap
+       the card at the row height and let it scroll internally — main's
+       overflow: hidden would otherwise clip it past the Submit button with
+       no scrollbar. Short cards keep their natural height. */
+    max-height: 100%;
+    overflow-y: auto;
   }
 }
 

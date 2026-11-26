@@ -28,6 +28,9 @@ export function UserSkillSelection({
   // the pipeline consumes them.
   const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
   const [isPending, setIsPending] = useState(false);
+  // True when /api/match failed (network error or non-OK response), so the
+  // user sees why Continue seems to do nothing and can retry.
+  const [isError, setIsError] = useState(false);
   const { journey, hydrated } = useJourneyProgress();
   const router = useRouter();
   const selectedSkills = userSelection ?? journey.savedSkills ?? [];
@@ -61,20 +64,19 @@ export function UserSkillSelection({
   // once the response is OK saves it for the wizard's later steps and moves on.
   async function onSubmit() {
     setIsPending(true);
+    setIsError(false);
     try {
-      console.log("Sending:", JSON.stringify({ skills: selectedSkills }));
       const res = await fetch("/api/match", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ skills: selectedSkills }),
       });
       if (!res.ok) throw new Error("Skill matching not successful.");
-      const responseBody = await res.json();
-      console.log("Skill matching successful:", responseBody);
       saveSkills(selectedSkills);
       router.push("/current-pathways");
     } catch (error) {
       console.error("Skill matching error", error);
+      setIsError(true);
     } finally {
       setIsPending(false);
     }
@@ -127,6 +129,16 @@ export function UserSkillSelection({
     </>
   );
 
+  // Shown once matching fails; the retry is just hitting Continue again.
+  const errorAlert = isError ? (
+    <p
+      role="alert"
+      className="text-sm text-destructive"
+    >
+      Something went wrong while matching your skills. Please try again.
+    </p>
+  ) : undefined;
+
   const skillActions = (
     <>
       <Button
@@ -148,6 +160,7 @@ export function UserSkillSelection({
           disabled={
             !profileComplete || selectedSkills.length === 0 || isPending
           }
+          aria-invalid={isError}
           aria-describedby={
             continueDisabledMessage ? continueReasonId : undefined
           }
@@ -179,7 +192,8 @@ export function UserSkillSelection({
         <CardContent className="flex-1 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
           <div className="space-y-4">{selectionContent}</div>
         </CardContent>
-        <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
+        <CardFooter className="flex-col items-stretch justify-between gap-2 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
+          {errorAlert}
           <div className="profile-skill-actions">{skillActions}</div>
         </CardFooter>
       </>
@@ -196,6 +210,7 @@ export function UserSkillSelection({
       </div>
       {searchBar}
       {selectionContent}
+      {errorAlert}
       <div className="profile-skill-actions flex items-center justify-between border-t pt-4">
         {skillActions}
       </div>
