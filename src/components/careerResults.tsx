@@ -343,11 +343,11 @@ export default function CareerResults({
         <h2 className="text-xl font-semibold">No Skills Selected</h2>
 
         <p className="mt-2 text-muted-foreground">
-          Please select your skills on the Skills page.
+          Please select your skills on the Personal Info page.
         </p>
 
-        <Button className="mt-4" onClick={() => router.push("/skills")}>
-          Go to Skills
+        <Button className="mt-4" onClick={() => router.push("/profile")}>
+        Go to Personal Info
         </Button>
       </section>
     );
@@ -394,7 +394,7 @@ export default function CareerResults({
           type="button"
           variant="ghost"
           className="mt-3 border-border bg-white text-primary hover:bg-muted hover:text-primary"
-          onClick={() => router.push("/skills")}
+          onClick={() => router.push("/profile")}
         >
           Edit My Skills
         </Button>

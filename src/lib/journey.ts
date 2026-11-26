@@ -24,7 +24,7 @@ export const JOURNEY_STEP_COUNT = 5;
 // Your Skills") without changing what the sidebar shows.
 export const JOURNEY_STEPS: readonly JourneyStep[] = [
   { id: "profile", label: "Personal Info", href: "/profile", stepIndex: 0 },
-  { id: "skills", label: "Your Skills", href: "/skills", stepIndex: 0 },
+  { id: "skills", label: "Your Skills", href: "/profile", stepIndex: 0 },
   { id: "current-pathways", label: "Current Pathways", href: "/current-pathways", stepIndex: 1 },
   { id: "new-skill", label: "New Skill Interest", href: "/new-skill", stepIndex: 2 },
   { id: "updated-pathways", label: "Updated Pathways", href: "/updated-pathways", stepIndex: 3 },
