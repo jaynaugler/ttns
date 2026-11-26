@@ -7,6 +7,7 @@ import { useEffect, useId, useState, type ReactNode } from "react";
 import { Check, Minus } from "lucide-react";
 
 import { JourneyStepPage } from "@/components/journey-step-page";
+import { NextStepRecommendations } from "@/components/next-steps/NextStepRecommendations";
 import { formatCurrency } from "@/components/look-forward/wage-projection-card";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,10 +30,11 @@ import type { CareerMatch } from "@/types/careers";
 
 import { getNovaScotiaOutlooks } from "./actions";
 
-// Journey step 4 (Team 5). Wraps up the journey: a banner with the user's #1
-// Top-3 pick and three quick facts, then cards for its wages, Nova Scotia
-// outlook and skills, the skills they're working on, their #2 and #3 picks,
-// and a fresh start. The page's own "Start a new journey" replaces
+// Journey step 4 (Team 5). Wraps up the journey: a banner with the path
+// chosen on Updated Pathways (or the #1 Top-3 pick) and quick facts, then
+// cards for its wages, Nova Scotia outlook and skills, Team 6's recommended
+// next steps for it, the skills being learned, the other Top 3 picks, and a
+// fresh start. The page's own "Start a new journey" replaces
 // JourneyStepPage's Continue.
 export default function NextStepPage() {
   const { journey } = useJourneyProgress();
@@ -169,6 +171,17 @@ function NextStepSummary() {
             plan={planSkills(path?.scenario)}
           />
           <SkillsInProgress skills={journey.newSkills} summary={top} />
+          {/* Team 6's recommendations (Joshua's #51) for the same career the
+              page leads with, so the cards always match the banner. After
+              both skills cards, so those sit together. */}
+          <NextStepRecommendations
+            careerCode={top.code}
+            guestId={journey.guestId}
+            savedMatches={journey.savedMatches}
+            savedSkills={journey.savedSkills}
+            profile={journey.profile}
+            className={cardClass}
+          />
           {others.length > 0 && <OtherPicks picks={others} />}
         </>
       ) : (
@@ -693,15 +706,16 @@ function SkillsInProgress({
   summary: CareerSummary;
 }) {
   const marked = markSkillsForCareer(skills, summary);
-  const name = careerName(summary);
   return (
     <SectionCard title="Skills you're working on">
       {marked.length > 0 ? (
-        <ul className="flex flex-wrap gap-3">
+        // One full-width row per skill, so the rows line up whether or not
+        // their text wraps.
+        <ul className="space-y-3">
           {marked.map(({ skill, used }) => (
             <li
               key={skill}
-              className="flex max-w-full min-w-0 items-center gap-2 rounded-2xl border-2 border-foreground/50 px-4 py-2"
+              className="flex w-full min-w-0 items-center gap-2 rounded-2xl border-2 border-foreground/50 px-4 py-2"
             >
               {used ? (
                 <Check aria-hidden="true" className="size-5 shrink-0" />
@@ -713,7 +727,7 @@ function SkillsInProgress({
                 {/* In words, so the icon is never the only cue. */}
                 <span className="text-sm">
                   {" "}
-                  {used ? `· used in ${name}` : `· not used in ${name}`}
+                  {used ? "· used in this career" : "· not used in this career"}
                 </span>
               </span>
             </li>
