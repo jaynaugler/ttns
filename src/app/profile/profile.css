@@ -1,0 +1,48 @@
+.profile-selection-layout {
+  container-name: profile-selection-layout;
+  container-type: inline-size;
+}
+
+@container profile-selection-layout (width >= 56rem) {
+  .profile-panels-container {
+    grid-template-columns: 27rem minmax(28rem, 1fr);
+  }
+}
+
+@container profile-selection-layout (max-width: 55.999rem) {
+  .profile-panels-container > :first-child,
+  .profile-skill-selection-panel > :first-child {
+    max-width: 27rem;
+  }
+}
+
+@media (min-width: 76rem) and (min-height: 48rem) {
+  body:has(.profile-selection-layout) {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+  body:has(.profile-selection-layout) > div.flex.flex-1,
+  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+    min-height: 0;
+  }
+  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+    overflow: hidden;
+  }
+  .profile-selection-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+  .profile-panels-container {
+    align-items: stretch;
+    flex: 1 1 0%;
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .profile-panels-container > :first-child {
+    align-self: start;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+}

@@ -52,9 +52,6 @@ html[data-font="dyslexic"] .profile-skill-selection-card [data-slot="card-header
 }
 
 @container profile-selection-layout (width >= 57rem) {
-  .profile-skill-selection-panel {
-    max-width: none;
-  }
   .profile-skill-selection-card {
     max-width: 100%;
     min-width: 28rem;
@@ -68,6 +65,12 @@ html[data-font="dyslexic"] .profile-skill-selection-card [data-slot="card-header
   }
   .skills-grid-scrollbar > button {
     width: 100%;
+  }
+}
+
+@container profile-selection-layout (width >= 56rem) {
+  .profile-skill-selection-panel {
+    max-width: none;
   }
 }
 
