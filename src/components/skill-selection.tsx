@@ -17,10 +17,8 @@ import "./skill-selection.css";
 
 export function UserSkillSelection({
   embedded = false,
-  profileComplete: profileFormComplete,
 }: {
   embedded?: boolean;
-  profileComplete?: boolean;
 }) {
   const [skills] = useState<string[]>(skillsData as string[]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,8 +31,10 @@ export function UserSkillSelection({
   const { journey, hydrated } = useJourneyProgress();
   const router = useRouter();
   const selectedSkills = userSelection ?? journey.savedSkills ?? [];
-  const profileComplete =
-    profileFormComplete ?? journey.completed.includes("profile");
+  // The skill panel's Continue is gated on the same signal main's /profile
+  // Continue uses: a saved profile, not the in-session form state — which is
+  // always false for returning users and blanks on Start Over.
+  const profileComplete = Boolean(journey.profile);
   const continueReasonId = useId();
   const continueDisabledMessage =
     !profileComplete && selectedSkills.length === 0
