@@ -5,7 +5,9 @@ import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
 export const instant =false;
 export const metadata: Metadata = {
-  title: "Take The Next Step",
+  // Each page sets its own title ("Current Pathways | Take The Next Step");
+  // pages without one keep the plain name.
+  title: { default: "Take The Next Step", template: "%s | Take The Next Step" },
   description:
     "Share your skills and map the pathways from the careers you match today to a concrete plan for your next step.",
 };
