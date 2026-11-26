@@ -14,8 +14,8 @@ import { markStepComplete, useJourneyProgress } from "@/lib/journey-progress";
 // The shared skeleton for wizard step pages: a locked notice until the
 // earlier journey steps are complete (no redirect — a notice is unambiguous
 // and needs no localStorage-before-render work), then the page content with a
-// Continue action that marks this page done. The last step routes back to the
-// landing page instead of another step. showContinue lets a page hide the
+// Continue action that marks this page done. The last step loops the journey
+// back to /profile instead of another step. showContinue lets a page hide the
 // Continue action until its own content is done (e.g. a form is submitted).
 export function JourneyStepPage({
   pageId,
@@ -83,7 +83,7 @@ export function JourneyStepPage({
             render={<Link href={nextHref} />}
             onClick={() => markStepComplete(pageId)}
           >
-            {isLast ? "Finish" : "Continue"}
+            {isLast ? "Chart a new path" : "Continue"}
           </Button>
         </div>
       )}

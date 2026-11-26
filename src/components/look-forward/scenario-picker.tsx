@@ -32,7 +32,7 @@ export function ScenarioPicker({
 			<FieldLegend className="text-lg font-bold text-foreground data-[variant=legend]:text-lg">
 				Choose a change to try
 			</FieldLegend>
-			<FieldDescription id={descriptionId} className="text-base text-neutral-700">
+			<FieldDescription id={descriptionId} className="text-base dark:text-[var(--dm-text-lightgrey)]">
 				Your matches are re-scored as if you had already made the change.
 			</FieldDescription>
 

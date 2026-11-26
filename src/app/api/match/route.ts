@@ -44,6 +44,24 @@ function isValidMatchRequest(value: unknown): value is MatchRequest {
     return false;
   }
 
+  if (
+    request.limit !== undefined &&
+    (typeof request.limit !== "number" ||
+      !Number.isInteger(request.limit) ||
+      request.limit < 10 ||
+      request.limit > 1000 ||
+      request.limit % 10 !== 0)
+  ) {
+    return false;
+  }
+
+  if (request.selectedCareerCode !== undefined && (
+    typeof request.selectedCareerCode !== "string" ||
+    !/^\d{5}$/.test(request.selectedCareerCode)
+  )) {
+    return false;
+  }
+
   return true;
 }
 
@@ -67,9 +85,22 @@ export async function POST(request: Request) {
 
   const uniqueSkills = [...new Set(body.skills)];
 
-  const alpha = body.alpha ?? 0.7;
+  const alpha = body.alpha ?? 0.3;
 
-  const results = matchCareers(uniqueSkills, alpha);
+  // Rank all matching occupations once, so the saved career's current rank
+  // is known even when it falls outside the initially requested top ten.
+  const allMatches = matchCareers(uniqueSkills, alpha, Number.MAX_SAFE_INTEGER);
+  const selectedIndex = body.selectedCareerCode
+    ? allMatches.findIndex((match) => match.code === body.selectedCareerCode)
+    : -1;
+  const selectedRank = selectedIndex >= 0 ? selectedIndex + 1 : null;
+  const requestedLimit = body.limit ?? 10;
+  const includeSelectedThrough = selectedRank
+    ? Math.ceil(selectedRank / 10) * 10
+    : 0;
+  const limit = Math.min(1000, Math.max(requestedLimit, includeSelectedThrough));
+  const results = allMatches.slice(0, limit);
+  const hasMore = allMatches.length > limit;
 
-  return NextResponse.json({ results }, { status: 200 });
+  return NextResponse.json({ results, hasMore, selectedRank }, { status: 200 });
 }

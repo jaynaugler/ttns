@@ -25,27 +25,6 @@ export const profileSteps = [
     ],
   },
   {
-    key: "skills",
-    title: "Skills",
-    reviewTitle: "Skills",
-    fields: [
-      {
-        name: "primarySkill",
-        label: "Primary skill",
-        rules: { required: "Primary skill is required" },
-      },
-      {
-        name: "yearsOfExperience",
-        label: "Years of experience",
-        inputProps: { inputMode: "numeric" },
-        rules: {
-          required: "Years of experience is required",
-          pattern: { value: /^\d+$/, message: "Enter a whole number" },
-        },
-      },
-    ],
-  },
-  {
     key: "interests",
     title: "Interests",
     reviewTitle: "Interests",
@@ -88,3 +67,37 @@ export const profileDefaultValues = Object.fromEntries(
     Object.fromEntries(step.fields.map((field) => [field.name, ""])),
   ])
 );
+
+// Overlays saved profile data on the empty defaults: only the shape
+// profileDefaultValues defines gets through, so an older saved profile that's
+// missing a newly added field (or a stale group) can't leave a hole — the
+// field just starts empty.
+export function withSavedValues(defaults, saved) {
+  if (!saved) return defaults;
+  return Object.fromEntries(
+    Object.entries(defaults).map(([key, fields]) => [
+      key,
+      Object.fromEntries(
+        Object.entries(fields).map(([field, value]) => [
+          field,
+          typeof saved[key]?.[field] === "string" ? saved[key][field] : value,
+        ])
+      ),
+    ])
+  );
+}
+
+// DEV TOOL — remove before launch (alongside the "Reset journey" dev button).
+// Sample values ProfileForm's "Autofill (dev)" button loads so the journey can
+// be walked without retyping the form each run. Kept in this file so the one
+// place describing the form's shape stays that place: when you add a field
+// above, its review will fail "required" until you add a value here too.
+export const profileDevValues = {
+  personal: { firstName: "Alex", lastName: "Sample" },
+  skills: { primarySkill: "Customer Service", yearsOfExperience: "4" },
+  interests: { interest1: "Building things", interest2: "Helping people" },
+  education: {
+    school: "Red River College Polytechnic",
+    degree: "Business Administration Diploma",
+  },
+};

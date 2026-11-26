@@ -148,6 +148,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   /* Dark mode colours */
   --dm-surface-grey: #2d2d2d;
   --dm-card-grey: #383838;
+  --dm-text-lightgrey: #979797;
   --dm-card-blue: #42649c;
   --dm-brand-red: #910b2b;
   --dm-brand-pink: #cd4565;
@@ -156,6 +157,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --dm-brand-brown: #b06204;
   --dm-link-default: #2d2dff;
   --dm-link-visited: #9d47ed;
+  --dm-badge-green: rgb(39, 187, 39);
 
   --background: var(--surface-cream);
   --foreground: #000000;
@@ -251,6 +253,10 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   a:hover {
     text-decoration: underline;
     cursor: pointer;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+      cursor: pointer;
   }
 }
 

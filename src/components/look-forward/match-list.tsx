@@ -31,7 +31,7 @@ function ScoreBar({ score, previousScore }: { score: number; previousScore?: num
 	return (
 		<div aria-hidden="true" className="relative mt-3 h-2.5 rounded-full bg-neutral-300">
 			<div
-				className="h-full rounded-full bg-card-blue motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-out"
+				className="h-full rounded-full bg-card-blue dark:bg-[var(--dm-card-blue)] motion-safe:transition-[width] motion-safe:duration-500 motion-safe:ease-out"
 				style={{ width: `${percent(score)}%` }}
 			/>
 			{previousScore !== undefined && (
@@ -49,7 +49,7 @@ function RankBadge({ rank }: { rank: number }) {
 	return (
 		<span
 			aria-hidden="true"
-			className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white"
+			className="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-red dark:bg-[var(--dm-brand-red)] text-lg font-bold text-white"
 		>
 			{rank}
 		</span>
@@ -60,7 +60,7 @@ export function CurrentMatchList({ matches }: { matches: readonly CareerMatch[] 
 	return (
 		<ol role="list" className="space-y-3">
 			{matches.map((match, index) => (
-				<li key={match.careerId} className="flex gap-3 rounded-xl bg-white p-4 text-black">
+				<li key={match.careerId} className="flex gap-3 rounded-xl bg-white dark:bg-[var(--dm-surface-grey)] p-4">
 					<RankBadge rank={index + 1} />
 					<div className="min-w-0 flex-1">
 						<h4 className="font-bold leading-snug break-words">{careerTitle(match.careerId)}</h4>

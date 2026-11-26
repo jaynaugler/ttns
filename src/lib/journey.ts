@@ -1,11 +1,12 @@
 // The journey structure shared by the stepper sidebar, the mobile drawer, and
-// the step pages. Six pages map onto the five wizard steps, so the sidebar
-// shows five labels: a step is "done" once every page in it is complete.
+// the step pages. Five pages map onto the four wizard steps, so the sidebar
+// shows four labels: a step is "done" once every page in it is complete.
+// (/new-skill was removed — its redesign will offer add-skills on
+// /updated-pathways instead — but journey state still stores its picks.)
 export type JourneyStepId =
   | "profile"
   | "skills"
   | "current-pathways"
-  | "new-skill"
   | "updated-pathways"
   | "next-step";
 
@@ -16,19 +17,19 @@ export interface JourneyStep {
   stepIndex: number; // 0..JOURNEY_STEP_COUNT - 1
 }
 
-export const JOURNEY_STEP_COUNT = 5;
+export const JOURNEY_STEP_COUNT = 4;
 
-// /skills shares step 0 with /profile: both are part of "Personal Info" and
-// are unlocked from the start. The sidebar labels a step with pages[0]'s
-// label, so /skills has its own label for the gate links ("Continue with
-// Your Skills") without changing what the sidebar shows.
+// The skills selection lives on /profile now: both step-0 entries land there
+// and are unlocked from the start. The sidebar labels a step with pages[0]'s
+// label, so the "skills" entry's label is only read by the locked-page gate
+// notice ("Continue with Personal Info") — keep it pointing at the page the
+// link actually opens.
 export const JOURNEY_STEPS: readonly JourneyStep[] = [
   { id: "profile", label: "Personal Info", href: "/profile", stepIndex: 0 },
-  { id: "skills", label: "Your Skills", href: "/profile", stepIndex: 0 },
+  { id: "skills", label: "Personal Info", href: "/profile", stepIndex: 0 },
   { id: "current-pathways", label: "Current Pathways", href: "/current-pathways", stepIndex: 1 },
-  { id: "new-skill", label: "New Skill Interest", href: "/new-skill", stepIndex: 2 },
-  { id: "updated-pathways", label: "Updated Pathways", href: "/updated-pathways", stepIndex: 3 },
-  { id: "next-step", label: "The Next Step 👣", href: "/next-step", stepIndex: 4 },
+  { id: "updated-pathways", label: "Updated Pathways", href: "/updated-pathways", stepIndex: 2 },
+  { id: "next-step", label: "The Next Step 👣", href: "/next-step", stepIndex: 3 },
 ];
 
 export type JourneyStepStatus = "done" | "current" | "locked";

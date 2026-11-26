@@ -30,6 +30,11 @@ import type {
 const careerList: Occupation[] = occupations;
 const mappings: SkillToOccupation[] = skillToOccupation;
 
+// Careers that list fewer skills than this are scored as if they listed
+// this many. Stops 1-skill careers (like Administrative assistants) from
+// always ranking #1.
+const MIN_CAREER_SKILLS = 5;
+
 // Index skill mappings by occupation code.
 const mappingByCode = new Map(
   mappings.map((item) => [item.code, item]),
@@ -130,7 +135,7 @@ export function scoreCareerSkills(
 export function hybridScore(
   userSkills: string[],
   careerSkills: string[],
-  alpha = 0.7,
+  alpha = 0.3,
 ): number {
   const coverage = calculateCoverage(
     userSkills,
@@ -153,8 +158,20 @@ function hybridScoreFromCoverage(
 
   const weight = Math.max(0, Math.min(1, alpha));
 
+  // How many of the user's skills this career uses.
+  const matchedCount = coverage.matchedSkills.length;
+
+  // Use the real skill count, or the minimum if the career lists fewer.
+  const fairCareerSize = Math.max(
+    coverage.requiredSkills.length,
+    MIN_CAREER_SKILLS,
+  );
+
+  // Career coverage for ranking only. The card still shows the real value.
+  const fairCareerCoverage = (matchedCount / fairCareerSize) * 100;
+
   return (
-    weight * coverage.careerSkillCoverage +
+    weight * fairCareerCoverage +
     (1 - weight) * coverage.userSkillCoverage
   );
 }
@@ -182,10 +199,11 @@ function buildRationale(
   );
 }
 
-// Rank all occupations and return the top ten.
+// Rank all occupations and return up to the requested number.
 export function matchCareers(
   userSkills: string[],
-  alpha = 0.7,
+  alpha = 0.3,
+  limit = 10,
 ): CareerMatch[] {
   const selected = [...new Set(userSkills)];
 
@@ -260,5 +278,5 @@ export function matchCareers(
           a.matchedSkills.length ||
         a.code.localeCompare(b.code),
     )
-    .slice(0, 10);
+    .slice(0, limit);
 }

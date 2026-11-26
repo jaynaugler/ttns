@@ -2,28 +2,27 @@
 
 This is a living reference for the Next Step Recommendation backend. Verify
 the current code, branch, contracts, and test results before relying on it;
-update this document when verified facts or agreed decisions change. Baseline:
-Phase 1 branch base `db5b81b`, fetched main `87dda38`, Team 4 matching branch
-`7e5f32a`; reviewed 2026-11-04. Before the Phase 1 commit, branch
-`codex/team6-phase1-compatibility` was at `db5b81b`, two commits behind main;
-those main commits add `COMP-CHECKLIST.md` and do not change Team 6's files.
+update this document when verified facts or agreed decisions change. Current
+work is based on `origin/main` commit `8cd20de`, fetched 2026-11-24.
+Phase 1 was merged in PR #25; its earlier verification is retained below as
+history, not as the current build or integration status.
 
 ## Intended data flow
 
-Solid arrows show implemented Team 6 flow or an existing data source. Dashed
-arrows show planned application connections or an unresolved boundary. The
-shared request and response shapes are confirmed interfaces, not proof of an
-end-to-end integration.
+Solid arrows show existing code paths; dashed arrows show integration that is
+not currently wired. Adapters exist, but profile identity and ID choices
+remain provisional. The simulated integration tests exercise both adapters
+and the backend, not a running application page.
 
 ```mermaid
 flowchart LR
     P["Team 1: profile form and stored profile"]:::external
     S["Team 2: selected skill labels"]:::external
-    N["Profile normalization and integration boundary: planned"]:::planned
-    M["Team 4: CareerMatch output on unmerged branch"]:::external
+    N["Existing profile and match adapters: provisional"]:::external
+    M["Team 4: main match API results"]:::external
     R["Team 6: POST /api/steps"]:::implemented
     V["Team 6: input validation"]:::implemented
-    D["Team 6: recommendation dataset: empty"]:::implemented
+    D["Team 6: 12 recommendation records"]:::implemented
     A["Team 6: recommendation algorithm"]:::implemented
     O["Team 6: NextStep array output"]:::contract
     F["Frontend integration boundary: planned"]:::planned
@@ -33,8 +32,8 @@ flowchart LR
     P -.-> N
     S -.-> N
     U -.-> N
-    N -.-> C
-    M -.-> C
+    M -.-> N
+    N --> C
     C -.-> R
     R --> V
     V --> A
@@ -48,11 +47,11 @@ flowchart LR
     classDef decision fill:#fde4e4,stroke:#9b3030,color:#111
 ```
 
-Legend: **implemented** — Team 6 code exists (the dataset is empty);
+Legend: **implemented** — Team 6 code exists;
 **external** — data or code owned outside Team 6; **planned** — integration
 not wired; **contract** — shared interface already defined; **decision** —
-mapping or ownership remains unresolved. The Team 4 branch is not on main;
-the diagram does not imply its output currently reaches the endpoint.
+mapping or ownership remains unresolved. No current application page sends
+the assembled request to Team 6's endpoint.
 
 ## Phase 1 — Integration compatibility
 
@@ -71,12 +70,11 @@ the diagram does not imply its output currently reaches the endpoint.
 - **Completion criteria:** verified contracts and IDs; focused simulated-match
   tests; unchanged API contract; documented mapping decisions and ownership.
   Implement a pure adapter only when its required identifier rules are known.
-- **Status:** contract and boundary changes are ready for review, with
-  integration decisions still open. API and shared types remain unchanged.
-  Stored profile conversion remains unresolved; no adapter is implemented.
-  The normal Team 6 test command passes 69/69 tests. Project-wide TypeScript
-  and the production build fail on the pre-existing profile-prop error
-  described below. See change tracking for verification results.
+- **Status:** contract compatibility is exercised through both existing
+  adapters with a simulated saved journey and the real recommendation data.
+  `buildStepsRequest` exists but has no current page caller and uses
+  provisional identity and label-as-ID conventions. API and shared types
+  remain unchanged; integration decisions remain open.
 
 The main-branch `COMP-CHECKLIST.md` reinforces clear, predictable inputs and
 outputs, agreed shared structures, realistic tests, maintainability, and a
@@ -96,8 +94,9 @@ Team 6 backend ownership.
 - **Completion criteria:** regression coverage for deduplication-induced
   prerequisite cycles and filtered prerequisites, deterministic behavior, and
   existing API tests passing.
-- **Status:** not started. An acyclic dataset can become cyclic after dedupe;
-  the current ordering fallback may violate the remapped prerequisites.
+- **Status:** in progress. A deduplication-induced cycle now fails closed
+  instead of emitting an invalid order; regression tests cover it. A filtered
+  prerequisite is still an ordering hint, not an eligibility condition.
 
 ## Phase 3 — Recommendation dataset
 
@@ -113,8 +112,10 @@ Team 6 backend ownership.
 - **Completion criteria:** curated and sourced records, valid existing string
   career IDs, dataset integrity checks, and API tests showing meaningful
   expected results from the bundled dataset.
-- **Status:** not started; `education-steps.json` contains an empty `steps`
-  array, so valid requests using bundled data return no recommendations.
+- **Status:** in progress; the bundled data contains nine skill-gap steps and
+  three generic application/experience steps covering 16 of 516 career IDs.
+  Simulated compatible requests produce real bundled recommendations. Coverage
+  and the suitability of each recommendation still require review.
 
 ## Phase 4 — Final backend integration
 
@@ -130,7 +131,9 @@ Team 6 backend ownership.
 - **Completion criteria:** validated real application inputs and outputs,
   passing relevant automated tests and production build, and documented
   handoff with remaining limitations.
-- **Status:** not started; no end-to-end application integration is verified.
+- **Status:** backend boundary testing is in progress; no end-to-end
+  application integration is verified. The current next-step page is a
+  placeholder and does not call the API.
 
 ## Permanent development rules
 
@@ -176,22 +179,31 @@ roadmap from verified evidence instead of following stale assumptions.
   matches should the application provide? No client currently connects them.
 - Is a non-empty selected skill list complete? The current algorithm treats
   an unselected required skill as a gap once any skill is supplied.
-- Team 4's match implementation is on an unmerged branch. Main's match route
-  is a placeholder; use simulated matches to test Team 6 independently.
+- Main's Team 4 match route returns `code`, `matchPercentage`, and string
+  rationale; the existing `toStepsMatches` converts those fields for Team 6.
+  No new Team 4 endpoint or recommendation data is required.
 - The 500-match validation cap is smaller than the 516 current career IDs.
   Determine intended match-list size before treating it as a defect.
-- Dedupe can create prerequisite cycles; filtered prerequisites are only
-  ordering hints. Resolve in Phase 2 before depending on those relationships.
-- Project-wide TypeScript checking and `pnpm build` fail with TS2741 at
-  `src/app/kitchen-sink/page.tsx:59`: `ProfileForm` is rendered without the
-  inferred required `onSubmittedChange` prop. The same TypeScript and normal
-  production build failure was reproduced from a separate clean archive of
-  `origin/main` at `87dda38` with locked dependencies. Team 6 did not modify
-  that page or `src/components/profile-form/ProfileForm.js`. The build cannot
-  verify later stages until the owning team resolves the project-level error.
+- A deduplication-induced cycle now returns a generic 500 instead of an
+  incorrect ordering. The semantics of prerequisites omitted by filtering
+  remain ordering-only and need agreement before use as eligibility rules.
+- When duplicate records share a `dedupeKey`, the kept record's own
+  prerequisites are used; prerequisites on a dropped duplicate are not
+  merged. Dataset authors should keep equivalent records consistent until
+  the desired semantics are agreed.
+- The earlier `ProfileForm` build error was recorded against main
+  `87dda38`. At baseline `8cd20de`, TypeScript and the production build
+  pass; Team 6 did not modify the profile implementation.
+- The separate frontend branch expects priority and action fields that the
+  shared `NextStep` output does not provide. Display mapping needs agreement.
+- `match-adapter.test.ts` is compiled by the projection config but is not
+  selected by its current Node test command; its eight tests passed when run
+  separately. Its owner should decide how to include that suite. Team 6 tests
+  also cover the adapter at the API boundary.
 
 ## Development tracking
 
 | Date | Phase | File(s) changed | Reason | Related requirement | Test results | Status |
 |---|---|---|---|---|---|---|
 | 2026-11-04 | 1 | `src/lib/next-steps/README.md`, `src/lib/next-steps/BACKEND_ROADMAP.md`, `src/lib/next-steps/next-steps.test.ts` | Record contracts, integration boundaries and roadmap; add simulated cross-team compatibility tests. | Phase 1 compatibility and permanent roadmap | Normal `pnpm test`: 69/69 pass. Project TypeScript and production build fail at `src/app/kitchen-sink/page.tsx:59` with TS2741, also reproduced on clean `origin/main` `87dda38`; Team 6 did not modify affected files. Mermaid rendering remains unverified. | Ready for Phase 1 review; profile integration decisions and project build blocker remain open |
+| 2026-11-24 | 2 / integration | `src/lib/next-steps.ts`, `src/lib/next-steps/handler.ts`, `src/lib/next-steps/next-steps.test.ts`, `src/lib/next-steps/README.md`, `src/lib/next-steps/BACKEND_ROADMAP.md` | Simplify gap checks, fail closed on deduplication cycles, preserve the error response and test existing adapters against real data. | Backend stabilization and cross-team compatibility | Baseline: Team 6 67/69, projection 32/32, TypeScript and build pass, lint 6 existing warnings. After changes: Team 6 78/78 and projection 32/32 pass; TypeScript and build pass; lint retains the same 6 warnings. | Ready for backend review; integration decisions remain open |

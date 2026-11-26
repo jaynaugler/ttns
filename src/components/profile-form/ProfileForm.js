@@ -2,9 +2,14 @@
 // useState, react-hook-form and click handlers, which only run in the browser.
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { profileSteps, profileDefaultValues } from "./profileSteps";
+import {
+  profileSteps,
+  profileDefaultValues,
+  profileDevValues,
+  withSavedValues,
+} from "./profileSteps";
 import FieldsStep from "./FieldsStep";
 import ReviewStep from "./ReviewStep";
 import { Button } from "@/components/ui/button";
@@ -33,17 +38,30 @@ const reviewStep = steps.length - 1;
  *   parent when the form is completed (true) or started over (false), so the
  *   page can show its Continue button. Optional: callers that don't care can
  *   render `<ProfileForm />`.
+ * @param {Object} [props.initialValues] Previously saved profile data
+ *   (journey.profile), grouped by step key. Prefills the form and lands
+ *   returning users on the Review step so they can see what they entered;
+ *   fields with no saved value fall back to the empty default.
  */
-export default function ProfileForm({ onSubmittedChange }) {
+export default function ProfileForm({ onSubmittedChange, initialValues }) {
   // react-hook-form holds all form values. They survive step changes because
   // unmounted fields keep their values by default (shouldUnregister: false).
+  // NOTE: defaultValues are read once at mount — the page renders this form
+  // only after journey state hydrates, so initialValues is the persisted one,
+  // not the pre-read default.
   const methods = useForm({
     // Check a field when the user leaves it, then again on every keystroke,
     // so an error disappears as soon as it's fixed.
     mode: "onTouched",
-    defaultValues: profileDefaultValues,
+    defaultValues: withSavedValues(profileDefaultValues, initialValues),
   });
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(
+    // Returning users (saved profile) land on the Review so they can see —
+    // and edit via the section Edit buttons — everything they entered,
+    // instead of starting over at "Personal info". First-time users have no
+    // initialValues and get the wizard from its first step.
+    initialValues ? reviewStep : 0
+  );
   // True after clicking Edit on the review, so Next goes straight back to the
   // review instead of walking through the remaining steps again.
   const [editingFromReview, setEditingFromReview] = useState(false);
@@ -96,6 +114,52 @@ export default function ProfileForm({ onSubmittedChange }) {
     setSubmitted(false);
     onSubmittedChange?.(false);
   }
+
+  // The submitted card is only a confirmation — it shows no data. "View my
+  // profile" drops back into the Review of what was just saved, which is the
+  // same view returning users land on. From there the user can edit and
+  // re-submit, or move on with the page's Continue (the saved journey profile
+  // keeps that visible either way).
+  function viewProfile() {
+    setSubmitted(false);
+    setEditingFromReview(false);
+    setCurrentStep(reviewStep);
+  }
+
+  // DEV TOOL — remove before launch (with profileDevValues). Loads the sample
+  // values into every field and jumps straight to the review, so walking the
+  // journey takes two clicks (this, then "Create my profile") instead of
+  // retyping the form.
+  function fillForDev() {
+    methods.reset(profileDevValues);
+    // If Review's Edit was used, editingFromReview would bend the next flow;
+    // the jump below must behave like a fresh arrival at the review.
+    setEditingFromReview(false);
+    setCurrentStep(reviewStep);
+  }
+
+  // Reset journey (the sidebar dev tool) wipes the saved profile from journey
+  // state — but this form is already mounted and useForm only reads its
+  // defaultValues once, so without this the old values stay on screen. The
+  // effect watches the saved-profile signal and drops the form back to
+  // blank-and-unsubmitted the moment the profile disappears. Only the
+  // present→absent direction matters: present→present is a re-save, which
+  // must keep local state, and absent→present is an initial submit.
+  const lastHadSavedProfile = useRef(Boolean(initialValues));
+  useEffect(() => {
+    const hasNext = Boolean(initialValues);
+    if (lastHadSavedProfile.current && !hasNext) {
+      methods.reset(profileDefaultValues);
+      setCurrentStep(0);
+      setEditingFromReview(false);
+      setSubmitted(false);
+      onSubmittedChange?.(false);
+    }
+    lastHadSavedProfile.current = hasNext;
+    // journey.profile's identity only changes when journey state does;
+    // methods and the page's setState are stable, so this fires on real
+    // saves/resets, not every render.
+  }, [initialValues, methods, onSubmittedChange]);
 
   // Card uses bg-card, which is blue in our theme, so the card body is
   // set to white and the header gets the primary brand red. pt-0 lets the
@@ -165,20 +229,36 @@ export default function ProfileForm({ onSubmittedChange }) {
           the submit button to it. */}
       <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
-          <Button type="button" size="lg" onClick={startOver}>
-            Start another profile
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button type="button" size="lg" onClick={viewProfile}>
+              View my profile
+            </Button>
+            <Button type="button" variant="ghost" size="lg" onClick={startOver}>
+              Start another profile
+            </Button>
+          </div>
         ) : (
           <>
-            <Button
-              type="button"
-              variant="ghost"
-              size="lg"
-              onClick={() => setCurrentStep(currentStep - 1)}
-              disabled={currentStep === 0}
-            >
-              Back
-            </Button>
+            {/* DEV TOOL — remove before launch, same as profileDevValues. */}
+            <div className="flex items-center gap-1">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={fillForDev}
+              >
+                Autofill (dev)
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="lg"
+                onClick={() => setCurrentStep(currentStep - 1)}
+                disabled={currentStep === 0}
+              >
+                Back
+              </Button>
+            </div>
             <Button type="submit" form="profile-form" size="lg">
               {nextLabel}
             </Button>

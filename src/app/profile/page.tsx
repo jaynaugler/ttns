@@ -1,16 +1,30 @@
+// "use client" because the page renders journey-state-gated content that
+// updates on client navigation.
 "use client";
 
 import ProfileForm from "@/components/profile-form/ProfileForm";
 import { JourneyStepPage } from "@/components/journey-step-page";
 import { UserSkillSelection } from "@/components/skill-selection";
-import { markStepComplete } from "@/lib/journey-progress";
+import { markStepComplete, useJourneyProgress } from "@/lib/journey-progress";
 import {
   Card,
 } from "@/components/ui/card";
 
 // Journey step 1: personal information and current skills are completed
-// together on this page.
+// together on this page — the multi-step form in one card, the skill panel
+// in the other. Personal info and skills each keep their own Continue; the
+// page-level Continue stays hidden (the panels' actions navigate onward).
+// The form prefills from journey.profile: returning users land on the review
+// of what they entered instead of an empty wizard. Safe to read straight from
+// useJourneyProgress() here because JourneyStepPage renders children only
+// after journey state hydrates, and the form snapshots initialValues at that
+// mount. Reset journey wipes the saved profile, which (via the form's own
+// sync) blanks the fields; the skill panel reads journey.profile itself for
+// its Continue gate, so onSubmittedChange only marks the step for the
+// sidebar.
 export default function ProfilePage() {
+  const { journey } = useJourneyProgress();
+
   return (
     <JourneyStepPage
       pageId="profile"
@@ -21,6 +35,7 @@ export default function ProfilePage() {
     >
       <div className="profile-panels-container grid grid-cols-[repeat(auto-fit,minmax(min(100%,28rem),1fr))] items-start gap-4">
         <ProfileForm
+          initialValues={journey.profile}
           // The skill panel reads profile completeness from the journey store
           // itself (journey.profile), like main does; this only marks the
           // sidebar step so later pages unlock.

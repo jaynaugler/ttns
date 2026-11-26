@@ -23,10 +23,6 @@ export function UserSkillSelection() {
   // skill labels are stored; mapping to UserSkillInput is Team 2's job when
   // the pipeline consumes them.
   const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
-  const [isPending, setIsPending] = useState(false);
-  // True when /api/match failed (network error or non-OK response), so the
-  // user sees why Continue seems to do nothing and can retry.
-  const [isError, setIsError] = useState(false);
   const { journey, hydrated } = useJourneyProgress();
   const router = useRouter();
   const selectedSkills = userSelection ?? journey.savedSkills ?? [];
@@ -56,26 +52,13 @@ export function UserSkillSelection() {
     }
   };
 
-  // Handles the Continue action: POSTs the selection to /api/match, and only
-  // once the response is OK saves it for the wizard's later steps and moves on.
-  async function onSubmit() {
-    setIsPending(true);
-    setIsError(false);
-    try {
-      const res = await fetch("/api/match", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ skills: selectedSkills }),
-      });
-      if (!res.ok) throw new Error("Skill matching not successful.");
-      saveSkills(selectedSkills);
-      router.push("/current-pathways");
-    } catch (error) {
-      console.error("Skill matching error", error);
-      setIsError(true);
-    } finally {
-      setIsPending(false);
-    }
+  // Handles the Continue action: saves the selection for the wizard's later
+  // steps and moves on. Nothing is POSTed here — /current-pathways' renders
+  // fetch the matches fresh (CareerResults POSTs /api/match itself, along
+  // with the current matching weights).
+  function onContinue() {
+    saveSkills(selectedSkills);
+    router.push("/current-pathways");
   }
 
   // Wait out localStorage hydration so a returning user's saved selection is
@@ -120,16 +103,6 @@ export function UserSkillSelection() {
     </>
   );
 
-  // Shown once matching fails; the retry is just hitting Continue again.
-  const errorAlert = isError ? (
-    <p
-      role="alert"
-      className="text-sm text-destructive"
-    >
-      Something went wrong while matching your skills. Please try again.
-    </p>
-  ) : undefined;
-
   const skillActions = (
     <>
       <Button
@@ -137,7 +110,7 @@ export function UserSkillSelection() {
         variant="ghost"
         size="lg"
         onClick={() => setUserSelection([])}
-        disabled={selectedSkills.length === 0 || isPending}
+        disabled={selectedSkills.length === 0}
       >
         Clear
       </Button>
@@ -147,11 +120,8 @@ export function UserSkillSelection() {
         <Button
           type="button"
           size="lg"
-          onClick={onSubmit}
-          disabled={
-            !profileComplete || selectedSkills.length === 0 || isPending
-          }
-          aria-invalid={isError}
+          onClick={onContinue}
+          disabled={!profileComplete || selectedSkills.length === 0}
           aria-describedby={
             continueDisabledMessage ? continueReasonId : undefined
           }
@@ -184,8 +154,7 @@ export function UserSkillSelection() {
       <CardContent className="flex-1 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         <div className="space-y-4">{selectionContent}</div>
       </CardContent>
-      <CardFooter className="flex-col items-stretch justify-between gap-2 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
-        {errorAlert}
+      <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         <div className="profile-skill-actions">{skillActions}</div>
       </CardFooter>
     </>

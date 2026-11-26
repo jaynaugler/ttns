@@ -28,7 +28,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   // The landing page is pre-journey: like the sidebar, the drawer hides the
   // step list (and its "Reset journey") there.
-  const isLanding = usePathname() === "/";
+  const pathname = usePathname();
+  const isLanding = pathname === "/";
 
   // Using React useState and useEffect for the accessibility toggles
   const [dyslexicFont, setDyslexicFont] = useState(false);
@@ -92,18 +93,48 @@ export function Header() {
   }
 
   return (
-    <header className="border-b bg-primary px-4 md:px-8 py-4 text-primary-foreground">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    // Sticky so the brand/nav/accessibility toggles stay reachable while the
+    // page scrolls; h-16 is the anchor the sticky sidebar nav offsets from.
+    <header className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground">
+      <div className="max-w-7xl mx-auto flex h-full w-full items-center justify-between gap-6">
         <div className="font-bold text-xl">
           <Link href="/" className="text-primary-foreground hover:no-underline">Take The Next Step</Link>
         </div>
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex gap-6 text-sm font-medium">
-            <li><Link href="/" className="text-primary-foreground">Home</Link></li>
+          {/* Pill nav: padded hit targets (the app is a11y-focused) with a
+              tinted hover, and the current page subtly filled. gap matches
+              the padding so hover pills don't visually merge. */}
+          <ul className="flex items-center gap-1 text-sm font-medium">
+            <li>
+              <Link
+                href="/"
+                aria-current={isLanding ? "page" : undefined}
+                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
+                  isLanding ? "bg-primary-foreground/15" : ""
+                }`}
+              >
+                Home
+              </Link>
+            </li>
+            {/* Same loop "Chart a new path" does: back to the profile form
+                (prefilled from the last submission) to run the journey again. */}
+            <li>
+              <Link
+                href="/profile"
+                aria-current={pathname === "/profile" ? "page" : undefined}
+                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
+                  pathname === "/profile" ? "bg-primary-foreground/15" : ""
+                }`}
+              >
+                Profile
+              </Link>
+            </li>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
-                  <button className="text-primary-foreground">Accessibility Settings</button>
+                  <button className="block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10">
+                    Accessibility Settings
+                  </button>
                 }
               />
               <DropdownMenuContent
@@ -205,6 +236,15 @@ export function Header() {
                     onClick={() => setOpen(false)}
                   >
                     Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/profile"
+                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    onClick={() => setOpen(false)}
+                  >
+                    Profile
                   </Link>
                 </li>
                 <li>

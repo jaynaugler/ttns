@@ -1,4 +1,283 @@
 {
-  "_comment": "Pathways for recommendations. Intentionally empty until real data is supplied. Record format: see src/lib/next-steps/README.md",
-  "steps": []
+  "steps": [
+    {
+      "id": "learn-oral-comprehension",
+      "title": "Build listening comprehension for workplace conversations",
+      "category": "education",
+      "description": "Follow and respond to spoken instructions the way they appear on the job: short conversations, task briefings and one-on-one check-ins. Practise with recordings or role plays and summarize what you heard.",
+      "estimatedWeeks": 4,
+      "careerIds": [
+        "12201",
+        "12202",
+        "41201",
+        "12104"
+      ],
+      "dedupeKey": "skill-oral-comprehension",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Oral Communication: Oral Comprehension"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-oral-expression",
+      "title": "Practise speaking clearly in workplace settings",
+      "category": "education",
+      "description": "Deliver short spoken updates and explain ideas out loud until they land: run a two-minute stand-up, phone back a customer, or explain a task to a teammate.",
+      "estimatedWeeks": 6,
+      "careerIds": [
+        "12201",
+        "12202",
+        "41201",
+        "12104"
+      ],
+      "dedupeKey": "skill-oral-expression",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Oral Communication: Oral Expression"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-active-listening",
+      "title": "Practise active listening with real conversations",
+      "category": "education",
+      "description": "Paraphrase before you reply, ask one clarifying question per conversation, and confirm instructions back to the speaker. Ten deliberate minutes a day is enough to see the difference.",
+      "estimatedWeeks": 2,
+      "careerIds": [
+        "12201",
+        "12202",
+        "41201",
+        "12113"
+      ],
+      "dedupeKey": "skill-active-listening",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Oral Communication: Active Listening"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-evaluation",
+      "title": "Learn to evaluate options against criteria",
+      "category": "education",
+      "description": "Take three real decisions from work or school, list what a good outcome requires, score each option against it, and write down why you chose the one you did.",
+      "estimatedWeeks": 4,
+      "careerIds": [
+        "12201",
+        "12104",
+        "63102",
+        "12203"
+      ],
+      "dedupeKey": "skill-evaluation",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Evaluation"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-systems-analysis",
+      "title": "Practise breaking down a system into requirements",
+      "category": "education",
+      "description": "Pick a tool or process you use every week, trace its inputs and outputs, and write the requirements a replacement would need. Repeat once with a bigger system.",
+      "estimatedWeeks": 12,
+      "careerIds": [
+        "12202",
+        "41201",
+        "12104",
+        "21230"
+      ],
+      "dedupeKey": "skill-systems-analysis",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Systems Analysis"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-instructing",
+      "title": "Learn to teach and demonstrate tasks to others",
+      "category": "education",
+      "description": "Choose a task you know well and teach it twice: once as a spoken walkthrough, once as a written quick-start guide. Ask the learner what confused them and fix it.",
+      "estimatedWeeks": 8,
+      "careerIds": [
+        "41201",
+        "12104",
+        "21230",
+        "11101"
+      ],
+      "dedupeKey": "skill-instructing",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Instructing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-persuading",
+      "title": "Practise presenting a convincing case",
+      "category": "education",
+      "description": "For a change you want to make, prepare a one-page case: the problem, two options, costs and one recommendation. Deliver it to someone who can say no.",
+      "estimatedWeeks": 4,
+      "careerIds": [
+        "12201",
+        "41201",
+        "63102",
+        "11101"
+      ],
+      "dedupeKey": "skill-persuading",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Persuading"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-decision-making",
+      "title": "Practise structured decision making",
+      "category": "education",
+      "description": "Use a decision journal for a month: write the call you need to make, the deadline, the two best options and the outcome. Review it at the end of the month.",
+      "estimatedWeeks": 4,
+      "careerIds": [
+        "12201",
+        "12202",
+        "63102",
+        "11101"
+      ],
+      "dedupeKey": "skill-decision-making",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Decision Making"
+          }
+        ]
+      }
+    },
+    {
+      "id": "learn-time-management",
+      "title": "Build a personal time management system",
+      "category": "education",
+      "description": "Pick one system (time blocks, a task board, or a daily top-three list), run it for two weeks without skipping, and adjust at the end instead of mid-week.",
+      "estimatedWeeks": 2,
+      "careerIds": [
+        "41201",
+        "21230",
+        "11101",
+        "41402"
+      ],
+      "dedupeKey": "skill-time-management",
+      "priority": 10,
+      "closesGap": {
+        "missingSkills": [
+          {
+            "skill": "Time Management"
+          }
+        ]
+      }
+    },
+    {
+      "id": "volunteer-practice-project",
+      "title": "Find a project where you can practise the new skill",
+      "category": "experience",
+      "description": "Volunteer, freelance, or take on a stretch task at work that uses the skill you picked. Nothing shifts a hiring decision like proof you have done the real thing.",
+      "estimatedWeeks": 8,
+      "careerIds": [
+        "13110",
+        "12113",
+        "14200",
+        "12201",
+        "12202",
+        "41201",
+        "12104",
+        "12203",
+        "63102",
+        "21230",
+        "11101",
+        "41402",
+        "63101",
+        "22221",
+        "62020",
+        "33102"
+      ],
+      "dedupeKey": "practise-new-skill",
+      "priority": 20
+    },
+    {
+      "id": "refresh-resume",
+      "title": "Refresh your resume around the new skill",
+      "category": "application",
+      "description": "Once you can demonstrate the skill, rewrite two bullet points per recent job to show it in action, and add it to the skills section every posting can find.",
+      "estimatedWeeks": 2,
+      "careerIds": [
+        "13110",
+        "12113",
+        "14200",
+        "12201",
+        "12202",
+        "41201",
+        "12104",
+        "12203",
+        "63102",
+        "21230",
+        "11101",
+        "41402",
+        "63101",
+        "22221",
+        "62020",
+        "33102"
+      ],
+      "dedupeKey": "refresh-resume",
+      "priority": 30
+    },
+    {
+      "id": "tell-your-network",
+      "title": "Tell three people in your network you are learning this",
+      "category": "application",
+      "description": "Most first chances come from people who already know you. Send three short messages this week saying what you are learning and what you are aiming for.",
+      "estimatedWeeks": 1,
+      "careerIds": [
+        "13110",
+        "12113",
+        "14200",
+        "12201",
+        "12202",
+        "41201",
+        "12104",
+        "12203",
+        "63102",
+        "21230",
+        "11101",
+        "41402",
+        "63101",
+        "22221",
+        "62020",
+        "33102"
+      ],
+      "dedupeKey": "tell-your-network",
+      "priority": 40
+    }
+  ]
 }
