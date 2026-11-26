@@ -624,6 +624,117 @@ export function rankNextMoves(input: NextMovesInput): NextMove[] {
 	return moves;
 }
 
+// ---------------------------------------------------------------------------
+// "Save my plan": one plan document for print and for "Copy plan as text"
+// ---------------------------------------------------------------------------
+
+const dollars = (n: number) =>
+	new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(n);
+
+// A move's impact in words, e.g. "Match 94 → 96, up 2", plus the starting
+// wage climb on the experience card. Shared by the cards, print and copy.
+export function moveImpact(move: NextMove): string[] {
+	const lines: string[] = [];
+	if (move.scoreToday !== undefined && move.scoreAfter !== undefined) {
+		lines.push(
+			move.gain
+				? `Match ${move.scoreToday} → ${move.scoreAfter}, up ${formatScore(move.gain)}`
+				: `Match ${move.scoreToday}, no change from this plan`,
+		);
+	}
+	if (move.wageNow !== undefined && move.wageAfter !== undefined) {
+		lines.push(`Starting wage ${dollars(move.wageNow)} → about ${dollars(move.wageAfter)} a year after 1 year`);
+	}
+	return lines;
+}
+
+export interface PlanSection {
+	heading: string;
+	items: string[];
+}
+
+export interface PlanDocument {
+	title: string;
+	sections: PlanSection[];
+}
+
+export interface PlanInput {
+	name?: string;
+	date: Date;
+	summary: CareerSummary;
+	path?: PathSummary;
+	// Skills this career lists that the user didn't select, most common first.
+	gaps: readonly string[];
+	moves: readonly NextMove[];
+	// Where "Try it on Updated Pathways" points, e.g. https://…/updated-pathways.
+	updatedPathwaysUrl?: string;
+}
+
+// Everything "My career plan" says, as headed lists: who and when, the
+// career, the plan, match, wages and growth, the Nova Scotia outlook, skills
+// to build and the next moves with full links. Print and copy both use it.
+export function buildPlanDocument(input: PlanInput): PlanDocument {
+	const { summary, path } = input;
+	const career = summary.title ?? `Career ${summary.code}`;
+	const date = new Intl.DateTimeFormat("en-CA", { dateStyle: "long" }).format(input.date);
+	const wages = summary.wages;
+	const growth = wageGrowth(summary.code);
+	const sections: PlanSection[] = [
+		{ heading: "About this plan", items: [...(input.name?.trim() ? [`Name: ${input.name.trim()}`] : []), `Date: ${date}`] },
+		{ heading: "Career", items: [`${career} (NOC ${summary.code})`, ...(summary.jobBankUrl ? [`Nova Scotia job postings: ${summary.jobBankUrl}`] : [])] },
+		{ heading: "The plan", items: path ? path.plan : ["No plan chosen yet. Try changes on Updated Pathways."] },
+		{
+			heading: "Match",
+			items: [
+				path
+					? path.scoreToday === path.scoreAfter
+						? `${path.scoreToday} out of 100, no change from this plan`
+						: `${path.scoreToday} → ${path.scoreAfter} out of 100 after this plan`
+					: summary.score !== undefined
+						? `${summary.score} out of 100`
+						: "Not saved",
+			],
+		},
+		{
+			heading: "Wages (Job Bank)",
+			items: wages
+				? [
+						...(wages.startingOut ? [`Starting out: ${dollars(wages.startingOut.yearly)} a year`] : []),
+						...(wages.typical ? [`Typical (median): ${dollars(wages.typical.yearly)} a year`] : []),
+						...(wages.topEarners ? [`Top earners: ${dollars(wages.topEarners.yearly)} a year`] : []),
+						...(wages.referencePeriod ? [`Reference period: ${wages.referencePeriod}`] : []),
+					]
+				: ["Not published"],
+		},
+		...(growth.length > 0
+			? [{ heading: "Wage growth (a rough guide)", items: growth.map((p) => `${p.label}: about ${dollars(p.annual)} a year`) }]
+			: []),
+		{
+			heading: "Nova Scotia outlook",
+			items: [summary.outlook ? `${summary.outlook}${summary.outlookReleaseDate ? ` (published ${summary.outlookReleaseDate})` : ""}` : "Not published"],
+		},
+		{ heading: "Skills to build", items: input.gaps.length > 0 ? [...input.gaps] : ["None listed beyond your plan."] },
+		{
+			heading: "Next moves",
+			items: input.moves.map((move, i) => {
+				const link = move.kind === "job-search" ? summary.jobBankUrl : input.updatedPathwaysUrl;
+				return [`${i + 1}. ${move.title}`, ...moveImpact(move), ...(link ? [link] : [])].join(" · ");
+			}),
+		},
+	];
+	return { title: "My career plan", sections: sections.filter((s) => s.items.length > 0) };
+}
+
+// The same plan as plain text, for the clipboard.
+export function planAsText(doc: PlanDocument): string {
+	return [
+		doc.title,
+		"",
+		...doc.sections.flatMap((s) => [s.heading, ...s.items.map((item) => `- ${item}`), ""]),
+		"Estimates only: wages and match scores are a rough guide.",
+	].join("\n");
+}
+
 export interface PickSplit {
 	// Picks in the current saved matches, in pick order.
 	current: string[];

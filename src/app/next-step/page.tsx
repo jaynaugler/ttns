@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import { Check, Minus } from "lucide-react";
 
 import { JourneyStepPage } from "@/components/journey-step-page";
@@ -11,17 +10,11 @@ import { NextStepRecommendations } from "@/components/next-steps/NextStepRecomme
 import { formatCurrency } from "@/components/look-forward/wage-projection-card";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
+  buildPlanDocument,
   getCareerSummary,
   getPathSummary,
   markSkillsForCareer,
+  planAsText,
   planSkills,
   rankNextMoves,
   recommendedSkill,
@@ -34,11 +27,13 @@ import {
   type TrendItem,
   type WageFigure,
 } from "@/lib/career-summary";
-import { resetJourney, useJourneyProgress } from "@/lib/journey-progress";
+import { useJourneyProgress } from "@/lib/journey-progress";
 import { findCareerById } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 
+import { FinishCard } from "@/components/next-step/finish-card";
 import { OnThisPage } from "@/components/next-step/on-this-page";
+import { PrintablePlan } from "@/components/next-step/printable-plan";
 import { PathAtAGlance } from "@/components/next-step/path-at-a-glance";
 import { WageGrowthChart } from "@/components/next-step/wage-growth-chart";
 import {
@@ -181,17 +176,50 @@ function NextStepSummary() {
 
   const plan = path ? journey.lookForward?.scenario : undefined;
   const degree = journey.profile?.education?.degree;
-  const hasMoves =
-    top !== undefined &&
-    rankNextMoves({
-      careerCode: top.code,
-      savedMatches: journey.savedMatches,
-      userSkills: journey.savedSkills,
-      plan,
-      degree,
-      outlook: top.outlook,
-      jobBankUrl: top.jobBankUrl,
-    }).length > 0;
+  const moves = top
+    ? rankNextMoves({
+        careerCode: top.code,
+        savedMatches: journey.savedMatches,
+        userSkills: journey.savedSkills,
+        plan,
+        degree,
+        outlook: top.outlook,
+        jobBankUrl: top.jobBankUrl,
+      })
+    : [];
+  const hasMoves = moves.length > 0;
+
+  // "My career plan", for print and "Copy plan as text".
+  const fullName = [journey.profile?.personal?.firstName, journey.profile?.personal?.lastName]
+    .map((part) => part?.trim())
+    .filter(Boolean)
+    .join(" ");
+  const planDoc = top
+    ? buildPlanDocument({
+        name: fullName,
+        date: new Date(),
+        summary: top,
+        path,
+        gaps: skillGapsFor(top.code, journey.savedMatches, planSkills(path?.scenario)).skills.map(
+          (gap) => gap.skill,
+        ),
+        moves,
+        updatedPathwaysUrl:
+          typeof window === "undefined" ? undefined : `${window.location.origin}/updated-pathways`,
+      })
+    : undefined;
+  // The finish card's two lines: where the plan leads, and the first move.
+  const firstMove = moves.find((move) => move.kind !== "plan");
+  const finishSummary: [string, string] | undefined = top
+    ? [
+        path
+          ? path.scoreToday === path.scoreAfter
+            ? `${careerName(top)}: your plan keeps your match at ${path.scoreToday}.`
+            : `${careerName(top)}: your plan takes your match from ${path.scoreToday} to ${path.scoreAfter}.`
+          : `${careerName(top)}: your match is ${top.score ?? "not saved"} out of 100.`,
+        firstMove ? `Your next move: ${firstMove.title}.` : "Your next move: try a change on Updated Pathways.",
+      ]
+    : undefined;
   // Only the sections that are on the page.
   const jumpLinks = top
     ? [
@@ -252,7 +280,12 @@ function NextStepSummary() {
         <NoPicks />
       )}
 
-      <StartOver id={SECTIONS.finish.id} />
+      <FinishCard
+        id={SECTIONS.finish.id}
+        summary={finishSummary}
+        planText={planDoc ? planAsText(planDoc) : undefined}
+      />
+      {planDoc && <PrintablePlan doc={planDoc} />}
     </div>
   );
 }
@@ -910,51 +943,5 @@ function NoPicks() {
         Choose your Top 3 on Current Pathways
       </Link>
     </SectionCard>
-  );
-}
-
-// Clearing the journey can't be undone, so the button asks first. Base UI's
-// Dialog moves focus into the dialog (to "Keep my journey", the safe choice),
-// traps it there, closes on Escape, and returns focus to the button.
-function StartOver({ id }: { id?: string }) {
-  const router = useRouter();
-  const headingId = useId();
-  const noteId = useId();
-  const keepRef = useRef<HTMLButtonElement>(null);
-  return (
-    <section id={id} aria-labelledby={headingId} className="space-y-4">
-      <h2 id={headingId} className={H2}>
-        Ready for a different path?
-      </h2>
-      <p id={noteId}>This clears your saved answers.</p>
-      <Dialog>
-        <DialogTrigger
-          render={<Button aria-describedby={noteId} className={buttonClass} />}
-        >
-          Start a new journey
-        </DialogTrigger>
-        <DialogContent initialFocus={keepRef} className="max-w-md">
-          <DialogTitle>Start a new journey?</DialogTitle>
-          <DialogDescription>This clears your profile, skills and picks.</DialogDescription>
-          <div className="flex flex-wrap gap-3">
-            <Button
-              className={buttonClass}
-              onClick={() => {
-                resetJourney();
-                router.push("/profile");
-              }}
-            >
-              Clear and start over
-            </Button>
-            <DialogClose
-              ref={keepRef}
-              render={<Button variant="secondary" className={buttonClass} />}
-            >
-              Keep my journey
-            </DialogClose>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </section>
   );
 }

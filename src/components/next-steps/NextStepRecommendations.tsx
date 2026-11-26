@@ -16,15 +16,14 @@
 import { useId } from "react";
 
 import NextStepCard from "@/components/next-steps/NextStepCard";
-import { formatCurrency } from "@/components/look-forward/wage-projection-card";
 import { H2 } from "@/components/next-step/scale";
 import {
+  moveImpact,
   rankNextMoves,
   type CareerSummary,
   type NextMove,
   type NextMoveKind,
 } from "@/lib/career-summary";
-import { formatScore } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 import type { Scenario } from "@/types/outcomes";
 
@@ -87,7 +86,7 @@ export function NextStepRecommendations({
             <NextStepCard
               step={{ id: move.kind, title: move.title, description: move.why }}
               badge={BADGES[move.kind]}
-              impact={impactLines(move)}
+              impact={moveImpact(move)}
               action={actionFor(move, career, summary.jobBankUrl)}
             />
           </li>
@@ -95,26 +94,6 @@ export function NextStepRecommendations({
       </ol>
     </section>
   );
-}
-
-// "Match 78 → 84, up 6", or for a plan that doesn't move this career,
-// "Match 79.2, no change from this plan". The experience card adds the
-// starting wage now and after the year.
-function impactLines(move: NextMove): string[] {
-  const lines: string[] = [];
-  if (move.scoreToday !== undefined && move.scoreAfter !== undefined) {
-    lines.push(
-      move.gain
-        ? `Match ${move.scoreToday} → ${move.scoreAfter}, up ${formatScore(move.gain)}`
-        : `Match ${move.scoreToday}, no change from this plan`,
-    );
-  }
-  if (move.wageNow !== undefined && move.wageAfter !== undefined) {
-    lines.push(
-      `Starting wage ${formatCurrency(move.wageNow)} → about ${formatCurrency(move.wageAfter)} a year after 1 year`,
-    );
-  }
-  return lines;
 }
 
 function actionFor(

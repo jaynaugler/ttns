@@ -9,8 +9,11 @@ import type { Scenario } from "@/types/outcomes";
 import { toProjectable } from "./match-adapter";
 import { formatScore, projectOutcomes } from "./projection-logic";
 import {
+	buildPlanDocument,
 	describePlan,
 	getCareerSummary,
+	moveImpact,
+	planAsText,
 	getPathSummary,
 	isNocCode,
 	isNovaScotiaOutlook,
@@ -385,6 +388,87 @@ describe("skillGapsFor", () => {
 	it("is empty when the lead isn't a saved match", () => {
 		assert.deepEqual(skillGapsFor("99999", [lead]).skills, []);
 		assert.deepEqual(skillGapsFor("21300", undefined).skills, []);
+	});
+});
+
+describe("plan document", () => {
+	const skills = ["Digital Literacy", "Problem Solving", "Writing"];
+	const lead = match({ matchPercentage: 0.3 * 40 + 0.7 * (200 / 3) });
+	const summary = getCareerSummary("21232", [lead])!;
+	const plan: Scenario = { kind: "gain-skill", skill: "Teamwork" };
+	const path = getPathSummary({ scenario: plan, careerCode: "21232" }, [lead], skills)!;
+	const moves = rankNextMoves({ careerCode: "21232", savedMatches: [lead], userSkills: skills, plan, jobBankUrl: summary.jobBankUrl });
+	const doc = buildPlanDocument({
+		name: " Test User ",
+		date: new Date(2026, 10, 26),
+		summary,
+		path,
+		gaps: ["Leadership"],
+		moves,
+		updatedPathwaysUrl: "https://example.test/updated-pathways",
+	});
+	const section = (h: string) => doc.sections.find((s) => s.heading === h)?.items;
+
+	it("has the name, date, career with NOC and the Job Bank link", () => {
+		assert.equal(doc.title, "My career plan");
+		assert.deepEqual(section("About this plan"), ["Name: Test User", "Date: November 26, 2026"]);
+		assert.deepEqual(section("Career"), [
+			"Software developers and programmers (NOC 21232)",
+			"Nova Scotia job postings: https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring=21232&fprov=NS",
+		]);
+	});
+
+	it("has the plan, the match change, wages, growth, outlook and skills", () => {
+		assert.deepEqual(section("The plan"), ["Learn Teamwork"]);
+		assert.match(section("Match")![0], /^58\.7 → 70\.5 out of 100 after this plan$/);
+		assert.deepEqual(section("Wages (Job Bank)"), [
+			"Starting out: $58,500 a year",
+			"Typical (median): $93,756 a year",
+			"Top earners: $149,994 a year",
+			"Reference period: 2023-2024",
+		]);
+		assert.equal(section("Wage growth (a rough guide)")?.length, 3);
+		assert.deepEqual(section("Nova Scotia outlook"), ["Good (published 2025-11-21)"]);
+		assert.deepEqual(section("Skills to build"), ["Leadership"]);
+	});
+
+	it("lists the next moves with full links", () => {
+		const items = section("Next moves")!;
+		assert.equal(items.length, moves.length);
+		assert.match(items[0], /^1\. Your chosen plan · Match 58\.7 → 70\.5, up 11\.8 · https:\/\/example\.test\/updated-pathways$/);
+		assert.match(items.at(-1)!, /Search Nova Scotia job postings · https:\/\/www\.jobbank\.gc\.ca\/jobsearch\/jobsearch\?searchstring=21232&fprov=NS$/);
+	});
+
+	it("says so when there's no plan, and leaves out a blank name", () => {
+		const bare = buildPlanDocument({ date: new Date(2026, 0, 2), summary, gaps: [], moves: [] });
+		assert.deepEqual(bare.sections.find((s) => s.heading === "The plan")?.items, [
+			"No plan chosen yet. Try changes on Updated Pathways.",
+		]);
+		assert.deepEqual(bare.sections.find((s) => s.heading === "About this plan")?.items, ["Date: January 2, 2026"]);
+		assert.equal(bare.sections.find((s) => s.heading === "Next moves"), undefined);
+	});
+
+	it("copies as plain text with headings and bullet items", () => {
+		const text = planAsText(doc);
+		assert.match(text, /^My career plan\n\nAbout this plan\n- Name: Test User\n- Date: November 26, 2026\n/);
+		assert.match(text, /\nSkills to build\n- Leadership\n/);
+		assert.match(text, /Estimates only: wages and match scores are a rough guide\.$/);
+	});
+});
+
+describe("moveImpact", () => {
+	it("words the match change and the wage climb", () => {
+		assert.deepEqual(moveImpact({ kind: "skill", title: "x", why: "y", scoreToday: "78", scoreAfter: "84", gain: 6 }), [
+			"Match 78 → 84, up 6",
+		]);
+		assert.deepEqual(moveImpact({ kind: "plan", title: "x", why: "y", scoreToday: "79.2", scoreAfter: "79.2", gain: 0 }), [
+			"Match 79.2, no change from this plan",
+		]);
+		assert.deepEqual(
+			moveImpact({ kind: "experience", title: "x", why: "y", scoreToday: "1", scoreAfter: "2", gain: 1, wageNow: 58500, wageAfter: 65551 }),
+			["Match 1 → 2, up 1", "Starting wage $58,500 → about $65,551 a year after 1 year"],
+		);
+		assert.deepEqual(moveImpact({ kind: "job-search", title: "x", why: "y" }), []);
 	});
 });
 
