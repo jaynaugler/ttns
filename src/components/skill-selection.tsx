@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { saveSkills, useJourneyProgress } from "@/lib/journey-progress";
+import "./skill-selection.css";
 
 export function UserSkillSelection({
   embedded = false,

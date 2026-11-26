@@ -235,24 +235,6 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
     container-name: profile-panels;
     container-type: inline-size;
   }
-  .profile-skill-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .skills-grid-scrollbar {
-    scrollbar-color: var(--muted-foreground) transparent;
-  }
-  .skills-grid-scrollbar::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-top-right-radius: var(--radius-md);
-    border-bottom-right-radius: var(--radius-md);
-  }
-  .skills-grid-scrollbar::-webkit-scrollbar-thumb {
-    background-color: var(--muted-foreground);
-    border-radius: 9999px;
-  }
   .btn-on-bg {
     background-color: var(--brand-red);
     color: #ffffff;
@@ -296,70 +278,9 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   container-type: inline-size;
 }
 
-.profile-skill-selection-panel {
-  container-name: profile-skill-selection-panel;
-  container-type: inline-size;
-  max-width: 28rem;
-  min-width: 0;
-  width: 100%;
-}
-
-/* Keep the one-column skills card aligned with the profile form card. */
-/* --skill-w is the width of every skill button, whatever the column count. */
-.profile-skill-selection-card {
-  --skill-w: 370px;
-  --skill-control-width: 370px;
-  max-width: 28rem;
-  width: 100%;
-}
-
-.skills-grid-scrollbar {
-  grid-template-columns: minmax(0, var(--skill-w));
-  justify-content: start;
-  max-width: 100%;
-  overflow-x: hidden;
-  width: 100%;
-}
-
 @container profile-selection-layout (width >= 57rem) {
   .profile-panels-container {
     grid-template-columns: 28rem minmax(28rem, 1fr);
-  }
-  .profile-skill-selection-panel {
-    max-width: none;
-  }
-  .profile-skill-selection-card {
-    max-width: 100%;
-    min-width: 28rem;
-    width: fit-content;
-  }
-  .skills-grid-scrollbar {
-    grid-template-columns: minmax(0, var(--skill-w));
-    max-width: none;
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-  }
-  .skills-grid-scrollbar > button {
-    height: 46px;
-    width: 100%;
-  }
-}
-
-@container profile-skill-selection-panel (width >= 52.75rem) {
-  .profile-skill-selection-card {
-    --skill-control-width: 752px;
-  }
-  .skills-grid-scrollbar {
-    grid-template-columns: repeat(2, minmax(0, var(--skill-w)));
-  }
-}
-
-@container profile-skill-selection-panel (width >= 76.75rem) {
-  .profile-skill-selection-card {
-    --skill-control-width: 1134px;
-  }
-  .skills-grid-scrollbar {
-    grid-template-columns: repeat(3, minmax(0, var(--skill-w)));
   }
 }
 
@@ -390,38 +311,6 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   }
   .profile-panels-container > :first-child {
     align-self: start;
-  }
-  .profile-skill-selection-panel {
-    height: 100%;
-    min-height: 0;
-  }
-  .profile-skill-selection-card {
-    align-self: start;
-    height: auto;
-    max-height: 100%;
-    min-height: 0;
-  }
-  .profile-skill-selection-card [data-slot="card-content"] {
-    display: flex;
-    flex: 0 1 auto;
-    min-height: 0;
-  }
-  .profile-skill-selection-card [data-slot="card-content"] > .space-y-4 {
-    display: flex;
-    flex: 1 1 100%;
-    flex-direction: column;
-    min-height: 0;
-    min-width: 0;
-    width: 100%;
-  }
-  .profile-skill-selection-card .skills-grid-scrollbar {
-    align-content: start;
-    flex: 0 1 auto;
-    max-height: none;
-    min-height: 0;
-  }
-  .profile-skill-selection-card [data-slot="card-footer"] {
-    flex: 0 0 auto;
   }
 }
 
