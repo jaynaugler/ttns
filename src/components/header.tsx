@@ -95,7 +95,10 @@ export function Header() {
   return (
     // Sticky so the brand/nav/accessibility toggles stay reachable while the
     // page scrolls; h-16 is the anchor the sticky sidebar nav offsets from.
-    <header className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground">
+    <header
+      data-profile-route={pathname === "/profile" ? "true" : undefined}
+      className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground"
+    >
       <div className="max-w-7xl mx-auto flex h-full w-full items-center justify-between gap-6">
         <div className="font-bold text-xl">
           <Link href="/" className="text-primary-foreground hover:no-underline">Take The Next Step</Link>
