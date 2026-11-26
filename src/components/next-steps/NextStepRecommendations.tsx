@@ -17,6 +17,7 @@ import { useId } from "react";
 
 import NextStepCard from "@/components/next-steps/NextStepCard";
 import { formatCurrency } from "@/components/look-forward/wage-projection-card";
+import { H2 } from "@/components/next-step/scale";
 import {
   rankNextMoves,
   type CareerSummary,
@@ -72,12 +73,12 @@ export function NextStepRecommendations({
   return (
     <section aria-labelledby={headingId} className={`${className} space-y-4`}>
       <div className="space-y-1">
-        <h2 id={headingId} className="text-2xl font-bold break-words">
+        <h2 id={headingId} className={H2}>
           Your next moves
         </h2>
         <p>Ranked by how much each one raises your match for {career}.</p>
       </div>
-      <ol className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <ol className="grid grid-cols-1 gap-3 md:grid-cols-2">
         {moves.map((move) => (
           <li key={move.kind} className="min-w-0">
             <NextStepCard

@@ -37,6 +37,16 @@ import { resetJourney, useJourneyProgress } from "@/lib/journey-progress";
 import { findCareerById } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 
+import {
+  CARD,
+  EYEBROW,
+  H2,
+  H3,
+  MEASURE,
+  PAGE_STACK,
+  TILE,
+} from "@/components/next-step/scale";
+
 import { getNovaScotiaOutlooks } from "./actions";
 
 // Journey step 4 (Team 5). Wraps up the journey: a banner with the path
@@ -71,9 +81,8 @@ export default function NextStepPage() {
 const pageLinkClass =
   "inline-flex min-h-11 items-center underline underline-offset-4 break-words focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-red dark:text-[var(--dm-brand-yellow)] dark:focus-visible:outline-[var(--dm-brand-yellow)]";
 
-// The light cards below the banner, as in Look Forward.
-const cardClass =
-  "min-w-0 space-y-4 rounded-xl border-2 border-foreground/50 bg-background p-5 text-foreground dark:bg-[var(--dm-card-grey)]";
+// The light cards below the banner (Team 5's shared scale).
+const cardClass = CARD;
 
 const chipClass =
   "max-w-full rounded-full border-2 border-foreground/50 px-3 py-1 break-words";
@@ -154,7 +163,7 @@ function NextStepSummary() {
   });
 
   return (
-    <div className="space-y-8">
+    <div className={`${PAGE_STACK} ${MEASURE}`}>
       {stale.length > 0 && <StalePicks codes={stale} />}
       {top ? (
         <>
@@ -232,7 +241,7 @@ function SectionCard({
   const headingId = useId();
   return (
     <section aria-labelledby={headingId} className={cardClass}>
-      <h2 id={headingId} className="text-2xl font-bold break-words">
+      <h2 id={headingId} className={H2}>
         {title}
       </h2>
       {children}
@@ -303,7 +312,7 @@ function Banner({
       <div className="space-y-5 pr-4 sm:ml-auto sm:w-3/5">
         <p className="text-xl font-bold break-words sm:text-2xl">{intro}</p>
         <div className="space-y-1">
-          <h2 id={headingId} className="text-sm font-bold tracking-widest uppercase">
+          <h2 id={headingId} className={EYEBROW}>
             {path ? "Your chosen path" : "Your #1 pick"}
           </h2>
           <h3 className="text-3xl font-bold text-balance break-words sm:text-4xl">
@@ -450,7 +459,7 @@ function WageTiles({ wages }: { wages: CareerWages | undefined }) {
         {tiles.map(({ term, figure }) => (
           <div
             key={term}
-            className="flex min-w-0 flex-col gap-1 rounded-lg border-2 border-foreground/30 p-4"
+            className={TILE}
           >
             <dt className="text-sm font-bold break-words">{term}</dt>
             <dd className="flex min-w-0 flex-col gap-1 break-words">
@@ -627,7 +636,7 @@ function CareerSkillsCard({
     <SectionCard title="Your skills and this career">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="min-w-0 space-y-2">
-          <h3 className="text-lg font-bold">Skills you selected that it uses</h3>
+          <h3 className={H3}>Skills you selected that it uses</h3>
           {matched.length > 0 ? (
             <ul className="flex flex-wrap gap-2">
               {matched.map((skill) => (
@@ -642,7 +651,7 @@ function CareerSkillsCard({
         </div>
 
         <div className="min-w-0 space-y-2">
-          <h3 className="text-lg font-bold">
+          <h3 className={H3}>
             Skills this career lists that you didn&apos;t select
           </h3>
           {/* We only know the skills the user picked, not every skill they
@@ -781,17 +790,17 @@ function OtherPicks({
 }) {
   return (
     <SectionCard title="Your other picks">
-      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {picks.map(({ summary, pickNumber }) => {
           const name = careerName(summary);
           const typical = summary.wages?.typical;
           return (
             <li
               key={summary.code}
-              className="flex min-w-0 flex-col gap-2 rounded-lg border-2 border-foreground/30 p-4"
+              className={`${TILE} gap-2`}
             >
               <p className="text-sm font-bold">#{pickNumber} Top 3 pick</p>
-              <h3 className="text-xl font-bold break-words">{name}</h3>
+              <h3 className={H3}>{name}</h3>
               <dl className="space-y-1">
                 <OtherPickFact term="Match score">
                   {summary.score !== undefined ? `${summary.score} out of 100` : "Not saved"}
@@ -880,8 +889,8 @@ function StartOver() {
   const noteId = useId();
   const keepRef = useRef<HTMLButtonElement>(null);
   return (
-    <section aria-labelledby={headingId} className="space-y-3">
-      <h2 id={headingId} className="text-2xl font-bold">
+    <section aria-labelledby={headingId} className="space-y-4">
+      <h2 id={headingId} className={H2}>
         Ready for a different path?
       </h2>
       <p id={noteId}>This clears your saved answers.</p>
