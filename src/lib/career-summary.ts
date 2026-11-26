@@ -349,7 +349,7 @@ export function getCareerSummary(
 export interface PathSummary {
 	scenario: Scenario;
 	// The plan as short steps, e.g. ["Learn A, B", "Finish High School",
-	// "1 year experience"].
+	// "1 year of experience"].
 	plan: string[];
 	// formatScore of today's score and the projected one, e.g. "80.5", "86".
 	scoreToday: string;
@@ -362,7 +362,7 @@ export interface PathSummary {
 }
 
 function yearsText(years: number): string {
-	return `${years} ${years === 1 ? "year" : "years"} experience`;
+	return `${years} ${years === 1 ? "year" : "years"} of experience`;
 }
 
 // The plan's steps, in the order "Do all three" applies them.
@@ -653,6 +653,17 @@ export function planSkills(scenario: Scenario | undefined): string[] {
 		default:
 			return [];
 	}
+}
+
+// The recommended skill a plan learns, when the user picked none of their
+// own: Look Forward's "Try the recommended skill" (gain-skill), or "Do all
+// three" built around it. Undefined for the user's own picks.
+export function recommendedSkill(scenario: Scenario | undefined): string | undefined {
+	if (scenario?.kind === "gain-skill") return scenario.skill.trim() || undefined;
+	if (scenario?.kind === "combined" && scenario.recommended && Array.isArray(scenario.skills)) {
+		return scenario.skills[0]?.trim() || undefined;
+	}
+	return undefined;
 }
 
 export interface SkillGap {

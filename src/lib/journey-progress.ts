@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
+import skillsData from "@/data/skills.json";
 import { JOURNEY_STEPS, type JourneyStepId } from "./journey";
 import type { CareerMatch } from "@/types/careers";
 import type { Scenario } from "@/types/outcomes";
@@ -106,21 +107,14 @@ function parse(raw: string | null): JourneyState {
     }
 
     if (Array.isArray(parsed.newSkills)) {
-      const rawSkills = parsed.newSkills as unknown[];
-      const picks = [...new Set(
-        rawSkills
-          .filter((skill: unknown): skill is string => typeof skill === "string")
-          .map((skill: string) => skill.trim())
-          .filter((skill: string) => skill !== ""),
-      )];
+      const picks = cleanSkills(parsed.newSkills as unknown[]);
       if (picks.length > 0) {
         state.newSkills = picks;
       }
-    } else if (
-      typeof parsed.newSkill === "string" && parsed.newSkill.trim() !== ""
-    ) {
+    } else if (typeof parsed.newSkill === "string") {
       // A single pick persisted by earlier builds.
-      state.newSkills = [parsed.newSkill];
+      const picks = cleanSkills([parsed.newSkill]);
+      if (picks.length > 0) state.newSkills = picks;
     }
 
     // Partial corruption must not lose the rest of the journey state, so
@@ -145,31 +139,66 @@ function parse(raw: string | null): JourneyState {
   }
 }
 
-function isTextList(value: unknown): value is string[] {
-  return Array.isArray(value) && value.every((item) => typeof item === "string");
+// Saved skills to learn: only real skills (src/data/skills.json), no
+// repeats, at most MAX_SKILL_PICKS. Edited or out-of-date saved data could
+// otherwise show "Learn Juggling, Negotiating, Negotiating, …".
+const KNOWN_SKILLS = new Set<string>(skillsData);
+// Mirrors MAX_SKILL_PICKS in src/lib/projection-logic.ts.
+const MAX_SKILL_PICKS = 3;
+// Mirrors EXPERIENCE_YEAR_CHOICES in src/components/look-forward/scenario-picker.tsx.
+const EXPERIENCE_YEARS: readonly number[] = [1, 2, 5];
+
+function cleanSkills(raw: readonly unknown[]): string[] {
+  return [
+    ...new Set(
+      raw
+        .filter((skill): skill is string => typeof skill === "string")
+        .map((skill) => skill.trim())
+        .filter((skill) => KNOWN_SKILLS.has(skill)),
+    ),
+  ].slice(0, MAX_SKILL_PICKS);
 }
 
-function isYears(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value) && value >= 0;
+function isYearChoice(value: unknown): value is number {
+  return typeof value === "number" && EXPERIENCE_YEARS.includes(value);
 }
 
-// A saved Look Forward choice, or undefined if any part of it is malformed.
+// A saved Look Forward choice, cleaned: skills as in cleanSkills, and years
+// only 1, 2 or 5. Undefined if anything else is malformed, or the change
+// is left with nothing to do (no real skill to learn, other years).
 function parseLookForward(value: unknown): LookForwardChoice | undefined {
   if (!value || typeof value !== "object") return undefined;
   const { scenario, careerCode } = value as Record<string, unknown>;
   if (typeof careerCode !== "string" || !/^\d{5}$/.test(careerCode)) return undefined;
   if (!scenario || typeof scenario !== "object") return undefined;
   const s = scenario as Record<string, unknown>;
-  const valid =
-    (s.kind === "gain-skill" && typeof s.skill === "string") ||
-    (s.kind === "gain-skills" && isTextList(s.skills)) ||
-    (s.kind === "finish-education" && typeof s.step === "string") ||
-    (s.kind === "add-experience" && isYears(s.years)) ||
-    (s.kind === "combined" &&
-      isTextList(s.skills) &&
-      typeof s.step === "string" &&
-      isYears(s.years));
-  return valid ? { scenario: scenario as Scenario, careerCode } : undefined;
+  const skills = Array.isArray(s.skills) ? cleanSkills(s.skills) : undefined;
+
+  let clean: Scenario | undefined;
+  if (s.kind === "gain-skill" && typeof s.skill === "string") {
+    const [skill] = cleanSkills([s.skill]);
+    if (skill) clean = { kind: "gain-skill", skill };
+  } else if (s.kind === "gain-skills" && skills && skills.length > 0) {
+    clean = { kind: "gain-skills", skills };
+  } else if (s.kind === "finish-education" && typeof s.step === "string") {
+    clean = { kind: "finish-education", step: s.step };
+  } else if (s.kind === "add-experience" && isYearChoice(s.years)) {
+    clean = { kind: "add-experience", years: s.years };
+  } else if (
+    s.kind === "combined" &&
+    skills &&
+    typeof s.step === "string" &&
+    isYearChoice(s.years)
+  ) {
+    clean = {
+      kind: "combined",
+      skills,
+      step: s.step,
+      years: s.years,
+      ...(typeof s.recommended === "boolean" ? { recommended: s.recommended } : {}),
+    };
+  }
+  return clean ? { scenario: clean, careerCode } : undefined;
 }
 
 function readState(): JourneyState {

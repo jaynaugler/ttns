@@ -243,7 +243,7 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker, choic
 							}
 							wage={
 								scenario && todayTop
-									? summaryWage(todayTop.careerId, rows, chosenCareer, years)
+									? summaryWage(todayTop.careerId, rows, wageCareer, years)
 									: undefined
 							}
 							years={years}

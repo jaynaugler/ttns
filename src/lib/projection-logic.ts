@@ -640,7 +640,7 @@ export function describeScenario(scenario: Scenario): string {
 			return [
 				scenario.skills.length > 0 ? `Learn ${scenario.skills.join(", ")}` : undefined,
 				`Finish ${scenario.step.trim() || "an education step"}`,
-				`${scenario.years} ${yearUnit(scenario.years)} experience`,
+				`${scenario.years} ${yearUnit(scenario.years)} of experience`,
 			]
 				.filter(Boolean)
 				.join(" · ");
@@ -811,9 +811,9 @@ export function pickWageCareer(
 }
 
 export interface SummaryWage {
-	// The career both lines of the tile describe; undefined when careers are
-	// tied at #1 and the user hasn't selected one yet.
+	// The career both lines of the tile describe: the one the wage card shows.
 	careerId?: string;
+	// True when careers are tied at the projected #1.
 	tied: boolean;
 	// Its yearly median against today's #1.
 	change?: number;
@@ -821,23 +821,24 @@ export interface SummaryWage {
 	afterYears?: WageEstimate;
 }
 
-// The summary's wage tile: the projected #1, or with a tie at #1 the career
-// selected in Step 3 (none until one is). The headline and the "after N
-// years" line always come from this one career.
+// The summary's wage tile. It always describes the career the wage card is
+// showing (pickWageCareer's careerId): the row picked automatically on the
+// first change, or the row the user selected, in every change including
+// Add experience. Falls back to the projected #1 when that career isn't
+// listed. The headline and the "after N years" line come from this one
+// career.
 export function summaryWage(
 	todayId: string,
 	projectedTop: readonly CareerMatch[],
-	selectedId?: string | null,
+	shownId?: string | null,
 	years?: number,
 ): SummaryWage | undefined {
 	if (projectedTop.length === 0) return undefined;
 	const tied = labelRanks(projectedTop.slice(0, 2))[0].tied;
-	const careerId = tied
-		? selectedId && projectedTop.some((match) => match.careerId === selectedId)
-			? selectedId
-			: undefined
-		: projectedTop[0].careerId;
-	if (!careerId) return { tied };
+	const careerId =
+		shownId && projectedTop.some((match) => match.careerId === shownId)
+			? shownId
+			: projectedTop[0].careerId;
 	return {
 		careerId,
 		tied,

@@ -696,7 +696,7 @@ describe("projectOutcomes: do all three", () => {
 			userSkills: JOURNEY_SKILLS,
 		});
 		assert.equal(none.reason, "Education and 1 year's experience; it doesn't use this skill.");
-		assert.equal(describeScenario(all(["A", "B"], 5)), "Learn A, B · Finish a diploma · 5 years experience");
+		assert.equal(describeScenario(all(["A", "B"], 5)), "Learn A, B · Finish a diploma · 5 years of experience");
 	});
 });
 
@@ -891,15 +891,32 @@ describe("summaryWage", () => {
 		assert.equal(summaryWage("82031", tiedTop, "32120", 1)?.afterYears?.annual, 54413);
 	});
 
-	it("names no career for a tie at #1 until one is selected", () => {
-		assert.deepEqual(summaryWage("82031", tiedTop, undefined, 1), { tied: true });
-		assert.deepEqual(summaryWage("82031", tiedTop, "not-listed", 1), { tied: true });
-		assert.equal(summaryWage("82031", tiedTop, "32120")?.careerId, "32120");
+	// Today's #1 before any change: landscaping (82031).
+	const todayTop = [{ careerId: "82031", score: 75 }];
+
+	it("follows the row the wage card picks on the first change, even with a tie at #1", () => {
+		// No row selected yet: the wage card shows a row anyway, so the tile
+		// must describe that row, not ask the user to select one.
+		const shown = pickWageCareer(todayTop, tiedTop, null)!.careerId;
+		const wage = summaryWage("82031", tiedTop, shown, 1);
+		assert.equal(wage?.careerId, shown);
+		assert.equal(wage?.tied, true);
+		assert.equal(wage?.change, medianWageChange("82031", shown));
 	});
 
-	it("uses the projected #1 without a tie, whatever row is selected", () => {
+	it("follows the selected row in Add experience, not the projected #1", () => {
 		const top = [{ careerId: "32120", score: 81 }, ...tiedTop.slice(1)];
-		assert.deepEqual(summaryWage("82031", top, "00010"), {
+		const shown = pickWageCareer(todayTop, top, "00010")!.careerId;
+		assert.equal(shown, "00010");
+		const wage = summaryWage("82031", top, shown, 5);
+		assert.equal(wage?.careerId, "00010");
+		assert.equal(wage?.change, medianWageChange("82031", "00010"));
+		assert.deepEqual(wage?.afterYears, estimateWageAfterYears(findWage("00010"), 5));
+	});
+
+	it("falls back to the projected #1 when the shown career isn't listed", () => {
+		const top = [{ careerId: "32120", score: 81 }, ...tiedTop.slice(1)];
+		assert.deepEqual(summaryWage("82031", top, "not-listed"), {
 			careerId: "32120",
 			tied: false,
 			change: 17920,

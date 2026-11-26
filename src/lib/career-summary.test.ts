@@ -23,6 +23,7 @@ import {
 	rankByGain,
 	rankNextMoves,
 	rankSkillsToDevelop,
+	recommendedSkill,
 	skillGapsFor,
 	splitPicks,
 	SUMMARY_YEARS,
@@ -276,20 +277,20 @@ describe("describePlan", () => {
 				step: "High School",
 				years: 1,
 			}),
-			["Learn Product Design, Digital Literacy", "Finish High School", "1 year experience"],
+			["Learn Product Design, Digital Literacy", "Finish High School", "1 year of experience"],
 		);
 	});
 
 	it("leaves out Learn when Do all three has no skills", () => {
 		assert.deepEqual(describePlan({ kind: "combined", skills: [], step: "", years: 2 }), [
 			"Finish an education step",
-			"2 years experience",
+			"2 years of experience",
 		]);
 	});
 
 	it("describes single changes", () => {
 		assert.deepEqual(describePlan({ kind: "gain-skill", skill: "Teamwork" }), ["Learn Teamwork"]);
-		assert.deepEqual(describePlan({ kind: "add-experience", years: 3 }), ["3 years experience"]);
+		assert.deepEqual(describePlan({ kind: "add-experience", years: 3 }), ["3 years of experience"]);
 	});
 });
 
@@ -300,7 +301,7 @@ describe("getPathSummary", () => {
 	it("re-projects the chosen career with Look Forward's functions", () => {
 		const summary = getPathSummary({ scenario: plan, careerCode: "21232" }, [match()], skills);
 		assert.ok(summary);
-		assert.deepEqual(summary.plan, ["Learn Teamwork", "Finish High School", "1 year experience"]);
+		assert.deepEqual(summary.plan, ["Learn Teamwork", "Finish High School", "1 year of experience"]);
 		assert.equal(summary.scoreToday, "79.2");
 		const expected = projectOutcomes(toProjectable([match()]), plan, { userSkills: skills })[0];
 		assert.equal(summary.scoreAfter, formatScore(expected.score));
@@ -383,6 +384,22 @@ describe("skillGapsFor", () => {
 	it("is empty when the lead isn't a saved match", () => {
 		assert.deepEqual(skillGapsFor("99999", [lead]).skills, []);
 		assert.deepEqual(skillGapsFor("21300", undefined).skills, []);
+	});
+});
+
+describe("recommendedSkill", () => {
+	it("finds the recommended skill a plan learns, not the user's own picks", () => {
+		assert.equal(recommendedSkill({ kind: "gain-skill", skill: "Critical Thinking" }), "Critical Thinking");
+		assert.equal(
+			recommendedSkill({ kind: "combined", skills: ["Evaluation"], step: "X", years: 1, recommended: true }),
+			"Evaluation",
+		);
+		assert.equal(
+			recommendedSkill({ kind: "combined", skills: ["Evaluation"], step: "X", years: 1, recommended: false }),
+			undefined,
+		);
+		assert.equal(recommendedSkill({ kind: "gain-skills", skills: ["A"] }), undefined);
+		assert.equal(recommendedSkill(undefined), undefined);
 	});
 });
 

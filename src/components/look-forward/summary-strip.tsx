@@ -48,6 +48,10 @@ export function SummaryStrip({
 	years?: number;
 }) {
 	const sameTop = projected !== undefined && projected.careerId === today?.careerId;
+	// The wage tile follows the wage card. When that isn't the projected #1
+	// (a selected row) or #1 is shared, it names its career.
+	const wageNamed =
+		wage?.careerId !== undefined && (wage.tied || wage.careerId !== projected?.careerId);
 
 	return (
 		<dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -105,16 +109,14 @@ export function SummaryStrip({
 			</Tile>
 
 			<Tile term="Median wage change vs today's #1">
-				{!projected || !wage ? (
+				{!projected || !wage?.careerId ? (
 					"Pick a change in Step 2"
-				) : !wage.careerId ? (
-					"Select a career in Step 3"
 				) : (
 					<>
 						<span className="block text-xl font-bold">
-							{wage.tied
+							{wageNamed
 								? namedChange(wage.careerId, wage.change, today?.careerId)
-								: sameTop || wage.change === 0
+								: wage.careerId === today?.careerId || wage.change === 0
 									? "No change"
 									: wage.change === undefined
 										? "Not published"
@@ -124,7 +126,7 @@ export function SummaryStrip({
 							<>
 								<Pause />
 								<span className="block text-sm">
-									{wage.tied ? `${careerTitle(wage.careerId)}: about` : "About"}{" "}
+									{wageNamed ? `${careerTitle(wage.careerId)}: about` : "About"}{" "}
 									{formatCurrency(wage.afterYears.annual)} a year after {years}{" "}
 									{years === 1 ? "year" : "years"}
 								</span>

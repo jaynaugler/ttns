@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Check, Minus } from "lucide-react";
 
 import { JourneyStepPage } from "@/components/journey-step-page";
@@ -11,10 +11,19 @@ import { NextStepRecommendations } from "@/components/next-steps/NextStepRecomme
 import { formatCurrency } from "@/components/look-forward/wage-projection-card";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   getCareerSummary,
   getPathSummary,
   markSkillsForCareer,
   planSkills,
+  recommendedSkill,
   skillGapsFor,
   splitPicks,
   type CareerSummary,
@@ -131,15 +140,8 @@ function NextStepSummary() {
     outlooks?.key === codesKey ? outlooks.status : "loading";
   const records = outlooks?.key === codesKey ? outlooks.records : [];
 
-  // Filled just after the region mounts, so screen readers announce it.
-  const [intro, setIntro] = useState("");
-  useEffect(() => {
-    const timer = window.setTimeout(
-      () => setIntro(`Here's your path${firstName ? `, ${firstName}` : ""}.`),
-      150,
-    );
-    return () => window.clearTimeout(timer);
-  }, [firstName]);
+  // A greeting, not a status message, so it renders as plain text.
+  const intro = `Here's your path${firstName ? `, ${firstName}` : ""}.`;
 
   const top = leadCode
     ? getCareerSummary(leadCode, journey.savedMatches, records)
@@ -170,7 +172,11 @@ function NextStepSummary() {
             savedMatches={journey.savedMatches}
             plan={planSkills(path?.scenario)}
           />
-          <SkillsInProgress skills={journey.newSkills} summary={top} />
+          <SkillsInProgress
+            skills={journey.newSkills}
+            summary={top}
+            recommended={recommendedSkill(path?.scenario)}
+          />
           {/* "Your next moves" (built on Joshua's #51 card design) for the
               same career the page leads with, so the cards always match the
               banner. After both skills cards, so those sit together. The
@@ -295,9 +301,7 @@ function Banner({
       />
 
       <div className="space-y-5 pr-4 sm:ml-auto sm:w-3/5">
-        <div role="status" className="min-h-8 text-xl font-bold break-words sm:text-2xl">
-          {intro}
-        </div>
+        <p className="text-xl font-bold break-words sm:text-2xl">{intro}</p>
         <div className="space-y-1">
           <h2 id={headingId} className="text-sm font-bold tracking-widest uppercase">
             {path ? "Your chosen path" : "Your #1 pick"}
@@ -328,7 +332,14 @@ function Banner({
 
         <dl className={fitGridClass}>
           <StatChip term="Match score">
-            {path ? (
+            {path && path.scoreToday === path.scoreAfter ? (
+              // "79.2, no change from this plan" rather than "79.2 → 79.2".
+              <>
+                {path.scoreToday}
+                <span className="sr-only">,</span>
+                <span className="block text-sm font-normal">no change from this plan</span>
+              </>
+            ) : path ? (
               <>
                 <span>
                   {path.scoreToday}
@@ -702,18 +713,29 @@ function CareerSkillsCard({
 function SkillsInProgress({
   skills,
   summary,
+  recommended,
 }: {
   skills: string[] | undefined;
   summary: CareerSummary;
+  // The plan's recommended skill, listed when the user picked none, so this
+  // card never says "no skills" while the plan says "Learn <skill>".
+  recommended?: string;
 }) {
-  const marked = markSkillsForCareer(skills, summary);
+  const ownPicks = markSkillsForCareer(skills, summary);
+  const marked =
+    ownPicks.length > 0 || !recommended
+      ? ownPicks.map((pick) => ({ ...pick, recommended: false }))
+      : markSkillsForCareer([recommended], summary).map((pick) => ({
+          ...pick,
+          recommended: true,
+        }));
   return (
     <SectionCard title="Skills you're working on">
       {marked.length > 0 ? (
         // One full-width row per skill, so the rows line up whether or not
         // their text wraps.
         <ul className="space-y-3">
-          {marked.map(({ skill, used }) => (
+          {marked.map(({ skill, used, recommended: isRecommended }) => (
             <li
               key={skill}
               className="flex w-full min-w-0 items-center gap-2 rounded-2xl border-2 border-foreground/50 px-4 py-2"
@@ -728,6 +750,7 @@ function SkillsInProgress({
                 {/* In words, so the icon is never the only cue. */}
                 <span className="text-sm">
                   {" "}
+                  {isRecommended && "· recommended "}
                   {used ? "· used in this career" : "· not used in this career"}
                 </span>
               </span>
@@ -848,26 +871,48 @@ function NoPicks() {
   );
 }
 
+// Clearing the journey can't be undone, so the button asks first. Base UI's
+// Dialog moves focus into the dialog (to "Keep my journey", the safe choice),
+// traps it there, closes on Escape, and returns focus to the button.
 function StartOver() {
   const router = useRouter();
   const headingId = useId();
   const noteId = useId();
+  const keepRef = useRef<HTMLButtonElement>(null);
   return (
     <section aria-labelledby={headingId} className="space-y-3">
       <h2 id={headingId} className="text-2xl font-bold">
         Ready for a different path?
       </h2>
       <p id={noteId}>This clears your saved answers.</p>
-      <Button
-        aria-describedby={noteId}
-        className={buttonClass}
-        onClick={() => {
-          resetJourney();
-          router.push("/profile");
-        }}
-      >
-        Start a new journey
-      </Button>
+      <Dialog>
+        <DialogTrigger
+          render={<Button aria-describedby={noteId} className={buttonClass} />}
+        >
+          Start a new journey
+        </DialogTrigger>
+        <DialogContent initialFocus={keepRef} className="max-w-md">
+          <DialogTitle>Start a new journey?</DialogTitle>
+          <DialogDescription>This clears your profile, skills and picks.</DialogDescription>
+          <div className="flex flex-wrap gap-3">
+            <Button
+              className={buttonClass}
+              onClick={() => {
+                resetJourney();
+                router.push("/profile");
+              }}
+            >
+              Clear and start over
+            </Button>
+            <DialogClose
+              ref={keepRef}
+              render={<Button variant="secondary" className={buttonClass} />}
+            >
+              Keep my journey
+            </DialogClose>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
