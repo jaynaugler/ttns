@@ -31,6 +31,8 @@ const steps = [
   { key: "review", title: "Review your profile" },
 ];
 const reviewStep = steps.length - 1;
+const wrappingActionButtonClass =
+  "h-auto min-h-9 min-w-0 max-w-full w-fit shrink whitespace-normal text-center leading-tight";
 
 /**
  * @param {Object} props
@@ -229,15 +231,21 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
           the submit button to it. */}
       <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
         {submitted ? (
-          <div className="flex w-full flex-wrap items-center gap-2">
-            <Button type="button" variant="ghost" size="lg" onClick={startOver}>
+          <div className="flex w-full flex-nowrap items-center gap-2">
+            <Button
+              type="button"
+              variant="ghost"
+              size="lg"
+              onClick={startOver}
+              className={wrappingActionButtonClass}
+            >
               Start another profile
             </Button>
             <Button
               type="button"
               size="lg"
               onClick={viewProfile}
-              className="ml-auto"
+              className={`${wrappingActionButtonClass} ml-auto`}
             >
               View my profile
             </Button>
@@ -269,7 +277,7 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
               type="submit"
               form="profile-form"
               size="lg"
-              className="h-auto min-h-9 min-w-0 max-w-full w-fit shrink whitespace-normal text-center leading-tight"
+              className={wrappingActionButtonClass}
             >
               {nextLabel}
             </Button>
