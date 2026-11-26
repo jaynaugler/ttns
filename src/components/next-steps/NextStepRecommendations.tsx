@@ -37,6 +37,8 @@ const BADGES: Record<NextMoveKind, string> = {
 };
 
 export interface NextStepRecommendationsProps {
+  // The section's anchor for "On this page".
+  id?: string;
   // The career the page leads with.
   summary: CareerSummary;
   savedMatches?: CareerMatch[];
@@ -50,6 +52,7 @@ export interface NextStepRecommendationsProps {
 }
 
 export function NextStepRecommendations({
+  id,
   summary,
   savedMatches,
   savedSkills,
@@ -71,7 +74,7 @@ export function NextStepRecommendations({
 
   const career = summary.title ?? `Career ${summary.code}`;
   return (
-    <section aria-labelledby={headingId} className={`${className} space-y-4`}>
+    <section id={id} aria-labelledby={headingId} className={`${className} space-y-4`}>
       <div className="space-y-1">
         <h2 id={headingId} className={H2}>
           Your next moves

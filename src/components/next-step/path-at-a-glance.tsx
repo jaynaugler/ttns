@@ -10,9 +10,11 @@ import { CARD, H2, H3 } from "./scale";
 // with a chosen plan; the order is in the <ol>, and the step numbers are a
 // decorative echo of it.
 export function PathAtAGlance({
+  id,
   summary,
   path,
 }: {
+  id?: string;
   summary: CareerSummary;
   path: PathSummary;
 }) {
@@ -49,7 +51,7 @@ export function PathAtAGlance({
   ];
 
   return (
-    <section aria-labelledby={headingId} className={CARD}>
+    <section id={id} aria-labelledby={headingId} className={CARD}>
       <h2 id={headingId} className={H2}>
         Your path at a glance
       </h2>

@@ -23,6 +23,7 @@ import {
   getPathSummary,
   markSkillsForCareer,
   planSkills,
+  rankNextMoves,
   recommendedSkill,
   skillGapsFor,
   splitPicks,
@@ -37,6 +38,7 @@ import { resetJourney, useJourneyProgress } from "@/lib/journey-progress";
 import { findCareerById } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 
+import { OnThisPage } from "@/components/next-step/on-this-page";
 import { PathAtAGlance } from "@/components/next-step/path-at-a-glance";
 import { WageGrowthChart } from "@/components/next-step/wage-growth-chart";
 import {
@@ -99,6 +101,19 @@ const buttonClass =
 // one column at 320px.
 const fitGridClass =
   "grid grid-cols-[repeat(auto-fit,minmax(min(100%,12rem),1fr))] gap-3";
+
+// The page's sections, as anchors for "On this page".
+const SECTIONS = {
+  path: { id: "your-path", label: "Your path" },
+  glance: { id: "path-at-a-glance", label: "At a glance" },
+  pays: { id: "what-it-pays", label: "What it pays" },
+  outlook: { id: "outlook", label: "Outlook" },
+  skills: { id: "your-skills", label: "Skills" },
+  working: { id: "skills-in-progress", label: "Working on" },
+  moves: { id: "next-moves", label: "Next moves" },
+  others: { id: "other-picks", label: "Other picks" },
+  finish: { id: "finish", label: "Save or start again" },
+} as const;
 
 // "Skills this career lists that you didn't select" shows this many before
 // "Show all".
@@ -164,19 +179,48 @@ function NextStepSummary() {
     return summary ? [{ summary, pickNumber: index + 1 }] : [];
   });
 
+  const plan = path ? journey.lookForward?.scenario : undefined;
+  const degree = journey.profile?.education?.degree;
+  const hasMoves =
+    top !== undefined &&
+    rankNextMoves({
+      careerCode: top.code,
+      savedMatches: journey.savedMatches,
+      userSkills: journey.savedSkills,
+      plan,
+      degree,
+      outlook: top.outlook,
+      jobBankUrl: top.jobBankUrl,
+    }).length > 0;
+  // Only the sections that are on the page.
+  const jumpLinks = top
+    ? [
+        SECTIONS.path,
+        ...(path ? [SECTIONS.glance] : []),
+        SECTIONS.pays,
+        SECTIONS.outlook,
+        SECTIONS.skills,
+        SECTIONS.working,
+        ...(hasMoves ? [SECTIONS.moves] : []),
+        ...(others.length > 0 ? [SECTIONS.others] : []),
+        SECTIONS.finish,
+      ]
+    : [];
+
   return (
     <div className={`${PAGE_STACK} ${MEASURE}`}>
+      <OnThisPage links={jumpLinks} />
       {stale.length > 0 && <StalePicks codes={stale} />}
       {top ? (
         <>
-          <div className="space-y-2">
+          <div id={SECTIONS.path.id} className="space-y-2">
             <Banner intro={intro} summary={top} path={path} />
             {/* The footer credits Unsplash "unless stated otherwise", so the
                 banner's source is stated here. Full foreground colour, not
                 muted, so it stays readable. */}
             <p className="text-sm text-foreground">{BANNER_IMAGE.credit}.</p>
           </div>
-          {path && <PathAtAGlance summary={top} path={path} />}
+          {path && <PathAtAGlance id={SECTIONS.glance.id} summary={top} path={path} />}
           <WagesCard summary={top} />
           <OutlookCard summary={top} status={outlookStatus} />
           <CareerSkillsCard
@@ -194,11 +238,12 @@ function NextStepSummary() {
               banner. After both skills cards, so those sit together. The
               plan is passed only when the page leads with the plan's career. */}
           <NextStepRecommendations
+            id={SECTIONS.moves.id}
             summary={top}
             savedMatches={journey.savedMatches}
             savedSkills={journey.savedSkills}
-            plan={path ? journey.lookForward?.scenario : undefined}
-            degree={journey.profile?.education?.degree}
+            plan={plan}
+            degree={degree}
             className={cardClass}
           />
           {others.length > 0 && <OtherPicks picks={others} />}
@@ -207,7 +252,7 @@ function NextStepSummary() {
         <NoPicks />
       )}
 
-      <StartOver />
+      <StartOver id={SECTIONS.finish.id} />
     </div>
   );
 }
@@ -236,14 +281,17 @@ function formatDate(isoDate: string): string {
 // A light card with an h2, for each part of the summary.
 function SectionCard({
   title,
+  id,
   children,
 }: {
   title: string;
+  // The section's anchor for "On this page".
+  id?: string;
   children: ReactNode;
 }) {
   const headingId = useId();
   return (
-    <section aria-labelledby={headingId} className={cardClass}>
+    <section id={id} aria-labelledby={headingId} className={cardClass}>
       <h2 id={headingId} className={H2}>
         {title}
       </h2>
@@ -422,7 +470,7 @@ function StatChip({ term, children }: { term: string; children: ReactNode }) {
 
 function WagesCard({ summary }: { summary: CareerSummary }) {
   return (
-    <SectionCard title="What it pays">
+    <SectionCard title="What it pays" id={SECTIONS.pays.id}>
       <WageTiles wages={summary.wages} />
       <WageGrowthChart careerCode={summary.code} />
     </SectionCard>
@@ -517,7 +565,7 @@ function OutlookCard({
 }) {
   const { outlook } = summary;
   return (
-    <SectionCard title="Outlook in Nova Scotia">
+    <SectionCard title="Outlook in Nova Scotia" id={SECTIONS.outlook.id}>
       {outlook ? (
         <OutlookBadge outlook={outlook} />
       ) : (
@@ -600,7 +648,7 @@ function CareerSkillsCard({
 
   if (!summary.matchedSkills && !summary.skillsToDevelop) {
     return (
-      <SectionCard title="Your skills and this career">
+      <SectionCard title="Your skills and this career" id={SECTIONS.skills.id}>
         <p>
           Skill details for this career weren&apos;t saved. Run Current
           Pathways again to see them.
@@ -618,7 +666,7 @@ function CareerSkillsCard({
   const sharedCount = gaps.countsVary ? 0 : (toDevelop[0]?.alsoNeededBy ?? 0);
 
   return (
-    <SectionCard title="Your skills and this career">
+    <SectionCard title="Your skills and this career" id={SECTIONS.skills.id}>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="min-w-0 space-y-2">
           <h3 className={H3}>Skills you selected that it uses</h3>
@@ -724,7 +772,7 @@ function SkillsInProgress({
           recommended: true,
         }));
   return (
-    <SectionCard title="Skills you're working on">
+    <SectionCard title="Skills you're working on" id={SECTIONS.working.id}>
       {marked.length > 0 ? (
         // One full-width row per skill, so the rows line up whether or not
         // their text wraps.
@@ -774,7 +822,7 @@ function OtherPicks({
   picks: { summary: CareerSummary; pickNumber: number }[];
 }) {
   return (
-    <SectionCard title="Your other picks">
+    <SectionCard title="Your other picks" id={SECTIONS.others.id}>
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {picks.map(({ summary, pickNumber }) => {
           const name = careerName(summary);
@@ -868,13 +916,13 @@ function NoPicks() {
 // Clearing the journey can't be undone, so the button asks first. Base UI's
 // Dialog moves focus into the dialog (to "Keep my journey", the safe choice),
 // traps it there, closes on Escape, and returns focus to the button.
-function StartOver() {
+function StartOver({ id }: { id?: string }) {
   const router = useRouter();
   const headingId = useId();
   const noteId = useId();
   const keepRef = useRef<HTMLButtonElement>(null);
   return (
-    <section aria-labelledby={headingId} className="space-y-4">
+    <section id={id} aria-labelledby={headingId} className="space-y-4">
       <h2 id={headingId} className={H2}>
         Ready for a different path?
       </h2>
