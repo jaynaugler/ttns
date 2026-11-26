@@ -34,7 +34,6 @@
 
 .profile-skill-selection-card {
   --skill-w: 370px;
-  --skill-control-width: 370px;
   max-width: 28rem;
   width: 100%;
 }
@@ -51,44 +50,9 @@ html[data-font="dyslexic"] .profile-skill-selection-card [data-slot="card-header
   width: 100%;
 }
 
-@container profile-selection-layout (width >= 57rem) {
-  .profile-skill-selection-card {
-    max-width: 100%;
-    min-width: 28rem;
-    width: fit-content;
-  }
-  .skills-grid-scrollbar {
-    grid-template-columns: minmax(0, var(--skill-w));
-    max-width: none;
-    scrollbar-gutter: stable;
-    scrollbar-width: thin;
-  }
-  .skills-grid-scrollbar > button {
-    width: 100%;
-  }
-}
-
 @container profile-selection-layout (width >= 56rem) {
   .profile-skill-selection-panel {
     max-width: none;
-  }
-}
-
-@container profile-skill-selection-panel (width >= 52.75rem) {
-  .profile-skill-selection-card {
-    --skill-control-width: 752px;
-  }
-  .skills-grid-scrollbar {
-    grid-template-columns: repeat(2, minmax(0, var(--skill-w)));
-  }
-}
-
-@container profile-skill-selection-panel (width >= 76.75rem) {
-  .profile-skill-selection-card {
-    --skill-control-width: 1134px;
-  }
-  .skills-grid-scrollbar {
-    grid-template-columns: repeat(3, minmax(0, var(--skill-w)));
   }
 }
 
