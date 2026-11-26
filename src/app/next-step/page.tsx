@@ -1,55 +1,90 @@
-import { JourneyStepPage } from "@/components/journey-step-page";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Construction } from "lucide-react";
+"use client";
 
-// Journey step 4 — the last, and the only one not implemented. GUTTED FOR
-// RE-DESIGN: the original page sent the persisted matches/skills/profile to
-// Team 6's POST /api/steps and rendered the returned action plan (see
-// components/next-step-view.tsx in git history; the route and the
-// lib/next-steps validation/adapter stack are kept for the new design to
-// reuse). What this page should be is deliberately unresolved — treat
-// everything below as scaffolding to replace, and keep the "needs work"
-// signal until that happens. Its Continue ("Chart a new path") wraps the
-// journey back to /profile instead of dead-ending on the landing page.
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { JourneyStepPage } from "@/components/journey-step-page";
+import NextStepsList from "@/components/next-steps/NextStepsList";
+import { isPageUnlocked } from "@/lib/journey";
+import { ensureGuestJourneyId, useJourneyProgress } from "@/lib/journey-progress";
+import { buildStepsRequest } from "@/lib/profile-adapter";
+import type { NextStep } from "@/types/outcomes";
+
+type Result = { key: string; steps: NextStep[]; error?: string };
+
 export default function NextStepPage() {
+  const { journey, hydrated } = useJourneyProgress();
+  const [skillsComplete, setSkillsComplete] = useState(false);
+  const [result, setResult] = useState<Result | null>(null);
+  const unlocked = hydrated && isPageUnlocked("next-step", journey.completed);
+
+  useEffect(() => {
+    if (unlocked && journey.profile && !journey.guestId) ensureGuestJourneyId();
+  }, [unlocked, journey.profile, journey.guestId]);
+
+  const request = unlocked ? buildStepsRequest({
+    guestId: journey.guestId,
+    selectedCareerCode: journey.selectedCareerCode,
+    savedMatches: journey.savedMatches,
+    savedSkills: journey.savedSkills,
+    profile: journey.profile,
+    skillsComplete,
+  }) : null;
+  // A primitive key prevents unrelated renders from repeating the request.
+  const requestKey = request ? JSON.stringify(request) : null;
+
+  useEffect(() => {
+    if (!requestKey) return;
+    const key = requestKey;
+    const controller = new AbortController();
+    async function load() {
+      try {
+        const response = await fetch("/api/steps", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: key,
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error("Request failed");
+        const data: { steps?: unknown } = await response.json();
+        if (!Array.isArray(data.steps)) throw new Error("Invalid response");
+        if (!controller.signal.aborted) setResult({ key, steps: data.steps });
+      } catch {
+        if (!controller.signal.aborted) {
+          setResult({ key, steps: [], error: "Please try again later or return to your career matches." });
+        }
+      }
+    }
+    void load();
+    return () => controller.abort();
+  }, [requestKey]);
+
+  const selected = journey.savedMatches?.find((match) => match.code === journey.selectedCareerCode);
+
   return (
-    <JourneyStepPage
-      pageId="next-step"
-      nextHref="/profile"
-      isLast
-      description="The wrap-up step of your journey — what it offers is being re-imagined."
-    >
-      {/* The card bg (bg-card) is brand blue, so every line here is explicitly
-          white rather than muted tokens that would read blue-grey on it. */}
-      <Card className="border-dashed">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg font-semibold">
-            <Construction aria-hidden="true" className="size-5" />
-            Under construction
-          </CardTitle>
-          <CardDescription className="text-white">
-            This step is a placeholder for now — what it&apos;s for is still
-            being decided.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3 text-white">
-          <p>
-            It will eventually wrap up the journey — a last look at where
-            you&apos;re headed, and the send-off into charting a fresh path
-            through the wizard.
-          </p>
-          <p>
-            For now, &ldquo;Chart a new path&rdquo; simply takes you back to
-            Personal Info to work through the journey again.
-          </p>
-        </CardContent>
-      </Card>
+    <JourneyStepPage pageId="next-step" nextHref="/profile" isLast contentClassName="max-w-5xl"
+      description="Explore actions for your first selected career.">
+      {!journey.profile ? (
+        <p>Save your <Link className="underline" href="/profile">profile</Link> to see recommendations.</p>
+      ) : !journey.selectedCareerCode || !selected ? (
+        <p>Choose a career in <Link className="underline" href="/current-pathways">Current Pathways</Link> to see recommendations.</p>
+      ) : !journey.guestId ? (
+        <p role="status">Preparing your guest journey. If this does not finish, enable browser storage and reload.</p>
+      ) : (
+        <div className="space-y-6">
+          <p>Recommendations for <strong>{selected.title}</strong> (NOC {selected.code}), based on your current match.</p>
+          <label className="flex items-start gap-3 rounded-lg border bg-background p-4 text-sm">
+            <input type="checkbox" className="mt-1" checked={skillsComplete}
+              onChange={(event) => setSkillsComplete(event.target.checked)} />
+            <span>My selected skills include all the skills I have from the available list. Use them to suggest skills to develop.
+              Without this confirmation, missing skills are treated as unknown.</span>
+          </label>
+          <NextStepsList steps={result?.key === requestKey ? result.steps : []}
+            isLoading={!result || result.key !== requestKey}
+            error={result?.key === requestKey ? result.error : null} />
+          <p className="text-sm"><Link className="underline" href="/current-pathways">Change your career choice</Link>
+            {" · "}<Link className="underline" href="/updated-pathways">Back to projections</Link></p>
+        </div>
+      )}
     </JourneyStepPage>
   );
 }
