@@ -25,6 +25,7 @@
     "src/types/outcomes.ts",
     "src/types/careers.ts",
     "src/types/user.ts",
-    "src/data/careers.json"
+    "src/data/careers.json",
+    "src/data/wages.json"
   ]
 }

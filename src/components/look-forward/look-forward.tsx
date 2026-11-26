@@ -1,27 +1,38 @@
 "use client";
 
-// Team 5 — Look Forward: pick a "what if" change and compare today's top 3
-// matches with the projected top 3. Status and hand-off notes: README.md in
-// this folder.
+// Team 5 — Look Forward: pick up to three skills to learn, choose a change,
+// and see how the user's top careers move, with a wage outlook for the
+// career they select. Status and hand-off notes: README.md in this folder.
 
 import Link from "next/link";
-import { useId, useState } from "react";
+import { useId, useState, type ReactNode } from "react";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
 	buildDefaultScenarios,
+	buildScenarios,
 	describeScenario,
+	estimateWageAfterYears,
+	findWage,
+	medianAnnualWage,
+	labelRanks,
+	pickWageCareer,
+	projectedPaths,
+	summaryWage,
 	projectOutcomes,
 	rankMatches,
-	rankProjections,
 	scenarioKey,
+	skillsUsed,
 	TOP_MATCH_COUNT,
 	type ProjectableMatch,
+	type SkillToLearn,
 } from "@/lib/projection-logic";
 import type { Scenario } from "@/types/outcomes";
 
-import { CurrentMatchList, ProjectedMatchList } from "./match-list";
+import { careerTitle, PathList, rankText, type PathRow } from "./match-list";
 import { ScenarioPicker } from "./scenario-picker";
+import { SkillPickerDialog } from "./skill-picker-dialog";
+import { SummaryStrip } from "./summary-strip";
+import { formatCurrency, WageProjectionCard } from "./wage-projection-card";
 
 export interface LookForwardProps {
 	// Team 4's matches for the user, in any order.
@@ -30,30 +41,150 @@ export interface LookForwardProps {
 	userSkills: readonly string[];
 	// Overrides the three default scenarios.
 	scenarios?: readonly Scenario[];
+	// Adds Step 1: the user's skill picks with a "Change skills" dialog.
+	// onChange saves them; `scenarios` must then hold their "gain-skills"
+	// option (see buildScenarios), which is selected.
+	skillPicker?: {
+		skills: readonly SkillToLearn[];
+		picks: readonly string[];
+		onChange: (picks: string[]) => void;
+	};
 }
 
-export function LookForward({ matches, userSkills, scenarios }: LookForwardProps) {
+export function LookForward({ matches, userSkills, scenarios, skillPicker }: LookForwardProps) {
 	const headingId = useId();
 	// Selection is stored by key, not index, so it can't silently point at a
 	// different scenario if the props change; a vanished one clears it.
 	const [selectedKey, setSelectedKey] = useState<string | null>(null);
+	// The career row the user clicked; until then the wage card follows #1.
+	const [chosenCareer, setChosenCareer] = useState<string | null>(null);
 	const [announcement, setAnnouncement] = useState("");
+	const [experienceYears, setExperienceYears] = useState(1);
 
-	const options = scenarios ?? buildDefaultScenarios(matches, userSkills);
+	// The experience and "Do all three" options take the years chosen on the
+	// experience card.
+	const options = (scenarios ?? buildDefaultScenarios(matches, userSkills)).map((option) =>
+		option.kind === "add-experience" || option.kind === "combined"
+			? { ...option, years: experienceYears }
+			: option,
+	);
 	const scenario = options.find((option) => scenarioKey(option) === selectedKey);
+	const picks = skillPicker?.picks ?? [];
 	const currentTop = rankMatches(matches).slice(0, TOP_MATCH_COUNT);
-	const projectedTop = scenario
-		? rankProjections(matches, projectOutcomes(matches, scenario, { userSkills }))
-		: [];
+	const rows = pathRows(scenario);
+	const wage = pickWageCareer(currentTop, scenario ? rows : undefined, chosenCareer);
+	const wageCareer = wage?.careerId;
+	const wageRow = rows.find((row) => row.careerId === wageCareer);
+	const todayTop = currentTop[0];
+	const projectedTop = scenario ? rows[0] : undefined;
+	// Careers sharing #1, so the summary doesn't name one as ahead.
+	const todayTiedTop = pathRows(undefined).filter((row) => row.rank === 1);
+	const projectedTiedTop = scenario ? rows.filter((row) => row.rank === 1) : [];
+	const years =
+		scenario?.kind === "add-experience" || scenario?.kind === "combined"
+			? scenario.years
+			: undefined;
 
-	function handleSelect(next: Scenario) {
+	function pathRows(next: Scenario | undefined): PathRow[] {
+		if (!next) {
+			// Today's top 3, with every career tied at #3 kept.
+			const ranked = rankMatches(matches);
+			const labels = labelRanks(ranked);
+			return ranked
+				.map((match, index) => ({ careerId: match.careerId, ...labels[index], score: match.score }))
+				.filter((row) => row.rank <= TOP_MATCH_COUNT);
+		}
+		const outcomes = projectOutcomes(matches, next, { userSkills });
+		// Today's #1 stays listed even when it drops out of the top 3.
+		return projectedPaths(matches, outcomes).map((outcome) => ({
+			careerId: outcome.careerId,
+			rank: outcome.rank,
+			tied: outcome.tied,
+			previousRank: outcome.previousRank,
+			score: outcome.score,
+			previousScore: outcome.currentScore,
+			scoreShift: outcome.scoreShift,
+			detail: rowDetail(next, outcome.careerId, outcome.reason),
+		}));
+	}
+
+	function rowDetail(next: Scenario, careerId: string, reason: string): string {
+		const skills =
+			next.kind === "gain-skills" ? next.skills : next.kind === "gain-skill" ? [next.skill] : null;
+		if (!skills) return reason;
+		const match = matches.find((m) => m.careerId === careerId);
+		const used = match ? skillsUsed(match, skills, userSkills) : [];
+		if (used.length === 0) {
+			return skills.length === 1 ? "Doesn't use this skill" : "Doesn't use these skills";
+		}
+		return skills.length === 1
+			? next.kind === "gain-skill"
+				? `Uses the recommended skill: ${used[0]}`
+				: `Uses your new skill: ${used[0]}`
+			: `Uses ${used.length} of your ${skills.length} new skills: ${used.join(", ")}`;
+	}
+
+	function wageSentence(careerId: string): string {
+		const median = medianAnnualWage(careerId);
+		return median !== undefined
+			? `Showing wage for ${careerTitle(careerId)}: median ${formatCurrency(median)} a year.`
+			: `Showing wage for ${careerTitle(careerId)}: wage not published.`;
+	}
+
+	// The experience estimate for a career, e.g. "about $63,000 a year after
+	// 2 years". Undefined when its wages aren't published.
+	function afterYearsText(careerId: string, after: number): string | undefined {
+		const estimate = estimateWageAfterYears(findWage(careerId), after);
+		return estimate
+			? `about ${formatCurrency(estimate.annual)} a year after ${after} ${after === 1 ? "year" : "years"}`
+			: undefined;
+	}
+
+	function select(next: Scenario) {
 		setSelectedKey(scenarioKey(next));
+		const nextRows = pathRows(next);
+		const parts = [`Projection updated: ${describeScenario(next)}.`];
+		if (nextRows[0]) parts.push(`New #1: ${careerTitle(nextRows[0].careerId)}.`);
+		const nextWage = pickWageCareer(currentTop, nextRows, chosenCareer)?.careerId;
+		if (nextWage && nextWage !== wageCareer) parts.push(wageSentence(nextWage));
+		if ((next.kind === "add-experience" || next.kind === "combined") && nextRows[0]) {
+			const estimate = afterYearsText(nextRows[0].careerId, next.years);
+			if (estimate) parts.push(`${careerTitle(nextRows[0].careerId)}: ${estimate}.`);
+		}
 		// Includes the scenario so switching back and forth re-announces.
-		setAnnouncement(`Projection updated: ${describeScenario(next)}.`);
+		setAnnouncement(parts.join(" "));
+	}
+
+	// Choosing years selects Add experience, unless "Do all three" is
+	// selected, which keeps its selection with the new years.
+	function chooseYears(next: number) {
+		setExperienceYears(next);
+		select(
+			scenario?.kind === "combined"
+				? { ...scenario, years: next }
+				: { kind: "add-experience", years: next },
+		);
+	}
+
+	function chooseCareer(careerId: string) {
+		setChosenCareer(careerId);
+		setAnnouncement(wageSentence(careerId));
+	}
+
+	function changePicks(next: string[]) {
+		skillPicker?.onChange(next);
+		if (next.length > 0) {
+			select({ kind: "gain-skills", skills: next });
+		} else {
+			// Back to the suggested skill, if there is one.
+			const suggested = buildScenarios(matches, userSkills)[0];
+			if (suggested?.kind === "gain-skill") select(suggested);
+			else setSelectedKey(null);
+		}
 	}
 
 	return (
-		<section aria-labelledby={headingId} className="space-y-6">
+		<section aria-labelledby={headingId} className="space-y-8">
 			<header className="relative overflow-hidden rounded-2xl bg-card-blue px-5 py-6 text-white sm:px-8 sm:py-8">
 				<div
 					aria-hidden="true"
@@ -74,47 +205,72 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 				<EmptyState />
 			) : (
 				<>
-					<ScenarioPicker
-						scenarios={options}
-						selectedKey={scenario ? selectedKey : null}
-						onSelect={handleSelect}
-					/>
+					<section aria-label="At a glance">
+						<SummaryStrip
+							picks={picks}
+							today={todayTop}
+							todayTied={todayTiedTop.length > 1 ? todayTiedTop.map((row) => row.careerId) : undefined}
+							projected={projectedTop}
+							projectedTied={
+								projectedTiedTop.length > 1
+									? projectedTiedTop.map((row) => row.careerId)
+									: undefined
+							}
+							wage={
+								scenario && todayTop
+									? summaryWage(todayTop.careerId, rows, chosenCareer, years)
+									: undefined
+							}
+							years={years}
+						/>
+					</section>
 
-					{/* items-start: each column keeps its own height instead of
-					    stretching "Today" to match the taller projected column. */}
-					<div className="grid items-start gap-4 md:grid-cols-2">
-						<div className="rounded-xl border-2 border-neutral-500 bg-neutral-100 p-4 dark:bg-[var(--dm-card-grey)]">
-							<h3 className="mb-3 text-lg font-bold">Today</h3>
-							<CurrentMatchList matches={currentTop} />
+					{skillPicker && (
+						<Step title="Step 1: Pick up to 3 skills">
+							<SkillPickerDialog
+								skills={skillPicker.skills}
+								matchCount={matches.length}
+								picks={picks}
+								onSave={changePicks}
+							/>
+						</Step>
+					)}
+
+					<Step title={`Step ${skillPicker ? 2 : 1}: Choose a change`}>
+						<p>Your matches are re-scored as if you had already made the change.</p>
+						<ScenarioPicker
+							scenarios={options}
+							selectedKey={scenario ? selectedKey : null}
+							onSelect={select}
+							legend="Choose a change"
+							experienceYears={experienceYears}
+							onExperienceYearsChange={chooseYears}
+						/>
+					</Step>
+
+					<Step title={`Step ${skillPicker ? 3 : 2}: Your new paths`}>
+						<p>
+							{scenario
+								? "Select a career to see its wage outlook."
+								: "Pick a change above to see how these move. Select a career to see its wage outlook."}
+						</p>
+						<div
+							key={selectedKey ?? "today"}
+							className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
+						>
+							<PathList rows={rows} selectedId={wageCareer} onSelect={chooseCareer} />
 						</div>
-
-						<Card className="p-4 text-base ring-0">
-							<CardHeader className="px-0">
-								<h3 className="font-heading text-lg leading-snug font-bold break-words">
-									{scenario ? describeScenario(scenario) : "With a change"}
-								</h3>
-							</CardHeader>
-							<CardContent className="px-0">
-								{scenario ? (
-									<div
-										key={selectedKey}
-										className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-300"
-									>
-										<ProjectedMatchList outcomes={projectedTop} />
-									</div>
-								) : (
-									<p className="rounded-xl border-2 border-dashed border-brand-yellow p-4">
-										Pick a change above to see your projected top matches.
-									</p>
-								)}
-							</CardContent>
-						</Card>
-					</div>
-
-					<p className="text-sm dark:text-[var(--dm-text-lightgrey)]">
-						Estimates only. A new skill is scored the same way as your matches;
-						education and experience shifts are rough guides.
-					</p>
+						{wageCareer && (
+							<WageProjectionCard
+								careerId={wageCareer}
+								comparedWith={wage?.comparedWith}
+								comparedAs={wage?.comparedAs}
+								rankLine={wageRow && rankLine(wageRow)}
+								years={years}
+								headingLevel="h4"
+							/>
+						)}
+					</Step>
 				</>
 			)}
 
@@ -125,9 +281,30 @@ export function LookForward({ matches, userSkills, scenarios }: LookForwardProps
 	);
 }
 
+// The selected row's rank in words, for the wage card.
+function rankLine(row: PathRow): string {
+	const now = rankText(row.rank, row.tied);
+	if (row.previousScore === undefined) return `${now} today`;
+	if (row.previousRank === undefined) return `New to your top 3: ${now} after this change`;
+	if (row.previousRank === row.rank && !row.tied) return `Still #${row.rank}`;
+	return `#${row.previousRank} today → ${now} after this change`;
+}
+
+function Step({ title, children }: { title: string; children: ReactNode }) {
+	const id = useId();
+	return (
+		<section aria-labelledby={id} className="space-y-3">
+			<h3 id={id} className="text-xl font-bold">
+				{title}
+			</h3>
+			{children}
+		</section>
+	);
+}
+
 function EmptyState() {
 	return (
-		<div className="rounded-xl border-2 border-neutral-500 bg-white p-5 text-black dark:border-neutral-400 dark:bg-[var(--dm-card-grey)] dark:text-white">
+		<div className="rounded-xl border-2 border-foreground/50 bg-background p-5 text-foreground dark:bg-[var(--dm-card-grey)]">
 			<p className="font-bold">No career matches yet.</p>
 			<p className="mt-1">
 				Look Forward needs your current matches to project a change.
