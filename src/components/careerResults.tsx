@@ -52,7 +52,7 @@ function SkillBadges({
 
   if (skills.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">No skills to display.</p>
+      <p className="text-sm text-foreground/70">No skills to display.</p>
     );
   }
 
@@ -110,7 +110,7 @@ function CareerCard({
             {career.title}
           </h2>
 
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="mt-1 text-sm text-foreground/70">
             NOC: {career.code}
           </p>
         </div>
@@ -125,7 +125,7 @@ function CareerCard({
             }
             className={`flex items-center gap-2 text-sm font-semibold ${
               disabled
-                ? "cursor-not-allowed text-muted-foreground opacity-60"
+                ? "cursor-not-allowed text-foreground/70 opacity-60"
                 : "cursor-pointer text-foreground"
             }`}
           >
@@ -144,7 +144,7 @@ function CareerCard({
             <p className="text-3xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
               {formatPercentage(career.matchPercentage)}
             </p>
-            <p className="text-xs text-muted-foreground">Skill overlap</p>
+            <p className="text-xs text-foreground/70">Skill overlap</p>
           </div>
         </div>
       </div>
@@ -162,37 +162,37 @@ function CareerCard({
       {/* Coverage, wage, and outlook */}
       <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-lg bg-muted p-3">
-          <p className="text-xs text-muted-foreground">Career Skill Coverage</p>
+          <p className="text-xs text-foreground/70">Career Skill Coverage</p>
           <p className="mt-1 text-xl font-bold">
             {formatPercentage(career.careerSkillCoverage)}
           </p>
         </div>
 
         <div className="rounded-lg bg-muted p-3">
-          <p className="text-xs text-muted-foreground">User Skill Coverage</p>
+          <p className="text-xs text-foreground/70">User Skill Coverage</p>
           <p className="mt-1 text-xl font-bold">
             {formatPercentage(career.userSkillCoverage)}
           </p>
         </div>
 
         <div className="rounded-lg bg-muted p-3">
-          <p className="text-xs text-muted-foreground">Median Wage (CAD)</p>
+          <p className="text-xs text-foreground/70">Median Wage (CAD)</p>
           <p className="mt-1 text-lg font-bold">
             {formatWage(career.medianWage, career.isAnnual)}
           </p>
           {career.wageReferencePeriod && (
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-foreground/70">
               {career.wageReferencePeriod}
             </p>
           )}
         </div>
 
         <div className="rounded-lg bg-muted p-3">
-          <p className="text-xs text-muted-foreground">Job Outlook</p>
+          <p className="text-xs text-foreground/70">Job Outlook</p>
           <p className="mt-1 text-lg font-bold">
             {career.outlook ?? "Not available"}
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-foreground/70">
             {career.outlookRegion ?? "Nova Scotia"}
           </p>
         </div>
@@ -418,7 +418,7 @@ export default function CareerResults({
       <section className="rounded-xl border border-border bg-white p-6 text-foreground dark:bg-[var(--dm-card-grey)]">
         <h2 className="text-xl font-semibold">No Skills Selected</h2>
 
-        <p className="mt-2 text-muted-foreground">
+        <p className="mt-2 text-foreground/70">
           Please select your skills on the Personal Info page.
         </p>
 
@@ -432,7 +432,7 @@ export default function CareerResults({
   // Show a loading message while career matches are being fetched.
   if (loading) {
     return (
-      <p className="py-10 text-center text-muted-foreground">
+      <p className="py-10 text-center text-foreground/70">
         Loading your career profile...
       </p>
     );
@@ -450,7 +450,7 @@ export default function CareerResults({
             </p>
 
             {topCareerCodes.length === 0 ? (
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 Check the box on up to {MAX_TOP_CAREERS} careers. We recommend
                 picking {MAX_TOP_CAREERS}.
               </p>
@@ -501,13 +501,13 @@ export default function CareerResults({
       <div>
         <h1 className="text-3xl font-bold">Career Matching Results</h1>
 
-        <p className="mt-2 text-muted-foreground">
+        <p className="mt-2 text-foreground/70">
           Explore your top career matches and check the box on up to{" "}
           {MAX_TOP_CAREERS} careers that interest you most.
         </p>
 
         <div className="mt-3">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-foreground/70">
             Your selected skills: {skills.length}
           </p>
 
@@ -560,7 +560,7 @@ export default function CareerResults({
             Adjust Matching Weights
           </h2>
 
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mt-2 text-sm text-foreground/70">
             Career coverage measures how many career skills you have. User
             coverage measures how many of your selected skills apply.
           </p>
@@ -582,7 +582,7 @@ export default function CareerResults({
             className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-pink)]"
           />
 
-          <div className="mt-1 flex justify-between text-xs text-muted-foreground">
+          <div className="mt-1 flex justify-between text-xs text-foreground/70">
             <span>Focus on your skills</span>
             <span>Focus on career skills</span>
           </div>
@@ -600,7 +600,7 @@ export default function CareerResults({
             <span aria-hidden="true">↺</span> Reset to 30% / 70%
           </button>
 
-          <p className="mt-2 text-xs text-muted-foreground">
+          <p className="mt-2 text-xs text-foreground/70">
             Match scores measure skill overlap, not the probability of getting a
             job.
           </p>
@@ -646,7 +646,7 @@ export default function CareerResults({
         </h2>
 
         {results.length === 0 && !updating && (
-          <p className="text-muted-foreground">
+          <p className="text-foreground/70">
             No matching occupations were found.
           </p>
         )}
