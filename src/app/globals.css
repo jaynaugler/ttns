@@ -230,6 +230,10 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
     text-decoration: underline;
     cursor: pointer;
   }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+      cursor: pointer;
+  }
 }
 
 @layer components {
