@@ -38,6 +38,7 @@ import { findCareerById } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 
 import { PathAtAGlance } from "@/components/next-step/path-at-a-glance";
+import { WageGrowthChart } from "@/components/next-step/wage-growth-chart";
 import {
   CARD,
   EYEBROW,
@@ -423,6 +424,7 @@ function WagesCard({ summary }: { summary: CareerSummary }) {
   return (
     <SectionCard title="What it pays">
       <WageTiles wages={summary.wages} />
+      <WageGrowthChart careerCode={summary.code} />
     </SectionCard>
   );
 }

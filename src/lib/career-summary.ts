@@ -237,6 +237,33 @@ export interface CareerWages {
 	referencePeriod?: string;
 }
 
+// The wage path's milestones: starting out, after 5 years (the median by
+// estimateWageAfterYears' placeholder rule) and after 15 years (top earners).
+export const WAGE_MILESTONES = [
+	{ years: 0, label: "Starting out" },
+	{ years: 5, label: "After 5 years" },
+	{ years: 15, label: "After 15 years" },
+] as const;
+
+export interface WagePoint {
+	label: string;
+	// Yearly, at HOURS_PER_YEAR for hourly careers.
+	annual: number;
+}
+
+// The wage growth chart's three points, or none when Job Bank doesn't
+// publish the full range (so a lone median isn't drawn as "growth").
+export function wageGrowth(careerCode: string): WagePoint[] {
+	const wage = findWage(careerCode);
+	const points: WagePoint[] = [];
+	for (const { years, label } of WAGE_MILESTONES) {
+		const estimate = estimateWageAfterYears(wage, years);
+		if (!estimate?.rangePublished) return [];
+		points.push({ label, annual: estimate.annual });
+	}
+	return points;
+}
+
 export interface CareerSummary {
 	code: string;
 	title?: string;

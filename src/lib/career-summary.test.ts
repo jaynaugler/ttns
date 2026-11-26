@@ -26,6 +26,7 @@ import {
 	recommendedSkill,
 	skillGapsFor,
 	splitPicks,
+	wageGrowth,
 	SUMMARY_YEARS,
 	type OutlookRecord,
 } from "./career-summary";
@@ -384,6 +385,22 @@ describe("skillGapsFor", () => {
 	it("is empty when the lead isn't a saved match", () => {
 		assert.deepEqual(skillGapsFor("99999", [lead]).skills, []);
 		assert.deepEqual(skillGapsFor("21300", undefined).skills, []);
+	});
+});
+
+describe("wageGrowth", () => {
+	it("gives starting out, after 5 years and after 15 years", () => {
+		// 21232: $30 / $48.08 / $76.92 an hour, at 1950 hours a year.
+		assert.deepEqual(wageGrowth("21232"), [
+			{ label: "Starting out", annual: 58500 },
+			{ label: "After 5 years", annual: 93756 },
+			{ label: "After 15 years", annual: 149994 },
+		]);
+	});
+
+	it("is empty without a published range", () => {
+		assert.deepEqual(wageGrowth("00013"), []);
+		assert.deepEqual(wageGrowth("99999"), []);
 	});
 });
 
