@@ -33,6 +33,9 @@ export interface JourneyState {
   // missing to recommend the training step for exactly what the user asked
   // to learn.
   newSkills?: string[];
+  // Set when a skills change cleared earlier picks, so later pages can say
+  // why they need re-picking; cleared once new Top 3 picks are saved.
+  picksCleared?: boolean;
 }
 
 export type ProfileData = Record<string, Record<string, string>>;
@@ -116,6 +119,8 @@ function parse(raw: string | null): JourneyState {
       );
     }
 
+    if (parsed.picksCleared === true) state.picksCleared = true;
+
     return state;
   } catch {
     return DEFAULT_STATE;
@@ -175,21 +180,42 @@ export function markStepComplete(id: JourneyStepId) {
   writeState({ ...state, completed: [...state.completed, id] });
 }
 
-// Persists the /skills selection and marks that page complete.
+// Persists the /skills selection and marks that page complete. Different
+// skills mean different matches, so it also drops what was chosen from the
+// old ones (Top 3 picks, saved matches, the skills picked to learn) and
+// resets the later steps, as saveTopCareers does.
+// Without this, an old #1 pick stayed #1: /api/match pads its results to
+// include selectedCareerCode. Re-saving the same skills changes nothing.
 export function saveSkills(skills: string[]) {
   const state = readState();
-  const completed: JourneyStepId[] = state.completed.includes("skills")
+  const sameSkills =
+    state.savedSkills !== undefined &&
+    state.savedSkills.length === skills.length &&
+    state.savedSkills.every((skill, i) => skill === skills[i]);
+  const withSkills: JourneyStepId[] = state.completed.includes("skills")
     ? state.completed
     : [...state.completed, "skills"];
-  if (
-    completed.length === state.completed.length &&
-    state.savedSkills &&
-    state.savedSkills.length === skills.length &&
-    state.savedSkills.every((skill, i) => skill === skills[i])
-  ) {
-    return;
+  const completed = withSkills.filter(
+    (id) =>
+      sameSkills ||
+      (id !== "current-pathways" &&
+        id !== "updated-pathways" &&
+        id !== "next-step"),
+  );
+  if (sameSkills && completed.length === state.completed.length) return;
+
+  const next: JourneyState = { ...state, completed, savedSkills: [...skills] };
+  if (!sameSkills) {
+    if (state.topCareerCodes || state.savedMatches) {
+      next.picksCleared = true;
+    }
+    delete next.topCareerCodes;
+    delete next.selectedCareerCode;
+    delete next.savedMatches;
+    // A skill picked to learn may be one the user now has.
+    delete next.newSkills;
   }
-  writeState({ ...state, completed, savedSkills: [...skills] });
+  writeState(next);
 }
 
 // Persists the submitted profile form values for the wizard's later steps.
@@ -246,6 +272,7 @@ export function saveTopCareers(codes: string[]) {
   } else {
     next.topCareerCodes = picks;
     next.selectedCareerCode = picks[0];
+    delete next.picksCleared;
   }
   writeState(next);
 }

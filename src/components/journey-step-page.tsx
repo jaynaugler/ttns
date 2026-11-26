@@ -24,6 +24,7 @@ export function JourneyStepPage({
   isLast,
   showContinue = true,
   contentClassName = "max-w-2xl",
+  lockedMessage,
   children,
 }: {
   pageId: JourneyStepId;
@@ -31,6 +32,9 @@ export function JourneyStepPage({
   description: string;
   isLast?: boolean;
   showContinue?: boolean;
+  // Replaces the locked notice's sentence, e.g. to say why the page locked
+  // again. The "Continue with …" link stays.
+  lockedMessage?: React.ReactNode;
   // Lets a page widen (or otherwise adjust) its content area without
   // changing the shared skeleton's default for every step.
   contentClassName?: string;
@@ -54,7 +58,9 @@ export function JourneyStepPage({
         <h1 className="text-2xl font-bold">{title}</h1>
         <Card className="mt-4">
           <CardContent>
-            <p>Finish the earlier journey steps to unlock this one.</p>
+            <p>
+              {lockedMessage ?? "Finish the earlier journey steps to unlock this one."}
+            </p>
             {nextUp && (
               <Link
                 href={nextUp.href}
