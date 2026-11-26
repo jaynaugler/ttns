@@ -8,7 +8,9 @@ import { Card } from "@/components/ui/card";
 
 export default function KitchenSinkPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground p-8">
+    // A <div>, not <main>: the root layout already provides the page's one
+    // <main> landmark.
+    <div className="min-h-screen bg-background text-foreground p-8">
       <header>
         <h1 className="text-3xl font-bold">Kitchen Sink - Component Library</h1>
         <br></br>
@@ -64,6 +66,6 @@ export default function KitchenSinkPage() {
 
       <br></br>
       <div></div>
-    </main>
+    </div>
   )
 }
