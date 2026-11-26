@@ -7,6 +7,7 @@ import {
 	medianWageChange,
 	toAnnualWage,
 } from "@/lib/projection-logic";
+import { H2, H3, H4 } from "@/components/next-step/scale";
 
 interface WageProjectionCardProps {
 	careerId: string;
@@ -21,6 +22,8 @@ interface WageProjectionCardProps {
 	// One below the heading of the section the card sits in.
 	headingLevel?: "h2" | "h3" | "h4";
 }
+
+const HEADING_BY_LEVEL = { h2: H2, h3: H3, h4: H4 } as const;
 
 export function formatCurrency(value: number): string {
 	return new Intl.NumberFormat("en-CA", {
@@ -71,9 +74,11 @@ export function WageProjectionCard({
 	const fiveTiles = rangePublished && afterYears !== undefined && comparedWith !== undefined;
 
 	return (
-		<section className="space-y-4 rounded-xl border-2 border-foreground/50 bg-background p-5 text-foreground dark:bg-[var(--dm-card-grey)]">
+		// Sits inside a Step card, so it takes the lighter tile border; the
+		// heading size follows its level on Team 5's shared scale.
+		<section className="min-w-0 space-y-4 rounded-lg border-2 border-foreground/30 p-4 text-foreground sm:p-5">
 			<div className="space-y-1">
-				<Heading className="text-2xl font-bold break-words">
+				<Heading className={HEADING_BY_LEVEL[headingLevel]}>
 					Wage outlook: {careerTitle(careerId)}
 				</Heading>
 				{rankLine && <p className="font-bold">{rankLine}</p>}
