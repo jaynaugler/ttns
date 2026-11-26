@@ -48,17 +48,37 @@ export interface UserOutcomeBundle {
 // Team 5 (Look Forward): a "what if" change the user is considering, and a
 // match re-scored under it. Added only; the shared types above are unchanged.
 
-export type ScenarioKind = "gain-skill" | "finish-education" | "add-experience";
+export type ScenarioKind =
+	| "gain-skill"
+	| "gain-skills"
+	| "finish-education"
+	| "add-experience"
+	| "combined";
 
+// "gain-skill" is one suggested skill; "gain-skills" is the user's own 1 to 3
+// picks, projected together. "combined" applies skills, then education, then
+// experience, one after another.
 export type Scenario =
 	| { kind: "gain-skill"; skill: string }
+	| { kind: "gain-skills"; skills: string[] }
 	| { kind: "finish-education"; step: string }
-	| { kind: "add-experience"; years: number };
+	| { kind: "add-experience"; years: number }
+	| {
+			kind: "combined";
+			skills: string[];
+			step: string;
+			years: number;
+			// True when `skills` is the recommended skill, before any pick.
+			recommended?: boolean;
+	  };
 
 // Extends Team 4's CareerMatch, so anything that accepts matches (e.g. Team 6's
 // POST /api/steps) also accepts projections. `score` is the projected score;
 // `currentScore` is the score before the scenario.
 export interface ProjectedOutcome extends CareerMatch {
+	// The projected score before rounding to one decimal, so two that round
+	// alike still rank in their real order.
+	exactScore?: number;
 	currentScore: number;
 	scenario: Scenario;
 	scoreShift: number;

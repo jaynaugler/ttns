@@ -1,46 +1,60 @@
 # Team 5 — Look Forward
 
 Shows how a user's career matches would shift if they made one change, and
-today's median wage for a career.
+a wage outlook for the career they pick.
 
-Status as of 2026-11-12, written for the halfway team switch.
+Status as of 2026-11-26.
 
 ## Files
 
 | File | Role |
 |---|---|
-| `look-forward.tsx` | `LookForward` client component: scenario picker, today vs projected top 3, status announcement |
-| `scenario-picker.tsx` | Radio group in a fieldset with a legend |
-| `match-list.tsx` | Current and projected match lists, shift and rank change in words |
+| `look-forward.tsx` | `LookForward` client component: skill picker (Step 1), scenario picker (Step 2), summary strip and new-paths list (Step 3), wage card, status announcement |
+| `skill-picker-dialog.tsx` | Step 1 chips and the "Change skills" dialog (Base UI); up to `MAX_SKILL_PICKS` picks, saved on Done |
+| `summary-strip.tsx` | The four "at a glance" tiles: picks, #1 today, #1 after the change, median wage change |
+| `scenario-picker.tsx` | Radio group in a fieldset with a legend, plus the years control for experience |
+| `match-list.tsx` | `PathList`, the career rows of Step 3, with shift and rank in words |
 | `mock-matches.ts` | Mock Team 4 output (real NOC codes) until matching is on main |
-| `wage-projection-card.tsx` | Wage outlook card (earlier Team 5 work); optional `headingLevel` |
+| `wage-projection-card.tsx` | Wage outlook card from `src/data/wages.json`; optional `headingLevel` |
+| `../ui/dialog.tsx` | Base UI `Dialog` wrapper the skill picker uses |
 | `src/lib/projection-logic.ts` | Pure logic, no fetch or React |
 | `src/lib/projection-logic.test.ts` | Tests: `pnpm run test:projection` (also part of `pnpm test`) |
 | `src/types/outcomes.ts` | Team 5 added `Scenario`, `ScenarioKind`, `ProjectedOutcome`, `OutcomeShift` |
 
 ## Mounting
 
-Journey step 4, `src/app/updated-pathways/page.tsx`, replaces the
-placeholder `<p>` inside `JourneyStepPage`:
+Journey step 3, `src/app/updated-pathways/page.tsx`, mounts `LookForward`
+inside `JourneyStepPage` with the journey's saved state:
 
 ```tsx
-import { LookForward } from "@/components/look-forward/look-forward";
-import { MOCK_MATCHES, MOCK_USER_SKILLS } from "@/components/look-forward/mock-matches";
-
-<LookForward matches={MOCK_MATCHES} userSkills={MOCK_USER_SKILLS} />
+<LookForward
+  matches={toProjectable(journey.savedMatches ?? [])}
+  userSkills={journey.savedSkills ?? []}
+  scenarios={buildScenarios(matches, userSkills, picks, journey.profile?.education?.degree)}
+  skillPicker={{
+    skills: rankSkillsToLearn(matches, userSkills, skillsData),
+    picks,
+    hiddenPicks: Math.max(0, savedPicks.length - MAX_SKILL_PICKS),
+    onChange: saveNewSkills,
+  }}
+/>
 ```
 
-`LookForward` is a client component, so the page can stay a server
-component. Swap the mocks for Team 4's `matchCareers(savedSkills)` result
-and `journey.savedSkills` once matching is merged.
+`picks` is `journey.newSkills` sliced to `MAX_SKILL_PICKS` (3), and
+`hiddenPicks` counts the ones sliced off so the dialog can warn before
+saving drops them. Without a `skillPicker` prop the component hides Step 1
+and renumbers the steps; `mock-matches.ts` still feeds the tests.
 
 ## Contract
 
 - Input: `CareerMatch[]`, optionally with Team 4's `matchedSkills` and
-  `missingSkills`. Without those lists the skill scenario reports that it
+  `missingSkills`. Without those lists the skill scenarios report that they
   can't project, with no score change; education and experience still work.
 - `projectOutcomes` returns `ProjectedOutcome[]`, best projected score
   first. `score` is the projected score, `currentScore` the original.
+- Ranks are tie-aware at the shown precision: careers whose scores equal to
+  one decimal share a rank and are marked tied, and Step 3 keeps every
+  career tied at the last rank (`projectedPaths`, `labelRanks`).
 - Team 6: `toCareerMatches(projected)` gives plain `CareerMatch` objects for
   `POST /api/steps`, with the reason first in `rationale`. It keeps within
   Team 6's request validation, where one bad match fails the whole request:
@@ -68,12 +82,29 @@ anything specific of Team 5. Open points that touch Team 5:
 
 ## Scoring
 
-- **Gain a skill:** Team 4's formula (`0.7 × career coverage + 0.3 × user
-  coverage`). A skill the career uses raises the score; one it doesn't use
-  lowers it slightly, because less of the user's skill set fits.
+- **Gain a skill / the user's picks:** Team 4's formula, `S = α × C + (1 − α)
+  × U`, where C is the share of the career's skills the user has (out of at
+  least 5) and U the share of the user's skills the career uses. Instead of
+  a fixed weight, each match's own α is solved from its saved score
+  (`scoredAlpha`), so a projection starts from the same formula the score
+  came from; it falls back to 0.3 (`MATCH_ALPHA`) when the score can't tell
+  the weight apart. A skill the career uses raises the score; one it doesn't
+  use leaves the match unchanged — learning a skill never lowers a match.
+- **Ties:** careers whose scores show the same to one decimal share the
+  group's best rank, marked "Tied #N", so none is presented as ahead.
 - **Finish an education step / add experience:** placeholder rule, closing
   25% (education) or 10% per year, up to 5 years (experience), of the gap to
-  100. Not research figures; the class needs to agree a rule.
+  100. "Do all three" applies the skills, then education, then experience.
+  Not research figures; the class needs to agree a rule.
+
+## Wage data
+
+Wages no longer come from `careers.json`'s `medianWage`; every figure on the
+card comes from Job Bank's `src/data/wages.json` by NOC code (`findWage`),
+with hourly wages converted to yearly at 1,950 hours. The low–high path and
+its "after N years" estimate are placeholders (low at the start, median
+after 5 years, high after 15), not pay research. Wages Job Bank doesn't
+publish show as such.
 
 ## Accessibility (for Edward's review)
 
@@ -93,10 +124,8 @@ anything specific of Team 5. Open points that touch Team 5:
 
 ## Left to do
 
-- Mount on `/updated-pathways` (page owners' call) and wire real data.
 - Import Team 4's `DEFAULT_ALPHA` / `ScoredCareerMatch` once merged.
-- Agree on the education/experience rule.
-- Let the user pick which skill to gain.
+- Agree on the education/experience rule and a researched wage path.
 - Manual passes: NVDA, keyboard-only, 400% zoom, OS reduced motion on.
 
 ## Wage projection card: review fixes
