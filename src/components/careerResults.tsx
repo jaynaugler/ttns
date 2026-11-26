@@ -102,7 +102,7 @@ function CareerCard({
       {/* Career title and match score */}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-bold text-primary dark:text-[var(--dm-brand-pink)]">
+          <p className="text-sm font-bold text-primary dark:text-[var(--dm-brand-yellow)]">
             Recommendation #{rank}
           </p>
 
@@ -141,7 +141,7 @@ function CareerCard({
           </label>
 
           <div>
-            <p className="text-3xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
+            <p className="text-3xl font-bold text-primary dark:text-[var(--dm-brand-yellow)]">
               {formatPercentage(career.matchPercentage)}
             </p>
             <p className="text-xs text-muted-foreground">Skill overlap</p>
@@ -152,7 +152,7 @@ function CareerCard({
       {/* Matching progress bar */}
       <div className="mt-4 h-3 overflow-hidden rounded-full bg-muted">
         <div
-          className="h-full rounded-full bg-primary dark:bg-[var(--dm-brand-pink)] transition-all"
+          className="h-full rounded-full bg-primary dark:bg-[var(--dm-brand-yellow)] transition-all"
           style={{
             width: `${Math.max(0, Math.min(100, career.matchPercentage))}%`,
           }}
@@ -232,7 +232,7 @@ function CareerCard({
           variant="ghost"
           onClick={() => setExpanded((current) => !current)}
           aria-expanded={expanded}
-          className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+          className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-yellow)] dark:hover:bg-muted dark:hover:text-foreground"
         >
           {expanded
             ? "Hide All Career Skills ▲"
@@ -528,7 +528,7 @@ export default function CareerResults({
           <Button
             type="button"
             variant="ghost"
-            className="border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+            className="border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-yellow)] dark:hover:bg-muted dark:hover:text-foreground"
             onClick={() => router.push("/profile")}
           >
             Edit My Skills
@@ -540,7 +540,7 @@ export default function CareerResults({
             aria-expanded={showWeights}
             aria-controls="matching-weights-panel"
             onClick={showWeights ? cancelWeights : openWeights}
-            className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+            className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-yellow)] dark:hover:bg-muted dark:hover:text-foreground"
           >
             <SlidersHorizontal className="h-4 w-4" />
             Adjust Matching Weights ({Math.round(alpha * 100)}% /{" "}
@@ -555,7 +555,7 @@ export default function CareerResults({
           id="matching-weights-panel"
           className="rounded-2xl border-2 border-primary/60 bg-muted p-6 shadow-md dark:border-[var(--dm-brand-pink)]"
         >
-          <h2 className="flex items-center gap-2 text-2xl font-bold text-primary dark:text-[var(--dm-brand-pink)]">
+          <h2 className="flex items-center gap-2 text-2xl font-bold text-primary dark:text-[var(--dm-brand-yellow)]">
             <SlidersHorizontal className="h-6 w-6" />
             Adjust Matching Weights
           </h2>
@@ -579,7 +579,7 @@ export default function CareerResults({
             value={Math.round(draftAlpha * 100)}
             onChange={(event) => setDraftAlpha(Number(event.target.value) / 100)}
             aria-label="Career coverage weight"
-            className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-pink)]"
+            className="mt-4 w-full cursor-pointer accent-primary dark:accent-[var(--dm-brand-yellow)]"
           />
 
           <div className="mt-1 flex justify-between text-xs text-muted-foreground">
@@ -595,7 +595,7 @@ export default function CareerResults({
           <button
             type="button"
             onClick={() => setDraftAlpha(DEFAULT_ALPHA)}
-            className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-pink)]"
+            className="mt-3 cursor-pointer text-sm font-semibold text-primary hover:underline dark:text-[var(--dm-brand-yellow)]"
           >
             <span aria-hidden="true">↺</span> Reset to 30% / 70%
           </button>
@@ -615,7 +615,7 @@ export default function CareerResults({
               type="button"
               variant="ghost"
               onClick={cancelWeights}
-              className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+              className="cursor-pointer border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-yellow)] dark:hover:bg-muted dark:hover:text-foreground"
             >
               Cancel
             </Button>
@@ -684,7 +684,7 @@ export default function CareerResults({
                   ),
                 )
               }
-              className="cursor-pointer border border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+              className="cursor-pointer border border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-yellow)] dark:hover:bg-muted dark:hover:text-foreground"
             >
               {updating ? "Loading more careers..." : "Show 10 More Careers"}
             </Button>
@@ -696,7 +696,7 @@ export default function CareerResults({
         <Button
           type="button"
           variant="ghost"
-          className="border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-pink)] dark:hover:bg-muted dark:hover:text-foreground"
+          className="border-border bg-white text-primary hover:bg-muted hover:text-primary dark:bg-[var(--dm-card-grey)] dark:text-[var(--dm-brand-yellow)] dark:hover:bg-muted dark:hover:text-foreground"
           onClick={() =>
             window.scrollTo({
               top: 0,
