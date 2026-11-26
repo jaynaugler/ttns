@@ -187,6 +187,7 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
             {/* value is a percentage. The **:data-[slot=...] classes restyle the
                 track and indicator inside Progress: yellow bar on a light track. */}
             <Progress
+              aria-label={`Profile progress: step ${currentStep + 1} of ${steps.length}`}
               value={((currentStep + 1) / steps.length) * 100}
               className="mt-2 **:data-[slot=progress-indicator]:bg-secondary **:data-[slot=progress-track]:h-1.5 **:data-[slot=progress-track]:bg-white/20"
             />

@@ -38,6 +38,6 @@ export function proxy(request: NextRequest) {
 // image fails with "internal response is invalid".
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|api/|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
   ],
 };
