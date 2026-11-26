@@ -37,10 +37,13 @@ export default function NextStepCard({ step, badge, impact, action }: NextStepCa
     <article className="h-full">
       <Card className="h-full gap-0 bg-card text-card-foreground shadow-sm">
         <CardHeader className="gap-3 pb-4">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-sm font-medium">
-              <Lightbulb className="size-5" aria-hidden="true" />
-              <span>Recommended next step</span>
+          {/* min-w-0 here and on the label let it wrap instead of running
+              past the card (it was clipped at 200% text size): this row is a
+              grid item, which otherwise won't shrink below its content. */}
+          <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-2 text-sm font-medium">
+              <Lightbulb className="size-5 shrink-0" aria-hidden="true" />
+              <span className="min-w-0 break-words">Recommended next step</span>
             </div>
             {badgeText ? (
               <span className="inline-flex rounded-full bg-brand-yellow px-3 py-1 text-xs font-bold text-black">

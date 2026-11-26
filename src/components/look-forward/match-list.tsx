@@ -8,10 +8,12 @@ import {
 } from "@/lib/projection-logic";
 
 // Shifts are always in words and arrows too, so colour is never the only
-// signal. Black on the badge green is about 8:1 in both modes.
+// signal. Black on the badge green is about 8:1 in both modes. White on
+// brand pink is 5.45:1 in light mode; on the dark-mode pink it would only
+// just pass (4.53:1), so "down" uses the dark brand red there (9.18:1).
 const SHIFT_STYLES: Record<ShiftDirection, string> = {
 	up: "bg-[var(--dm-badge-green)] text-black",
-	down: "bg-brand-pink text-white dark:bg-[var(--dm-brand-pink)]",
+	down: "bg-brand-pink text-white dark:bg-[var(--dm-brand-red)]",
 	none: "bg-foreground/15 text-foreground",
 };
 
