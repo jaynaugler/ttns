@@ -85,7 +85,11 @@ export function NextStepRecommendations({
           <li key={move.kind} className="min-w-0">
             <NextStepCard
               step={{ id: move.kind, title: move.title, description: move.why }}
-              badge={BADGES[move.kind]}
+              // The rank, not "Recommended next step": "Move 1", "Move 2"…
+              // after the plan, which says "Your plan" (and so needs no badge).
+              eyebrow={move.kind === "plan" ? "Your plan" : `Move ${moves.filter((m) => m.kind !== "plan").indexOf(move) + 1}`}
+              badge={move.kind === "plan" ? undefined : BADGES[move.kind]}
+              topAligned
               impact={moveImpact(move)}
               action={actionFor(move, career, summary.jobBankUrl)}
             />

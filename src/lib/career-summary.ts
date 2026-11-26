@@ -544,10 +544,11 @@ export function rankNextMoves(input: NextMovesInput): NextMove[] {
 	const moves: NextMove[] = [];
 	const planMove = plan ? scored(plan) : undefined;
 	if (planMove) {
+		// Titled with the plan itself; the card's label already says "Your plan".
 		moves.push({
 			kind: "plan",
-			title: "Your chosen plan",
-			why: `The path you chose on Updated Pathways: ${describePlan(plan!).join(" · ")}.`,
+			title: describePlan(plan!).join(" · ") || "Your chosen plan",
+			why: "The path you chose on Updated Pathways.",
 			...planMove,
 		});
 	}

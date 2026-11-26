@@ -13,6 +13,11 @@ type NextStepCardProps = {
   // a badge in place of the category label, impact lines (e.g. "Match 78 →
   // 84, up 6") and one action link. Without them the card is unchanged.
   badge?: string;
+  // The small label above the title, e.g. "Move 1" or "Your plan".
+  eyebrow?: string;
+  // Content starts under the title instead of sitting at the card's foot,
+  // so a short card in a row of taller ones has no empty gap.
+  topAligned?: boolean;
   impact?: readonly string[];
   action?: {
     label: string;
@@ -31,7 +36,14 @@ const categoryLabels: Record<NonNullable<NextStep["category"]>, string> = {
 };
 
 // A single recommendation card. No API requests happen here.
-export default function NextStepCard({ step, badge, impact, action }: NextStepCardProps) {
+export default function NextStepCard({
+  step,
+  badge,
+  eyebrow = "Recommended next step",
+  topAligned = false,
+  impact,
+  action,
+}: NextStepCardProps) {
   const badgeText = badge ?? (step.category ? categoryLabels[step.category] : undefined);
   return (
     <article className="h-full">
@@ -43,7 +55,7 @@ export default function NextStepCard({ step, badge, impact, action }: NextStepCa
           <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-2 text-sm font-medium">
               <Lightbulb className="size-5 shrink-0" aria-hidden="true" />
-              <span className="min-w-0 break-words">Recommended next step</span>
+              <span className="min-w-0 break-words">{eyebrow}</span>
             </div>
             {badgeText ? (
               <span className="inline-flex rounded-full bg-brand-yellow px-3 py-1 text-xs font-bold text-black">
@@ -56,7 +68,7 @@ export default function NextStepCard({ step, badge, impact, action }: NextStepCa
           </h3>
         </CardHeader>
 
-        <CardContent className="mt-auto space-y-4">
+        <CardContent className={`${topAligned ? "" : "mt-auto "}space-y-4`}>
           {step.description ? (
             <p className="text-sm leading-relaxed text-card-foreground/90 break-words">
               {step.description}

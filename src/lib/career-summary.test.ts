@@ -435,7 +435,7 @@ describe("plan document", () => {
 	it("lists the next moves with full links", () => {
 		const items = section("Next moves")!;
 		assert.equal(items.length, moves.length);
-		assert.match(items[0], /^1\. Your chosen plan · Match 58\.7 → 70\.5, up 11\.8 · https:\/\/example\.test\/updated-pathways$/);
+		assert.match(items[0], /^1\. Learn Teamwork · Match 58\.7 → 70\.5, up 11\.8 · https:\/\/example\.test\/updated-pathways$/);
 		assert.match(items.at(-1)!, /Search Nova Scotia job postings · https:\/\/www\.jobbank\.gc\.ca\/jobsearch\/jobsearch\?searchstring=21232&fprov=NS$/);
 	});
 
