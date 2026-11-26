@@ -37,6 +37,7 @@ import { resetJourney, useJourneyProgress } from "@/lib/journey-progress";
 import { findCareerById } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 
+import { PathAtAGlance } from "@/components/next-step/path-at-a-glance";
 import {
   CARD,
   EYEBROW,
@@ -174,6 +175,7 @@ function NextStepSummary() {
                 muted, so it stays readable. */}
             <p className="text-sm text-foreground">{BANNER_IMAGE.credit}.</p>
           </div>
+          {path && <PathAtAGlance summary={top} path={path} />}
           <WagesCard summary={top} />
           <OutlookCard summary={top} status={outlookStatus} />
           <CareerSkillsCard
@@ -274,7 +276,6 @@ function Banner({
   path?: PathSummary;
 }) {
   const headingId = useId();
-  const planId = useId();
   const name = careerName(summary);
   const typical = summary.wages?.typical;
   return (
@@ -320,24 +321,6 @@ function Banner({
           </h3>
           <p>NOC {summary.code}</p>
         </div>
-
-        {path && (
-          <div className="space-y-2">
-            <p id={planId} className="text-sm font-bold tracking-wide uppercase">
-              The plan
-            </p>
-            <ul aria-labelledby={planId} className="flex flex-wrap gap-2">
-              {path.plan.map((step) => (
-                <li
-                  key={step}
-                  className="max-w-full rounded-full border-2 border-white px-3 py-1 font-bold break-words"
-                >
-                  {step}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
 
         <dl className={fitGridClass}>
           <StatChip term="Match score">
