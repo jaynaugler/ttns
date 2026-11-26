@@ -308,6 +308,10 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   container-type: inline-size;
 }
 
+main:has(.profile-selection-layout) > .mx-auto {
+  margin-inline-start: 0;
+}
+
 @container profile-selection-layout (width >= 57rem) {
   .profile-panels-container {
     grid-template-columns: 28rem minmax(28rem, 1fr);
