@@ -31,7 +31,13 @@ export function proxy(request: NextRequest) {
   });
 }
 
-// Config ensures static files, images, and internal Next.js assets bypass the login
+// Config ensures page routes stay behind the login while static files,
+// images, and internal Next.js assets bypass it. The image optimizer
+// (_next/image) internally fetches the source file from public/, so public
+// assets must be excluded here or that fetch gets 401'd and the optimized
+// image fails with "internal response is invalid".
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|api/).*)'],
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
+  ],
 };

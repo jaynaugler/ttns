@@ -27,6 +27,30 @@
   font-weight: 400;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("../fonts/local/OpenDyslexic-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("../fonts/local/OpenDyslexic-Italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("../fonts/local/OpenDyslexic-BoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
 /* For accessibility settings when user changes font-family */
 html[data-font="dyslexic"] body,
 html[data-font="dyslexic"] body * {
@@ -230,9 +254,17 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
     text-decoration: underline;
     cursor: pointer;
   }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+      cursor: pointer;
+  }
 }
 
 @layer components {
+  .profile-panels-container {
+    container-name: profile-panels;
+    container-type: inline-size;
+  }
   .btn-on-bg {
     background-color: var(--brand-red);
     color: #ffffff;
@@ -241,7 +273,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   .dark .btn-on-bg {
     background-color: var(--dm-brand-red);
     color: #ffffff;
-    border: 5px solid transparent;
+    border-color: transparent;
   }
   .btn-on-bg:hover {
     background-color: var(--brand-pink);
@@ -268,6 +300,53 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   .dark .btn-on-card:hover {
     background-color: var(--dm-brand-orange);
     border-color: var(--dm-brand-brown);
+  }
+}
+
+.profile-selection-layout {
+  container-name: profile-selection-layout;
+  container-type: inline-size;
+}
+
+@container profile-selection-layout (width >= 57rem) {
+  .profile-panels-container {
+    grid-template-columns: 28rem minmax(28rem, 1fr);
+  }
+}
+
+/* On wide, tall windows, let the skills list use the available page height. */
+@media (min-width: 76rem) and (min-height: 48rem) {
+  body:has(.profile-selection-layout) {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+  body:has(.profile-selection-layout) > div.flex.flex-1,
+  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+    min-height: 0;
+  }
+  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+    overflow: hidden;
+  }
+  .profile-selection-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+  .profile-panels-container {
+    align-items: stretch;
+    flex: 1 1 0%;
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .profile-panels-container > :first-child {
+    align-self: start;
+    /* Review lists every field and can be taller than the fixed page: cap
+       the card at the row height and let it scroll internally — main's
+       overflow: hidden would otherwise clip it past the Submit button with
+       no scrollbar. Short cards keep their natural height. */
+    max-height: 100%;
+    overflow-y: auto;
   }
 }
 

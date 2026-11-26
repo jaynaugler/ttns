@@ -1,12 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useId, useState } from "react";
+import { useRouter } from "next/navigation";
 import skillsData from "../../public/data/skills.json";
 
 import { Button } from "@/components/ui/button";
+import {
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { saveSkills, useJourneyProgress } from "@/lib/journey-progress";
+import "./skill-selection.css";
 
 export function UserSkillSelection() {
   const [skills] = useState<string[]>(skillsData as string[]);
@@ -17,7 +24,21 @@ export function UserSkillSelection() {
   // the pipeline consumes them.
   const [userSelection, setUserSelection] = useState<string[] | undefined>(undefined);
   const { journey, hydrated } = useJourneyProgress();
+  const router = useRouter();
   const selectedSkills = userSelection ?? journey.savedSkills ?? [];
+  // The skill panel's Continue is gated on the same signal main's /profile
+  // Continue uses: a saved profile, not the in-session form state — which is
+  // always false for returning users and blanks on Start Over.
+  const profileComplete = Boolean(journey.profile);
+  const continueReasonId = useId();
+  const continueDisabledMessage =
+    !profileComplete && selectedSkills.length === 0
+      ? "Complete your profile and select at least one skill before continuing."
+      : !profileComplete
+        ? "Complete your profile before continuing."
+        : selectedSkills.length === 0
+          ? "Select at least one skill before continuing."
+          : undefined;
 
   const filteredSkills = skills.filter((skill) =>
     skill.toLowerCase().includes(searchQuery.toLowerCase())
@@ -31,29 +52,36 @@ export function UserSkillSelection() {
     }
   };
 
+  // Handles the Continue action: saves the selection for the wizard's later
+  // steps and moves on. Nothing is POSTed here — /current-pathways' renders
+  // fetch the matches fresh (CareerResults POSTs /api/match itself, along
+  // with the current matching weights).
+  function onContinue() {
+    saveSkills(selectedSkills);
+    router.push("/current-pathways");
+  }
+
   // Wait out localStorage hydration so a returning user's saved selection is
   // already there on first paint instead of popping in afterwards.
   if (!hydrated) return null;
 
-  return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold">User Skill Selection</h2>
-        <p className="text-sm text-muted-foreground mt-1">
-          Select your skills from the list below or use search.
-        </p>
-      </div>
-
-      {/* Search Bar */}
+  const searchBar = (
+    <div className="profile-skill-search translate-y-2.5 rounded-lg bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
       <Input
         type="text"
-        placeholder="Search skills (e.g., Numeracy, Digital Literacy)..."
+        placeholder="Search Skills"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+    </div>
+  );
 
+  const selectionContent = (
+    <>
       {/* Skills Selection Grid (Padding matches gap-3 for balanced spacing) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 p-3 border rounded-md max-h-[19rem] overflow-y-auto">
+      <div
+        className="skills-grid-scrollbar grid gap-3 p-3 border rounded-md max-h-[19rem] overflow-y-auto"
+      >
         {filteredSkills.map((skill) => {
           const isSelected = selectedSkills.includes(skill);
           return (
@@ -72,44 +100,63 @@ export function UserSkillSelection() {
         })}
       </div>
 
-      {/* Selected Summary */}
-      <div className="p-4 bg-muted rounded-lg">
-        <h3 className="font-semibold text-sm">
-          Selected Skills ({selectedSkills.length}):
-        </h3>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {selectedSkills.length === 0 ? (
-            <span className="text-xs text-muted-foreground">
-              None selected yet.
-            </span>
-          ) : (
-            selectedSkills.map((s) => (
-              <span
-                key={s}
-                className="px-2.5 py-1 text-xs bg-background border rounded-full shadow-sm"
-              >
-                {s}
-              </span>
-            ))
-          )}
-        </div>
-      </div>
+    </>
+  );
 
-      {selectedSkills.length > 0 && (
-        <div className="flex justify-end">
-          <Button
-            size="lg"
-            nativeButton={false}
-            render={<Link href="/current-pathways" />}
-            // saveSkills persists the selection for the wizard's later steps
-            // and marks this page complete. The matches themselves are
-            // fetched fresh by /current-pathways; no POST here.
-            onClick={() => saveSkills(selectedSkills)}
+  const skillActions = (
+    <>
+      <Button
+        type="button"
+        variant="ghost"
+        size="lg"
+        onClick={() => setUserSelection([])}
+        disabled={selectedSkills.length === 0}
+      >
+        Clear
+      </Button>
+      <span
+        className="group relative inline-flex"
+      >
+        <Button
+          type="button"
+          size="lg"
+          onClick={onContinue}
+          disabled={!profileComplete || selectedSkills.length === 0}
+          aria-describedby={
+            continueDisabledMessage ? continueReasonId : undefined
+          }
+        >
+          Continue
+        </Button>
+        {continueDisabledMessage && (
+          <span
+            id={continueReasonId}
+            role="tooltip"
+            className="pointer-events-none absolute bottom-full right-0 z-20 mb-2 hidden w-max max-w-64 rounded-md bg-foreground px-3 py-2 text-xs text-background shadow-lg group-hover:block"
           >
-            Continue
-          </Button>
-        </div>
-      )}
-    </div>
+            {continueDisabledMessage}
+          </span>
+        )}
+      </span>
+    </>
+  );
+
+  // Rendered inside the profile card's Card (see src/app/profile/page.tsx):
+  // the fragments are the card's header, content and footer.
+  return (
+    <>
+      <CardHeader className="min-h-[102px] bg-card-blue py-4 text-card-foreground">
+        <CardTitle className="text-lg font-semibold">
+          User Skills Selection
+        </CardTitle>
+        {searchBar}
+      </CardHeader>
+      <CardContent className="flex-1 bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
+        <div className="space-y-4">{selectionContent}</div>
+      </CardContent>
+      <CardFooter className="justify-between bg-white text-foreground dark:bg-[var(--dm-card-grey)]">
+        <div className="profile-skill-actions">{skillActions}</div>
+      </CardFooter>
+    </>
   );
 }
