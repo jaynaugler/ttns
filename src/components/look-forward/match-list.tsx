@@ -4,6 +4,7 @@ import {
 	describeRankChange,
 	describeShift,
 	findCareerById,
+	formatScore,
 	type RankedProjection,
 	type ShiftDirection,
 } from "@/lib/projection-logic";
@@ -65,7 +66,7 @@ export function CurrentMatchList({ matches }: { matches: readonly CareerMatch[] 
 					<div className="min-w-0 flex-1">
 						<h4 className="font-bold leading-snug break-words">{careerTitle(match.careerId)}</h4>
 						<p className="mt-1 text-sm">
-							Match score <strong>{match.score}</strong> out of 100
+							Match score <strong>{formatScore(match.score)}</strong> out of 100
 						</p>
 						<ScoreBar score={match.score} />
 					</div>
@@ -89,8 +90,8 @@ export function ProjectedMatchList({ outcomes }: { outcomes: readonly RankedProj
 								{careerTitle(outcome.careerId)}
 							</h4>
 							<p className="mt-1 text-sm">
-								Match score <strong>{outcome.score}</strong> out of 100, was{" "}
-								{outcome.currentScore}
+								Match score <strong>{formatScore(outcome.score)}</strong> out of 100, was{" "}
+								{formatScore(outcome.currentScore)}
 							</p>
 							<p
 								className={`mt-2 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-sm font-bold ${SHIFT_STYLES[shift.direction]}`}

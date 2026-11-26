@@ -14,6 +14,7 @@ import {
 	describeRankChange,
 	describeScenario,
 	describeShift,
+	formatScore,
 	MATCH_ALPHA,
 	MIN_CAREER_SKILLS,
 	projectOutcomes,
@@ -388,6 +389,15 @@ describe("exports for other teams", () => {
 		assert.equal(shift.projectedScore, 71);
 		assert.equal(shift.currentScore, 54.85714285714286);
 		assert.equal(shift.delta, 16.1);
+	});
+});
+
+describe("formatScore", () => {
+	it("shows one decimal place, like the projections", () => {
+		assert.equal(formatScore(79.23076923076923), "79.2");
+		assert.equal(formatScore(81.5), "81.5");
+		assert.equal(formatScore(85), "85");
+		assert.equal(formatScore(-0.04), "0");
 	});
 });
 

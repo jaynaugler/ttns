@@ -130,6 +130,12 @@ function roundScore(value: number): number {
 	return rounded === 0 ? 0 : rounded;
 }
 
+// A score for display, one decimal place like the projections: 79.2, not
+// 79.23076923076923. Display only; stored scores keep full precision.
+export function formatScore(score: number): string {
+	return String(roundScore(score));
+}
+
 function cleanAlpha(alpha: number | undefined): number {
 	if (alpha === undefined || !Number.isFinite(alpha)) return MATCH_ALPHA;
 	return Math.max(0, Math.min(1, alpha));
