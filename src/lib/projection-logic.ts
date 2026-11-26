@@ -9,8 +9,9 @@
 //     helpers, default scenarios, and toCareerMatches for Team 6.
 //   - Tests: src/lib/projection-logic.test.ts (pnpm run test:projection).
 // Left
-//   - Import Team 4's DEFAULT_ALPHA and ScoredCareerMatch once
-//     feature/matching-logic is on main; MATCH_ALPHA mirrors it until then.
+//   - Import Team 4's DEFAULT_ALPHA once it is exported; MATCH_ALPHA mirrors
+//     it until then. Skill projections read the weight each match was scored
+//     with, so MATCH_ALPHA is only a fallback.
 //   - Agree a real rule for education and experience. EDUCATION_GAP_SHARE and
 //     EXPERIENCE_GAP_SHARE_PER_YEAR are placeholders, not research figures.
 //   - Let the user choose which skill to gain (today it suggests the skill
@@ -95,13 +96,21 @@ export type ProjectableMatch = CareerMatch & MatchSkillBreakdown;
 export interface ProjectionOptions {
 	// Every skill the user has today. Required by "gain-skill".
 	userSkills?: readonly string[];
-	// Team 4's weight between job coverage and user coverage, 0 to 1.
+	// Team 4's weight between job coverage and user coverage, 0 to 1. Leave it
+	// out to use the weight each match was scored with.
 	alpha?: number;
 }
 
-// Mirrors DEFAULT_ALPHA in Team 4's matching algorithm. Import it from
-// "@/lib/matching-algo" once Team 4's branch is merged.
-export const MATCH_ALPHA = 0.7;
+// Mirrors DEFAULT_ALPHA in Team 4's src/components/careerResults.tsx (0.3
+// since 1f7ea7b, "Flip default weights to 30/70"). Only a fallback: the user
+// can move Team 4's weights slider, so projectSkill reads each match's own
+// weight from its score where it can.
+export const MATCH_ALPHA = 0.3;
+
+// Mirrors MIN_CAREER_SKILLS in Team 4's src/lib/career-data.ts (line 36): a
+// career that lists fewer skills is scored as if it listed this many, so
+// 1-skill careers don't always rank #1. Team 4 doesn't export it yet.
+export const MIN_CAREER_SKILLS = 5;
 
 // Placeholder weights, not research figures: the share of the remaining gap
 // to a full match that an education step, or one year of experience, closes.
@@ -126,18 +135,43 @@ function cleanAlpha(alpha: number | undefined): number {
 	return Math.max(0, Math.min(1, alpha));
 }
 
+// C in Team 4's formula: the share of the career's skills the user has, out
+// of at least MIN_CAREER_SKILLS.
+function careerCoverage(matchedCount: number, careerSkillCount: number): number {
+	return (matchedCount / Math.max(careerSkillCount, MIN_CAREER_SKILLS)) * 100;
+}
+
 // Team 4's formula: S = alpha x C + (1 - alpha) x U, where C is the share of
-// the career's skills the user has and U the share of the user's skills the
-// career uses.
+// the career's skills the user has (see careerCoverage) and U the share of the
+// user's skills the career uses.
 function skillMatchScore(
 	matchedCount: number,
 	careerSkillCount: number,
 	userSkillCount: number,
 	alpha: number,
 ): number {
-	const careerCoverage = (matchedCount / careerSkillCount) * 100;
+	const career = careerCoverage(matchedCount, careerSkillCount);
 	const userCoverage = (matchedCount / userSkillCount) * 100;
-	return alpha * careerCoverage + (1 - alpha) * userCoverage;
+	return alpha * career + (1 - alpha) * userCoverage;
+}
+
+// Solves S = alpha x C + (1 - alpha) x U for alpha, giving the weight a saved
+// match was actually scored with. Undefined when it can't be told apart: C
+// and U equal (any alpha gives the same score), or a result that isn't a real
+// weight, which means the score didn't come from Team 4's formula.
+function scoredAlpha(
+	score: number,
+	matchedCount: number,
+	careerSkillCount: number,
+	userSkillCount: number,
+): number | undefined {
+	const career = careerCoverage(matchedCount, careerSkillCount);
+	const userCoverage = (matchedCount / userSkillCount) * 100;
+	if (Math.abs(userCoverage - career) <= 0.001) return undefined;
+
+	const alpha = (userCoverage - score) / (userCoverage - career);
+	if (!Number.isFinite(alpha) || alpha < -0.01 || alpha > 1.01) return undefined;
+	return Math.max(0, Math.min(1, alpha));
 }
 
 interface Projection {
@@ -177,8 +211,14 @@ function projectSkill(
 		return unchanged(match, `${skill} already counts toward this match.`);
 	}
 
-	const alpha = cleanAlpha(options.alpha);
 	const matchedCount = new Set(matchedSkills).size;
+	// An explicit weight wins; otherwise use the one this match was scored
+	// with, so the projection starts from the same formula as today's score.
+	const alpha =
+		options.alpha !== undefined
+			? cleanAlpha(options.alpha)
+			: (scoredAlpha(match.score, matchedCount, careerSkillCount, userSkills.size) ??
+				MATCH_ALPHA);
 
 	if (missingSkills.includes(skill)) {
 		return {

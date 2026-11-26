@@ -14,6 +14,8 @@ import {
 	describeRankChange,
 	describeScenario,
 	describeShift,
+	MATCH_ALPHA,
+	MIN_CAREER_SKILLS,
 	projectOutcomes,
 	rankProjections,
 	scenarioKey,
@@ -49,23 +51,46 @@ describe("projectOutcomes: gain a skill", () => {
 	});
 
 	it("raises careers that use the new skill, using Team 4's formula", () => {
+		// Payroll lists 4 skills, so it is scored out of 5: 0.7 x 3/5 + 0.3 x 3/7
+		// today; 0.7 x 4/5 + 0.3 x 4/8 projected.
 		const payroll = find(outcomes, "13102");
-		assert.equal(payroll.currentScore, 65.4);
-		assert.equal(payroll.score, 85);
-		assert.equal(payroll.scoreShift, 19.6);
+		assert.equal(payroll.currentScore, 54.85714285714286);
+		assert.equal(payroll.score, 71);
+		assert.equal(payroll.scoreShift, 16.1);
 		assert.equal(payroll.reason, `${ORAL} is one of the 4 skills this career uses.`);
 		assert.deepEqual(payroll.scenario, gainOral);
 
 		assert.equal(find(outcomes, "12113").scoreShift, 5.9);
 		assert.equal(find(outcomes, "12200").scoreShift, 8.1);
+		assert.equal(find(outcomes, "12201").scoreShift, 5.2);
 		assert.equal(find(outcomes, "21230").scoreShift, 3.5);
 	});
 
+	it("never lowers a match for a skill the career uses", () => {
+		const missing = new Set(MOCK_MATCHES.flatMap((m) => m.missingSkills ?? []));
+		for (const skill of missing) {
+			const projected = projectOutcomes(MOCK_MATCHES, { kind: "gain-skill", skill }, {
+				userSkills: MOCK_USER_SKILLS,
+			});
+			for (const outcome of projected) {
+				const match = MOCK_MATCHES.find((m) => m.careerId === outcome.careerId);
+				if (match?.missingSkills?.includes(skill)) {
+					assert.ok(outcome.scoreShift > 0, `${skill} lowered ${outcome.careerId}`);
+				}
+			}
+		}
+	});
+
 	it("gives a negative shift when the career doesn't use the skill", () => {
-		const admin = find(outcomes, "13110");
-		assert.equal(admin.score, 73.8);
-		assert.equal(admin.scoreShift, -0.5);
-		assert.match(admin.reason, /doesn't use/);
+		// Payroll doesn't use Evaluation: 0.7 x 3/5 + 0.3 x 3/8 projected.
+		const [payroll] = projectOutcomes(
+			MOCK_MATCHES.filter((m) => m.careerId === "13102"),
+			{ kind: "gain-skill", skill: "Evaluation" },
+			{ userSkills: MOCK_USER_SKILLS },
+		);
+		assert.equal(payroll.score, 53.3);
+		assert.equal(payroll.scoreShift, -1.6);
+		assert.match(payroll.reason, /doesn't use/);
 	});
 
 	it("doesn't change a match for a skill the user already has", () => {
@@ -75,7 +100,8 @@ describe("projectOutcomes: gain a skill", () => {
 			{ userSkills: MOCK_USER_SKILLS },
 		);
 		assert.equal(first.scoreShift, 0);
-		assert.equal(first.score, first.currentScore);
+		// The projected score is rounded to one decimal; the current one isn't.
+		assert.equal(first.score, Math.round(first.currentScore * 10) / 10);
 		assert.match(first.reason, /already have Writing/);
 	});
 
@@ -99,7 +125,7 @@ describe("projectOutcomes: gain a skill", () => {
 	});
 
 	it("doesn't call a skill unused when the match already counted it", () => {
-		// Writing is in 13102's matchedSkills but left out of userSkills here.
+		// Writing is in 12200's matchedSkills but left out of userSkills here.
 		const [outcome] = projectOutcomes(
 			[MOCK_MATCHES[1]],
 			{ kind: "gain-skill", skill: "Writing" },
@@ -107,6 +133,107 @@ describe("projectOutcomes: gain a skill", () => {
 		);
 		assert.equal(outcome.scoreShift, 0);
 		assert.equal(outcome.reason, "Writing already counts toward this match.");
+	});
+});
+
+// Each match's weight is read back from its score, so projections follow
+// Team 4's default and the weights slider on /current-pathways.
+describe("projectOutcomes: gain a skill uses the match's own weight", () => {
+	const USER_SKILLS = ["Digital Literacy", "Numeracy", "Problem Solving", "Writing"];
+	const gainCritical = { kind: "gain-skill", skill: "Critical Thinking" } as const;
+
+	// 4 of the career's 13 skills matched; all 4 of the user's skills used.
+	function statsOfficer(score: number): ProjectableMatch {
+		return {
+			careerId: "21230",
+			score,
+			matchedSkills: USER_SKILLS,
+			missingSkills: [
+				"Critical Thinking",
+				"Decision Making",
+				"Evaluation",
+				"Instructing",
+				"Monitoring",
+				"Oral Communication: Active Listening",
+				"Oral Communication: Oral Comprehension",
+				"Oral Communication: Oral Expression",
+				"Systems Analysis",
+			],
+		};
+	}
+
+	it("projects a match scored at Team 4's default 0.3 with 0.3", () => {
+		// 0.3 x 30.77 + 0.7 x 100 today; 0.3 x 38.46 + 0.7 x 100 projected.
+		const [outcome] = projectOutcomes([statsOfficer(79.23076923076923)], gainCritical, {
+			userSkills: USER_SKILLS,
+		});
+		assert.equal(MATCH_ALPHA, 0.3);
+		assert.equal(outcome.score, 81.5);
+		assert.equal(outcome.scoreShift, 2.3);
+	});
+
+	it("projects a match scored at 0.7 (slider moved) with 0.7", () => {
+		// 0.7 x 30.77 + 0.3 x 100 today; 0.7 x 38.46 + 0.3 x 100 projected.
+		const [outcome] = projectOutcomes([statsOfficer(51.53846153846154)], gainCritical, {
+			userSkills: USER_SKILLS,
+		});
+		assert.equal(outcome.score, 56.9);
+		assert.equal(outcome.scoreShift, 5.4);
+	});
+
+	it("falls back to MATCH_ALPHA when job and user coverage are equal", () => {
+		// 2 of 5 career skills and 2 of 5 user skills: every weight gives 40.
+		// Projected at 0.3: 0.3 x 60 + 0.7 x 50.
+		const [outcome] = projectOutcomes(
+			[
+				{
+					careerId: "x",
+					score: 40,
+					matchedSkills: ["Numeracy", "Writing"],
+					missingSkills: ["Critical Thinking", "Evaluation", "Monitoring"],
+				},
+			],
+			gainCritical,
+			{ userSkills: [...USER_SKILLS, "Troubleshooting"] },
+		);
+		assert.equal(outcome.score, 53);
+	});
+
+	it("counts a career with fewer than 5 skills as 5, like Team 4", () => {
+		// Banking clerks lists 4 skills; the user has 3 of them. At 0.7:
+		// 0.7 x 3/5 + 0.3 x 3/4 today; 0.7 x 4/5 + 0.3 x 4/5 projected.
+		const [outcome] = projectOutcomes(
+			[
+				{
+					careerId: "14201",
+					score: 64.5,
+					matchedSkills: ["Numeracy", "Problem Solving", "Writing"],
+					missingSkills: [ORAL],
+				},
+			],
+			gainOral,
+			{ userSkills: USER_SKILLS },
+		);
+		assert.equal(MIN_CAREER_SKILLS, 5);
+		assert.equal(outcome.score, 80);
+		assert.equal(outcome.scoreShift, 15.5);
+		assert.equal(outcome.reason, `${ORAL} is one of the 4 skills this career uses.`);
+	});
+
+	it("falls back to MATCH_ALPHA when the score didn't come from the formula", () => {
+		// 10 would need a weight of 1.3.
+		const [outcome] = projectOutcomes([statsOfficer(10)], gainCritical, {
+			userSkills: USER_SKILLS,
+		});
+		assert.equal(outcome.score, 81.5);
+	});
+
+	it("uses an explicit alpha over the match's own weight", () => {
+		const [outcome] = projectOutcomes([statsOfficer(79.23076923076923)], gainCritical, {
+			userSkills: USER_SKILLS,
+			alpha: 0.7,
+		});
+		assert.equal(outcome.score, 56.9);
 	});
 });
 
@@ -179,7 +306,7 @@ describe("ranking", () => {
 	it("sorts best projected score first, breaking ties by careerId", () => {
 		assert.deepEqual(
 			outcomes.map((o) => o.careerId),
-			["13102", "14201", "13110", "12200", "12113", "21230"],
+			["13102", "14201", "12200", "12113", "12201", "21230"],
 		);
 	});
 
@@ -188,9 +315,9 @@ describe("ranking", () => {
 		assert.deepEqual(
 			top.map(({ careerId, rank, previousRank }) => ({ careerId, rank, previousRank })),
 			[
-				{ careerId: "13102", rank: 1, previousRank: 2 },
-				{ careerId: "14201", rank: 2, previousRank: 3 },
-				{ careerId: "13110", rank: 3, previousRank: 1 },
+				{ careerId: "13102", rank: 1, previousRank: 3 },
+				{ careerId: "14201", rank: 2, previousRank: 4 },
+				{ careerId: "12200", rank: 3, previousRank: 2 },
 			],
 		);
 	});
@@ -251,16 +378,16 @@ describe("exports for other teams", () => {
 	it("converts projections to plain CareerMatch objects for Team 6", () => {
 		const [match] = toCareerMatches([first]);
 		assert.deepEqual(Object.keys(match).sort(), ["careerId", "rationale", "score"]);
-		assert.equal(match.score, 85);
+		assert.equal(match.score, 71);
 		assert.equal(match.rationale?.[0], first.reason);
 	});
 
 	it("converts a projection to an OutcomeShift", () => {
 		const shift = toOutcomeShift(first);
 		assert.equal(shift.careerId, "13102");
-		assert.equal(shift.projectedScore, 85);
-		assert.equal(shift.currentScore, 65.4);
-		assert.equal(shift.delta, 19.6);
+		assert.equal(shift.projectedScore, 71);
+		assert.equal(shift.currentScore, 54.85714285714286);
+		assert.equal(shift.delta, 16.1);
 	});
 });
 
