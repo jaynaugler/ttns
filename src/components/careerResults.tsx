@@ -271,6 +271,8 @@ export default function CareerResults({
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [error, setError] = useState("");
+  // Bumped by "Try again" to re-run the match request.
+  const [attempt, setAttempt] = useState(0);
   // The user's Top 3 picks, in the order they were checked. Starts from what
   // was saved before (older saves only had one pick).
   const [topCareerCodes, setTopCareerCodes] = useState<string[]>(
@@ -336,7 +338,10 @@ export default function CareerResults({
         if (controller.signal.aborted) return;
         if (currentRequest !== requestNumber.current) return;
 
-        setError(err instanceof Error ? err.message : "Unexpected error");
+        // A plain-language message for the user ("Failed to fetch" means
+        // nothing to them); the technical detail stays in the console.
+        console.error("Career matching failed:", err);
+        setError("We couldn't load your career matches. Check your internet connection, then try again.");
       } finally {
         if (
           !controller.signal.aborted &&
@@ -356,7 +361,7 @@ export default function CareerResults({
     // Keyed on skillsKey instead of skills (the string is content-stable;
     // see its declaration above).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skillsKey, alpha, visibleCount]);
+  }, [skillsKey, alpha, visibleCount, attempt]);
 
   // Check or uncheck a career. Checking adds it to the end of the Top 3 list;
   // unchecking removes it, and the other picks move up a number.
@@ -632,12 +637,20 @@ export default function CareerResults({
       )}
 
       {error && (
-        <p
+        <div
           role="alert"
-          className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-950/40 dark:text-red-200"
+          className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-700 dark:bg-red-950/40 dark:text-red-200"
         >
-          {error}
-        </p>
+          <p>{error}</p>
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={() => setAttempt((n) => n + 1)}
+            className="min-h-11 cursor-pointer px-4"
+          >
+            Try again
+          </Button>
+        </div>
       )}
 
       {/* Career cards */}
