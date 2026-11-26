@@ -1,4 +1,9 @@
 @layer components {
+  .skills-grid-scrollbar > button:not(:disabled):hover {
+    box-shadow: 0 4px 10px rgb(0 0 0 / 18%);
+    transform: translateY(-2px);
+  }
+
   .profile-skill-actions {
     display: flex;
     align-items: center;
