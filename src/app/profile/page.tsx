@@ -2,6 +2,8 @@
 // updates on client navigation.
 "use client";
 
+import { useEffect } from "react";
+
 import ProfileForm from "@/components/profile-form/ProfileForm";
 import { JourneyStepPage } from "@/components/journey-step-page";
 import { UserSkillSelection } from "@/components/skill-selection";
@@ -24,6 +26,18 @@ import {
 // sidebar.
 export default function ProfilePage() {
   const { journey } = useJourneyProgress();
+
+  // Marks <html> while this page is showing, for the fixed-height layout in
+  // globals.css. Next keeps a visited page mounted but hidden after you leave
+  // it, so a body:has(.profile-selection-layout) rule kept matching on later
+  // pages and locked their height; React runs this cleanup when the page is
+  // hidden, so the attribute (and the layout) goes with it.
+  useEffect(() => {
+    document.documentElement.dataset.profileLayout = "";
+    return () => {
+      delete document.documentElement.dataset.profileLayout;
+    };
+  }, []);
 
   return (
     <JourneyStepPage

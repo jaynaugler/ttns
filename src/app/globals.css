@@ -316,15 +316,15 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
 
 /* On wide, tall windows, let the skills list use the available page height. */
 @media (min-width: 76rem) and (min-height: 48rem) {
-  body:has(.profile-selection-layout) {
+  html[data-profile-layout] body {
     height: 100dvh;
     min-height: 100dvh;
   }
-  body:has(.profile-selection-layout) > div.flex.flex-1,
-  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+  html[data-profile-layout] body > div.flex.flex-1,
+  html[data-profile-layout] body > div.flex.flex-1 > main {
     min-height: 0;
   }
-  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+  html[data-profile-layout] body > div.flex.flex-1 > main {
     overflow: hidden;
   }
   .profile-selection-layout {
