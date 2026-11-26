@@ -32,6 +32,7 @@ import { findCareerById } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
 
 import { FinishCard } from "@/components/next-step/finish-card";
+import { CountUp, useParallax } from "@/components/next-step/motion";
 import { OnThisPage } from "@/components/next-step/on-this-page";
 import { PrintablePlan } from "@/components/next-step/printable-plan";
 import { PathAtAGlance } from "@/components/next-step/path-at-a-glance";
@@ -360,12 +361,17 @@ function Banner({
   const headingId = useId();
   const name = careerName(summary);
   const typical = summary.wages?.typical;
+  const { frameRef, imageRef } = useParallax<HTMLElement, HTMLImageElement>();
   return (
     <section
+      ref={frameRef}
       aria-labelledby={headingId}
       className="relative isolate overflow-hidden rounded-2xl bg-card-blue px-5 py-8 text-white sm:px-8 sm:py-10"
     >
+      {/* 20% taller than the banner, so the slow parallax (motion allowed
+          only) never shows an edge. */}
       <Image
+        ref={imageRef}
         src={BANNER_IMAGE.src}
         width={BANNER_IMAGE.width}
         height={BANNER_IMAGE.height}
@@ -374,18 +380,20 @@ function Banner({
         // (the dev overlay's "1 Issue") when that image is lazy.
         loading="eager"
         alt=""
-        className="absolute inset-0 -z-20 size-full object-cover object-[20%_50%]"
+        className="absolute inset-x-0 -top-[10%] -z-20 h-[120%] w-full object-cover object-[20%_50%] will-change-transform"
       />
-      {/* Below sm the text spans the banner, so brand blue covers it evenly
-          at 80%. From sm the text sits in the right 60%: the blue holds at
-          80% across the right 65% (so every line of text is on it) and
-          fades out by 95%, letting the lighthouse show. 80% is the floor:
-          white text measured 4.8:1 on the real pixels at the sun (the
-          worst spot, under the career title), and 4.8:1 even over pure
-          white; 75% fell to 4.3:1. */}
+      {/* Brand blue over the text, deepening to brand red over the
+          lighthouse. Below sm the text spans the banner, so blue then red
+          cover it top to bottom at 85%. From sm the text sits in the right
+          60%, and the blue holds at 85% across the right 65%, so every line
+          of text is on it; the lighthouse side fades to a brand-red tint.
+          Measured on the real pixels under every line of text (text hidden,
+          banner captured): worst 5.42:1 at 1280px, 5.75 at 1024, 5.86 at
+          768, 6.43 at 360, with and without the parallax and at different
+          scroll positions. The old 80% blue gave 4.8:1. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-card-blue/80 sm:bg-transparent sm:bg-linear-to-l sm:from-card-blue/80 sm:from-65% sm:to-transparent sm:to-95%"
+        className="absolute inset-0 -z-10 bg-linear-to-b from-card-blue/85 to-brand-red/85 sm:bg-linear-to-l sm:from-card-blue/85 sm:from-65% sm:via-card-blue/55 sm:via-85% sm:to-brand-red/50"
       />
       <div
         aria-hidden="true"
@@ -420,13 +428,13 @@ function Banner({
                   {/* Arrow is decorative; the words carry the change. */}
                   <span aria-hidden="true"> → </span>
                   <span className="sr-only"> today, </span>
-                  {path.scoreAfter}
+                  <CountUp to={path.scoreAfter} from={Number.parseFloat(path.scoreToday)} />
                 </span>
                 <span className="block text-sm font-normal">after this plan</span>
               </>
             ) : summary.score !== undefined ? (
               <>
-                {summary.score}
+                <CountUp to={summary.score} />
                 <span className="block text-sm font-normal">out of 100</span>
               </>
             ) : (
