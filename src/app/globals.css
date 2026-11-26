@@ -310,11 +310,25 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
 
 main:has(.profile-selection-layout) > .mx-auto {
   margin-inline-start: 0;
+  max-width: none;
 }
 
-@container profile-selection-layout (width >= 57rem) {
+@container profile-selection-layout (width >= 56rem) {
   .profile-panels-container {
-    grid-template-columns: 28rem minmax(28rem, 1fr);
+    grid-template-columns: 27rem minmax(28rem, 1fr);
+  }
+  .profile-skill-selection-panel {
+    max-width: none;
+  }
+}
+
+@container profile-selection-layout (width < 56rem) {
+  .profile-panels-container > :first-child {
+    max-width: 27rem;
+  }
+
+  .profile-skill-selection-panel > :first-child {
+    max-width: 27rem;
   }
 }
 
