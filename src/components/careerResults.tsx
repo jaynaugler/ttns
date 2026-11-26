@@ -468,7 +468,7 @@ export default function CareerResults({
                           .getElementById(`career-${code}`)
                           ?.scrollIntoView({ behavior: "smooth", block: "start" })
                       }
-                      className="cursor-pointer hover:underline"
+                      className="min-h-11 cursor-pointer text-left hover:underline"
                     >
                       #{index + 1} {titleFor(code)}
                     </button>
@@ -476,9 +476,9 @@ export default function CareerResults({
                       type="button"
                       onClick={() => togglePick(code)}
                       aria-label={`Remove ${titleFor(code)} from my Top ${MAX_TOP_CAREERS}`}
-                      className="cursor-pointer font-bold hover:text-red-700"
+                      className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full font-bold hover:text-red-700"
                     >
-                      ✕
+                      <span aria-hidden="true">✕</span>
                     </button>
                   </li>
                 ))}
