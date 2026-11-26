@@ -9,7 +9,7 @@ type NextStepsListProps = {
   error?: string | null;
 };
 
-// The parent supplies recommendations. Xiaoyi can replace mock data with API data later.
+// The parent supplies the actual API response.
 export default function NextStepsList({
   steps,
   title = "Your recommended next steps",
@@ -55,9 +55,16 @@ export default function NextStepsList({
             No recommendations available yet
           </h3>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            Explore career matches and select a skill you want to develop.
-            Your suggested next steps will appear here when they are ready.
+            We do not have specific suggestions for this selection yet.
           </p>
+          <div className="mx-auto mt-5 max-w-lg text-left text-sm text-foreground">
+            <p className="font-semibold">General guidance — not verified career requirements</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              <li>Research the career and compare current job postings.</li>
+              <li>Review relevant training and education options.</li>
+              <li>Consider practical experience or portfolio work.</li>
+            </ul>
+          </div>
         </div>
       ) : (
         <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
