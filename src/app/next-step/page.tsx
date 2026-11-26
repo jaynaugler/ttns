@@ -11,6 +11,7 @@ import { formatCurrency } from "@/components/look-forward/wage-projection-card";
 import { Button } from "@/components/ui/button";
 import {
   buildPlanDocument,
+  buildPrintPlan,
   getCareerSummary,
   getPathSummary,
   markSkillsForCareer,
@@ -195,8 +196,8 @@ function NextStepSummary() {
     .map((part) => part?.trim())
     .filter(Boolean)
     .join(" ");
-  const planDoc = top
-    ? buildPlanDocument({
+  const planInput = top
+    ? {
         name: fullName,
         date: new Date(),
         summary: top,
@@ -207,7 +208,12 @@ function NextStepSummary() {
         moves,
         updatedPathwaysUrl:
           typeof window === "undefined" ? undefined : `${window.location.origin}/updated-pathways`,
-      })
+      }
+    : undefined;
+  // The text for "Copy plan as text", and the one-page sheet "Save my plan" prints.
+  const planDoc = planInput ? buildPlanDocument(planInput) : undefined;
+  const printPlan = planInput
+    ? buildPrintPlan({ ...planInput, savedMatches: journey.savedMatches, userSkills: journey.savedSkills })
     : undefined;
   // The finish card's two lines: where the plan leads, and the first move.
   const firstMove = moves.find((move) => move.kind !== "plan");
@@ -286,7 +292,7 @@ function NextStepSummary() {
         summary={finishSummary}
         planText={planDoc ? planAsText(planDoc) : undefined}
       />
-      {planDoc && <PrintablePlan doc={planDoc} />}
+      {printPlan && <PrintablePlan plan={printPlan} />}
     </div>
   );
 }

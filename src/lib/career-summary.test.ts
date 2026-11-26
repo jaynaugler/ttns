@@ -30,6 +30,8 @@ import {
 	skillGapsFor,
 	splitPicks,
 	payRange,
+	planSteps,
+	buildPrintPlan,
 	educationPhrase,
 	SUMMARY_YEARS,
 	type OutlookRecord,
@@ -389,6 +391,51 @@ describe("skillGapsFor", () => {
 	it("is empty when the lead isn't a saved match", () => {
 		assert.deepEqual(skillGapsFor("99999", [lead]).skills, []);
 		assert.deepEqual(skillGapsFor("21300", undefined).skills, []);
+	});
+});
+
+describe("print plan", () => {
+	const skills = ["Digital Literacy", "Problem Solving", "Writing"];
+	const lead = match({ matchPercentage: 0.3 * 40 + 0.7 * (200 / 3), missingSkills: ["Teamwork", "Leadership"] });
+	const summary = getCareerSummary("21232", [lead])!;
+	const total = (steps: { gain?: number }[]) => Math.round(steps.reduce((sum, s) => sum + (s.gain ?? 0), 0) * 10) / 10;
+
+	it("splits a Do-all-three plan into skills, education and experience that add up", () => {
+		const plan: Scenario = { kind: "combined", skills: ["Teamwork"], step: "College diploma", years: 2 };
+		const steps = planSteps(plan, "21232", [lead], skills);
+		assert.deepEqual(steps.map((s) => s.kind), ["skills", "education", "experience"]);
+		assert.deepEqual(steps.map((s) => s.label), ["Learn Teamwork", "Finish College diploma", "2 years of experience"]);
+		assert.ok(steps.every((s) => s.gain! > 0));
+		const whole = getPathSummary({ scenario: plan, careerCode: "21232" }, [lead], skills)!;
+		assert.equal(total(steps), Math.round((Number(whole.scoreAfter) - Number(whole.scoreToday)) * 10) / 10);
+	});
+
+	it("leaves out the skills step when the plan has no skills", () => {
+		const steps = planSteps({ kind: "combined", skills: [], step: "", years: 1 }, "21232", [lead], skills);
+		assert.deepEqual(steps.map((s) => s.kind), ["education", "experience"]);
+	});
+
+	it("has one step for a single change", () => {
+		const steps = planSteps({ kind: "add-experience", years: 3 }, "21232", [lead], skills);
+		assert.deepEqual(steps.map((s) => [s.kind, s.label]), [["experience", "3 years of experience"]]);
+	});
+
+	it("has the score, Job Bank's three pay levels, skills and the next move", () => {
+		const plan: Scenario = { kind: "gain-skill", skill: "Teamwork" };
+		const path = getPathSummary({ scenario: plan, careerCode: "21232" }, [lead], skills)!;
+		const moves = rankNextMoves({ careerCode: "21232", savedMatches: [lead], userSkills: skills, plan, jobBankUrl: summary.jobBankUrl });
+		const sheet = buildPrintPlan({ name: "  ", date: new Date(2026, 10, 26), summary, path, gaps: ["Leadership"], moves, savedMatches: [lead], userSkills: skills });
+		assert.equal(sheet.name, undefined);
+		assert.equal(sheet.date, "November 26, 2026");
+		assert.equal(sheet.scoreToday, Number(path.scoreToday));
+		assert.equal(sheet.scoreAfter, Number(path.scoreAfter));
+		assert.deepEqual(sheet.pay.map((p) => [p.label, p.note, p.yearly]), [
+			["Starting out", "10th percentile", 58500],
+			["Typical", "median", 93756],
+			["Top earners", "90th percentile", 149994],
+		]);
+		assert.deepEqual(sheet.toWork, ["Leadership"]);
+		assert.equal(sheet.nextMove?.title, moves.find((m) => m.kind !== "plan")?.title);
 	});
 });
 

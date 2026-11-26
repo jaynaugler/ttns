@@ -769,6 +769,132 @@ export function buildPlanDocument(input: PlanInput): PlanDocument {
 }
 
 // The same plan as plain text, for the clipboard.
+// ---------------------------------------------------------------------------
+// The printed "My career plan" sheet
+// ---------------------------------------------------------------------------
+
+export interface PlanStep {
+	kind: "skills" | "education" | "experience";
+	// e.g. "Learn Writing", "Finish a college diploma", "2 years of experience".
+	label: string;
+	// What this step adds to the match after the steps before it.
+	// Undefined when it can't be projected.
+	gain?: number;
+}
+
+const roundTenth = (n: number) => Math.round(n * 10) / 10;
+
+// The plan's parts with what each adds, in the order "Do all three" applies
+// them: skills, then the education step on top, then experience. Each is
+// re-scored with Look Forward's projection, so the parts add up to the
+// plan's change.
+export function planSteps(
+	plan: Scenario,
+	careerCode: string,
+	savedMatches: readonly CareerMatch[] | undefined,
+	userSkills: readonly string[] | undefined,
+): PlanStep[] {
+	const matches = toProjectable(
+		(Array.isArray(savedMatches) ? savedMatches : []).filter(
+			(match) => match && typeof match === "object" && Number.isFinite(match.matchPercentage),
+		),
+	);
+	const options = { userSkills: Array.isArray(userSkills) ? userSkills : [] };
+	const score = (scenario: Scenario) => {
+		try {
+			return projectOutcomes(matches, scenario, options).find((o) => o.careerId === careerCode);
+		} catch {
+			return undefined;
+		}
+	};
+	const labels = describePlan(plan);
+	const whole = score(plan);
+	if (plan.kind !== "combined") {
+		const kind = plan.kind === "finish-education" ? "education" : plan.kind === "add-experience" ? "experience" : "skills";
+		return labels.map((label) => ({ kind, label, gain: whole?.scoreShift }));
+	}
+	// The running score after each part: skills alone, then education on
+	// top (the same plan with no experience), then the whole plan.
+	const after = [
+		...(plan.skills.length > 0 ? [{ kind: "skills" as const, at: score({ kind: "gain-skills", skills: plan.skills })?.score }] : []),
+		{ kind: "education" as const, at: score({ ...plan, years: 0 })?.score },
+		{ kind: "experience" as const, at: whole?.score },
+	];
+	let previous = whole?.currentScore;
+	return after.map(({ kind, at }, index) => {
+		const gain = at !== undefined && previous !== undefined ? roundTenth(at - previous) : undefined;
+		previous = at;
+		return { kind, label: labels[index], gain };
+	});
+}
+
+export interface PayLevel {
+	label: string;
+	note: string;
+	yearly: number;
+	hourly: number;
+}
+
+export interface PrintPlan {
+	name?: string;
+	date: string;
+	career: string;
+	code: string;
+	outlook?: string;
+	// Today's match and, with a plan, the match after it.
+	scoreToday?: number;
+	scoreAfter?: number;
+	// Starting out, typical, top earners; empty unless all three are published.
+	pay: PayLevel[];
+	payIsAnnual: boolean;
+	payPeriod?: string;
+	steps: PlanStep[];
+	// Skills the user has that this career uses, and ones to work on next.
+	have: string[];
+	toWork: string[];
+	nextMove?: { title: string; why: string; impact: string[] };
+}
+
+export interface PrintPlanInput extends PlanInput {
+	savedMatches: readonly CareerMatch[] | undefined;
+	userSkills: readonly string[] | undefined;
+}
+
+// Everything the one-page "My career plan" sheet shows.
+export function buildPrintPlan(input: PrintPlanInput): PrintPlan {
+	const { summary, path } = input;
+	const wages = summary.wages;
+	const levels = [
+		{ label: "Starting out", note: "10th percentile", figure: wages?.startingOut },
+		{ label: "Typical", note: "median", figure: wages?.typical },
+		{ label: "Top earners", note: "90th percentile", figure: wages?.topEarners },
+	];
+	const pay = levels.every((level) => level.figure)
+		? levels.map(({ label, note, figure }) => ({ label, note, yearly: figure!.yearly, hourly: figure!.hourly }))
+		: [];
+	const number = (text: string | undefined) => {
+		const n = text === undefined ? NaN : Number.parseFloat(text);
+		return Number.isFinite(n) ? n : undefined;
+	};
+	const move = input.moves.find((m) => m.kind !== "plan");
+	return {
+		name: input.name?.trim() || undefined,
+		date: new Intl.DateTimeFormat("en-CA", { dateStyle: "long" }).format(input.date),
+		career: summary.title ?? `Career ${summary.code}`,
+		code: summary.code,
+		outlook: summary.outlook,
+		scoreToday: number(path?.scoreToday ?? summary.score),
+		scoreAfter: path ? number(path.scoreAfter) : undefined,
+		pay,
+		payIsAnnual: wages?.isAnnual ?? false,
+		payPeriod: wages?.referencePeriod,
+		steps: path ? planSteps(path.scenario, summary.code, input.savedMatches, input.userSkills) : [],
+		have: [...(summary.matchedSkills ?? [])],
+		toWork: [...input.gaps],
+		nextMove: move ? { title: move.title, why: move.why, impact: moveImpact(move) } : undefined,
+	};
+}
+
 export function planAsText(doc: PlanDocument): string {
 	return [
 		doc.title,
