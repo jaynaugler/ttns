@@ -14,6 +14,7 @@ import type { Scenario } from "@/types/outcomes";
 
 import { toProjectable } from "./match-adapter";
 import {
+	buildScenarios,
 	estimateWageAfterYears,
 	findCareerById,
 	findWage,
@@ -425,6 +426,175 @@ export function getPathSummary(
 	} catch {
 		return undefined;
 	}
+}
+
+// ---------------------------------------------------------------------------
+// "Your next moves": a ranked list of changes for the lead career
+// ---------------------------------------------------------------------------
+
+export type NextMoveKind = "plan" | "skill" | "education" | "experience" | "job-search";
+
+export interface NextMove {
+	kind: NextMoveKind;
+	title: string;
+	// One line on why this move helps this career.
+	why: string;
+	// Match score today and after, formatScore'd, and the rounded change.
+	// Missing on the job-search card.
+	scoreToday?: string;
+	scoreAfter?: string;
+	gain?: number;
+	// Starting wage now and after the experience, for the experience card.
+	wageNow?: number;
+	wageAfter?: number;
+	// The scenario behind a change (not the job-search card).
+	scenario?: Scenario;
+}
+
+export const MAX_NEXT_MOVES = 4;
+
+// Moves that raise the match, biggest gain first. Array.prototype.sort is
+// stable, so equal gains keep their order.
+export function rankByGain<T extends { gain?: number }>(moves: readonly T[]): T[] {
+	return moves
+		.filter((move) => (move.gain ?? 0) > 0)
+		.sort((a, b) => (b.gain ?? 0) - (a.gain ?? 0));
+}
+
+export interface NextMovesInput {
+	careerCode: string;
+	savedMatches: readonly CareerMatch[] | undefined;
+	userSkills: readonly string[] | undefined;
+	// The Look Forward choice, when it is for this career.
+	plan?: Scenario;
+	// The profile's degree, for the education step (as Look Forward uses).
+	degree?: string;
+	// For the job-search card.
+	outlook?: string;
+	jobBankUrl?: string;
+}
+
+// The moves for the lead career, best first:
+// 1. The Look Forward plan, if any, with its real match change (even none).
+// 2. Finishing the education step, one more year of experience, and the
+//    skill this career lists that the user's other matches list most, each
+//    re-scored with Look Forward's projection. Ranked by match gain; ties
+//    keep that order. Anything the plan already covers, or that doesn't
+//    raise the match, is left out.
+// 3. A job-search card when there is a Job Bank link.
+// At most MAX_NEXT_MOVES: the ranked changes are trimmed first, so the plan
+// and the job search always stay. Empty when nothing applies.
+export function rankNextMoves(input: NextMovesInput): NextMove[] {
+	const { careerCode, plan } = input;
+	const saved = (Array.isArray(input.savedMatches) ? input.savedMatches : []).filter(
+		(match) => match && typeof match === "object" && Number.isFinite(match.matchPercentage),
+	);
+	if (!saved.some((match) => match.code === careerCode)) return [];
+	const matches = toProjectable(saved);
+	const userSkills = Array.isArray(input.userSkills) ? input.userSkills : [];
+
+	const project = (scenario: Scenario) => {
+		try {
+			return projectOutcomes(matches, scenario, { userSkills }).find(
+				(outcome) => outcome.careerId === careerCode,
+			);
+		} catch {
+			return undefined;
+		}
+	};
+	const scored = (scenario: Scenario) => {
+		const outcome = project(scenario);
+		return outcome
+			? {
+					scenario,
+					scoreToday: formatScore(outcome.currentScore),
+					scoreAfter: formatScore(outcome.score),
+					gain: outcome.scoreShift,
+				}
+			: undefined;
+	};
+
+	const moves: NextMove[] = [];
+	const planMove = plan ? scored(plan) : undefined;
+	if (planMove) {
+		moves.push({
+			kind: "plan",
+			title: "Your chosen plan",
+			why: `The path you chose on Updated Pathways: ${describePlan(plan!).join(" · ")}.`,
+			...planMove,
+		});
+	}
+
+	const inPlan = new Set<NextMoveKind>();
+	if (plan?.kind === "finish-education" || plan?.kind === "combined") inPlan.add("education");
+	if (plan?.kind === "add-experience" || plan?.kind === "combined") inPlan.add("experience");
+	const planned = new Set(planSkills(plan));
+
+	// The same scenarios Look Forward builds: the profile's education step
+	// and one more year of experience.
+	const built = buildScenarios(matches, userSkills, [], input.degree);
+	const education = built.find((scenario) => scenario.kind === "finish-education");
+	const experience = built.find((scenario) => scenario.kind === "add-experience");
+	const topGap = skillGapsFor(careerCode, saved, [...planned]).skills[0];
+
+	const candidates: NextMove[] = [];
+	if (education && !inPlan.has("education")) {
+		const move = scored(education);
+		if (move && education.kind === "finish-education") {
+			candidates.push({
+				kind: "education",
+				title: `Finish ${education.step}`,
+				why: `Finishing ${education.step} closes part of the gap for this career.`,
+				...move,
+			});
+		}
+	}
+	if (experience && !inPlan.has("experience")) {
+		const move = scored(experience);
+		if (move) {
+			const wage = findWage(careerCode);
+			const now = toFigure(wage?.lowWage, wage?.isAnnual === true);
+			const after = estimateWageAfterYears(wage, 1);
+			candidates.push({
+				kind: "experience",
+				title: "Get 1 year of experience",
+				why: "A year of work, co-op or volunteering in the field strengthens this match.",
+				...move,
+				wageNow: now?.yearly,
+				wageAfter: after?.rangePublished ? after.annual : undefined,
+			});
+		}
+	}
+	if (topGap) {
+		const move = scored({ kind: "gain-skill", skill: topGap.skill });
+		if (move) {
+			candidates.push({
+				kind: "skill",
+				title: `Learn ${topGap.skill}`,
+				why:
+					topGap.alsoNeededBy > 0
+						? `This career lists it, and so do ${topGap.alsoNeededBy} of your other matches.`
+						: "This career lists it, and you didn't select it.",
+				...move,
+			});
+		}
+	}
+	const ranked = rankByGain(candidates);
+
+	const job: NextMove | undefined = input.jobBankUrl
+		? {
+				kind: "job-search",
+				title: "Search Nova Scotia job postings",
+				why: input.outlook
+					? `Job Bank rates the Nova Scotia outlook for this career as ${input.outlook}.`
+					: "See who is hiring for this career in Nova Scotia now.",
+			}
+		: undefined;
+
+	const room = MAX_NEXT_MOVES - moves.length - (job ? 1 : 0);
+	moves.push(...ranked.slice(0, Math.max(0, room)));
+	if (job) moves.push(job);
+	return moves;
 }
 
 export interface PickSplit {

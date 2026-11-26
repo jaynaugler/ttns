@@ -1,113 +1,131 @@
 "use client";
 
-// Team 6's recommendations for one career, as a section of /next-step.
-// The request logic is Joshua Xie's from #51 (originally the whole
-// /next-step page), moved here unchanged so the Team 5 summary page can
-// mount it: a browser-local guest ID, buildStepsRequest for one current
-// match, and an abort-safe POST /api/steps keyed on the request. Skills are
-// sent as unconfirmed (his default), so missing skills stay unknown.
-//
-// The section only appears when Team 6 returns at least one step. Missing
-// data, no steps, an error or a failed load all render nothing.
+// "Your next moves" on /next-step: a ranked list of changes for the career
+// the page leads with. Rebuilds the recommendations idea from Joshua Xie's
+// #51 (Team 6), with his go-ahead, on his NextStepCard design, but computed
+// here from the user's own journey rather than POST /api/steps:
+//   1. the Look Forward plan, with its real match change;
+//   2. finishing the education step, a year of experience, and the skill
+//      the user's other matches list most, ranked by how much each raises
+//      this match (Look Forward's projection), skipping any the plan covers
+//      or that don't raise it;
+//   3. a Nova Scotia job search.
+// See rankNextMoves in src/lib/career-summary.ts. Nothing renders when
+// there are no moves.
 
-import { useEffect, useState } from "react";
+import { useId } from "react";
 
-import NextStepsList from "@/components/next-steps/NextStepsList";
-import { ensureGuestJourneyId, type ProfileData } from "@/lib/journey-progress";
-import { buildStepsRequest } from "@/lib/profile-adapter";
+import NextStepCard from "@/components/next-steps/NextStepCard";
+import { formatCurrency } from "@/components/look-forward/wage-projection-card";
+import {
+  rankNextMoves,
+  type CareerSummary,
+  type NextMove,
+  type NextMoveKind,
+} from "@/lib/career-summary";
+import { formatScore } from "@/lib/projection-logic";
 import type { CareerMatch } from "@/types/careers";
-import type { NextStep } from "@/types/outcomes";
+import type { Scenario } from "@/types/outcomes";
 
-type Result = { key: string; steps: NextStep[] };
+const BADGES: Record<NextMoveKind, string> = {
+  plan: "Your plan",
+  skill: "Skill",
+  education: "Education",
+  experience: "Experience",
+  "job-search": "Job search",
+};
 
 export interface NextStepRecommendationsProps {
-  // The career to recommend for: the one the page leads with.
-  careerCode: string;
-  // The journey data the request is built from.
-  guestId?: string;
+  // The career the page leads with.
+  summary: CareerSummary;
   savedMatches?: CareerMatch[];
   savedSkills?: string[];
-  profile?: ProfileData;
+  // The Look Forward choice, when the page leads with its career.
+  plan?: Scenario;
+  // The profile's degree, for the education step.
+  degree?: string;
   // The page's card style, so the section matches its neighbours.
   className?: string;
 }
 
 export function NextStepRecommendations({
-  careerCode,
-  guestId,
+  summary,
   savedMatches,
   savedSkills,
-  profile,
+  plan,
+  degree,
   className = "",
 }: NextStepRecommendationsProps) {
-  const [result, setResult] = useState<Result | null>(null);
-
-  // The page only renders this once the step is unlocked.
-  useEffect(() => {
-    if (profile && !guestId) ensureGuestJourneyId();
-  }, [profile, guestId]);
-
-  const request = buildStepsRequest({
-    guestId,
-    selectedCareerCode: careerCode,
+  const headingId = useId();
+  const moves = rankNextMoves({
+    careerCode: summary.code,
     savedMatches,
-    savedSkills,
-    profile,
-    skillsComplete: false,
+    userSkills: savedSkills,
+    plan,
+    degree,
+    outlook: summary.outlook,
+    jobBankUrl: summary.jobBankUrl,
   });
-  // A primitive key prevents unrelated renders from repeating the request.
-  const requestKey = request ? JSON.stringify(request) : null;
+  if (moves.length === 0) return null;
 
-  useEffect(() => {
-    if (!requestKey) return;
-    const key = requestKey;
-    const controller = new AbortController();
-    async function load() {
-      try {
-        const response = await fetch("/api/steps", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: key,
-          signal: controller.signal,
-        });
-        if (!response.ok) throw new Error("Request failed");
-        const data: { steps?: unknown } = await response.json();
-        if (!Array.isArray(data.steps)) throw new Error("Invalid response");
-        if (!controller.signal.aborted) setResult({ key, steps: data.steps });
-      } catch {
-        // A failed load shows nothing, like no steps.
-        if (!controller.signal.aborted) setResult({ key, steps: [] });
-      }
-    }
-    void load();
-    return () => controller.abort();
-  }, [requestKey]);
-
-  const selected = savedMatches?.find((match) => match.code === careerCode);
-  const steps = result && result.key === requestKey ? result.steps : [];
-  const show = selected !== undefined && steps.length > 0;
-
+  const career = summary.title ?? `Career ${summary.code}`;
   return (
-    <>
-      {/* Always in the DOM and only its text changes, so screen readers
-          announce the cards when they appear. */}
-      <div role="status" className="sr-only">
-        {show
-          ? `${steps.length} recommended next ${steps.length === 1 ? "step" : "steps"} for ${selected.title}.`
-          : ""}
+    <section aria-labelledby={headingId} className={`${className} space-y-4`}>
+      <div className="space-y-1">
+        <h2 id={headingId} className="text-2xl font-bold break-words">
+          Your next moves
+        </h2>
+        <p>Ranked by how much each one raises your match for {career}.</p>
       </div>
-
-      {show && (
-        // NextStepsList (Team 6) owns the heading and its muted line. Scoped
-        // overrides match the page's cards without editing it: the h2 at the
-        // page's 24px with normal spacing, and full text colour for the
-        // muted line, which measured 4.47:1 in light mode (under 4.5).
-        <div
-          className={`${className} [&_h2]:text-2xl [&_h2]:tracking-normal sm:[&_h2]:text-2xl [&_.text-muted-foreground]:text-foreground`}
-        >
-          <NextStepsList steps={steps} description="Small actions you can take now." />
-        </div>
-      )}
-    </>
+      <ol className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {moves.map((move) => (
+          <li key={move.kind} className="min-w-0">
+            <NextStepCard
+              step={{ id: move.kind, title: move.title, description: move.why }}
+              badge={BADGES[move.kind]}
+              impact={impactLines(move)}
+              action={actionFor(move, career, summary.jobBankUrl)}
+            />
+          </li>
+        ))}
+      </ol>
+    </section>
   );
+}
+
+// "Match 78 → 84, up 6", or for a plan that doesn't move this career,
+// "Match 79.2, no change from this plan". The experience card adds the
+// starting wage now and after the year.
+function impactLines(move: NextMove): string[] {
+  const lines: string[] = [];
+  if (move.scoreToday !== undefined && move.scoreAfter !== undefined) {
+    lines.push(
+      move.gain
+        ? `Match ${move.scoreToday} → ${move.scoreAfter}, up ${formatScore(move.gain)}`
+        : `Match ${move.scoreToday}, no change from this plan`,
+    );
+  }
+  if (move.wageNow !== undefined && move.wageAfter !== undefined) {
+    lines.push(
+      `Starting wage ${formatCurrency(move.wageNow)} → about ${formatCurrency(move.wageAfter)} a year after 1 year`,
+    );
+  }
+  return lines;
+}
+
+function actionFor(
+  move: NextMove,
+  career: string,
+  jobBankUrl: string | undefined,
+): { label: string; href: string; context?: string } | undefined {
+  if (move.kind === "job-search") {
+    return jobBankUrl
+      ? { label: `See Nova Scotia job postings for ${career} on Job Bank`, href: jobBankUrl }
+      : undefined;
+  }
+  return {
+    label: move.kind === "plan" ? "Adjust it on Updated Pathways" : "Try it on Updated Pathways",
+    href: "/updated-pathways",
+    context: move.title,
+  };
 }

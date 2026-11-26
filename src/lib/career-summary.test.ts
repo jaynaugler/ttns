@@ -18,7 +18,10 @@ import {
 	markSkillsForCareer,
 	outlookCode,
 	parseTrends,
+	MAX_NEXT_MOVES,
 	planSkills,
+	rankByGain,
+	rankNextMoves,
 	rankSkillsToDevelop,
 	skillGapsFor,
 	splitPicks,
@@ -380,6 +383,143 @@ describe("skillGapsFor", () => {
 	it("is empty when the lead isn't a saved match", () => {
 		assert.deepEqual(skillGapsFor("99999", [lead]).skills, []);
 		assert.deepEqual(skillGapsFor("21300", undefined).skills, []);
+	});
+});
+
+describe("rankByGain", () => {
+	it("drops zero gain and keeps ties in their order", () => {
+		const moves = [
+			{ id: "a", gain: 2 },
+			{ id: "b", gain: 0 },
+			{ id: "c", gain: 5 },
+			{ id: "d", gain: 2 },
+			{ id: "e" },
+		];
+		assert.deepEqual(
+			rankByGain(moves).map((move) => move.id),
+			["c", "a", "d"],
+		);
+	});
+});
+
+describe("rankNextMoves", () => {
+	const skills = ["Digital Literacy", "Problem Solving", "Writing"];
+	const url = "https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring=21232&fprov=NS";
+	const others = [
+		match({ code: "21231", missingSkills: ["Teamwork", "Leadership"] }),
+		match({ code: "21233", missingSkills: ["Teamwork"] }),
+	];
+	const kinds = (moves: { kind: string }[]) => moves.map((move) => move.kind);
+	// The lead scored with Team 4's formula at its 0.3 weight, so a re-scored
+	// skill compares like for like: 2 of 3 career skills, 3 selected.
+	const lead = match({ matchPercentage: 0.3 * 40 + 0.7 * (200 / 3) });
+
+	it("puts the plan first, with its real match change", () => {
+		const plan: Scenario = { kind: "gain-skill", skill: "Teamwork" };
+		const moves = rankNextMoves({
+			careerCode: "21232",
+			savedMatches: [match(), ...others],
+			userSkills: skills,
+			plan,
+			jobBankUrl: url,
+		});
+		assert.equal(moves[0].kind, "plan");
+		const expected = projectOutcomes(toProjectable([match(), ...others]), plan, {
+			userSkills: skills,
+		}).find((outcome) => outcome.careerId === "21232")!;
+		assert.equal(moves[0].scoreToday, formatScore(expected.currentScore));
+		assert.equal(moves[0].scoreAfter, formatScore(expected.score));
+		assert.equal(moves[0].gain, expected.scoreShift);
+		// The plan's skill isn't offered again.
+		assert.ok(!moves.some((move) => move.kind === "skill"));
+		assert.equal(moves[moves.length - 1].kind, "job-search");
+	});
+
+	it("leaves out changes the plan already covers", () => {
+		const plan: Scenario = { kind: "combined", skills: ["Teamwork"], step: "High School", years: 1 };
+		const moves = rankNextMoves({
+			careerCode: "21232",
+			savedMatches: [match(), ...others],
+			userSkills: skills,
+			plan,
+			jobBankUrl: url,
+		});
+		assert.deepEqual(kinds(moves), ["plan", "job-search"]);
+	});
+
+	it("ranks the other changes by match gain", () => {
+		const moves = rankNextMoves({
+			careerCode: "21232",
+			savedMatches: [lead, ...others],
+			userSkills: skills,
+			degree: "High School",
+		});
+		const gains = moves.map((move) => move.gain ?? 0);
+		assert.deepEqual(gains, [...gains].sort((a, b) => b - a));
+		assert.ok(gains.every((gain) => gain > 0));
+		assert.deepEqual([...kinds(moves)].sort(), ["education", "experience", "skill"]);
+		assert.equal(moves.find((move) => move.kind === "education")?.title, "Finish High School");
+		assert.equal(
+			moves.find((move) => move.kind === "skill")?.why,
+			"This career lists it, and so do 2 of your other matches.",
+		);
+	});
+
+	it("shows the starting wage now and after a year on the experience card", () => {
+		const experience = rankNextMoves({
+			careerCode: "21232",
+			savedMatches: [match()],
+			userSkills: skills,
+		}).find((move) => move.kind === "experience");
+		// 21232: $30/h starting (58,500 a year); a fifth of the way to the
+		// $48.08 median after a year.
+		assert.equal(experience?.wageNow, 58500);
+		assert.equal(experience?.wageAfter, 65551);
+	});
+
+	it("drops changes with no gain, but keeps a plan with none", () => {
+		const full = match({ matchPercentage: 100, missingSkills: [] });
+		const moves = rankNextMoves({
+			careerCode: "21232",
+			savedMatches: [full],
+			userSkills: skills,
+			plan: { kind: "add-experience", years: 1 },
+			jobBankUrl: url,
+		});
+		assert.deepEqual(kinds(moves), ["plan", "job-search"]);
+		assert.equal(moves[0].gain, 0);
+	});
+
+	it("keeps at most 4, trimming the ranked changes, not the plan or job search", () => {
+		const input = {
+			careerCode: "21232",
+			savedMatches: [lead, ...others],
+			userSkills: skills,
+		};
+		// Three changes raise this match, so with a plan and the job search
+		// there are five candidates.
+		assert.equal(rankNextMoves(input).length, 3);
+		const moves = rankNextMoves({
+			...input,
+			savedMatches: [lead, ...others],
+			userSkills: skills,
+			// A plan with a skill this career doesn't list: shown, no gain.
+			plan: { kind: "gain-skill", skill: "Welding" },
+			jobBankUrl: url,
+		});
+		assert.equal(moves.length, MAX_NEXT_MOVES);
+		assert.equal(moves[0].kind, "plan");
+		assert.equal(moves[3].kind, "job-search");
+		const ranked = moves.slice(1, 3).map((move) => move.gain ?? 0);
+		assert.ok(ranked[0] >= ranked[1]);
+	});
+
+	it("is empty when the career isn't a saved match", () => {
+		assert.deepEqual(
+			rankNextMoves({ careerCode: "10010", savedMatches: [match()], userSkills: skills, jobBankUrl: url }),
+			[],
+		);
+		assert.deepEqual(rankNextMoves({ careerCode: "21232", savedMatches: undefined, userSkills: skills }), []);
 	});
 });
 

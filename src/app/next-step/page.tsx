@@ -171,15 +171,16 @@ function NextStepSummary() {
             plan={planSkills(path?.scenario)}
           />
           <SkillsInProgress skills={journey.newSkills} summary={top} />
-          {/* Team 6's recommendations (Joshua's #51) for the same career the
-              page leads with, so the cards always match the banner. After
-              both skills cards, so those sit together. */}
+          {/* "Your next moves" (built on Joshua's #51 card design) for the
+              same career the page leads with, so the cards always match the
+              banner. After both skills cards, so those sit together. The
+              plan is passed only when the page leads with the plan's career. */}
           <NextStepRecommendations
-            careerCode={top.code}
-            guestId={journey.guestId}
+            summary={top}
             savedMatches={journey.savedMatches}
             savedSkills={journey.savedSkills}
-            profile={journey.profile}
+            plan={path ? journey.lookForward?.scenario : undefined}
+            degree={journey.profile?.education?.degree}
             className={cardClass}
           />
           {others.length > 0 && <OtherPicks picks={others} />}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -8,6 +9,18 @@ import type { NextStep } from "@/types/outcomes";
 
 type NextStepCardProps = {
   step: NextStep;
+  // Optional, added for Team 5's "Your next moves" (built on this card):
+  // a badge in place of the category label, impact lines (e.g. "Match 78 →
+  // 84, up 6") and one action link. Without them the card is unchanged.
+  badge?: string;
+  impact?: readonly string[];
+  action?: {
+    label: string;
+    href: string;
+    // Read after the label by screen readers, so repeated labels such as
+    // "Try it on Updated Pathways" still say which card they belong to.
+    context?: string;
+  };
 };
 
 const categoryLabels: Record<NonNullable<NextStep["category"]>, string> = {
@@ -18,7 +31,8 @@ const categoryLabels: Record<NonNullable<NextStep["category"]>, string> = {
 };
 
 // A single recommendation card. No API requests happen here.
-export default function NextStepCard({ step }: NextStepCardProps) {
+export default function NextStepCard({ step, badge, impact, action }: NextStepCardProps) {
+  const badgeText = badge ?? (step.category ? categoryLabels[step.category] : undefined);
   return (
     <article className="h-full">
       <Card className="h-full gap-0 bg-card text-card-foreground shadow-sm">
@@ -28,9 +42,9 @@ export default function NextStepCard({ step }: NextStepCardProps) {
               <Lightbulb className="size-5" aria-hidden="true" />
               <span>Recommended next step</span>
             </div>
-            {step.category ? (
+            {badgeText ? (
               <span className="inline-flex rounded-full bg-brand-yellow px-3 py-1 text-xs font-bold text-black">
-                {categoryLabels[step.category]}
+                {badgeText}
               </span>
             ) : null}
           </div>
@@ -46,7 +60,7 @@ export default function NextStepCard({ step }: NextStepCardProps) {
             </p>
           ) : null}
           {step.estimatedWeeks ? (
-            <p className="text-sm text-card-foreground/70">
+            <p className="text-sm text-card-foreground/90">
               Approx. {step.estimatedWeeks}{" "}
               {step.estimatedWeeks === 1 ? "week" : "weeks"}
             </p>
@@ -60,15 +74,51 @@ export default function NextStepCard({ step }: NextStepCardProps) {
                 <ArrowRight className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 <a
                   href={step.resourceUrl}
-                  className="text-sm font-medium leading-relaxed break-words underline underline-offset-2"
+                  className="inline-flex min-h-11 items-center text-sm font-medium leading-relaxed break-all underline underline-offset-2 dark:text-[var(--dm-brand-yellow)]"
                 >
                   {step.resourceUrl}
                 </a>
               </div>
             </div>
           ) : null}
+          {impact && impact.length > 0 ? (
+            <div className="space-y-1">
+              {impact.map((line) => (
+                <p key={line} className="text-sm font-bold break-words">
+                  {line}
+                </p>
+              ))}
+            </div>
+          ) : null}
+          {action ? <CardAction {...action} /> : null}
         </CardContent>
       </Card>
     </article>
+  );
+}
+
+// White on the blue card, 44px tall, with a white focus outline. In-app
+// links use Next's Link; anything else is a plain link.
+function CardAction({ label, href, context }: NonNullable<NextStepCardProps["action"]>) {
+  const className =
+    "inline-flex min-h-11 cursor-pointer items-center font-bold text-card-foreground underline underline-offset-4 break-words focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-card-foreground";
+  const text = (
+    <>
+      {label}
+      {context ? <span className="sr-only">: {context}</span> : null}
+    </>
+  );
+  return (
+    <p>
+      {href.startsWith("/") ? (
+        <Link href={href} className={className}>
+          {text}
+        </Link>
+      ) : (
+        <a href={href} className={className}>
+          {text}
+        </a>
+      )}
+    </p>
   );
 }
