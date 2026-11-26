@@ -1,21 +1,23 @@
 // Team 5 logic for calculating outcome shifts
 //
-// Status (2026-11-12, for the halfway team switch):
+// Status (updated 2026-11-26):
 // Done
-//   - Wage projection: findCareerById, createWageProjection, createOutcomeShift.
-//   - Look Forward: projectOutcomes(current, scenario, options) for three
-//     scenarios (gain a skill, finish an education step, add experience),
-//     each with a score shift and a one-line reason. Plus ranking, wording
-//     helpers, default scenarios, and toCareerMatches for Team 6.
+//   - Wage data from Job Bank (src/data/wages.json): findWage,
+//     medianAnnualWage, estimateWageAfterYears, medianWageChange; plus
+//     findCareerById and createOutcomeShift from the earlier work.
+//   - Look Forward: projectOutcomes(current, scenario, options) for the five
+//     scenarios — the suggested skill, the user's own picks (up to three),
+//     finish an education step, add experience, and "do all three" — with
+//     tie-aware ranking, wording helpers, the default scenarios, the
+//     /updated-pathways ones (buildScenarios takes the user's picks), and
+//     toCareerMatches for Team 6.
 //   - Tests: src/lib/projection-logic.test.ts (pnpm run test:projection).
 // Left
 //   - Import Team 4's DEFAULT_ALPHA once it is exported; MATCH_ALPHA mirrors
-//     it until then. Skill projections read the weight each match was scored
-//     with, so MATCH_ALPHA is only a fallback.
+//     it until then. The projections instead read the weight each match was
+//     scored with (scoredAlpha), so MATCH_ALPHA is only a fallback.
 //   - Agree a real rule for education and experience. EDUCATION_GAP_SHARE and
 //     EXPERIENCE_GAP_SHARE_PER_YEAR are placeholders, not research figures.
-//   - Let the user choose which skill to gain (today it suggests the skill
-//     missing from the most matches).
 // Hand-off notes: src/components/look-forward/README.md
 
 import careersData from "../data/careers.json";
@@ -26,7 +28,6 @@ import type {
 	OutcomeShift,
 	ProjectedOutcome,
 	Scenario,
-	WageProjection,
 } from "@/types/outcomes";
 
 const careers = careersData as Career[];
@@ -116,35 +117,6 @@ export function medianWageChange(fromId: string, toId: string): number | undefin
 export function findCareerById(careerId: string): Career | undefined {
 	return careers.find((career) => career.id === careerId);
 }
-
-export function createWageProjection(
-	careerId: string,
-	currentWage?: number,
-): WageProjection | undefined {
-	const career = findCareerById(careerId);
-
-	if (career?.medianWage === undefined) {
-		return undefined;
-	}
-
-	const validCurrentWage =
-		typeof currentWage === "number" &&
-		Number.isFinite(currentWage) &&
-		currentWage >= 0
-			? currentWage
-			: undefined;
-
-	return {
-		currentWage: validCurrentWage,
-		projectedWage: career.medianWage,
-		delta:
-			validCurrentWage !== undefined
-				? career.medianWage - validCurrentWage
-				: undefined,
-		periodLabel: "per year",
-	};
-}
-
 
 export function createOutcomeShift(
 	careerId: string,
@@ -426,7 +398,7 @@ function projectExperience(match: CareerMatch, years: number): Projection {
 }
 
 // "A", "A and B", "A, B and C".
-function joinWords(words: readonly string[]): string {
+export function joinWords(words: readonly string[]): string {
 	return words.length <= 2
 		? words.join(" and ")
 		: `${words.slice(0, -1).join(", ")} and ${words[words.length - 1]}`;
@@ -611,21 +583,6 @@ export function describeShift(scoreShift: number): {
 		: { direction: "down", text: `Down ${size} ${unit}` };
 }
 
-export function describeRankChange(
-	rank: number,
-	previousRank: number | undefined,
-	limit: number = TOP_MATCH_COUNT,
-): string {
-	if (previousRank === undefined || previousRank > limit) {
-		return previousRank === undefined
-			? `New to your top ${limit}`
-			: `New to your top ${limit}, up from #${previousRank}`;
-	}
-	if (previousRank > rank) return `Moved up from #${previousRank}`;
-	if (previousRank < rank) return `Moved down from #${previousRank}`;
-	return `Still #${rank}`;
-}
-
 export function describeScenario(scenario: Scenario): string {
 	switch (scenario.kind) {
 		case "gain-skill":
@@ -774,7 +731,8 @@ export interface WageCareer {
 // - Shows `selectedId` while it's in the list on screen, otherwise the #1
 //   (projected with a change selected, today's without).
 // - The projected #1, when it isn't today's #1: compared with today's #1.
-// - Any other career, with a change selected: compared with the projected #1.
+// - Any other career, with a change selected: compared with the projected
+//   #1, as today's when the change didn't move the top spot.
 // - No change selected, or the #1 itself with nothing above it moved: no
 //   comparison.
 // - Careers tied at #1: compared with today's #1 (see labelRanks).
@@ -807,7 +765,11 @@ export function pickWageCareer(
 			? { careerId }
 			: { careerId, comparedWith: today.careerId, comparedAs: "today" };
 	}
-	return { careerId, comparedWith: newTop, comparedAs: "new" };
+	// The change didn't move the top spot, so the only #1 is still today's;
+	// "your new #1" would name a career that never changed.
+	return newTop === today.careerId
+		? { careerId, comparedWith: today.careerId, comparedAs: "today" }
+		: { careerId, comparedWith: newTop, comparedAs: "new" };
 }
 
 export interface SummaryWage {

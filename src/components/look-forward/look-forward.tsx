@@ -47,6 +47,9 @@ export interface LookForwardProps {
 	skillPicker?: {
 		skills: readonly SkillToLearn[];
 		picks: readonly string[];
+		// Saved picks the cap keeps off the page, so saving doesn't drop them
+		// without a word.
+		hiddenPicks?: number;
 		onChange: (picks: string[]) => void;
 	};
 }
@@ -70,15 +73,18 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 	);
 	const scenario = options.find((option) => scenarioKey(option) === selectedKey);
 	const picks = skillPicker?.picks ?? [];
-	const currentTop = rankMatches(matches).slice(0, TOP_MATCH_COUNT);
+	// Today's display-ranked rows, tied careers beyond #3 included: the wage
+	// card must accept any row Step 3 shows when no change is selected, so
+	// picking a tied career doesn't silently fall back to #1.
+	const todayRows = pathRows(undefined);
 	const rows = pathRows(scenario);
-	const wage = pickWageCareer(currentTop, scenario ? rows : undefined, chosenCareer);
+	const wage = pickWageCareer(todayRows, scenario ? rows : undefined, chosenCareer);
 	const wageCareer = wage?.careerId;
 	const wageRow = rows.find((row) => row.careerId === wageCareer);
-	const todayTop = currentTop[0];
+	const todayTop = todayRows[0];
 	const projectedTop = scenario ? rows[0] : undefined;
 	// Careers sharing #1, so the summary doesn't name one as ahead.
-	const todayTiedTop = pathRows(undefined).filter((row) => row.rank === 1);
+	const todayTied = todayRows.filter((row) => row.rank === 1);
 	const projectedTiedTop = scenario ? rows.filter((row) => row.rank === 1) : [];
 	const years =
 		scenario?.kind === "add-experience" || scenario?.kind === "combined"
@@ -144,8 +150,11 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 		setSelectedKey(scenarioKey(next));
 		const nextRows = pathRows(next);
 		const parts = [`Projection updated: ${describeScenario(next)}.`];
-		if (nextRows[0]) parts.push(`New #1: ${careerTitle(nextRows[0].careerId)}.`);
-		const nextWage = pickWageCareer(currentTop, nextRows, chosenCareer)?.careerId;
+		// "New #1" only when #1 actually moved; an unchanged top isn't news.
+		if (nextRows[0] && nextRows[0].careerId !== todayRows[0]?.careerId) {
+			parts.push(`New #1: ${careerTitle(nextRows[0].careerId)}.`);
+		}
+		const nextWage = pickWageCareer(todayRows, nextRows, chosenCareer)?.careerId;
 		if (nextWage && nextWage !== wageCareer) parts.push(wageSentence(nextWage));
 		if ((next.kind === "add-experience" || next.kind === "combined") && nextRows[0]) {
 			const estimate = afterYearsText(nextRows[0].careerId, next.years);
@@ -201,7 +210,7 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 				</p>
 			</header>
 
-			{currentTop.length === 0 ? (
+			{todayRows.length === 0 ? (
 				<EmptyState />
 			) : (
 				<>
@@ -209,7 +218,7 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 						<SummaryStrip
 							picks={picks}
 							today={todayTop}
-							todayTied={todayTiedTop.length > 1 ? todayTiedTop.map((row) => row.careerId) : undefined}
+							todayTied={todayTied.length > 1 ? todayTied.map((row) => row.careerId) : undefined}
 							projected={projectedTop}
 							projectedTied={
 								projectedTiedTop.length > 1
@@ -231,6 +240,7 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 								skills={skillPicker.skills}
 								matchCount={matches.length}
 								picks={picks}
+								hiddenPicks={skillPicker.hiddenPicks ?? 0}
 								onSave={changePicks}
 							/>
 						</Step>

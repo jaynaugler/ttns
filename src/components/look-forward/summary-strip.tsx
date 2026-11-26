@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import {
 	describeShift,
 	formatScore,
+	joinWords,
 	MAX_SKILL_PICKS,
 	type SummaryWage,
 } from "@/lib/projection-logic";
@@ -68,7 +69,7 @@ export function SummaryStrip({
 					<>
 						<span className="block font-bold leading-snug break-words">
 							{todayTied
-								? `Tied #1: ${todayTied.map(careerTitle).join(" and ")}`
+								? `Tied #1: ${joinWords(todayTied.map(careerTitle))}`
 								: careerTitle(today.careerId)}
 						</span>
 						<Pause />
@@ -84,7 +85,7 @@ export function SummaryStrip({
 					<>
 						<span className="block font-bold leading-snug break-words">
 							{projectedTied
-								? `Tied #1: ${projectedTied.map(careerTitle).join(" and ")}`
+								? `Tied #1: ${joinWords(projectedTied.map(careerTitle))}`
 								: careerTitle(projected.careerId)}
 						</span>
 						<Pause />

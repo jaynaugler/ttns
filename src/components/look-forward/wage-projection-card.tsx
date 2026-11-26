@@ -278,7 +278,10 @@ function Marker({
 				className={`block h-6 rounded-full bg-foreground ${strong ? "w-1.5" : "w-0.5"}`}
 			/>
 			<span
-				className={`absolute whitespace-nowrap text-xs font-bold ${position === "above" ? "-top-5" : "top-7"}`}
+				// top-9 keeps a below caption clear of the "Starting out / Top
+				// earners" row under the bar (top-7 overlapped it when the median
+				// sat near the low end of the range).
+				className={`absolute whitespace-nowrap text-xs font-bold ${position === "above" ? "-top-5" : "top-9"}`}
 			>
 				{label}
 			</span>

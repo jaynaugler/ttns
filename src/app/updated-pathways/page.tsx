@@ -21,7 +21,8 @@ export default function UpdatedPathwaysPage() {
   const matches = toProjectable(journey.savedMatches ?? []);
   const userSkills = journey.savedSkills ?? [];
   // Older journeys could save more picks; Look Forward uses the first three.
-  const picks = (journey.newSkills ?? []).slice(0, MAX_SKILL_PICKS);
+  const savedPicks = journey.newSkills ?? [];
+  const picks = savedPicks.slice(0, MAX_SKILL_PICKS);
   const scenarios = buildScenarios(
     matches,
     userSkills,
@@ -45,6 +46,7 @@ export default function UpdatedPathwaysPage() {
             skillPicker={{
               skills: rankSkillsToLearn(matches, userSkills, skillsData),
               picks,
+              hiddenPicks: Math.max(0, savedPicks.length - MAX_SKILL_PICKS),
               onChange: saveNewSkills,
             }}
           />

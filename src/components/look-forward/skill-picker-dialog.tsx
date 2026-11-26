@@ -25,11 +25,14 @@ export function SkillPickerDialog({
 	skills,
 	matchCount,
 	picks,
+	hiddenPicks = 0,
 	onSave,
 }: {
 	skills: readonly SkillToLearn[];
 	matchCount: number;
 	picks: readonly string[];
+	// Older saved picks the display cap keeps off this list; warning below.
+	hiddenPicks?: number;
 	onSave: (picks: string[]) => void;
 }) {
 	const [open, setOpen] = useState(false);
@@ -83,6 +86,16 @@ export function SkillPickerDialog({
 						value={draft}
 						onValueChange={setDraft}
 					/>
+
+					{/* Journeys saved before the cap can hold more picks than this
+					    dialog lists; say so instead of letting Done drop them quietly. */}
+					{hiddenPicks > 0 && (
+						<p className="text-sm font-bold">
+							{hiddenPicks} older saved {hiddenPicks === 1 ? "pick isn't" : "picks aren't"}{" "}
+							shown here. Choosing Done keeps the first {MAX_SKILL_PICKS} of your saved picks
+							and drops the rest.
+						</p>
+					)}
 
 					<div className="flex flex-wrap gap-3">
 						<Button type="button" className={BUTTON_SIZE} onClick={done}>

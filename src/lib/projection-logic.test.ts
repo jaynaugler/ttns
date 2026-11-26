@@ -28,7 +28,6 @@ import {
 	rankMatches,
 	rankSkillsToLearn,
 	createOutcomeShift,
-	describeRankChange,
 	describeScenario,
 	describeShift,
 	formatScore,
@@ -358,14 +357,6 @@ describe("ranking", () => {
 			],
 		);
 	});
-
-	it("describes rank changes in words", () => {
-		assert.equal(describeRankChange(1, 2), "Moved up from #2");
-		assert.equal(describeRankChange(3, 1), "Moved down from #1");
-		assert.equal(describeRankChange(2, 2), "Still #2");
-		assert.equal(describeRankChange(3, 5), "New to your top 3, up from #5");
-		assert.equal(describeRankChange(3, undefined), "New to your top 3");
-	});
 });
 
 describe("plain-language helpers", () => {
@@ -599,8 +590,6 @@ describe("projectOutcomes: up to three skills together", () => {
 				{ careerId: "82031", score: 77.8, scoreShift: 0, rank: 2, previousRank: 1 },
 			],
 		);
-		assert.equal(describeRankChange(top[0].rank, top[0].previousRank), "Moved up from #2");
-		assert.equal(describeRankChange(top[1].rank, top[1].previousRank), "Moved down from #1");
 	});
 });
 
@@ -745,6 +734,32 @@ describe("pickWageCareer", () => {
 		assert.equal(pickWageCareer([]), undefined);
 	});
 
+	// Today's #1 and #3 score 77.826 and 77.778, so Step 3 shows both as
+	// "Tied #3" (77.8) and both are rows the user can pick. Look Forward
+	// passes those display-ranked rows (labelRanks), not a bare top-3 slice.
+	it("accepts a tied row the display ranks #3, past the top-3 slice", () => {
+		const ranked = rankMatches([
+			{ careerId: "a", score: 80 },
+			{ careerId: "b", score: 79 },
+			{ careerId: "c", score: 77.826 },
+			{ careerId: "d", score: 77.778 },
+		]);
+		const displayRows = ranked.map((match, index) => ({ ...match, ...labelRanks(ranked)[index] }));
+		assert.deepEqual(
+			displayRows.map((row) => [row.careerId, row.rank, row.tied]),
+			[
+				["a", 1, false],
+				["b", 2, false],
+				["c", 3, true],
+				["d", 3, true],
+			],
+		);
+		assert.deepEqual(pickWageCareer(displayRows, undefined, "d"), { careerId: "d" });
+		// With a precision top-3 slice, the same click used to miss the list
+		// and silently fall back to #1.
+		assert.deepEqual(pickWageCareer(ranked.slice(0, 3), undefined, "d"), { careerId: "a" });
+	});
+
 	it("doesn't compare the #1 when the same career stays on top", () => {
 		const projected = rankProjections(
 			matches,
@@ -773,6 +788,19 @@ describe("pickWageCareer", () => {
 			careerId: "20012",
 			comparedWith: "32120",
 			comparedAs: "new",
+		});
+	});
+
+	it("compares another row with today's #1 when the top spot didn't move", () => {
+		// The add-experience projection keeps 82031 on top, so its #1 isn't new.
+		const projected = rankProjections(
+			matches,
+			projectOutcomes(matches, { kind: "add-experience", years: 1 }),
+		);
+		assert.deepEqual(pickWageCareer(today, projected, "32120"), {
+			careerId: "32120",
+			comparedWith: "82031",
+			comparedAs: "today",
 		});
 	});
 
