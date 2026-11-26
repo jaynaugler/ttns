@@ -11,19 +11,17 @@ import type {
   UserSkillInput,
 } from "@/types/user";
 
-// The journey state models no user identity; a stable constant keeps this to
-// zero new state. The README leaves identity unresolved — flagged for Team 6
-// sign-off alongside skillId = label below.
-const STEPS_USER_ID = "ttns-journey-user";
-
 // Profile form data, e.g. { personal: { firstName }, skills: { ... } }.
 // Matches the groups in src/components/profile-form/profileSteps.js.
 type ProfileGroups = Record<string, Record<string, string>>;
 
 export interface StepsRequestInput {
+  guestId?: string;
+  selectedCareerCode?: string;
   savedMatches?: CareerMatch[];
   savedSkills?: string[];
   profile?: ProfileGroups;
+  skillsComplete?: boolean;
 }
 
 // The add-skills picks (journey.newSkills) are deliberately NOT included in
@@ -34,25 +32,28 @@ export interface StepsRequestInput {
 export function buildStepsRequest(
   input: StepsRequestInput,
 ): NextStepsRequest | null {
-  const matches = toStepsMatches(input.savedMatches ?? []);
+  if (!input.guestId?.trim() || !input.profile || !input.selectedCareerCode) return null;
+  const matches = toStepsMatches(
+    (input.savedMatches ?? []).filter((match) => match.code === input.selectedCareerCode),
+  );
   if (matches.length === 0) return null;
 
   const skills: UserSkillInput[] = nonblank([
-    ...(input.savedSkills ?? []),
-  ]).map((label) => ({ skillId: label, label }));
+    ...(input.skillsComplete ? input.savedSkills ?? [] : []),
+  ]).map((label) => ({ skillId: `label:${label}`, label }));
 
   const interests: UserInterestInput[] =
     nonblank([
       input.profile?.interests?.interest1,
       input.profile?.interests?.interest2,
-    ]).map((label) => ({ interestId: label, label }));
+    ]).map((label) => ({ interestId: `free-text:${label}`, label }));
 
   const firstName = input.profile?.personal?.firstName?.trim() ?? "";
   const lastName = input.profile?.personal?.lastName?.trim() ?? "";
   const name = `${firstName} ${lastName}`.trim();
 
   const profile: UserProfile = {
-    id: STEPS_USER_ID,
+    id: input.guestId,
     ...(name !== "" ? { name } : {}),
     skills,
     interests,

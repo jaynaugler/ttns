@@ -16,6 +16,8 @@ export const MAX_TOP_CAREERS = 3;
 // way savedSkills does.
 export interface JourneyState {
   completed: JourneyStepId[];
+  // A pseudonymous browser-local journey identifier, not an account ID.
+  guestId?: string;
   savedSkills?: string[];
   // The submitted profile form values, grouped by step key, e.g.
   // { personal: { firstName, lastName }, skills: { ... }, ... }.
@@ -72,6 +74,9 @@ function parse(raw: string | null): JourneyState {
           typeof id === "string" && complete.has(id as JourneyStepId),
       ),
     };
+    if (typeof parsed.guestId === "string" && parsed.guestId.trim()) {
+      state.guestId = parsed.guestId;
+    }
     if (Array.isArray(parsed.savedSkills)) {
       state.savedSkills = parsed.savedSkills.map(String);
     }
@@ -263,6 +268,15 @@ export function saveSkills(skills: string[]) {
 // The page's Continue button marks the step complete, so this doesn't.
 export function saveProfile(profile: ProfileData) {
   writeState({ ...readState(), profile });
+}
+
+// Called at the integration boundary, including for journeys saved before this
+// field existed. Resetting the journey removes this ID with the other data.
+export function ensureGuestJourneyId() {
+  const state = readState();
+  if (state.guestId || !state.profile) return;
+  if (typeof crypto.randomUUID !== "function") return;
+  writeState({ ...state, guestId: `guest-${crypto.randomUUID()}` });
 }
 
 // Select, replace, or unselect a career. Changing the choice invalidates later

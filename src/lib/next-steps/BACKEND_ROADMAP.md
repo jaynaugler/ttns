@@ -2,17 +2,15 @@
 
 This is a living reference for the Next Step Recommendation backend. Verify
 the current code, branch, contracts, and test results before relying on it;
-update this document when verified facts or agreed decisions change. Current
-work is based on `origin/main` commit `8cd20de`, fetched 2026-11-24.
+update this document when verified facts or agreed decisions change. Current integration work is based on `origin/main` commit `244df21`, fetched 2026-11-26.
 Phase 1 was merged in PR #25; its earlier verification is retained below as
 history, not as the current build or integration status.
 
 ## Intended data flow
 
-Solid arrows show existing code paths; dashed arrows show integration that is
-not currently wired. Adapters exist, but profile identity and ID choices
-remain provisional. The simulated integration tests exercise both adapters
-and the backend, not a running application page.
+The application now calls the backend through the existing adapters. Guest
+identity and label-based identifiers are explicitly local; authenticated
+identity and canonical IDs remain future decisions.
 
 ```mermaid
 flowchart LR
@@ -25,21 +23,21 @@ flowchart LR
     D["Team 6: 12 recommendation records"]:::implemented
     A["Team 6: recommendation algorithm"]:::implemented
     O["Team 6: NextStep array output"]:::contract
-    F["Frontend integration boundary: planned"]:::planned
+    F["Frontend integration: Next Step page"]:::implemented
     U["Identity and skill/interest ID rules: unresolved"]:::decision
     C["Confirmed request: CareerMatch array and UserProfile"]:::contract
 
-    P -.-> N
-    S -.-> N
+    P --> N
+    S --> N
     U -.-> N
-    M -.-> N
+    M --> N
     N --> C
-    C -.-> R
+    C --> R
     R --> V
     V --> A
     D --> A
     A --> O
-    O -.-> F
+    O --> F
     classDef implemented fill:#e1f5e5,stroke:#236b34,color:#111
     classDef external fill:#e5eef9,stroke:#315b91,color:#111
     classDef planned fill:#fff1d6,stroke:#8a5a00,color:#111
@@ -50,8 +48,8 @@ flowchart LR
 Legend: **implemented** — Team 6 code exists;
 **external** — data or code owned outside Team 6; **planned** — integration
 not wired; **contract** — shared interface already defined; **decision** —
-mapping or ownership remains unresolved. No current application page sends
-the assembled request to Team 6's endpoint.
+mapping or ownership remains unresolved. The Next Step page sends an assembled
+request for the first selected current career.
 
 ## Phase 1 — Integration compatibility
 
@@ -70,11 +68,9 @@ the assembled request to Team 6's endpoint.
 - **Completion criteria:** verified contracts and IDs; focused simulated-match
   tests; unchanged API contract; documented mapping decisions and ownership.
   Implement a pure adapter only when its required identifier rules are known.
-- **Status:** contract compatibility is exercised through both existing
-  adapters with a simulated saved journey and the real recommendation data.
-  `buildStepsRequest` exists but has no current page caller and uses
-  provisional identity and label-as-ID conventions. API and shared types
-  remain unchanged; integration decisions remain open.
+- **Status:** the Next Step page uses both adapters with a browser-local guest
+  ID, explicit local label identifiers and the first selected current career.
+  API and shared types remain unchanged; production identity decisions remain.
 
 The main-branch `COMP-CHECKLIST.md` reinforces clear, predictable inputs and
 outputs, agreed shared structures, realistic tests, maintainability, and a
@@ -131,13 +127,14 @@ Team 6 backend ownership.
 - **Completion criteria:** validated real application inputs and outputs,
   passing relevant automated tests and production build, and documented
   handoff with remaining limitations.
-- **Status:** backend boundary testing is in progress; no end-to-end
-  application integration is verified. The current next-step page is a
-  placeholder and does not call the API.
+- **Status:** a local browser journey reached the API and displayed its
+  response. Production deployment and wider dataset coverage remain unverified.
 
 ## Permanent development rules
 
-1. Team 6 owns only the Next Step Recommendation backend.
+1. Team 6 owns the Next Step Recommendation backend. On 2026-11-26 Joshua
+   explicitly authorized the cross-team frontend integration in this branch;
+   this is a task-specific exception to rules 2 and 3, not a transfer of ownership.
 2. Do not modify frontend components.
 3. Do not modify another team's implementation without explicit agreement.
 4. Team 4 is not required to provide extra recommendation datasets, custom
@@ -176,7 +173,7 @@ roadmap from verified evidence instead of following stale assumptions.
 - How should free-text degree map to `demographics.educationLevel`, if at all?
   Do not infer equivalence or proficiency from a degree or years of experience.
 - Who assembles the shared profile and sends the request, and which career
-  matches should the application provide? No client currently connects them.
+  matches should the application provide? The current page sends the first selected current match; the integration group can revisit this policy.
 - Is a non-empty selected skill list complete? The current algorithm treats
   an unselected required skill as a gap once any skill is supplied.
 - Main's Team 4 match route returns `code`, `matchPercentage`, and string
@@ -207,3 +204,5 @@ roadmap from verified evidence instead of following stale assumptions.
 |---|---|---|---|---|---|---|
 | 2026-11-04 | 1 | `src/lib/next-steps/README.md`, `src/lib/next-steps/BACKEND_ROADMAP.md`, `src/lib/next-steps/next-steps.test.ts` | Record contracts, integration boundaries and roadmap; add simulated cross-team compatibility tests. | Phase 1 compatibility and permanent roadmap | Normal `pnpm test`: 69/69 pass. Project TypeScript and production build fail at `src/app/kitchen-sink/page.tsx:59` with TS2741, also reproduced on clean `origin/main` `87dda38`; Team 6 did not modify affected files. Mermaid rendering remains unverified. | Ready for Phase 1 review; profile integration decisions and project build blocker remain open |
 | 2026-11-24 | 2 / integration | `src/lib/next-steps.ts`, `src/lib/next-steps/handler.ts`, `src/lib/next-steps/next-steps.test.ts`, `src/lib/next-steps/README.md`, `src/lib/next-steps/BACKEND_ROADMAP.md` | Simplify gap checks, fail closed on deduplication cycles, preserve the error response and test existing adapters against real data. | Backend stabilization and cross-team compatibility | Baseline: Team 6 67/69, projection 32/32, TypeScript and build pass, lint 6 existing warnings. After changes: Team 6 78/78 and projection 32/32 pass; TypeScript and build pass; lint retains the same 6 warnings. | Ready for backend review; integration decisions remain open |
+
+| 2026-11-26 | 4 / application integration | `src/app/next-step/page.tsx`, `src/components/next-steps/NextStepsList.tsx`, `src/data/education-steps.json`, `src/lib/journey-progress.ts`, `src/lib/profile-adapter.ts`, tests and documentation | Connect the real journey using a guest ID, selected career, conservative skill completeness and actual API responses; remove assumptions about a newly chosen skill from generic records. | Explicit cross-team integration authorization | `pnpm test`: 79 Team 6 and 32 projection tests pass; 8 additional match-adapter tests pass; TypeScript and production build pass; lint has 5 existing warnings. Local browser: supported 12201 returned recommendations, unsupported 52111 showed labeled guidance; API error state exercised. | Integration implemented; production identity, canonical IDs, education mapping and broader dataset coverage remain open. Team 5 projection-weight fix is under separate PR #50. |

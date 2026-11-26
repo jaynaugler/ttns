@@ -200,9 +200,9 @@
     },
     {
       "id": "volunteer-practice-project",
-      "title": "Find a project where you can practise the new skill",
+      "title": "Find a project to build relevant experience",
       "category": "experience",
-      "description": "Volunteer, freelance, or take on a stretch task at work that uses the skill you picked. Nothing shifts a hiring decision like proof you have done the real thing.",
+      "description": "Explore volunteer work, freelance projects, or a stretch task that lets you practise skills relevant to this career.",
       "estimatedWeeks": 8,
       "careerIds": [
         "13110",
@@ -227,9 +227,9 @@
     },
     {
       "id": "refresh-resume",
-      "title": "Refresh your resume around the new skill",
+      "title": "Refresh your resume for this career",
       "category": "application",
-      "description": "Once you can demonstrate the skill, rewrite two bullet points per recent job to show it in action, and add it to the skills section every posting can find.",
+      "description": "Review job postings and highlight the relevant skills and experience you can demonstrate in your resume.",
       "estimatedWeeks": 2,
       "careerIds": [
         "13110",
@@ -254,9 +254,9 @@
     },
     {
       "id": "tell-your-network",
-      "title": "Tell three people in your network you are learning this",
+      "title": "Talk to people about this career",
       "category": "application",
-      "description": "Most first chances come from people who already know you. Send three short messages this week saying what you are learning and what you are aiming for.",
+      "description": "Ask people in your network about their experience, career paths, and practical ways to learn more about this field.",
       "estimatedWeeks": 1,
       "careerIds": [
         "13110",
