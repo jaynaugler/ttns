@@ -27,11 +27,11 @@ export function RadioButtonGroup({
           className="group flex cursor-pointer select-none items-center justify-between rounded-xl border border-border bg-background p-4 transition-all duration-200 hover:border-primary/50 hover:bg-primary/5 has-[:checked]:border-primary has-[:checked]:bg-primary/10"
         >
           <span className="flex flex-col">
-            <span className="text-sm font-semibold text-foreground transition-colors group-hover:text-primary group-has-[:checked]:text-primary">
+            <span className="text-sm font-semibold text-foreground transition-colors group-hover:text-primary group-has-[:checked]:text-primary dark:group-hover:text-[var(--dm-brand-yellow)] dark:group-has-[:checked]:text-[var(--dm-brand-yellow)]">
               {option.title}
             </span>
 
-            <span className="text-xs text-muted-foreground transition-colors group-hover:text-primary group-has-[:checked]:text-primary">
+            <span className="text-xs text-muted-foreground transition-colors group-hover:text-primary group-has-[:checked]:text-primary dark:group-hover:text-[var(--dm-brand-yellow)] dark:group-has-[:checked]:text-[var(--dm-brand-yellow)]">
               {option.description}
             </span>
           </span>
