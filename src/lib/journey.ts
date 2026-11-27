@@ -19,13 +19,14 @@ export interface JourneyStep {
 
 export const JOURNEY_STEP_COUNT = 4;
 
-// /skills shares step 0 with /profile: both are part of "Personal Info" and
-// are unlocked from the start. The sidebar labels a step with pages[0]'s
-// label, so /skills has its own label for the gate links ("Continue with
-// Your Skills") without changing what the sidebar shows.
+// The skills selection lives on /profile now: both step-0 entries land there
+// and are unlocked from the start. The sidebar labels a step with pages[0]'s
+// label, so the "skills" entry's label is only read by the locked-page gate
+// notice ("Continue with Personal Info") — keep it pointing at the page the
+// link actually opens.
 export const JOURNEY_STEPS: readonly JourneyStep[] = [
   { id: "profile", label: "Personal Info", href: "/profile", stepIndex: 0 },
-  { id: "skills", label: "Your Skills", href: "/skills", stepIndex: 0 },
+  { id: "skills", label: "Personal Info", href: "/profile", stepIndex: 0 },
   { id: "current-pathways", label: "Current Pathways", href: "/current-pathways", stepIndex: 1 },
   { id: "updated-pathways", label: "Updated Pathways", href: "/updated-pathways", stepIndex: 2 },
   { id: "next-step", label: "The Next Step 👣", href: "/next-step", stepIndex: 3 },

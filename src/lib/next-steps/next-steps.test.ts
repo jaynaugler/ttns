@@ -374,8 +374,11 @@ describe("cross-team integration contracts", () => {
   it("passes a simulated saved journey through both existing adapters and the real dataset", async () => {
     const buildStepsRequest = loadProfileAdapter();
     const adapted = buildStepsRequest({
-      savedMatches: [teamFourMatch("12201", 80)],
+      guestId: "guest-test-123",
+      selectedCareerCode: "12201",
+      savedMatches: [teamFourMatch("12201", 80), teamFourMatch("00010", 95)],
       savedSkills: ["Numeracy"],
+      skillsComplete: true,
       profile: {
         personal: { firstName: "Example", lastName: "Person" },
         skills: { primarySkill: "Writing", yearsOfExperience: "3" },
@@ -384,15 +387,14 @@ describe("cross-team integration contracts", () => {
       },
     });
     assert.ok(adapted);
-    // These are the integration adapter's current provisional choices, not
-    // an approval of the placeholder identity or label-as-ID conventions.
-    assert.equal(adapted.profile.id, "ttns-journey-user");
+    assert.equal(adapted.profile.id, "guest-test-123");
+    assert.deepEqual(JSON.parse(JSON.stringify(adapted.matches.map((match) => match.careerId))), ["12201"]);
     assert.deepEqual(JSON.parse(JSON.stringify(adapted.profile.skills)), [
-      { skillId: "Numeracy", label: "Numeracy" },
+      { skillId: "label:Numeracy", label: "Numeracy" },
     ]);
     assert.deepEqual(JSON.parse(JSON.stringify(adapted.profile.interests)), [
-      { interestId: "Helping", label: "Helping" },
-      { interestId: "Building", label: "Building" },
+      { interestId: "free-text:Helping", label: "Helping" },
+      { interestId: "free-text:Building", label: "Building" },
     ]);
     assert.equal(adapted.profile.demographics, undefined);
     assert.equal(validateNextStepsRequest(adapted).ok, true);
@@ -406,13 +408,19 @@ describe("cross-team integration contracts", () => {
   it("keeps incomplete saved profile data empty and does not invent matches", () => {
     const buildStepsRequest = loadProfileAdapter();
     assert.equal(buildStepsRequest({}), null);
-    const adapted = buildStepsRequest({ savedMatches: [teamFourMatch("00010", 80)] });
+    assert.equal(buildStepsRequest({ savedMatches: [teamFourMatch("00010", 80)] }), null);
+    const adapted = buildStepsRequest({ guestId: "guest-test", profile: {}, selectedCareerCode: "00010", savedMatches: [teamFourMatch("00010", 80)], savedSkills: ["Numeracy"] });
     assert.ok(adapted);
     assert.equal(adapted.matches[0].careerId, "00010");
     assert.equal(adapted.profile.skills.length, 0);
     assert.equal(adapted.profile.interests.length, 0);
     assert.equal(adapted.profile.demographics, undefined);
     assert.equal(validateNextStepsRequest(adapted).ok, true);
+  });
+
+  it("requires the selected career to be present in saved matches", () => {
+    const buildStepsRequest = loadProfileAdapter();
+    assert.equal(buildStepsRequest({ guestId: "guest-test", profile: {}, selectedCareerCode: "00010", savedMatches: [teamFourMatch("12201", 80)] }), null);
   });
 
   it("uses the real match adapter and bundled data to return recommendations", async () => {

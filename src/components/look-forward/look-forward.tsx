@@ -5,7 +5,7 @@
 // career they select. Status and hand-off notes: README.md in this folder.
 
 import Link from "next/link";
-import { useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 
 import {
 	buildDefaultScenarios,
@@ -26,9 +26,12 @@ import {
 	type ProjectableMatch,
 	type SkillToLearn,
 } from "@/lib/projection-logic";
+import type { LookForwardChoice } from "@/lib/journey-progress";
 import type { Scenario } from "@/types/outcomes";
 
 import { careerTitle, PathList, rankText, type PathRow } from "./match-list";
+import { CARD, EYEBROW, H3, MEASURE, PAGE_STACK } from "@/components/next-step/scale";
+
 import { ScenarioPicker } from "./scenario-picker";
 import { SkillPickerDialog } from "./skill-picker-dialog";
 import { SummaryStrip } from "./summary-strip";
@@ -52,17 +55,31 @@ export interface LookForwardProps {
 		hiddenPicks?: number;
 		onChange: (picks: string[]) => void;
 	};
+	// Keeps the user's choice across visits: `saved` restores the selected
+	// change, its years and the career row; onChange gets every change (null
+	// when no change is selected), for /next-step to lead with.
+	choice?: {
+		saved?: LookForwardChoice;
+		onChange: (choice: LookForwardChoice | null) => void;
+	};
 }
 
-export function LookForward({ matches, userSkills, scenarios, skillPicker }: LookForwardProps) {
+export function LookForward({ matches, userSkills, scenarios, skillPicker, choice }: LookForwardProps) {
 	const headingId = useId();
+	const saved = choice?.saved;
 	// Selection is stored by key, not index, so it can't silently point at a
 	// different scenario if the props change; a vanished one clears it.
-	const [selectedKey, setSelectedKey] = useState<string | null>(null);
+	const [selectedKey, setSelectedKey] = useState<string | null>(
+		saved ? scenarioKey(saved.scenario) : null,
+	);
 	// The career row the user clicked; until then the wage card follows #1.
-	const [chosenCareer, setChosenCareer] = useState<string | null>(null);
+	const [chosenCareer, setChosenCareer] = useState<string | null>(saved?.careerCode ?? null);
 	const [announcement, setAnnouncement] = useState("");
-	const [experienceYears, setExperienceYears] = useState(1);
+	const [experienceYears, setExperienceYears] = useState(
+		saved?.scenario.kind === "add-experience" || saved?.scenario.kind === "combined"
+			? saved.scenario.years
+			: 1,
+	);
 
 	// The experience and "Do all three" options take the years chosen on the
 	// experience card.
@@ -90,6 +107,16 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 		scenario?.kind === "add-experience" || scenario?.kind === "combined"
 			? scenario.years
 			: undefined;
+
+	// Report the choice whenever the change, its years or the wage career
+	// changes. Keyed on strings, so a new array identity doesn't re-fire it.
+	const choiceKey = scenario && wageCareer ? `${scenarioKey(scenario)}@${wageCareer}` : "";
+	const onChoiceChange = choice?.onChange;
+	useEffect(() => {
+		if (!onChoiceChange) return;
+		onChoiceChange(scenario && wageCareer ? { scenario, careerCode: wageCareer } : null);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [choiceKey, onChoiceChange]);
 
 	function pathRows(next: Scenario | undefined): PathRow[] {
 		if (!next) {
@@ -193,15 +220,13 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 	}
 
 	return (
-		<section aria-labelledby={headingId} className="space-y-8">
+		<section aria-labelledby={headingId} className={`${PAGE_STACK} ${MEASURE}`}>
 			<header className="relative overflow-hidden rounded-2xl bg-card-blue px-5 py-6 text-white sm:px-8 sm:py-8">
 				<div
 					aria-hidden="true"
 					className="absolute inset-y-0 right-0 w-3 bg-brand-yellow sm:w-4"
 				/>
-				<p className="text-sm font-bold tracking-widest text-brand-yellow uppercase">
-					Look Forward
-				</p>
+				<p className={`${EYEBROW} text-brand-yellow`}>Look Forward</p>
 				<h2 id={headingId} className="mt-1 text-2xl font-bold text-balance sm:text-3xl">
 					What if you took one more step?
 				</h2>
@@ -214,7 +239,7 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 				<EmptyState />
 			) : (
 				<>
-					<section aria-label="At a glance">
+					<section aria-label="At a glance" className={CARD}>
 						<SummaryStrip
 							picks={picks}
 							today={todayTop}
@@ -227,7 +252,7 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 							}
 							wage={
 								scenario && todayTop
-									? summaryWage(todayTop.careerId, rows, chosenCareer, years)
+									? summaryWage(todayTop.careerId, rows, wageCareer, years)
 									: undefined
 							}
 							years={years}
@@ -264,12 +289,9 @@ export function LookForward({ matches, userSkills, scenarios, skillPicker }: Loo
 								? "Select a career to see its wage outlook."
 								: "Pick a change above to see how these move. Select a career to see its wage outlook."}
 						</p>
-						<div
-							key={selectedKey ?? "today"}
-							className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300"
-						>
-							<PathList rows={rows} selectedId={wageCareer} onSelect={chooseCareer} />
-						</div>
+						{/* Rows glide to their new rank when the change switches (motion
+						    allowed only; see PathList). */}
+						<PathList rows={rows} selectedId={wageCareer} onSelect={chooseCareer} />
 						{wageCareer && (
 							<WageProjectionCard
 								careerId={wageCareer}
@@ -303,8 +325,8 @@ function rankLine(row: PathRow): string {
 function Step({ title, children }: { title: string; children: ReactNode }) {
 	const id = useId();
 	return (
-		<section aria-labelledby={id} className="space-y-3">
-			<h3 id={id} className="text-xl font-bold">
+		<section aria-labelledby={id} className={CARD}>
+			<h3 id={id} className={H3}>
 				{title}
 			</h3>
 			{children}
@@ -314,17 +336,15 @@ function Step({ title, children }: { title: string; children: ReactNode }) {
 
 function EmptyState() {
 	return (
-		<div className="rounded-xl border-2 border-foreground/50 bg-background p-5 text-foreground dark:bg-[var(--dm-card-grey)]">
+		<div className={CARD}>
 			<p className="font-bold">No career matches yet.</p>
-			<p className="mt-1">
-				Look Forward needs your current matches to project a change.
-			</p>
+			<p>Look Forward needs your current matches to project a change.</p>
 			{/* Dark mode: the global dark link blue is under 2:1 on the grey
 			    card, and brand red is under 3:1 as a focus outline, so both
 			    switch to the dark-mode yellow here. */}
 			<Link
 				href="/current-pathways"
-				className="mt-2 inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-red dark:text-[var(--dm-brand-yellow)] dark:focus-visible:outline-[var(--dm-brand-yellow)]"
+				className="inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-red dark:text-[var(--dm-brand-yellow)] dark:focus-visible:outline-[var(--dm-brand-yellow)]"
 			>
 				See your current pathways
 			</Link>

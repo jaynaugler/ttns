@@ -2,8 +2,10 @@
 
 import { useSyncExternalStore } from "react";
 
+import skillsData from "@/data/skills.json";
 import { JOURNEY_STEPS, type JourneyStepId } from "./journey";
 import type { CareerMatch } from "@/types/careers";
+import type { Scenario } from "@/types/outcomes";
 
 export const JOURNEY_STORAGE_KEY = "ttns-journey-v1";
 
@@ -15,6 +17,8 @@ export const MAX_TOP_CAREERS = 3;
 // way savedSkills does.
 export interface JourneyState {
   completed: JourneyStepId[];
+  // A pseudonymous browser-local journey identifier, not an account ID.
+  guestId?: string;
   savedSkills?: string[];
   // The submitted profile form values, grouped by step key, e.g.
   // { personal: { firstName, lastName }, skills: { ... }, ... }.
@@ -33,6 +37,19 @@ export interface JourneyState {
   // missing to recommend the training step for exactly what the user asked
   // to learn.
   newSkills?: string[];
+  // Team 5: the path chosen on /updated-pathways, for /next-step to lead
+  // with. Saved whenever the change, its years, or the career row changes.
+  lookForward?: LookForwardChoice;
+  // Set when a skills change cleared earlier picks, so later pages can say
+  // why they need re-picking; cleared once new Top 3 picks are saved.
+  picksCleared?: boolean;
+}
+
+// The Look Forward change the user selected (the whole scenario, so
+// /next-step can re-project it) and the career whose wage was showing.
+export interface LookForwardChoice {
+  scenario: Scenario;
+  careerCode: string;
 }
 
 export type ProfileData = Record<string, Record<string, string>>;
@@ -58,6 +75,9 @@ function parse(raw: string | null): JourneyState {
           typeof id === "string" && complete.has(id as JourneyStepId),
       ),
     };
+    if (typeof parsed.guestId === "string" && parsed.guestId.trim()) {
+      state.guestId = parsed.guestId;
+    }
     if (Array.isArray(parsed.savedSkills)) {
       state.savedSkills = parsed.savedSkills.map(String);
     }
@@ -87,21 +107,14 @@ function parse(raw: string | null): JourneyState {
     }
 
     if (Array.isArray(parsed.newSkills)) {
-      const rawSkills = parsed.newSkills as unknown[];
-      const picks = [...new Set(
-        rawSkills
-          .filter((skill: unknown): skill is string => typeof skill === "string")
-          .map((skill: string) => skill.trim())
-          .filter((skill: string) => skill !== ""),
-      )];
+      const picks = cleanSkills(parsed.newSkills as unknown[]);
       if (picks.length > 0) {
         state.newSkills = picks;
       }
-    } else if (
-      typeof parsed.newSkill === "string" && parsed.newSkill.trim() !== ""
-    ) {
+    } else if (typeof parsed.newSkill === "string") {
       // A single pick persisted by earlier builds.
-      state.newSkills = [parsed.newSkill];
+      const picks = cleanSkills([parsed.newSkill]);
+      if (picks.length > 0) state.newSkills = picks;
     }
 
     // Partial corruption must not lose the rest of the journey state, so
@@ -116,10 +129,76 @@ function parse(raw: string | null): JourneyState {
       );
     }
 
+    const lookForward = parseLookForward(parsed.lookForward);
+    if (lookForward) state.lookForward = lookForward;
+    if (parsed.picksCleared === true) state.picksCleared = true;
+
     return state;
   } catch {
     return DEFAULT_STATE;
   }
+}
+
+// Saved skills to learn: only real skills (src/data/skills.json), no
+// repeats, at most MAX_SKILL_PICKS. Edited or out-of-date saved data could
+// otherwise show "Learn Juggling, Negotiating, Negotiating, …".
+const KNOWN_SKILLS = new Set<string>(skillsData);
+// Mirrors MAX_SKILL_PICKS in src/lib/projection-logic.ts.
+const MAX_SKILL_PICKS = 3;
+// Mirrors EXPERIENCE_YEAR_CHOICES in src/components/look-forward/scenario-picker.tsx.
+const EXPERIENCE_YEARS: readonly number[] = [1, 2, 5];
+
+function cleanSkills(raw: readonly unknown[]): string[] {
+  return [
+    ...new Set(
+      raw
+        .filter((skill): skill is string => typeof skill === "string")
+        .map((skill) => skill.trim())
+        .filter((skill) => KNOWN_SKILLS.has(skill)),
+    ),
+  ].slice(0, MAX_SKILL_PICKS);
+}
+
+function isYearChoice(value: unknown): value is number {
+  return typeof value === "number" && EXPERIENCE_YEARS.includes(value);
+}
+
+// A saved Look Forward choice, cleaned: skills as in cleanSkills, and years
+// only 1, 2 or 5. Undefined if anything else is malformed, or the change
+// is left with nothing to do (no real skill to learn, other years).
+function parseLookForward(value: unknown): LookForwardChoice | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const { scenario, careerCode } = value as Record<string, unknown>;
+  if (typeof careerCode !== "string" || !/^\d{5}$/.test(careerCode)) return undefined;
+  if (!scenario || typeof scenario !== "object") return undefined;
+  const s = scenario as Record<string, unknown>;
+  const skills = Array.isArray(s.skills) ? cleanSkills(s.skills) : undefined;
+
+  let clean: Scenario | undefined;
+  if (s.kind === "gain-skill" && typeof s.skill === "string") {
+    const [skill] = cleanSkills([s.skill]);
+    if (skill) clean = { kind: "gain-skill", skill };
+  } else if (s.kind === "gain-skills" && skills && skills.length > 0) {
+    clean = { kind: "gain-skills", skills };
+  } else if (s.kind === "finish-education" && typeof s.step === "string") {
+    clean = { kind: "finish-education", step: s.step };
+  } else if (s.kind === "add-experience" && isYearChoice(s.years)) {
+    clean = { kind: "add-experience", years: s.years };
+  } else if (
+    s.kind === "combined" &&
+    skills &&
+    typeof s.step === "string" &&
+    isYearChoice(s.years)
+  ) {
+    clean = {
+      kind: "combined",
+      skills,
+      step: s.step,
+      years: s.years,
+      ...(typeof s.recommended === "boolean" ? { recommended: s.recommended } : {}),
+    };
+  }
+  return clean ? { scenario: clean, careerCode } : undefined;
 }
 
 function readState(): JourneyState {
@@ -175,27 +254,58 @@ export function markStepComplete(id: JourneyStepId) {
   writeState({ ...state, completed: [...state.completed, id] });
 }
 
-// Persists the /skills selection and marks that page complete.
+// Persists the /skills selection and marks that page complete. Different
+// skills mean different matches, so it also drops what was chosen from the
+// old ones (Top 3 picks, saved matches, the skills picked to learn, the Look
+// Forward choice) and resets the later steps, as saveTopCareers does.
+// Without this, an old #1 pick stayed #1: /api/match pads its results to
+// include selectedCareerCode. Re-saving the same skills changes nothing.
 export function saveSkills(skills: string[]) {
   const state = readState();
-  const completed: JourneyStepId[] = state.completed.includes("skills")
+  const sameSkills =
+    state.savedSkills !== undefined &&
+    state.savedSkills.length === skills.length &&
+    state.savedSkills.every((skill, i) => skill === skills[i]);
+  const withSkills: JourneyStepId[] = state.completed.includes("skills")
     ? state.completed
     : [...state.completed, "skills"];
-  if (
-    completed.length === state.completed.length &&
-    state.savedSkills &&
-    state.savedSkills.length === skills.length &&
-    state.savedSkills.every((skill, i) => skill === skills[i])
-  ) {
-    return;
+  const completed = withSkills.filter(
+    (id) =>
+      sameSkills ||
+      (id !== "current-pathways" &&
+        id !== "updated-pathways" &&
+        id !== "next-step"),
+  );
+  if (sameSkills && completed.length === state.completed.length) return;
+
+  const next: JourneyState = { ...state, completed, savedSkills: [...skills] };
+  if (!sameSkills) {
+    if (state.topCareerCodes || state.savedMatches || state.lookForward) {
+      next.picksCleared = true;
+    }
+    delete next.topCareerCodes;
+    delete next.selectedCareerCode;
+    delete next.savedMatches;
+    // A skill picked to learn may be one the user now has.
+    delete next.newSkills;
+    delete next.lookForward;
   }
-  writeState({ ...state, completed, savedSkills: [...skills] });
+  writeState(next);
 }
 
 // Persists the submitted profile form values for the wizard's later steps.
 // The page's Continue button marks the step complete, so this doesn't.
 export function saveProfile(profile: ProfileData) {
   writeState({ ...readState(), profile });
+}
+
+// Called at the integration boundary, including for journeys saved before this
+// field existed. Resetting the journey removes this ID with the other data.
+export function ensureGuestJourneyId() {
+  const state = readState();
+  if (state.guestId || !state.profile) return;
+  if (typeof crypto.randomUUID !== "function") return;
+  writeState({ ...state, guestId: `guest-${crypto.randomUUID()}` });
 }
 
 // Select, replace, or unselect a career. Changing the choice invalidates later
@@ -246,6 +356,7 @@ export function saveTopCareers(codes: string[]) {
   } else {
     next.topCareerCodes = picks;
     next.selectedCareerCode = picks[0];
+    delete next.picksCleared;
   }
   writeState(next);
 }
@@ -262,6 +373,18 @@ export function saveMatches(matches: CareerMatch[]) {
 // for that page's redesign; nothing calls it until then.
 export function saveNewSkills(skills: string[]) {
   writeState({ ...readState(), newSkills: [...skills] });
+}
+
+// Saves (or with null, clears) the Look Forward choice. Skips the write when
+// nothing changed, so callers can save on every render-driven change.
+export function saveLookForward(choice: LookForwardChoice | null) {
+  const state = readState();
+  const previous = state.lookForward ?? null;
+  if (JSON.stringify(previous) === JSON.stringify(choice)) return;
+  const next: JourneyState = { ...state };
+  if (choice === null) delete next.lookForward;
+  else next.lookForward = { scenario: choice.scenario, careerCode: choice.careerCode };
+  writeState(next);
 }
 
 export function resetJourney() {

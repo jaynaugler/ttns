@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2022", "DOM"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": ".tmp/career-summary-test",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/lib/career-summary.ts",
+    "src/lib/career-summary.test.ts",
+    "src/lib/projection-logic.ts",
+    "src/lib/match-adapter.ts",
+    "src/types/outcomes.ts",
+    "src/types/careers.ts",
+    "src/data/careers.json",
+    "src/data/wages.json"
+  ]
+}

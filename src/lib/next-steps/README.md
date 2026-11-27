@@ -48,54 +48,36 @@ the shared `careerId`, `score`, and `rationale: string[]`. It keeps at most
 500 results. Team 6 tests use simulated match snapshots and the real bundled
 recommendation data; they do not call the matching API.
 
-## Profile conversion and integration boundary
+## Application integration
 
-The shared `UserProfile` in `src/types/user.ts` is the API contract, not the
-current browser storage format. `JourneyState.profile` stores grouped form
-strings (`personal`, `skills`, `interests`, and `education`), while
-`savedSkills` is a separate array of selected labels. Sending the stored form
-directly fails validation: it has no profile `id`, and its `skills` and
-`interests` are objects rather than arrays. The free-text degree is not a
-verified education level; years of experience has no shared profile field.
+The journey runs from Profile to Skills, Current Pathways, Updated Pathways and
+Next Step. The final page calls `POST /api/steps` and renders its actual
+`NextStep` fields. It offers loading, error and empty states; an empty result
+shows explicitly labeled general guidance, not career qualifications.
 
-The existing `buildStepsRequest` export in `src/lib/profile-adapter.ts`
-combines saved matches, skills, and grouped form values. Its identity
-`ttns-journey-user` and its label-as-ID mappings are **provisional**, not
-approved production identifiers. It leaves free-text education and experience
-unmapped and returns `null` when there are no matches. The application
-integration layer must agree on identity and mapping rules, construct an
-appropriate shared profile, and send it with matches. The API does not read
-browser storage, and the current next-step page does not call it.
+`buildStepsRequest` uses `toStepsMatches` and sends only the first selected
+career's saved **current** match. NOC codes remain exact strings. Projected
+scores and the user's other choices are not silently mixed into the request.
+The page requires the saved profile and selected match and links back when
+missing. Team 4 needs no additional recommendation dataset or custom API.
 
-The following consumer-side example uses the existing adapter for match
-conversion while requiring the caller to supply an already approved profile.
-It does not treat the adapter's provisional profile as production-ready:
+The browser generates a random guest journey ID and stores it with journey
+state until reset. It is not an account ID. Profile interests are free text;
+`free-text:` and `label:` prefixes identify local input identifiers, not
+canonical IDs. The form's education is free text and is not mapped to a
+verified education level. Skills explicitly selected as already held are sent
+only when the user confirms their selection is complete: the backend treats
+unlisted skills in a non-empty selection as gaps. Without confirmation the
+profile's skills array is empty (unknown), avoiding invented skill gaps; the
+saved selection is not changed. The planned new skills are never reported as
+already acquired. This conservative behavior can yield fewer specific steps.
 
-```ts
-import { buildStepsRequest, type StepsRequestInput } from "@/lib/profile-adapter";
-import type { NextStepsRequest, NextStepsResponse } from "@/lib/next-steps-types";
-import type { UserProfile } from "@/types/user";
-
-export async function requestSteps(
-  input: StepsRequestInput,
-  approvedProfile: UserProfile,
-): Promise<NextStepsResponse["steps"]> {
-  const draft = buildStepsRequest(input);
-  if (!draft) return [];
-  const body: NextStepsRequest = { matches: draft.matches, profile: approvedProfile };
-  const response = await fetch("/api/steps", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  if (!response.ok) throw new Error("Unable to load next steps.");
-  return ((await response.json()) as NextStepsResponse).steps;
-}
-```
-
-Empty required arrays are accepted but are not proof that the user has no
-skills or interests. The integration layer must also decide which matches to
-send and how to display `NextStep` fields. See the roadmap for open decisions.
+The bundled dataset covers 16 career IDs. A successful empty result may mean
+coverage is unavailable; general guidance on the page is not part of the API
+response. To check the integration, run `pnpm test`, `pnpm exec tsc --noEmit`,
+`pnpm build`, and `pnpm lint`, then use a fresh browser journey and observe the
+request and response on `/next-step`. Identity lifetime, canonical identifiers,
+verified education and wider recommendation coverage remain future decisions.
 
 ## Dataset record (education-steps.json)
 

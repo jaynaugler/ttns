@@ -4,7 +4,11 @@ import skillsData from "@/data/skills.json";
 import { LookForward } from "@/components/look-forward/look-forward";
 import { JourneyStepPage } from "@/components/journey-step-page";
 import { toProjectable } from "@/lib/match-adapter";
-import { saveNewSkills, useJourneyProgress } from "@/lib/journey-progress";
+import {
+  saveLookForward,
+  saveNewSkills,
+  useJourneyProgress,
+} from "@/lib/journey-progress";
 import {
   buildScenarios,
   MAX_SKILL_PICKS,
@@ -49,6 +53,7 @@ export default function UpdatedPathwaysPage() {
               hiddenPicks: Math.max(0, savedPicks.length - MAX_SKILL_PICKS),
               onChange: saveNewSkills,
             }}
+            choice={{ saved: journey.lookForward, onChange: saveLookForward }}
           />
 
           <p className="text-sm text-foreground">

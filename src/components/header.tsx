@@ -98,7 +98,7 @@ export function Header() {
     <header className="sticky top-0 z-40 h-16 border-b bg-primary px-4 md:px-8 text-primary-foreground">
       <div className="max-w-7xl mx-auto flex h-full w-full items-center justify-between gap-6">
         <div className="font-bold text-xl">
-          <Link href="/" className="text-primary-foreground hover:no-underline">Take The Next Step</Link>
+          <Link href="/" className="inline-flex min-h-11 items-center text-primary-foreground hover:no-underline">Take The Next Step</Link>
         </div>
         <nav aria-label="Primary" className="hidden md:block">
           {/* Pill nav: padded hit targets (the app is a11y-focused) with a
@@ -109,7 +109,7 @@ export function Header() {
               <Link
                 href="/"
                 aria-current={isLanding ? "page" : undefined}
-                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
+                className={`flex min-h-11 items-center rounded-md px-3 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
                   isLanding ? "bg-primary-foreground/15" : ""
                 }`}
               >
@@ -122,7 +122,7 @@ export function Header() {
               <Link
                 href="/profile"
                 aria-current={pathname === "/profile" ? "page" : undefined}
-                className={`block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
+                className={`flex min-h-11 items-center rounded-md px-3 text-primary-foreground transition-colors hover:bg-primary-foreground/10 ${
                   pathname === "/profile" ? "bg-primary-foreground/15" : ""
                 }`}
               >
@@ -132,7 +132,7 @@ export function Header() {
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
-                  <button className="block rounded-md px-3 py-2 text-primary-foreground transition-colors hover:bg-primary-foreground/10">
+                  <button className="flex min-h-11 items-center rounded-md px-3 text-primary-foreground transition-colors hover:bg-primary-foreground/10">
                     Accessibility Settings
                   </button>
                 }
@@ -213,7 +213,7 @@ export function Header() {
               <Button
                 variant="secondary"
                 size="icon"
-                className="md:hidden"
+                className="size-11 md:hidden"
                 aria-label="Open menu"
               />
             }
@@ -232,7 +232,7 @@ export function Header() {
                 <li>
                   <Link
                     href="/"
-                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    className="flex min-h-11 items-center rounded-lg px-2 text-sm font-medium transition-colors hover:bg-muted"
                     onClick={() => setOpen(false)}
                   >
                     Home
@@ -241,7 +241,7 @@ export function Header() {
                 <li>
                   <Link
                     href="/profile"
-                    className="block rounded-lg px-2 py-2 text-sm font-medium transition-colors hover:bg-muted"
+                    className="flex min-h-11 items-center rounded-lg px-2 text-sm font-medium transition-colors hover:bg-muted"
                     onClick={() => setOpen(false)}
                   >
                     Profile
@@ -249,7 +249,7 @@ export function Header() {
                 </li>
                 <li>
                   <details className="group">
-                    <summary className="flex cursor-pointer list-none items-center justify-between rounded-lg px-2 py-2 text-sm font-medium hover:bg-muted">
+                    <summary className="flex cursor-pointer list-none min-h-11 items-center justify-between rounded-lg px-2 text-sm font-medium hover:bg-muted">
                       <span>Accessibility Settings</span>
                       <span aria-hidden="true" className="transition-transform group-open:rotate-180">
                         ▾
@@ -263,7 +263,7 @@ export function Header() {
                         role="switch"
                         aria-checked={darkMode}
                         onClick={toggleDarkMode}
-                        className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-sm hover:bg-muted"
+                        className="flex min-h-11 w-full items-center justify-between rounded-lg px-2 text-sm hover:bg-muted"
                       >
                         <span>Dark mode</span>
                         <span
@@ -285,7 +285,7 @@ export function Header() {
                         role="switch"
                         aria-checked={dyslexicFont}
                         onClick={toggleDyslexicFont}
-                        className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-sm hover:bg-muted"
+                        className="flex min-h-11 w-full items-center justify-between rounded-lg px-2 text-sm hover:bg-muted"
                       >
                         <span>Use OpenDyslexic font</span>
                         <span
@@ -307,7 +307,7 @@ export function Header() {
                         role="switch"
                         aria-checked={enhancedFocus}
                         onClick={toggleEnhancedFocus}
-                        className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-sm hover:bg-muted"
+                        className="flex min-h-11 w-full items-center justify-between rounded-lg px-2 text-sm hover:bg-muted"
                       >
                         <span>Enhanced keyboard focus</span>
                         <span

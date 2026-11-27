@@ -27,6 +27,30 @@
   font-weight: 400;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("../fonts/local/OpenDyslexic-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("../fonts/local/OpenDyslexic-Italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("../fonts/local/OpenDyslexic-BoldItalic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
 /* For accessibility settings when user changes font-family */
 html[data-font="dyslexic"] body,
 html[data-font="dyslexic"] body * {
@@ -131,8 +155,8 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --dm-brand-yellow: #ffd67e;
   --dm-brand-orange: #eb952d;
   --dm-brand-brown: #b06204;
-  --dm-link-default: #2d2dff;
-  --dm-link-visited: #9d47ed;
+  --dm-link-default: #9db4ff;
+  --dm-link-visited: #d0a8ff;
   --dm-badge-green: rgb(39, 187, 39);
 
   --background: var(--surface-cream);
@@ -146,7 +170,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --secondary: var(--brand-yellow);
   --secondary-foreground: #000000;
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.53 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -179,7 +203,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   --primary: var(--dm-brand-red);
   --primary-foreground: #ffffff;
   --secondary: var(--dm-brand-yellow);
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: #000000;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -230,9 +254,17 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
     text-decoration: underline;
     cursor: pointer;
   }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+      cursor: pointer;
+  }
 }
 
 @layer components {
+  .profile-panels-container {
+    container-name: profile-panels;
+    container-type: inline-size;
+  }
   .btn-on-bg {
     background-color: var(--brand-red);
     color: #ffffff;
@@ -241,7 +273,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   .dark .btn-on-bg {
     background-color: var(--dm-brand-red);
     color: #ffffff;
-    border-color: 5px solid transparent;
+    border-color: transparent;
   }
   .btn-on-bg:hover {
     background-color: var(--brand-pink);
@@ -258,7 +290,7 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   }
   .dark .btn-on-card {
     background-color: var(--dm-brand-yellow);
-    color: #ffffff;
+    color: #000000;
     border: 5px solid var(--dm-brand-orange);
   }
   .btn-on-card:hover {
@@ -268,6 +300,53 @@ html.dark[data-enhanced-focus="true"] :focus-visible {
   .dark .btn-on-card:hover {
     background-color: var(--dm-brand-orange);
     border-color: var(--dm-brand-brown);
+  }
+}
+
+.profile-selection-layout {
+  container-name: profile-selection-layout;
+  container-type: inline-size;
+}
+
+@container profile-selection-layout (width >= 57rem) {
+  .profile-panels-container {
+    grid-template-columns: 28rem minmax(28rem, 1fr);
+  }
+}
+
+/* On wide, tall windows, let the skills list use the available page height. */
+@media (min-width: 76rem) and (min-height: 48rem) {
+  body:has(.profile-selection-layout) {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+  body:has(.profile-selection-layout) > div.flex.flex-1,
+  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+    min-height: 0;
+  }
+  body:has(.profile-selection-layout) > div.flex.flex-1 > main {
+    overflow: hidden;
+  }
+  .profile-selection-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+  .profile-panels-container {
+    align-items: stretch;
+    flex: 1 1 0%;
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .profile-panels-container > :first-child {
+    align-self: start;
+    /* Review lists every field and can be taller than the fixed page: cap
+       the card at the row height and let it scroll internally — main's
+       overflow: hidden would otherwise clip it past the Submit button with
+       no scrollbar. Short cards keep their natural height. */
+    max-height: 100%;
+    overflow-y: auto;
   }
 }
 

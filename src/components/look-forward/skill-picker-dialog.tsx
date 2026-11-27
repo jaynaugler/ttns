@@ -15,8 +15,12 @@ import {
 import { MAX_SKILL_PICKS, type SkillToLearn } from "@/lib/projection-logic";
 
 // Text-size buttons that still meet the 44x44 target. cursor-pointer is set
-// here, not in ui/button.tsx, which a teammate is changing site-wide.
-const BUTTON_SIZE = "min-h-11 cursor-pointer px-4 text-base font-bold";
+// here, not in ui/button.tsx, which a teammate is changing site-wide. The
+// outline replaces the default focus ring, which is grey at 50% (about
+// 1.5:1 on cream) and, as a box-shadow, disappears in Windows High
+// Contrast; outline-solid is needed because the Button sets outline-none.
+const BUTTON_SIZE =
+	"min-h-11 cursor-pointer px-4 text-base font-bold focus-visible:outline-solid focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-red dark:focus-visible:outline-[var(--dm-brand-yellow)]";
 
 // The user's skill picks as chips, and a "Change skills" dialog holding the
 // full list. Picks are a draft until Done, so Cancel or Escape leaves them

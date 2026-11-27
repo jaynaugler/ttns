@@ -1,3 +1,6 @@
+"use client";
+
+import { useLayoutEffect, useRef } from "react";
 import { ArrowDown, ArrowUp, Minus } from "lucide-react";
 
 import {
@@ -8,10 +11,12 @@ import {
 } from "@/lib/projection-logic";
 
 // Shifts are always in words and arrows too, so colour is never the only
-// signal. Black on the badge green is about 8:1 in both modes.
+// signal. Black on the badge green is about 8:1 in both modes. White on
+// brand pink is 5.45:1 in light mode; on the dark-mode pink it would only
+// just pass (4.53:1), so "down" uses the dark brand red there (9.18:1).
 const SHIFT_STYLES: Record<ShiftDirection, string> = {
 	up: "bg-[var(--dm-badge-green)] text-black",
-	down: "bg-brand-pink text-white dark:bg-[var(--dm-brand-pink)]",
+	down: "bg-brand-pink text-white dark:bg-[var(--dm-brand-red)]",
 	none: "bg-foreground/15 text-foreground",
 };
 
@@ -64,6 +69,38 @@ export interface PathRow {
 	detail?: string;
 }
 
+// FLIP: when the rows reorder (the change switched), each row starts where
+// it was and glides to its new rank; rows new to the list fade in. Motion
+// allowed only. Positions are page coordinates, so scrolling doesn't count.
+function useRankAnimation(order: string) {
+	const items = useRef(new Map<string, HTMLLIElement>());
+	const lastTops = useRef(new Map<string, number>());
+	useLayoutEffect(() => {
+		const motion = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+		const hadRows = lastTops.current.size > 0;
+		const next = new Map<string, number>();
+		for (const [id, el] of items.current) {
+			const top = el.getBoundingClientRect().top + window.scrollY;
+			next.set(id, top);
+			if (!motion || !hadRows) continue;
+			const before = lastTops.current.get(id);
+			if (before === undefined) {
+				el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-out" });
+			} else if (Math.abs(before - top) > 1) {
+				el.animate(
+					[{ transform: `translateY(${before - top}px)` }, { transform: "translateY(0)" }],
+					{ duration: 450, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+				);
+			}
+		}
+		lastTops.current = next;
+	}, [order]);
+	return (id: string) => (el: HTMLLIElement | null) => {
+		if (el) items.current.set(id, el);
+		else items.current.delete(id);
+	};
+}
+
 // The user's top careers as one list. Every row is a toggle button that shows
 // that career's wage outlook; aria-pressed marks the one showing.
 export function PathList({
@@ -75,6 +112,7 @@ export function PathList({
 	selectedId: string | undefined;
 	onSelect: (careerId: string) => void;
 }) {
+	const itemRef = useRankAnimation(rows.map((row) => `${row.careerId}:${row.rank}`).join("|"));
 	return (
 		<ol role="list" className="space-y-3">
 			{rows.map((row) => {
@@ -83,7 +121,7 @@ export function PathList({
 				const shift = describeShift(row.scoreShift ?? 0);
 				const Icon = SHIFT_ICONS[shift.direction];
 				return (
-					<li key={row.careerId}>
+					<li key={row.careerId} ref={itemRef(row.careerId)}>
 						<button
 							type="button"
 							aria-pressed={selected}

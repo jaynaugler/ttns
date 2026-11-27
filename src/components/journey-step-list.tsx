@@ -18,7 +18,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
 
   return (
     <>
-      <ul className="space-y-4">
+      <ul className="space-y-1">
         {Array.from({ length: JOURNEY_STEP_COUNT }, (_, stepIndex) => {
           const pages = JOURNEY_STEPS.filter((step) => step.stepIndex === stepIndex);
           const { label, href } = pages[0];
@@ -27,7 +27,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
 
           if (status === "locked") {
             return (
-              <li key={stepId} className="flex items-start gap-3">
+              <li key={stepId} className="flex min-h-11 items-center gap-3">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold bg-sidebar-border text-sidebar-foreground opacity-50">
                   {stepIndex + 1}
                 </span>
@@ -42,7 +42,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
                 href={href}
                 onClick={onStepClick}
                 aria-current={status === "current" ? "step" : undefined}
-                className="flex items-start gap-3"
+                className="flex min-h-11 items-center gap-3 rounded-md text-sidebar-foreground hover:underline"
               >
                 <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold bg-primary text-primary-foreground">
                   {status === "done" ? <Check className="size-3.5" /> : stepIndex + 1}
@@ -50,7 +50,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
                 <span
                   className={cn(
                     "text-sm",
-                    status === "current" ? "font-bold" : "opacity-70"
+                    status === "current" && "font-bold"
                   )}
                 >
                   {label}
@@ -64,7 +64,7 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
           button and profileDevValues). */}
       <Button
         variant="link"
-        className="mt-6 h-auto p-0 text-xs"
+        className="mt-6 h-auto min-h-11 p-0 text-xs text-sidebar-foreground underline"
         onClick={() => resetJourney()}
       >
         Reset journey
