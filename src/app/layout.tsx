@@ -20,7 +20,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className="h-full antialiased font-sans">
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <Header />
-      <div className="flex flex-1">
+      {/* At least a screen tall, so the footer starts below the fold and
+          isn't pushed down (a layout shift) when the page content loads. */}
+      <div className="flex min-h-dvh flex-1">
   <Sidebar />
   <main className="min-w-0 flex-1 flex flex-col px-4 py-6 md:px-8">
     <div className="mx-auto w-full max-w-5xl flex-1">
