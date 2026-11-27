@@ -1,23 +1,38 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+// Reads "Basic <base64 of username:password>". Anything else (another scheme,
+// bad base64, no colon) returns null, so a malformed header gets the login
+// prompt (401) instead of a crash (500). The password may contain colons.
+function parseBasicAuth(header: string | null) {
+  const match = header?.match(/^Basic +([A-Za-z0-9+/]+={0,2}) *$/i);
+  if (!match) return null;
+  let decoded: string;
+  try {
+    const bytes = Uint8Array.from(atob(match[1]), (c) => c.charCodeAt(0));
+    decoded = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+  } catch {
+    return null;
+  }
+  const colon = decoded.indexOf(':');
+  if (colon === -1) return null;
+  return { username: decoded.slice(0, colon), password: decoded.slice(colon + 1) };
+}
+
 export function proxy(request: NextRequest) {
   // Bypass authentication in development mode
   if (process.env.NODE_ENV === 'development') {
     return NextResponse.next();
   }
 
-  const authorization = request.headers.get('authorization');
+  // Decodes the browser's credentials (username:password)
+  const credentials = parseBasicAuth(request.headers.get('authorization'));
 
-  if (authorization) {
-    const [, token] = authorization.split(' ');
-    // Decodes the browser's credentials (username:password)
-    const [username, password] = atob(token).split(':');
-
+  if (credentials) {
     // Pulling credentials safely from environment variables
     if (
-      username === process.env.BASIC_AUTH_USER && 
-      password === process.env.BASIC_AUTH_PASSWORD
+      credentials.username === process.env.BASIC_AUTH_USER &&
+      credentials.password === process.env.BASIC_AUTH_PASSWORD
     ) {
       return NextResponse.next();
     }
