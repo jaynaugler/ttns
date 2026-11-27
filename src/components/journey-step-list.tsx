@@ -21,7 +21,20 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
       <ul className="space-y-4">
         {Array.from({ length: JOURNEY_STEP_COUNT }, (_, stepIndex) => {
           const pages = JOURNEY_STEPS.filter((step) => step.stepIndex === stepIndex);
-          const { label, href } = pages[0];
+          const { label, href, icon } = pages[0];
+          // The {" "} after the number keeps it apart from the label in
+          // screen readers and copied text ("4 The Next Step", not "4The").
+          const text = (
+            <>
+              {label}
+              {icon && (
+                <>
+                  {" "}
+                  <span aria-hidden="true">{icon}</span>
+                </>
+              )}
+            </>
+          );
           const status = statuses[stepIndex];
           const stepId = `journey-step-${stepIndex}`;
 
@@ -30,8 +43,8 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
               <li key={stepId} className="flex items-start gap-3">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold bg-sidebar-border text-sidebar-foreground opacity-50">
                   {stepIndex + 1}
-                </span>
-                <span className="text-sm opacity-70">{label}</span>
+                </span>{" "}
+                <span className="text-sm opacity-70">{text}</span>
               </li>
             );
           }
@@ -46,29 +59,31 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
               >
                 <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold bg-primary text-primary-foreground">
                   {status === "done" ? <Check className="size-3.5" /> : stepIndex + 1}
-                </span>
+                </span>{" "}
                 <span
                   className={cn(
                     "text-sm",
                     status === "current" ? "font-bold" : "opacity-70"
                   )}
                 >
-                  {label}
+                  {text}
                 </span>
               </Link>
             </li>
           );
         })}
       </ul>
-      {/* DEV TOOL — remove before launch (with the profile form's Autofill
-          button and profileDevValues). */}
-      <Button
-        variant="link"
-        className="mt-6 h-auto p-0 text-xs"
-        onClick={() => resetJourney()}
-      >
-        Reset journey
-      </Button>
+      {/* DEV TOOL — left out of production builds (like the profile form's
+          Autofill button and the kitchen sink page). */}
+      {process.env.NODE_ENV !== "production" && (
+        <Button
+          variant="link"
+          className="mt-6 h-auto p-0 text-xs"
+          onClick={() => resetJourney()}
+        >
+          Reset journey
+        </Button>
+      )}
     </>
   );
 }

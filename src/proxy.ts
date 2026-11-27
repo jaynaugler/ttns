@@ -1,25 +1,103 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function proxy(request: NextRequest) {
+// Reads "Basic <base64 of username:password>". Anything else (another scheme,
+// bad base64, no colon) returns null, so a malformed header gets the login
+// prompt (401) instead of a crash (500). The password may contain colons.
+function parseBasicAuth(header: string | null) {
+  const match = header?.match(/^Basic +([A-Za-z0-9+/]+={0,2}) *$/i);
+  if (!match) return null;
+  let decoded: string;
+  try {
+    const bytes = Uint8Array.from(atob(match[1]), (c) => c.charCodeAt(0));
+    decoded = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+  } catch {
+    return null;
+  }
+  const colon = decoded.indexOf(':');
+  if (colon === -1) return null;
+  return { username: decoded.slice(0, colon), password: decoded.slice(colon + 1) };
+}
+
+// Compares two strings in a time that doesn't depend on where they first
+// differ, so response times can't be used to guess the password a character
+// at a time. Hashing both first makes them the same length.
+async function constantTimeEqual(a: string, b: string) {
+  const encoder = new TextEncoder();
+  const [hashA, hashB] = await Promise.all(
+    [a, b].map((s) => crypto.subtle.digest('SHA-256', encoder.encode(s))),
+  );
+  const bytesA = new Uint8Array(hashA);
+  const bytesB = new Uint8Array(hashB);
+  let difference = 0;
+  for (let i = 0; i < bytesA.length; i++) difference |= bytesA[i] ^ bytesB[i];
+  return difference === 0;
+}
+
+// Content-Security-Policy with a fresh nonce per request: only inline scripts
+// that carry the nonce run, so injected markup can't run code; script files
+// must come from this site. Next.js reads the nonce from the request's CSP
+// header and adds it to its own scripts (the root layout's <RequestTime />
+// makes every page render per request so it can). The one inline script
+// prerendered before any request exists is React's fixed Suspense timing
+// snippet, allowed by its hash; if a React upgrade changes it, the browser
+// console names the new hash. Inline styles stay allowed: style attributes
+// (next/image, progress bars) and components' own <style> elements (the
+// Next Step page's print styles) can't carry a nonce, and styles can't run
+// code. 'unsafe-eval' is development-only (React's dev error overlay).
+const REACT_TIMING_SCRIPT_HASH = "'sha256-7mu4H06fwDCjmnxxr/xNHyuQC6pLTHr4M2E4jXw5WZs='";
+
+function withContentSecurityPolicy(request: NextRequest) {
+  const nonce = btoa(crypto.randomUUID());
+  const isDev = process.env.NODE_ENV === 'development';
+  const policy = [
+    "default-src 'self'",
+    `script-src 'self' 'nonce-${nonce}' ${REACT_TIMING_SCRIPT_HASH}${isDev ? " 'unsafe-eval'" : ''}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' blob: data:",
+    "font-src 'self'",
+    "connect-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+  ].join('; ');
+
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-nonce', nonce);
+  requestHeaders.set('Content-Security-Policy', policy);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  response.headers.set('Content-Security-Policy', policy);
+  return response;
+}
+
+export async function proxy(request: NextRequest) {
   // Bypass authentication in development mode
   if (process.env.NODE_ENV === 'development') {
-    return NextResponse.next();
+    return withContentSecurityPolicy(request);
   }
 
-  const authorization = request.headers.get('authorization');
+  // Fail closed: with no login configured, nobody gets in. 503, not 401, so
+  // the browser doesn't ask for a login that can never succeed.
+  const expectedUser = process.env.BASIC_AUTH_USER;
+  const expectedPassword = process.env.BASIC_AUTH_PASSWORD;
+  if (!expectedUser || !expectedPassword) {
+    console.error(
+      '[proxy] BASIC_AUTH_USER and BASIC_AUTH_PASSWORD must both be set in production; refusing every request.',
+    );
+    return new NextResponse('Login is not set up on this server.', { status: 503 });
+  }
 
-  if (authorization) {
-    const [, token] = authorization.split(' ');
-    // Decodes the browser's credentials (username:password)
-    const [username, password] = atob(token).split(':');
+  // Decodes the browser's credentials (username:password)
+  const credentials = parseBasicAuth(request.headers.get('authorization'));
 
-    // Pulling credentials safely from environment variables
-    if (
-      username === process.env.BASIC_AUTH_USER && 
-      password === process.env.BASIC_AUTH_PASSWORD
-    ) {
-      return NextResponse.next();
+  if (credentials) {
+    // Pulling credentials safely from environment variables. Both checks
+    // always run, so a wrong username takes as long as a wrong password.
+    const usernameMatches = await constantTimeEqual(credentials.username, expectedUser);
+    const passwordMatches = await constantTimeEqual(credentials.password, expectedPassword);
+    if (usernameMatches && passwordMatches) {
+      return withContentSecurityPolicy(request);
     }
   }
     // If credentials are missing or wrong, prompt the browser for a login
@@ -31,13 +109,15 @@ export function proxy(request: NextRequest) {
   });
 }
 
-// Config ensures page routes stay behind the login while static files,
-// images, and internal Next.js assets bypass it. The image optimizer
-// (_next/image) internally fetches the source file from public/, so public
-// assets must be excluded here or that fetch gets 401'd and the optimized
-// image fails with "internal response is invalid".
+// Config ensures page routes and the /api routes stay behind the login while
+// static files, images, and internal Next.js assets bypass it. The browser
+// sends the same Basic credentials with the app's own fetch() calls, so the
+// pages' /api requests keep working once someone has logged in. The image
+// optimizer (_next/image) internally fetches the source file from public/, so
+// public assets must be excluded here or that fetch gets 401'd and the
+// optimized image fails with "internal response is invalid".
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
   ],
 };

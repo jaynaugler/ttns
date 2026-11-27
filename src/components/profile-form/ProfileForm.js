@@ -239,16 +239,19 @@ export default function ProfileForm({ onSubmittedChange, initialValues }) {
           </div>
         ) : (
           <>
-            {/* DEV TOOL — remove before launch, same as profileDevValues. */}
+            {/* DEV TOOL — left out of production builds, same as the
+                "Reset journey" button. */}
             <div className="flex items-center gap-1">
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={fillForDev}
-              >
-                Autofill (dev)
-              </Button>
+              {process.env.NODE_ENV !== "production" && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={fillForDev}
+                >
+                  Autofill (dev)
+                </Button>
+              )}
               <Button
                 type="button"
                 variant="ghost"

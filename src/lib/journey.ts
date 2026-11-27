@@ -15,6 +15,9 @@ export interface JourneyStep {
   label: string; // the wizard step it belongs to (sidebar label)
   href: string; // the page's route (the entry page for its step)
   stepIndex: number; // 0..JOURNEY_STEP_COUNT - 1
+  // Decorative emoji shown after the label (hidden from screen readers, so
+  // "The Next Step 👣" isn't read as "The Next Step footprints").
+  icon?: string;
 }
 
 export const JOURNEY_STEP_COUNT = 4;
@@ -29,7 +32,7 @@ export const JOURNEY_STEPS: readonly JourneyStep[] = [
   { id: "skills", label: "Personal Info", href: "/profile", stepIndex: 0 },
   { id: "current-pathways", label: "Current Pathways", href: "/current-pathways", stepIndex: 1 },
   { id: "updated-pathways", label: "Updated Pathways", href: "/updated-pathways", stepIndex: 2 },
-  { id: "next-step", label: "The Next Step 👣", href: "/next-step", stepIndex: 3 },
+  { id: "next-step", label: "The Next Step", icon: "👣", href: "/next-step", stepIndex: 3 },
 ];
 
 export type JourneyStepStatus = "done" | "current" | "locked";

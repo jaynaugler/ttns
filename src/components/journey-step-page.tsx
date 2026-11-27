@@ -39,7 +39,18 @@ export function JourneyStepPage({
   const { journey, hydrated } = useJourneyProgress();
   // The page title is the shared journey label, so a rename in journey.ts
   // updates the sidebar, the drawer, and this heading at once.
-  const title = JOURNEY_STEPS.find((step) => step.id === pageId)!.label;
+  const step = JOURNEY_STEPS.find((step) => step.id === pageId)!;
+  const title = (
+    <>
+      {step.label}
+      {step.icon && (
+        <>
+          {" "}
+          <span aria-hidden="true">{step.icon}</span>
+        </>
+      )}
+    </>
+  );
 
   // Avoid flashing the locked notice while localStorage hydrates.
   if (!hydrated) return null;
@@ -73,7 +84,7 @@ export function JourneyStepPage({
     <div className={`${contentClassName} space-y-6`}>
       <div>
         <h1 className="text-2xl font-bold">{title}</h1>
-        <p className="text-sm text-muted-foreground mt-1">{description}</p>
+        <p className="text-sm text-foreground/70 mt-1">{description}</p>
       </div>
       {children}
       {showContinue && (
