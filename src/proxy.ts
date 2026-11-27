@@ -25,14 +25,25 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Fail closed: with no login configured, nobody gets in. 503, not 401, so
+  // the browser doesn't ask for a login that can never succeed.
+  const expectedUser = process.env.BASIC_AUTH_USER;
+  const expectedPassword = process.env.BASIC_AUTH_PASSWORD;
+  if (!expectedUser || !expectedPassword) {
+    console.error(
+      '[proxy] BASIC_AUTH_USER and BASIC_AUTH_PASSWORD must both be set in production; refusing every request.',
+    );
+    return new NextResponse('Login is not set up on this server.', { status: 503 });
+  }
+
   // Decodes the browser's credentials (username:password)
   const credentials = parseBasicAuth(request.headers.get('authorization'));
 
   if (credentials) {
     // Pulling credentials safely from environment variables
     if (
-      credentials.username === process.env.BASIC_AUTH_USER &&
-      credentials.password === process.env.BASIC_AUTH_PASSWORD
+      credentials.username === expectedUser &&
+      credentials.password === expectedPassword
     ) {
       return NextResponse.next();
     }
