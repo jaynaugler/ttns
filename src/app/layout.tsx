@@ -1,9 +1,19 @@
 import type { Metadata, Viewport } from "next";
+import { connection } from "next/server";
+import { Suspense } from "react";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
 export const instant =false;
+
+// Renders nothing, but waits for a real request. That gives every page a
+// part rendered at request time, so Next.js resumes the prerendered shell per
+// request and stamps that request's CSP nonce (see src/proxy.ts) on its scripts.
+async function RequestTime() {
+  await connection();
+  return null;
+}
 export const metadata: Metadata = {
   title: "Take The Next Step",
   description:
@@ -31,6 +41,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   </main>
 </div>
         <Footer />
+        <Suspense fallback={null}>
+          <RequestTime />
+        </Suspense>
       </body>
     </html>
   );

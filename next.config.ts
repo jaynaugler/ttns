@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-// Security headers on every response. No Content-Security-Policy yet: Next
-// injects inline scripts, so a CSP needs nonces and its own testing.
+// Security headers on every response. The Content-Security-Policy is set in
+// src/proxy.ts instead, because it needs a fresh nonce for each request.
 const securityHeaders = [
   // Don't let the browser guess a file's type (stops some XSS tricks).
   { key: "X-Content-Type-Options", value: "nosniff" },

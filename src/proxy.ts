@@ -34,10 +34,47 @@ async function constantTimeEqual(a: string, b: string) {
   return difference === 0;
 }
 
+// Content-Security-Policy with a fresh nonce per request: only inline scripts
+// that carry the nonce run, so injected markup can't run code; script files
+// must come from this site. Next.js reads the nonce from the request's CSP
+// header and adds it to its own scripts (the root layout's <RequestTime />
+// makes every page render per request so it can). The one inline script
+// prerendered before any request exists is React's fixed Suspense timing
+// snippet, allowed by its hash; if a React upgrade changes it, the browser
+// console names the new hash. Inline styles stay allowed: style attributes
+// (next/image, progress bars) and components' own <style> elements (the
+// Next Step page's print styles) can't carry a nonce, and styles can't run
+// code. 'unsafe-eval' is development-only (React's dev error overlay).
+const REACT_TIMING_SCRIPT_HASH = "'sha256-7mu4H06fwDCjmnxxr/xNHyuQC6pLTHr4M2E4jXw5WZs='";
+
+function withContentSecurityPolicy(request: NextRequest) {
+  const nonce = btoa(crypto.randomUUID());
+  const isDev = process.env.NODE_ENV === 'development';
+  const policy = [
+    "default-src 'self'",
+    `script-src 'self' 'nonce-${nonce}' ${REACT_TIMING_SCRIPT_HASH}${isDev ? " 'unsafe-eval'" : ''}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' blob: data:",
+    "font-src 'self'",
+    "connect-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+  ].join('; ');
+
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-nonce', nonce);
+  requestHeaders.set('Content-Security-Policy', policy);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  response.headers.set('Content-Security-Policy', policy);
+  return response;
+}
+
 export async function proxy(request: NextRequest) {
   // Bypass authentication in development mode
   if (process.env.NODE_ENV === 'development') {
-    return NextResponse.next();
+    return withContentSecurityPolicy(request);
   }
 
   // Fail closed: with no login configured, nobody gets in. 503, not 401, so
@@ -60,7 +97,7 @@ export async function proxy(request: NextRequest) {
     const usernameMatches = await constantTimeEqual(credentials.username, expectedUser);
     const passwordMatches = await constantTimeEqual(credentials.password, expectedPassword);
     if (usernameMatches && passwordMatches) {
-      return NextResponse.next();
+      return withContentSecurityPolicy(request);
     }
   }
     // If credentials are missing or wrong, prompt the browser for a login
