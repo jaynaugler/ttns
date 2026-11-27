@@ -31,13 +31,15 @@ export function proxy(request: NextRequest) {
   });
 }
 
-// Config ensures page routes stay behind the login while static files,
-// images, and internal Next.js assets bypass it. The image optimizer
-// (_next/image) internally fetches the source file from public/, so public
-// assets must be excluded here or that fetch gets 401'd and the optimized
-// image fails with "internal response is invalid".
+// Config ensures page routes and the /api routes stay behind the login while
+// static files, images, and internal Next.js assets bypass it. The browser
+// sends the same Basic credentials with the app's own fetch() calls, so the
+// pages' /api requests keep working once someone has logged in. The image
+// optimizer (_next/image) internally fetches the source file from public/, so
+// public assets must be excluded here or that fetch gets 401'd and the
+// optimized image fails with "internal response is invalid".
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:webp|svg|png|jpe?g|gif|avif|ico)$).*)',
   ],
 };
