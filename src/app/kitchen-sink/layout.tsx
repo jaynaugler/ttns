@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 // The page's browser-tab title (the root layout's template, when there is
@@ -9,5 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: ReactNode }) {
+  // A developer tool: production builds answer 404 here.
+  if (process.env.NODE_ENV === "production") notFound();
   return children;
 }

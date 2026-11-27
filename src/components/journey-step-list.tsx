@@ -73,15 +73,17 @@ export function JourneyStepList({ onStepClick }: { onStepClick?: () => void }) {
           );
         })}
       </ul>
-      {/* DEV TOOL — remove before launch (with the profile form's Autofill
-          button and profileDevValues). */}
-      <Button
-        variant="link"
-        className="mt-6 h-auto p-0 text-xs"
-        onClick={() => resetJourney()}
-      >
-        Reset journey
-      </Button>
+      {/* DEV TOOL — left out of production builds (like the profile form's
+          Autofill button and the kitchen sink page). */}
+      {process.env.NODE_ENV !== "production" && (
+        <Button
+          variant="link"
+          className="mt-6 h-auto p-0 text-xs"
+          onClick={() => resetJourney()}
+        >
+          Reset journey
+        </Button>
+      )}
     </>
   );
 }
