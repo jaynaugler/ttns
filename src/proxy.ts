@@ -19,7 +19,22 @@ function parseBasicAuth(header: string | null) {
   return { username: decoded.slice(0, colon), password: decoded.slice(colon + 1) };
 }
 
-export function proxy(request: NextRequest) {
+// Compares two strings in a time that doesn't depend on where they first
+// differ, so response times can't be used to guess the password a character
+// at a time. Hashing both first makes them the same length.
+async function constantTimeEqual(a: string, b: string) {
+  const encoder = new TextEncoder();
+  const [hashA, hashB] = await Promise.all(
+    [a, b].map((s) => crypto.subtle.digest('SHA-256', encoder.encode(s))),
+  );
+  const bytesA = new Uint8Array(hashA);
+  const bytesB = new Uint8Array(hashB);
+  let difference = 0;
+  for (let i = 0; i < bytesA.length; i++) difference |= bytesA[i] ^ bytesB[i];
+  return difference === 0;
+}
+
+export async function proxy(request: NextRequest) {
   // Bypass authentication in development mode
   if (process.env.NODE_ENV === 'development') {
     return NextResponse.next();
@@ -40,11 +55,11 @@ export function proxy(request: NextRequest) {
   const credentials = parseBasicAuth(request.headers.get('authorization'));
 
   if (credentials) {
-    // Pulling credentials safely from environment variables
-    if (
-      credentials.username === expectedUser &&
-      credentials.password === expectedPassword
-    ) {
+    // Pulling credentials safely from environment variables. Both checks
+    // always run, so a wrong username takes as long as a wrong password.
+    const usernameMatches = await constantTimeEqual(credentials.username, expectedUser);
+    const passwordMatches = await constantTimeEqual(credentials.password, expectedPassword);
+    if (usernameMatches && passwordMatches) {
       return NextResponse.next();
     }
   }
